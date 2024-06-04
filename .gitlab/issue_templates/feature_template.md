@@ -1,9 +1,9 @@
-**Description:**
+**Description:**  
 
 
- **User Story:**
+ **User Story:**  
 As a <role>, I <want/need/can/etc.> <goal> so that <reason>.
 
  
-**Acceptance Criteria:**
+**Acceptance Criteria:**  
 
