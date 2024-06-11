@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+# Ignore node_modules directory in frontend folder
+frontend/node_modules/
+
 # testing
 /coverage
 
