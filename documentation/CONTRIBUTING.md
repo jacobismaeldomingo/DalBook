@@ -30,7 +30,7 @@ We use Git Flow for our branching strategy. The key branches are:
 
 - Go to your repository in GitLab.
 - Click on Merge Requests > New Merge Request.
-- Select feature/your-feature-name as the source branch and develop as the target branch.
+- Select **feature/your-feature-name** as the source branch and **develop** as the target branch. (Make sure develop is the target branch).
 - Assign reviewers and create the merge request.
 - Provide a clear description of the changes using the **template** and link any relevant issues.
 
@@ -40,4 +40,4 @@ We use Git Flow for our branching strategy. The key branches are:
 
 5. **Merging to 'main'**:
 
-- Only @JacobDomingo will merge 'develop' to 'main' after all features are reviewed and tested.
+- Only @JacobDomingo will be able to merge 'develop' to 'main' after all features are reviewed and tested.
