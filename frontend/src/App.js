@@ -1,22 +1,17 @@
 // import "./App.css";
-import Form from './Form';
+import Form from "./SignUp";
 import Navbar from "./Navbar";
+import Login from "./Login";
 import "./index";
 
-import {ProfilePage} from './build';
+import { ProfilePage } from "./build";
 
 function App() {
- 
   return (
     <div className="App">
-
-        <Form />
-
-
-        
+        <Login />
 
     </div>
-  
   );
 }
 

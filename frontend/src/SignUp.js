@@ -26,7 +26,7 @@ import { useState } from 'react';
         <form>
         <label>
             Enter your First Name:
-            <input type="text" name='firstname'  onChange={handleChange} />
+            <input type="text" name='firstname' required onChange={handleChange} />
         </label><br />
         <label>
             Enter your Last Name:
@@ -34,11 +34,11 @@ import { useState } from 'react';
         </label><br />
         <label>
             Enter your Dal Email:
-            <input type="email" name='email' onChange={handleChange} />
+            <input type="email" name='email' required onChange={handleChange} />
         </label><br />
         <label>
             Set your password:s
-            <input type="password" name='password' onChange={handleChange} />
+            <input type="password" name='password' required onChange={handleChange} />
         </label><br />
         <button type="submit" onClick={handleSubmit}>Submit</button>
         </form>
