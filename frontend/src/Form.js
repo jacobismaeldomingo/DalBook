@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function Form(){
+export function Form(){
 
         const [formData, setFormData] = useState({
             firstname:'', 
@@ -10,8 +10,7 @@ function Form(){
         });
 
         const handleChange = (event) => {
-            setFormData({[event.target.name]: event.target.value, }); 
-            console.log(formData.name); // Log the updated state
+            setFormData({...formData, [event.target.name]: event.target.value, }); 
         };
 
     return (
@@ -20,28 +19,30 @@ function Form(){
         <form>
         <label>
             Enter your First Name:
-            <input type="text"  onChange={handleChange} />
+            <input type="text" name='firstname'  onChange={handleChange} />
         </label><br />
         <label>
             Enter your Last Name:
-            <input type="text"  onChange={handleChange} />
+            <input type="text" name='lastname' onChange={handleChange} />
         </label><br />
         <label>
             Enter your Dal Email:
-            <input type="email"  onChange={handleChange} />
+            <input type="email" name='email' onChange={handleChange} />
         </label><br />
         <label>
-            Set your password:
-            <input type="password"  onChange={handleChange} />
+            Set your password:s
+            <input type="password" name='password' onChange={handleChange} />
         </label><br />
         <button type="submit">Submit</button>
         </form>
-        <p> fname:{formData.firstname}<br />
-            lname:{}<br />
-            email:{}<br />
-            password:{}
-            </p>
+        <p>
+            <h3>Entered details:(for testing purpose)</h3>  {/* For testing only */}
+            fname: {formData.firstname}<br />
+            lname: {formData.lastname}<br />
+            email: {formData.email}<br />
+            password: {formData.password}<br />
+      </p>
         </div>
     );
 }
-export default Form;
+
