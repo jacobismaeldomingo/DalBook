@@ -1,23 +1,23 @@
 package com.example.facebook_integration.controller;
 
-
 import com.example.facebook_integration.model.User;
 import com.example.facebook_integration.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+@RestController
+@RequestMapping("/user")
+public class UserController {
 
-    @CrossOrigin(origins= "*", allowedHeaders = "*")
-    @RestController
-    @RequestMapping("/users")
-    public class UserController {
+    @Autowired
+    UserService userService;
 
-        @Autowired
-        UserService UserService;
-
-        @PostMapping("/save")
-        public void saveUser(@RequestBody User user){
-            UserService.createUser(user);
-        }
+    // Endpoint to handle HTTP POST requests to create a new resume
+    @PostMapping("/create")
+    public void createResume(@RequestBody User resume) {
+        userService.createUser(resume);
     }
+
+}
+
