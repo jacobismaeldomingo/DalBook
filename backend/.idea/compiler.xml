@@ -9,6 +9,9 @@
         <module name="facebook-integration" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="facebook-integration" target="19" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
