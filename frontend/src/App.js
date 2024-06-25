@@ -7,6 +7,10 @@ import Error from "./components/common/Error";
 import FriendRequestSender from "./components/friendRequests/FriendRequestSender";
 import FriendRequestList from "./components/friendRequests/FriendRequestList";
 import FriendsList from "./components/friendRequests/FriendsList";
+import './App.css';
+import ForgotPassword from "./ForgotPassword";
+import ResetPassword from "./ResetPassword";
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 function App() {
   return (
@@ -26,6 +30,8 @@ function App() {
         />
         <Route path="/friendslist" element={<FriendsList userId={"26"} />} />
         <Route path="*" element={<Error />} />
+        <Route path="/ForgotPassword" element={<ForgotPassword />} />
+        <Route path="/ResetPassword" element={<ResetPassword />} />
       </Routes>
     </BrowserRouter>
   );
