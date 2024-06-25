@@ -4,6 +4,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
+Before you start anything, you have to run:
+
+### `npm install`
+
+to install all the dependencies listed in the package.json file. This command reads the package.json file and installs the required dependencies locally in a node_modules directory. This way, we have a clean and consistent environment to work in without having to worry about version discrepancies or unexpected behavior due to different dependency versions.
+
 In the project directory, you can run:
 
 ### `npm start`
