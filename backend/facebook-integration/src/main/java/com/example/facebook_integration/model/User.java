@@ -3,8 +3,6 @@ package com.example.facebook_integration.model;
 import jakarta.persistence.*;
 import jakarta.persistence.Id;
 
-import java.util.List;
-
 @Entity
 public class User {
 
