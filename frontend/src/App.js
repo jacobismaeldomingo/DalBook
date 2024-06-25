@@ -1,11 +1,18 @@
+import React from 'react';
 import './App.css';
-import Header from "./components/Header";
+import Login from './components/Login';
+import Signup from './components/Signup';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="header-navigation">
-      <Header />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

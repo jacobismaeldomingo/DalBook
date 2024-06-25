@@ -3,9 +3,11 @@ package com.example.facebook_integration.model;
 import jakarta.persistence.*;
 import jakarta.persistence.Id;
 
+import java.util.List;
+
 @Entity
 public class User {
-    // Private Variables
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -14,12 +16,29 @@ public class User {
     private String lastName;
     private String email;
     private String password;
-    private String birthday;
+    private String dateOfBirth;
+    private String bio;
+    private String profilePic;
 
-    // Getters and Setters
+    // Constructor
+    public User() {
+    }
+
+    public User(int id, String firstName, String lastName, String email, String password, String bio, String dateOfBirth, String profilePic) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.bio = bio;
+        this.dateOfBirth = dateOfBirth;
+        this.profilePic = profilePic;
+    }
+
+    // Getters and setters
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -58,26 +77,27 @@ public class User {
         this.password = password;
     }
 
-    public String getBirthday() {
-        return birthday;
+    public String getBio() {
+        return bio;
     }
 
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 
-
-    // Constructors
-
-    public User() {
+    public String getProfilePic() {
+        return profilePic;
     }
 
-    public User(int id, String firstName, String lastName, String email, String password, String birthday) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
-        this.birthday = birthday;
+    public void setProfilePic(String profilePic) {
+        this.profilePic = profilePic;
+    }
+
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 }
