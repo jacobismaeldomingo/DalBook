@@ -44,7 +44,9 @@ function Login() {
             <button className={`btn ${location.pathname === '/login' ? 'btn-success' : 'btn-default'}`} type="submit">Login</button>
             <Link to='/signup' className={`btn ${location.pathname === '/signup' ? 'btn-success' : 'btn-default'} text-decoration-none`}>SignUp</Link>
           </div>
-
+          <div className="Forget-password-page">
+            <Link to='/ForgotPassword'>Forget password?</Link>
+          </div>
           <p className="mt-3">You agree to our terms and policies</p>
         </form>
       </div>

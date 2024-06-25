@@ -1,27 +1,8 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-/* App.css */
-
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f4f4f9;
-  font-family: Arial, sans-serif;
 }
 
 .paper {
@@ -31,6 +12,13 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   max-width: 400px;
   width: 100%;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .subtitle {
@@ -52,6 +40,11 @@
   font-size: 16px;
 }
 
+.input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
 .button {
   background-color: #007bff;
   color: white;
@@ -60,5 +53,12 @@
   border-radius: 4px;
   font-size: 16px;
   cursor: pointer;
-  text-align: center;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+.button:focus {
+  outline: none;
 }
