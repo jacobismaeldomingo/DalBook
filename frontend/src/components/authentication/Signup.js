@@ -11,6 +11,7 @@ const Signup = () => {
   const [bio, setBio] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [securityAnswer, setSecurityAnswer] = useState("");
   const [errors, setErrors] = useState({});
   const location = useLocation();
 
@@ -31,6 +32,10 @@ const Signup = () => {
         "Invalid email. Only @dal.ca addresses are accepted.";
     }
 
+    if (!securityAnswer) {
+      validationErrors.securityAnswer = "Security Answer is required.";
+    }
+
     const passwordErrors = validatePassword(password);
     if (passwordErrors.length > 0) {
       validationErrors.password = passwordErrors;
@@ -39,17 +44,8 @@ const Signup = () => {
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       return;
-    } 
-    // else {
-    //   // Perform signup action with name, email, and password
-    //   console.log("First Name:", firstName);
-    //   console.log("Last Name:", lastName);
-    //   console.log("Birthday:", dateOfBirth);
-    //   console.log("Bio:", bio);
-    //   console.log("Email:", email);
-    //   console.log("Password:", password);
-    //   setErrors({});
-    // }
+    }
+
 
     const user = {
       firstName,
@@ -58,6 +54,7 @@ const Signup = () => {
       bio,
       email,
       password,
+      securityAnswer,
     };
 
     try {
@@ -96,7 +93,9 @@ const Signup = () => {
               value={lastName}
               onChange={(e) => setLname(e.target.value)}
             />
-            {errors.name && <p className="text-danger">{errors.name}</p>}
+            {errors.lastname && (
+              <p className="text-danger">{errors.lastname}</p>
+            )}
           </div>
 
           <div>
@@ -107,7 +106,9 @@ const Signup = () => {
               value={dateOfBirth}
               onChange={(e) => setBirthday(e.target.value)}
             />
-            {errors.birthday && <p className="text-danger">{errors.birthday}</p>}
+            {errors.birthday && (
+              <p className="text-danger">{errors.birthday}</p>
+            )}
           </div>
 
           <div>
@@ -147,6 +148,20 @@ const Signup = () => {
                   <li key={index}>{error}</li>
                 ))}
               </ul>
+            )}
+          </div>
+
+          <div>
+            <label htmlFor="securityAnswer">Security Answer</label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="What is your favorite destination to visit?"
+              value={securityAnswer}
+              onChange={(e) => setSecurityAnswer(e.target.value)}
+            />
+            {errors.securityAnswer && (
+              <p className="text-danger">{errors.securityAnswer}</p>
             )}
           </div>
 
