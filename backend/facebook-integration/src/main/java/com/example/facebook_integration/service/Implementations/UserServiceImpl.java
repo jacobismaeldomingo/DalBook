@@ -6,8 +6,6 @@ import com.example.facebook_integration.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -19,9 +17,9 @@ public class UserServiceImpl implements UserService {
     public String createUser(User user) {
         // Validation check if resume is null, throw exception
         if (user == null) {
-            throw new IllegalArgumentException("Resume cannot be null");
+            throw new IllegalArgumentException("User cannot be null");
         }
         userRepository.save(user);
-        return "Resume created successfully";
+        return "User created successfully";
     }
 }

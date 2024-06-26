@@ -15,8 +15,8 @@ public class UserController {
 
     // Endpoint to handle HTTP POST requests to create a new resume
     @PostMapping("/create")
-    public void createResume(@RequestBody User resume) {
-        userService.createUser(resume);
+    public void createResume(@RequestBody User user) {
+        userService.createUser(user);
     }
 
 }
