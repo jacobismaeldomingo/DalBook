@@ -1,10 +1,11 @@
 /* Login.css */
 
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   height: 100%;
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   background-color: #2fd2e8; /* Background color for the entire view */
 }
 
@@ -138,6 +139,10 @@ label {
 
 .text-danger li {
   margin-bottom: 0.5rem;
+}
+
+.mt-3 {
+  font-size: medium;
 }
 
 @media (max-width: 768px) {
