@@ -1,9 +1,8 @@
-import React from 'react';
-import './App.css';
-import Login from './components/Login';
-import Signup from './components/Signup';
-import Header from './components/Header';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import React from "react";
+import Login from "./components/authentication/Login";
+import Signup from "./components/authentication/Signup";
+import Header from "./components/common/Header";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 function App() {
   return (
