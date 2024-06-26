@@ -5,8 +5,8 @@ import { validateEmail, validatePassword } from "./SignupValidation";
 import axios from "axios";
 
 const Signup = () => {
-  const [firstName, setfName] = useState("");
-  const [lastName, setlName] = useState("");
+  const [firstName, setFname] = useState("");
+  const [lastName, setLname] = useState("");
   const [dateOfBirth, setBirthday] = useState("");
   const [bio, setBio] = useState("");
   const [email, setEmail] = useState("");
@@ -38,16 +38,18 @@ const Signup = () => {
 
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
-    } else {
-      // Perform signup action with name, email, and password
-      console.log("First Name:", firstName);
-      console.log("Last Name:", lastName);
-      console.log("Birthday:", dateOfBirth);
-      console.log("Bio:", bio);
-      console.log("Email:", email);
-      console.log("Password:", password);
-      setErrors({});
-    }
+      return;
+    } 
+    // else {
+    //   // Perform signup action with name, email, and password
+    //   console.log("First Name:", firstName);
+    //   console.log("Last Name:", lastName);
+    //   console.log("Birthday:", dateOfBirth);
+    //   console.log("Bio:", bio);
+    //   console.log("Email:", email);
+    //   console.log("Password:", password);
+    //   setErrors({});
+    // }
 
     const user = {
       firstName,
@@ -82,7 +84,7 @@ const Signup = () => {
               type="text"
               className="form-control"
               value={firstName}
-              onChange={(e) => setfName(e.target.value)}
+              onChange={(e) => setFname(e.target.value)}
             />
             {errors.name && <p className="text-danger">{errors.name}</p>}
           </div>
@@ -92,7 +94,7 @@ const Signup = () => {
               type="text"
               className="form-control"
               value={lastName}
-              onChange={(e) => setlName(e.target.value)}
+              onChange={(e) => setLname(e.target.value)}
             />
             {errors.name && <p className="text-danger">{errors.name}</p>}
           </div>
