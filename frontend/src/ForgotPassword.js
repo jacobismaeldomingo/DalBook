@@ -12,22 +12,28 @@ export default function SecurityQuestion() {
   const handleEmailSubmit = async (e) => {
     e.preventDefault();
     console.log("Submitting email...", email);
-
+  
     try {
-      const response = await fetch(`http://localhost:8081/user/birthday/${email}`);
+      const response = await fetch(`http://localhost:8085/user/birthday/${email}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
       if (response.ok) {
         const data = await response.json();
         setBackendBirthday(data.birthday); // Assuming the backend returns birthday in data
         console.log("Birthday retrieved from backend:", data.birthday);
       } else {
         console.error("Failed to fetch birthday from backend");
-        // Handle error if needed
+        alert("Failed to fetch birthday from backend");
       }
     } catch (error) {
       console.error("Error fetching birthday from backend:", error);
-      // Handle error if needed
+      alert("Error fetching birthday from backend");
     }
   };
+  
 
   const handleSecurityQuestion = (e) => {
     e.preventDefault();

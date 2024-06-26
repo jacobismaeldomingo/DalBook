@@ -2,46 +2,67 @@ import React, { useState } from 'react';
 import './App.css'; 
 import './Forgot.css'
 
-export default function Reset() {
+export default function ResetPassword() {
+  const [email, setEmail] = useState('');
   const [newPassword, setNewPassword] = useState('');
+  const [error, setError] = useState(null);
 
-  const handleChangePassword = (e) => {
+  const handleChangePassword = async (e) => {
     e.preventDefault();
     console.log("Changing password...");
 
     const updatedUser = {
-      password: newPassword,
-      id: 1 // Assuming a static ID for demonstration purposes, replace with dynamic data
+      email: email,
+      newPassword: newPassword
     };
 
-    fetch(`http://localhost:8081/user/updatePassword/${updatedUser.id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(updatedUser)
-    }).then(() => {
+    try {
+      const response = await fetch(`http://localhost:8085/user/reset-password`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(updatedUser)
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to update password');
+      }
+
       console.log("Password updated successfully");
       alert("Password updated successfully");
-    }).catch((error) => {
+      setEmail('');
+      setNewPassword('');
+      setError(null);
+    } catch (error) {
       console.error("Error updating password:", error);
-      alert("Failed to update password");
-    });
+      setError('Failed to update password');
+    }
   };
 
   return (
     <div className="container">
-    <div className="paper">
-      <h2 className="subtitle">Change Password</h2>
-      <form className="form" onSubmit={handleChangePassword} noValidate autoComplete="off">
-        <input
-          type="password"
-          placeholder="New Password"
-          className="input"
-          value={newPassword}
-          onChange={(e) => setNewPassword(e.target.value)}
-        />
-        <button type="submit" className="button">Change Password</button>
-      </form>
-    </div>
+      <div className="paper">
+        <h2 className="subtitle">Reset Password</h2>
+        <form className="form" onSubmit={handleChangePassword} noValidate autoComplete="off">
+          <input
+            type="email"
+            placeholder="Email"
+            className="input"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="New Password"
+            className="input"
+            value={newPassword}
+            onChange={(e) => setNewPassword(e.target.value)}
+          />
+          <button type="submit" className="button">Reset Password</button>
+          {error && <p className="error">{error}</p>}
+        </form>
+      </div>
     </div>
   );
 }
