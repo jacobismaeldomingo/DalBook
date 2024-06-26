@@ -1,10 +1,12 @@
 package com.example.facebook_integration.controller;
 
 import com.example.facebook_integration.model.User;
+import org.springframework.http.HttpStatus;
 import com.example.facebook_integration.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.util.Map;
 
 import java.util.Map;
 
@@ -17,8 +19,8 @@ public class UserController {
     UserService userService;
 
     // Endpoint to handle HTTP POST requests to create a new resume
-    @PostMapping("/create")
-    public void createResume(@RequestBody User user) {
+    @PostMapping("/signup")
+    public void createUser(@RequestBody User user) {
         userService.createUser(user);
     }
 
@@ -55,7 +57,6 @@ public class UserController {
             this.birthday = birthday;
         }
     }
-
 
     @PostMapping("/login")
     public int login(@RequestBody Map<String, String> body) {
