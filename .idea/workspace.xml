@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f45d59d8-ed65-4e6b-b12f-eeccb71bba89" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/controller/FriendRequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/controller/FriendRequestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/service/Implementations/FriendRequestServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/service/Implementations/FriendRequestServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/service/Implementations/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/service/Implementations/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/feed/EditProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/feed/EditProfile.js" afterDir="false" />
-    </list>
+    <list default="true" id="f45d59d8-ed65-4e6b-b12f-eeccb71bba89" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -81,7 +75,7 @@
       <workItem from="1719459479313" duration="13000" />
       <workItem from="1719459562111" duration="252000" />
       <workItem from="1719459816778" duration="151000" />
-      <workItem from="1719459970548" duration="30586000" />
+      <workItem from="1719459970548" duration="31477000" />
     </task>
     <servers />
   </component>
