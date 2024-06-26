@@ -6,6 +6,8 @@ import com.example.facebook_integration.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -36,4 +38,16 @@ public class UserServiceImpl implements UserService {
             userRepository.save(user);
         }
     }
+
+
+    public int login(String email, String password){
+        User  user =userRepository.findByEmail(email);
+        if (user!= null && user.getPassword() == password){
+            return user.getId();
+        }
+        else {
+            return -1;
+        }
+
+    };
 }
