@@ -49,5 +49,13 @@ public class UserController {
         return userService.login(email, password);
     }
 
+
+    @PostMapping("/login")
+    public int login(@RequestBody Map<String, String> body) {
+        String email = body.get("email");
+        String password = body.get("password");
+        return userService.login(email, password);
+    }
+
 }
 
