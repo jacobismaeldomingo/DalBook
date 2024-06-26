@@ -7,7 +7,7 @@
 
 # Ignore node_modules directory in frontend folder
 frontend/node_modules/
-
+backend/.idea/
 # testing
 /coverage
 
