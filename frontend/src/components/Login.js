@@ -1,19 +1,34 @@
 import React, { useState } from 'react';
 import './Login.css';
 import { Link, useLocation } from 'react-router-dom';
+import { validateEmail, validatePassword } from "./SignupValidation";
+
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const location = useLocation();
+  let validationErrors = {};
+
 
   const handleSubmit = async(event) => {
     event.preventDefault();
      // Perform login action with email and password
     // console.log('Email:', email);
     // console.log('Password:', password);
-    try {
-      const response = await fetch('http://localhost:8085/user/login', {
+
+      if (!email || !validateEmail(email)) {
+        validationErrors.email =
+          "Invalid email. Only @dal.ca addresses are accepted.";
+      }
+  
+      const passwordErrors = validatePassword(password);
+      if (passwordErrors.length > 0) {
+        validationErrors.password = passwordErrors;
+      }
+
+      try {
+        const response = await fetch('http://localhost:8085/user/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -24,7 +39,7 @@ function Login() {
 
       if (response.ok) {
         // Login successful
-        const user = await response.json(); // Parse response body as JSON
+        const userID = await response.json(); // Parse response body as JSON
         console.log('Login successful');
         // Redirect or set state to indicate logged in
       } else {
