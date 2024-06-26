@@ -22,7 +22,7 @@ const Signup = () => {
     if (!firstName) {
       validationErrors.name = "First Name is required.";
     }
-   
+
     if (!dateOfBirth) {
       validationErrors.birthday = "Date of Birth is required.";
     }
@@ -30,6 +30,10 @@ const Signup = () => {
     if (!email || !validateEmail(email)) {
       validationErrors.email =
         "Invalid email. Only @dal.ca addresses are accepted.";
+    }
+
+    if (!securityAnswer) {
+      validationErrors.securityAnswer = "Security Answer is required.";
     }
 
     const passwordErrors = validatePassword(password);
@@ -40,10 +44,6 @@ const Signup = () => {
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       return;
-    } 
-
-    if (!securityAnswer) {
-      validationErrors.securityAnswer = "Security Answer is required.";
     }
 
 
@@ -93,7 +93,9 @@ const Signup = () => {
               value={lastName}
               onChange={(e) => setLname(e.target.value)}
             />
-            {errors.lastname && <p className="text-danger">{errors.lastname}</p>}
+            {errors.lastname && (
+              <p className="text-danger">{errors.lastname}</p>
+            )}
           </div>
 
           <div>
@@ -104,7 +106,9 @@ const Signup = () => {
               value={dateOfBirth}
               onChange={(e) => setBirthday(e.target.value)}
             />
-            {errors.birthday && <p className="text-danger">{errors.birthday}</p>}
+            {errors.birthday && (
+              <p className="text-danger">{errors.birthday}</p>
+            )}
           </div>
 
           <div>
@@ -156,7 +160,9 @@ const Signup = () => {
               value={securityAnswer}
               onChange={(e) => setSecurityAnswer(e.target.value)}
             />
-            {errors.securityAnswer && <p className="text-danger">{errors.securityAnswer}</p>}
+            {errors.securityAnswer && (
+              <p className="text-danger">{errors.securityAnswer}</p>
+            )}
           </div>
 
           <div className="btn-group">
