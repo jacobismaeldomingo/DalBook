@@ -5,10 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-
 public interface UserService {
-    String createUser(User user);
-    public int login (String email, String password);
+
+    public String createUser(User user);
+    public User findByEmail(String email);
     public void updatePassword(String email, String newPassword);
+    public int login (String email, String password);
 
 }

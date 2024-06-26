@@ -1,6 +1,6 @@
 // Home Page
 import React from "react";
-import "../css/Header.css";
+import "./Header.css";
 import {
   IconSearch,
   IconHome,
@@ -11,7 +11,7 @@ import {
   IconBell,
   IconUserCircle,
 } from "@tabler/icons-react";
-import Feed from "./Feed";
+import Feed from "../feed/Feed";
 
 function Header() {
   return (
