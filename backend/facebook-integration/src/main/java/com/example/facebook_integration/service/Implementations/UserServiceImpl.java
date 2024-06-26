@@ -12,10 +12,10 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserRepository userRepository;
 
-    // Method to create a new resume in the database
+    // Method to create a new user in the database
     @Override
     public String createUser(User user) {
-        // Validation check if resume is null, throw exception
+        // Validation check if user is null, throw exception
         if (user == null) {
             throw new IllegalArgumentException("User cannot be null");
         }
