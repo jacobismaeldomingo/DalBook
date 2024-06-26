@@ -31,12 +31,14 @@ public class User {
     private String dateOfBirth;
     private String bio;
     private String profilePic;
+    @NotBlank(message = "Security Answer is required.")
+    private String securityAnswer;
 
     // Constructor
     public User() {
     }
 
-    public User(int id, String firstName, String lastName, String email, String password, String bio, String dateOfBirth, String profilePic) {
+    public User(int id, String firstName, String lastName, String email, String password, String bio, String dateOfBirth, String profilePic, String securityAnswer) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -45,6 +47,7 @@ public class User {
         this.bio = bio;
         this.dateOfBirth = dateOfBirth;
         this.profilePic = profilePic;
+        this.securityAnswer = securityAnswer;
     }
 
     // Getters and setters
@@ -111,5 +114,13 @@ public class User {
 
     public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getSecurityAnswer() {
+        return securityAnswer;
+    }
+
+    public void setSecurityAnswer(String securityAnswer) {
+        this.securityAnswer = securityAnswer;
     }
 }

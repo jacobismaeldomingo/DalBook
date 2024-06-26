@@ -24,6 +24,14 @@ public class UserController {
         userService.createUser(user);
     }
 
+    @PostMapping("/login")
+    public int login(@RequestBody Map<String, String> body) {
+        String email = body.get("email");
+        String password = body.get("password");
+        return userService.login(email, password);
+    }
+
+
     @CrossOrigin(origins = "http://localhost:3000/ForgotPassword")
     @GetMapping("/birthday/{email}")
     public ResponseEntity<?> getBirthdayByEmail(@PathVariable String email) {
@@ -56,13 +64,6 @@ public class UserController {
         public void setBirthday(String birthday) {
             this.birthday = birthday;
         }
-    }
-
-    @PostMapping("/login")
-    public int login(@RequestBody Map<String, String> body) {
-        String email = body.get("email");
-        String password = body.get("password");
-        return userService.login(email, password);
     }
 
 }
