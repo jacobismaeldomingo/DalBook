@@ -63,7 +63,7 @@ const Signup = () => {
     try {
       // Submit form data to the backend
       const response = await axios.post(
-        "http://localhost:8085/user/create",
+        "http://localhost:8085/user/signup",
         user
       );
       console.log(response.data);

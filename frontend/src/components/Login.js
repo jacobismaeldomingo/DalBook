@@ -7,11 +7,37 @@ function Login() {
   const [password, setPassword] = useState('');
   const location = useLocation();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async(event) => {
     event.preventDefault();
-    // Perform login action with email and password
-    console.log('Email:', email);
-    console.log('Password:', password);
+     // Perform login action with email and password
+    // console.log('Email:', email);
+    // console.log('Password:', password);
+    try {
+      const response = await fetch('http://localhost:8085/user/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+
+      if (response.ok) {
+        // Login successful
+        const user = await response.json(); // Parse response body as JSON
+        console.log('Login successful');
+        // Redirect or set state to indicate logged in
+      } else {
+        // Login failed
+        const errorText = await response.text();
+        console.log('Login failed');
+        // Handle error state or display error message
+      }
+    } catch (error) {
+      console.error('Error logging in:', error);
+      // Handle network error
+    }
+
   };
 
   return (
@@ -45,7 +71,6 @@ function Login() {
             <Link to='/signup' className={`btn ${location.pathname === '/signup' ? 'btn-success' : 'btn-default'} text-decoration-none`}>SignUp</Link>
           </div>
 
-          <p className="mt-3">You agree to our terms and policies</p>
         </form>
       </div>
     </div>
