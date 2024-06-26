@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/Feed.css";
+import "./Feed.css";
 import {
   IconUsers,
   IconCalendarStar,

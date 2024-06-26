@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/user")
@@ -16,8 +18,8 @@ public class UserController {
 
     // Endpoint to handle HTTP POST requests to create a new resume
     @PostMapping("/create")
-    public void createResume(@RequestBody User resume) {
-        userService.createUser(resume);
+    public void createResume(@RequestBody User user) {
+        userService.createUser(user);
     }
 
     @CrossOrigin(origins = "http://localhost:3000/ForgotPassword")
@@ -32,7 +34,9 @@ public class UserController {
     }
 
     @PutMapping("/reset-password")
-    public ResponseEntity<?> resetPassword(@RequestParam String email, @RequestParam String newPassword) {
+    public ResponseEntity<?> resetPassword(@RequestBody Map<String, String> requestBody) {
+        String email = requestBody.get("email");
+        String newPassword = requestBody.get("newPassword");
         userService.updatePassword(email, newPassword);
         return ResponseEntity.ok().body("Password updated successfully");
     }
