@@ -22,26 +22,6 @@ public class UserController {
         userService.createUser(user);
     }
 
-//    @PostMapping("/login")
-//    public ResponseEntity<Object>  authenticate(@RequestParam String email, @RequestParam String password) {
-//        User authenticateduser = userService.authenticateUser(email, password);
-//        if (authenticateduser == null) {
-//            return ResponseEntity.ok(authenticateduser);
-//        } else {
-//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Authentication failed");
-//        }
-//    }
-
-//    @PostMapping("/login")
-//    public ResponseEntity<String>  authenticate(@RequestParam String email, @RequestParam String password) {
-//        boolean authenticateduser = userService.authenticateUser2(email, password);
-//        if (authenticateduser) {
-//            return ResponseEntity.ok("Success");
-//        } else {
-//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Authentication failed");
-//        }
-//    }
-
     @PostMapping("/login")
     public int login(@RequestBody Map<String, String> body) {
         String email = body.get("email");
@@ -50,12 +30,38 @@ public class UserController {
     }
 
 
-    @PostMapping("/login")
-    public int login(@RequestBody Map<String, String> body) {
-        String email = body.get("email");
-        String password = body.get("password");
-        return userService.login(email, password);
+    @CrossOrigin(origins = "http://localhost:3000/ForgotPassword")
+    @GetMapping("/birthday/{email}")
+    public ResponseEntity<?> getBirthdayByEmail(@PathVariable String email) {
+        User user = userService.findByEmail(email);
+        if (user != null) {
+            return ResponseEntity.ok().body(new UserDTO(user.getDateOfBirth()));
+        } else {
+            return ResponseEntity.status(404).body("User not found");
+        }
     }
 
+    @PutMapping("/reset-password")
+    public ResponseEntity<?> resetPassword(@RequestBody Map<String, String> requestBody) {
+        String email = requestBody.get("email");
+        String newPassword = requestBody.get("newPassword");
+        userService.updatePassword(email, newPassword);
+        return ResponseEntity.ok().body("Password updated successfully");
+    }
+    class UserDTO {
+        private String birthday;
+
+        public UserDTO(String birthday) {
+            this.birthday = birthday;
+        }
+
+        public String getBirthday() {
+            return birthday;
+        }
+
+        public void setBirthday(String birthday) {
+            this.birthday = birthday;
+        }
+    }
 }
 

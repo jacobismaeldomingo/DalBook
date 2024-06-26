@@ -11,6 +11,7 @@ const Signup = () => {
   const [bio, setBio] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [securityAnswer, setSecurityAnswer] = useState("");
   const [errors, setErrors] = useState({});
   const location = useLocation();
 
@@ -21,7 +22,7 @@ const Signup = () => {
     if (!firstName) {
       validationErrors.name = "First Name is required.";
     }
-
+   
     if (!dateOfBirth) {
       validationErrors.birthday = "Date of Birth is required.";
     }
@@ -40,16 +41,11 @@ const Signup = () => {
       setErrors(validationErrors);
       return;
     } 
-    // else {
-    //   // Perform signup action with name, email, and password
-    //   console.log("First Name:", firstName);
-    //   console.log("Last Name:", lastName);
-    //   console.log("Birthday:", dateOfBirth);
-    //   console.log("Bio:", bio);
-    //   console.log("Email:", email);
-    //   console.log("Password:", password);
-    //   setErrors({});
-    // }
+
+    if (!securityAnswer) {
+      validationErrors.securityAnswer = "Security Answer is required.";
+    }
+
 
     const user = {
       firstName,
@@ -58,6 +54,7 @@ const Signup = () => {
       bio,
       email,
       password,
+      securityAnswer,
     };
 
     try {
@@ -96,7 +93,7 @@ const Signup = () => {
               value={lastName}
               onChange={(e) => setLname(e.target.value)}
             />
-            {errors.name && <p className="text-danger">{errors.name}</p>}
+            {errors.lastname && <p className="text-danger">{errors.lastname}</p>}
           </div>
 
           <div>
@@ -148,6 +145,18 @@ const Signup = () => {
                 ))}
               </ul>
             )}
+          </div>
+
+          <div>
+            <label htmlFor="securityAnswer">Security Answer</label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="What is your favorite destination to visit?"
+              value={securityAnswer}
+              onChange={(e) => setSecurityAnswer(e.target.value)}
+            />
+            {errors.securityAnswer && <p className="text-danger">{errors.securityAnswer}</p>}
           </div>
 
           <div className="btn-group">
