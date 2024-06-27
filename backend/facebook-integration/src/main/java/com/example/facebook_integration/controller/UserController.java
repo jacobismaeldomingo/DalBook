@@ -20,7 +20,7 @@ import java.util.Optional;
 public class UserController {
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     // Endpoint to handle HTTP POST requests to create a new user
     @PostMapping("/signup")
