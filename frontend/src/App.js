@@ -6,6 +6,7 @@ import Login from "./components/authentication/Login";
 import Signup from "./components/authentication/Signup";
 import Header from "./components/common/Header";
 import Error from "./components/common/Error";
+import UserProfile from "./components/feed/UserProfile";
 import FriendRequestSender from "./components/friendRequests/FriendRequest";
 import FriendRequestList from "./components/friendRequests/FriendRequestList";
 import FriendsList from "./components/friendRequests/FriendsList";
@@ -24,6 +25,7 @@ function App() {
         <Route path="/home" element={<Header />} />
         <Route path="/forgotPassword" element={<ForgotPassword />} />
         <Route path="/resetPassword" element={<ResetPassword />} />
+        <Route path="/profile" element={<UserProfile />} />
         <Route
           path="/friendRequest"
           element={<FriendRequestSender userId={"25"} />}

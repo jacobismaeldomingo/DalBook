@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import "./Login.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { validateEmail, validatePassword } from "./SignupValidation";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const location = useLocation();
+  const navigate = useNavigate();
   let validationErrors = {};
 
   const handleSubmit = async (event) => {
@@ -36,6 +37,7 @@ function Login() {
         const userID = await response.json(); // Parse response body as JSON
         console.log("Login successful");
         // Redirect or set state to indicate logged in
+        navigate("/feed/UserProfile");
       } else {
         // Login failed
         const errorText = await response.text();
