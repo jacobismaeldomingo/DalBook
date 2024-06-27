@@ -144,6 +144,19 @@ label {
   font-size: medium;
 }
 
+.forget-password {
+  font-size: large;
+}
+
+.forget-password > a {
+  color: #0000ee;
+  text-decoration: none;
+}
+
+.forget-password > a:hover {
+  text-decoration: underline;
+}
+
 @media (max-width: 768px) {
   .w-25 {
     width: 75%;
