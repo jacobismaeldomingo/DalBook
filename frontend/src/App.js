@@ -1,11 +1,7 @@
-import React from 'react';
-import './App.css';
-//import Login from './components/Login';
-//import Signup from './SignUp';
+import React from "react";
+import "./App.css";
 import ForgotPassword from "./ForgotPassword";
 import ResetPassword from "./ResetPassword";
-//import Header from './components/Header';
-//import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Login from "./components/authentication/Login";
 import Signup from "./components/authentication/Signup";
 import Header from "./components/common/Header";
