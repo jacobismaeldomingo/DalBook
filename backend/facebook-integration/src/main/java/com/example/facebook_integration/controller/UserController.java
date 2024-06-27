@@ -5,6 +5,10 @@ import com.example.facebook_integration.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.nio.file.attribute.UserPrincipal;
+import java.util.Map;
+
 import java.util.Map;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -26,6 +30,12 @@ public class UserController {
         String email = body.get("email");
         String password = body.get("password");
         return userService.login(email, password);
+    }
+
+    @GetMapping("/get-me")
+    public ResponseEntity<?> getCurrentUser(@PathVariable String email) {
+        User user = userService.findUserByEmail(email);
+        return ResponseEntity.ok(user);
     }
 
     @CrossOrigin(origins = "http://localhost:3000/ForgotPassword")
