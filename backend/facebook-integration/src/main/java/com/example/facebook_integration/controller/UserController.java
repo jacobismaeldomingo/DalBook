@@ -6,6 +6,8 @@ import com.example.facebook_integration.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.nio.file.attribute.UserPrincipal;
 import java.util.Map;
 
 import java.util.Map;
@@ -22,6 +24,12 @@ public class UserController {
     @PostMapping("/signup")
     public void createUser(@RequestBody User user) {
         userService.createUser(user);
+    }
+
+    @GetMapping("/get-me")
+    public ResponseEntity<?> getCurrentUser(@PathVariable String email) {
+        User user = userService.findUserByEmail(email);
+        return ResponseEntity.ok(user);
     }
 
     @CrossOrigin(origins = "http://localhost:3000/ForgotPassword")
