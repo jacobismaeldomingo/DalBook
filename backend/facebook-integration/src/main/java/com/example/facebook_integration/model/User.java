@@ -8,13 +8,13 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
-
 @Entity
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     @NotBlank(message = "First Name is required.")
     private String firstName;
     @NotBlank(message = "Last Name is required.")

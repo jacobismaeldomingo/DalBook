@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Group19.iml" filepath="$PROJECT_DIR$/.idea/Group19.iml" />
+      <module fileurl="file://$PROJECT_DIR$/facebook-integration/facebook-integration.iml" filepath="$PROJECT_DIR$/facebook-integration/facebook-integration.iml" />
     </modules>
   </component>
 </project>

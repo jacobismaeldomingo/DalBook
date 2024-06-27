@@ -23,7 +23,7 @@ function Login() {
     }
 
     try {
-      const response = await fetch("http://localhost:8085/user/login", {
+      const response = await fetch("http://localhost:8085/api/user/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -51,9 +51,9 @@ function Login() {
   return (
     <div className="d-flex vh-100 justify-content-center align-items-center bg-primary login-page">
       <div className="p-3 bg-white w-25">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="signup-form">
           <div>
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email" className="label-name">Email</label>
             <input
               type="email"
               placeholder="Enter Email"
@@ -64,7 +64,7 @@ function Login() {
           </div>
 
           <div>
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password" className="label-name">Password</label>
             <input
               type="password"
               placeholder="Enter Password"

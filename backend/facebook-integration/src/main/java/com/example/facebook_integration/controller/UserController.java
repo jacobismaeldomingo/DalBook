@@ -1,7 +1,6 @@
 package com.example.facebook_integration.controller;
 
 import com.example.facebook_integration.model.User;
-import org.springframework.http.HttpStatus;
 import com.example.facebook_integration.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.nio.file.attribute.UserPrincipal;
 import java.util.Map;
+
 
 import java.util.Map;
 import java.util.Optional;
@@ -21,7 +21,7 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    // Endpoint to handle HTTP POST requests to create a new resume
+    // Endpoint to handle HTTP POST requests to create a new user
     @PostMapping("/signup")
     public void createUser(@RequestBody User user) {
         userService.createUser(user);
@@ -41,7 +41,6 @@ public class UserController {
         String password = body.get("password");
         return userService.login(email, password);
     }
-
 
 
     @CrossOrigin(origins = "http://localhost:3000/ForgotPassword")
@@ -65,7 +64,8 @@ public class UserController {
         userService.updatePassword(email, newPassword);
         return ResponseEntity.ok().body("Password updated successfully");
     }
-    class UserDTO {
+
+    static class UserDTO {
         private String birthday;
 
         public UserDTO(String birthday) {
