@@ -15,15 +15,6 @@ public class UserServiceImpl implements UserService {
     UserRepository userRepository;
 
     // Method to create a new user in the database
-//    @Override
-//    public String createUser(User user) {
-//        if (user == null) {
-//            throw new IllegalArgumentException("User cannot be null");
-//        }
-//        userRepository.save(user);
-//        return "User created successfully";
-//    }
-
     @Override
     public String createUser(User user) {
         if (user == null) {

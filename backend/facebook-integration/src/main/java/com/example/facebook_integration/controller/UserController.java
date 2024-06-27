@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import java.nio.file.attribute.UserPrincipal;
 import java.util.Map;
 
-import java.util.Map;
-
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/user")
@@ -26,17 +24,18 @@ public class UserController {
         userService.createUser(user);
     }
 
+    @GetMapping("/get-me")
+    public Optional<User> getUserByEmail(@PathVariable String email) {
+        Optional<User> userOptional = userService.findUserByEmail(email);
+
+        return userOptional;
+    }
+
     @PostMapping("/login")
     public int login(@RequestBody Map<String, String> body) {
         String email = body.get("email");
         String password = body.get("password");
         return userService.login(email, password);
-    }
-
-    @GetMapping("/get-me")
-    public ResponseEntity<?> getCurrentUser(@PathVariable String email) {
-        User user = userService.findUserByEmail(email);
-        return ResponseEntity.ok(user);
     }
 
     @CrossOrigin(origins = "http://localhost:3000/ForgotPassword")
@@ -73,13 +72,12 @@ public class UserController {
             this.birthday = birthday;
         }
     }
+
     @PutMapping("/update-status")
     public void updateStatus(@RequestBody Map<String, String> body) {
         String email = body.get("email");
         String status = body.get("status");
         userService.updateStatus(email, status);
     }
-
-
 }
 
