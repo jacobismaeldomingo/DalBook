@@ -24,6 +24,12 @@ public class UserServiceImpl implements UserService {
         return "User created successfully";
     }
 
+    @Override
+    public User findUserByEmail(String email) {
+        return userRepository.findUserByEmail(email);
+    }
+
+    @Override
     public int login(String email, String password){
         User  user =userRepository.findUserByEmail(email);
         if (user == null){
