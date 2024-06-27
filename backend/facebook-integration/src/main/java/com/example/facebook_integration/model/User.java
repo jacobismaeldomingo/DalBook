@@ -33,6 +33,12 @@ public class User {
     private String profilePic;
     @NotBlank(message = "Security Answer is required.")
     private String securityAnswer;
+    public enum Status {
+        AVAILABLE,
+        BUSY,
+        AWAY
+    }
+    public Status status = Status.AVAILABLE;
 
     // Constructor
     public User() {
@@ -123,4 +129,5 @@ public class User {
     public void setSecurityAnswer(String securityAnswer) {
         this.securityAnswer = securityAnswer;
     }
+    public void setStatus(Status status){ this.status =status;}
 }

@@ -65,6 +65,13 @@ public class UserController {
             this.birthday = birthday;
         }
     }
+    @PutMapping("/update-status")
+    public void updateStatus(@RequestBody Map<String, String> body) {
+        String email = body.get("email");
+        String status = body.get("status");
+        userService.updateStatus(email, status);
+    }
+
 
 }
 
