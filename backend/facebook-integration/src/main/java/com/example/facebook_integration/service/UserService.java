@@ -8,10 +8,14 @@ import java.util.Optional;
 
 public interface UserService {
 
-     String createUser(User user);
-     Optional<User> findUserByEmail(String email);
-     void updatePassword(String email, String newPassword);
-     int login (String email, String password);
+
+
+
+    public String createUser(User user);
+    Optional<User> findUserByEmail(String email);
+    public void updatePassword(String email, String newPassword);
+    public int login (String email, String password);
+    public void updateStatus(String email, String status);
 
 
 }

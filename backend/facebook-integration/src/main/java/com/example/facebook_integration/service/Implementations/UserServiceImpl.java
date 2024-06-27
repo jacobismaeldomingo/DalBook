@@ -24,7 +24,6 @@ public class UserServiceImpl implements UserService {
         return "User created successfully";
     }
 
-    @Override
     public Optional<User> findUserByEmail(String email) {
         return userRepository.findUserByEmail(email);
     }
@@ -46,6 +45,7 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+
     //Don't touch my code! it's working fine
 
 
@@ -58,6 +58,22 @@ public class UserServiceImpl implements UserService {
             user.setPassword(newPassword);
             userRepository.save(user);
         } else {
+            throw new IllegalArgumentException("User with email " + email + " not found");
+        }
+    }
+
+
+    @Override
+    public void updateStatus(String email, String status) {
+        Optional<User> userOptional = userRepository.findUserByEmail(email);
+
+        userOptional.ifPresent(user -> {
+            user.setStatus(User.Status.valueOf(status));
+            userRepository.save(user);
+        });
+
+        // Optionally handle case where user is not found
+        if (userOptional.isEmpty()) {
             throw new IllegalArgumentException("User with email " + email + " not found");
         }
     }
