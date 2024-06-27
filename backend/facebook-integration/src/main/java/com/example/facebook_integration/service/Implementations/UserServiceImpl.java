@@ -50,6 +50,7 @@ public class UserServiceImpl implements UserService {
             userRepository.save(user);
         }
     }
+
     @Override
     public void updateStatus(String email, String status){
         User user =userRepository.findUserByEmail(email);
@@ -58,7 +59,5 @@ public class UserServiceImpl implements UserService {
             user.setStatus(User.Status.valueOf(status));
             userRepository.save(user);
         }
-
-
     };
 }
