@@ -18,7 +18,7 @@ import java.util.Map;
 public class UserController {
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     // Endpoint to handle HTTP POST requests to create a new user
     @PostMapping("/signup")

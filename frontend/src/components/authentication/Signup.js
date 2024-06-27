@@ -63,8 +63,11 @@ const Signup = () => {
       console.log(response.data);
       alert("User created successfully");
     } catch (error) {
-      console.error("Error signing up:", error);
-      alert("An error occurred. Please try again!");
+      if (error.response && error.response.status === 500) {
+        setErrors({ email: "Email already taken" });
+      } else {
+        console.error("Error signing up:", error);
+        alert("An error occurred. Please try again!");
     }
   };
 
@@ -188,5 +191,5 @@ const Signup = () => {
     </div>
   );
 };
-
+}
 export default Signup;
