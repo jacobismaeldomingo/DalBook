@@ -23,6 +23,12 @@ public class UserServiceImpl implements UserService {
         return "User created successfully";
     }
 
+    @Override
+    public User findUserByEmail(String email) {
+        return userRepository.findUserByEmail(email);
+    }
+
+    @Override
     public int login(String email, String password){
         User  user =userRepository.findUserByEmail(email);
         if (user == null){
@@ -36,34 +42,14 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    @Override
+
+    @Override//Don't touch my code! it's working fine
     public void updatePassword(String email, String newPassword) {
-
-    }
-
-    @Override
-    public User findByEmail(String email) {
-        return userRepository.findByEmail(email);
-    }
-
-    @Override
-    public void updatePassword(String email, String newPassword) {
-        User user = userRepository.findByEmail(email);
+        User user = userRepository.findUserByEmail(email);
         if (user != null) {
             user.setPassword(newPassword);
             userRepository.save(user);
         }
     }
 
-
-    public int login(String email, String password){
-        User  user =userRepository.findByEmail(email);
-        if (user!= null && user.getPassword() == password){
-            return user.getId();
-        }
-        else {
-            return -1;
-        }
-
-    };
 }

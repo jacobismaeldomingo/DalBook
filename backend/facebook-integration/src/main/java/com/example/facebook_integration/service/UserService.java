@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface UserService {
 
-    public String createUser(User user);
-    public User findByEmail(String email);
-    public void updatePassword(String email, String newPassword);
-    public int login (String email, String password);
+     String createUser(User user);
+     User findUserByEmail(String email);
+     void updatePassword(String email, String newPassword);
+     int login (String email, String password);
 
 }

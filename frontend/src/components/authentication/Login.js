@@ -41,14 +41,15 @@ function Login() {
           </div>
 
           <div className="btn-group">
-            <button
+            <Link
+              to="./common/Header"
               className={`btn ${
-                location.pathname === "/login" ? "btn-success" : "btn-default"
+                location.pathname === "./common/Header" ? "btn-success" : "btn-default"
               }`}
               type="submit"
             >
               Login
-            </button>
+            </Link>
             <Link
               to="/signup"
               className={`btn ${
@@ -58,7 +59,9 @@ function Login() {
               SignUp
             </Link>
           </div>
-
+          <div className="Forget-password-page">
+            <Link to='/ForgotPassword' >Forget password?</Link>
+          </div>
           <p className="mt-3">You agree to our terms and policies</p>
         </form>
       </div>

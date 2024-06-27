@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './App.css';
+//import '../App.css';
 import './Forgot.css';
 
 export default function SecurityQuestion() {

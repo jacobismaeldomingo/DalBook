@@ -27,7 +27,7 @@ public class UserController {
     @CrossOrigin(origins = "http://localhost:3000/ForgotPassword")
     @GetMapping("/birthday/{email}")
     public ResponseEntity<?> getBirthdayByEmail(@PathVariable String email) {
-        User user = userService.findByEmail(email);
+        User user = userService.findUserByEmail(email);
         if (user != null) {
             return ResponseEntity.ok().body(new UserDTO(user.getDateOfBirth()));
         } else {

@@ -1,6 +1,7 @@
 // Home Page
 import React from "react";
 import "./Header.css";
+import { Link, useLocation } from "react-router-dom";
 import {
   IconSearch,
   IconHome,
