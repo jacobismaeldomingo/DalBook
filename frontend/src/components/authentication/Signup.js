@@ -54,7 +54,7 @@ const Signup = () => {
       console.log(response.data);
       alert("User created successfully");
     } catch (error) {
-      console.error(error);
+      console.error("Error signing up:",error);
       alert("An error occurred. Please try again!");
     }
   };
