@@ -5,11 +5,15 @@
   padding: 0;
   height: 100%;
   font-family: "Arial", sans-serif;
-  background-color: #2fd2e8; /* Background color for the entire view */
+  background-color: #2fd2e8;
 }
 
 .d-flex {
   display: flex;
+}
+
+.vh-100 {
+  height: 100vh;
 }
 
 .justify-content-center {
@@ -37,6 +41,7 @@
   border-radius: 10px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease-in-out;
+  margin: 5rem;
 }
 
 .p-3:hover {
@@ -56,6 +61,7 @@
   display: block;
   margin-bottom: 0.5rem;
   font-weight: bold;
+  font-size: 1.2rem;
   color: #333;
 }
 
