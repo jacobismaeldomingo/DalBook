@@ -68,8 +68,9 @@ const Signup = () => {
       } else {
         console.error("Error signing up:", error);
         alert("An error occurred. Please try again!");
-    }
-  };
+      }
+    };
+  }
 
   return (
     <div className="d-flex justify-content-center align-items-center login-page">
@@ -191,5 +192,4 @@ const Signup = () => {
     </div>
   );
 };
-}
 export default Signup;
