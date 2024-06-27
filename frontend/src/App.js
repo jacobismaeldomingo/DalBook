@@ -1,5 +1,8 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import "./App.css";
+import ForgotPassword from "./ForgotPassword";
+import ResetPassword from "./ResetPassword";
 import Login from "./components/authentication/Login";
 import Signup from "./components/authentication/Signup";
 import Header from "./components/common/Header";
@@ -16,6 +19,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/home" element={<Header />} />
+        <Route path="/ForgotPassword" element={<ForgotPassword />} />
+        <Route path="/ResetPassword" element={<ResetPassword />} />
         <Route
           path="/friendrequest"
           element={<FriendRequestSender userId={"25"} />}

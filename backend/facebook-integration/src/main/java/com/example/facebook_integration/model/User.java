@@ -1,6 +1,13 @@
 package com.example.facebook_integration.model;
 
 import jakarta.persistence.*;
+import jakarta.persistence.Id;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+
 
 @Entity
 public class User {
@@ -8,20 +15,30 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
+    @NotBlank(message = "First Name is required.")
     private String firstName;
+    @NotBlank(message = "Last Name is required.")
     private String lastName;
+    @Email(regexp = "^[a-zA-Z0-9._%+-]+@dal\\.ca$", message = "Invalid email. Only @dal.ca addresses are accepted.")
     private String email;
+    @Size(min = 8, message = "Password must be at least 8 characters long.")
+    @Pattern(regexp = ".*[a-z].*", message = "Password must contain at least one lowercase letter.")
+    @Pattern(regexp = ".*[A-Z].*", message = "Password must contain at least one uppercase letter.")
+    @Pattern(regexp = ".*\\d.*", message = "Password must contain at least one number.")
+    @Pattern(regexp = ".*[@$!%*?&].*", message = "Password must contain at least one special character (@, $, !, %, *, ?, &).")
     private String password;
+    @NotNull(message = "Date of Birth is required.")
     private String dateOfBirth;
     private String bio;
     private String profilePic;
+    @NotBlank(message = "Security Answer is required.")
+    private String securityAnswer;
 
     // Constructor
     public User() {
     }
 
-    public User(int id, String firstName, String lastName, String email, String password, String bio, String dateOfBirth, String profilePic) {
+    public User(int id, String firstName, String lastName, String email, String password, String bio, String dateOfBirth, String profilePic, String securityAnswer) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -30,6 +47,7 @@ public class User {
         this.bio = bio;
         this.dateOfBirth = dateOfBirth;
         this.profilePic = profilePic;
+        this.securityAnswer = securityAnswer;
     }
 
     // Getters and setters
@@ -96,5 +114,13 @@ public class User {
 
     public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getSecurityAnswer() {
+        return securityAnswer;
+    }
+
+    public void setSecurityAnswer(String securityAnswer) {
+        this.securityAnswer = securityAnswer;
     }
 }
