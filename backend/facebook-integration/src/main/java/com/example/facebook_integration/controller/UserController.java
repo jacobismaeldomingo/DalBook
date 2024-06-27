@@ -9,9 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.nio.file.attribute.UserPrincipal;
 import java.util.Map;
-
-
-import java.util.Map;
 import java.util.Optional;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -28,7 +25,6 @@ public class UserController {
         userService.createUser(user);
     }
 
-
     @GetMapping("/get-me")
     public Optional<User> getUserByEmail(@PathVariable String email) {
         Optional<User> userOptional = userService.findUserByEmail(email);
@@ -42,7 +38,6 @@ public class UserController {
         String password = body.get("password");
         return userService.login(email, password);
     }
-
 
     @CrossOrigin(origins = "http://localhost:3000/ForgotPassword")
     @GetMapping("/birthday/{email}")
@@ -81,13 +76,12 @@ public class UserController {
             this.birthday = birthday;
         }
     }
+
     @PutMapping("/update-status")
     public void updateStatus(@RequestBody Map<String, String> body) {
         String email = body.get("email");
         String status = body.get("status");
         userService.updateStatus(email, status);
     }
-
-
 }
 

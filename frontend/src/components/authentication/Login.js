@@ -6,12 +6,14 @@ import { validateEmail, validatePassword } from "./SignupValidation";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState({});
   const location = useLocation();
   const navigate = useNavigate();
-  let validationErrors = {};
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    let validationErrors = {};
+
     // Perform login action with email and password
     if (!email || !validateEmail(email)) {
       validationErrors.email =
@@ -21,6 +23,11 @@ function Login() {
     const passwordErrors = validatePassword(password);
     if (passwordErrors.length > 0) {
       validationErrors.password = passwordErrors;
+    }
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
     }
 
     try {
@@ -37,12 +44,13 @@ function Login() {
         const userID = await response.json(); // Parse response body as JSON
         console.log("Login successful");
         // Redirect or set state to indicate logged in
-        navigate("/feed/UserProfile");
+        navigate("/profile");
       } else {
         // Login failed
         const errorText = await response.text();
         console.log("Login failed");
         // Handle error state or display error message
+        alert(errorText);
       }
     } catch (error) {
       console.error("Error logging in:", error);
@@ -63,6 +71,7 @@ function Login() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
+            {errors.email && <p className="text-danger">{errors.email}</p>}
           </div>
 
           <div>
@@ -74,18 +83,31 @@ function Login() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+            {errors.password && (
+              <ul className="text-danger">
+                {errors.password.map((error, index) => (
+                  <li key={index}>{error}</li>
+                ))}
+              </ul>
+            )}
           </div>
 
           <div className="btn-group">
-            <Link
-              to="./common/Header"
+            {/* <Link
+              to="/home"
               className={`btn ${
-                location.pathname === "./common/Header" ? "btn-success" : "btn-default"
+                location.pathname === "./home" ? "btn-success" : "btn-default"
               }`}
               type="submit"
             >
               Login
-            </Link>
+            </Link> */}
+            <button
+              type="submit"
+              className="btn btn-default"
+            >
+              Login
+            </button>
             <Link
               to="/signup"
               className={`btn ${
