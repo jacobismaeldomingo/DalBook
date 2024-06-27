@@ -75,14 +75,15 @@ function Login() {
           </div>
 
           <div className="btn-group">
-            <button
+            <Link
+              to="./common/Header"
               className={`btn ${
-                location.pathname === "/login" ? "btn-success" : "btn-default"
+                location.pathname === "./common/Header" ? "btn-success" : "btn-default"
               }`}
               type="submit"
             >
               Login
-            </button>
+            </Link>
             <Link
               to="/signup"
               className={`btn ${

@@ -5,7 +5,13 @@ import com.example.facebook_integration.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.nio.file.attribute.UserPrincipal;
 import java.util.Map;
+
+
+import java.util.Map;
+import java.util.Optional;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
@@ -21,6 +27,14 @@ public class UserController {
         userService.createUser(user);
     }
 
+
+    @GetMapping("/get-me")
+    public Optional<User> getUserByEmail(@PathVariable String email) {
+        Optional<User> userOptional = userService.findUserByEmail(email);
+
+        return userOptional;
+    }
+
     @PostMapping("/login")
     public int login(@RequestBody Map<String, String> body) {
         String email = body.get("email");
@@ -28,14 +42,18 @@ public class UserController {
         return userService.login(email, password);
     }
 
+
     @CrossOrigin(origins = "http://localhost:3000/ForgotPassword")
     @GetMapping("/birthday/{email}")
     public ResponseEntity<?> getBirthdayByEmail(@PathVariable String email) {
-        User user = userService.findByEmail(email);
-        if (user != null) {
-            return ResponseEntity.ok().body(new UserDTO(user.getDateOfBirth()));
+        Optional<User> userOptional = userService.findUserByEmail(email);
+
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            UserDTO userDTO = new UserDTO(user.getDateOfBirth());
+            return ResponseEntity.ok().body(userDTO);
         } else {
-            return ResponseEntity.status(404).body("User not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
         }
     }
 

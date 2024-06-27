@@ -4,13 +4,18 @@ import com.example.facebook_integration.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserService {
 
+
+
+
     public String createUser(User user);
-    public User findByEmail(String email);
+    Optional<User> findUserByEmail(String email);
     public void updatePassword(String email, String newPassword);
     public int login (String email, String password);
     public void updateStatus(String email, String status);
+
 
 }

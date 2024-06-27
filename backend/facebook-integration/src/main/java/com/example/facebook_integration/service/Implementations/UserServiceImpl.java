@@ -5,6 +5,9 @@ import com.example.facebook_integration.repository.UserRepository;
 import com.example.facebook_integration.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.List;
+import java.util.Optional;
+
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -22,40 +25,57 @@ public class UserServiceImpl implements UserService {
         return "User created successfully";
     }
 
-    public int login(String email, String password){
-        User  user =userRepository.findUserByEmail(email);
-        if (user == null){
-            return -1;
-        }
-        else if (user.getPassword().equals(password)) {
-            return user.getId();
-        }
-        else {
-            return -2;
-        }
-    }
-
-    @Override
-    public User findByEmail(String email) {
+    public Optional<User> findUserByEmail(String email) {
         return userRepository.findUserByEmail(email);
     }
 
     @Override
+    public int login(String email, String password) {
+        Optional<User> userOptional = userRepository.findUserByEmail(email);
+
+        if (userOptional.isEmpty()) {
+            return -1; // User not found
+        }
+
+        User user = userOptional.get();
+
+        if (user.getPassword().equals(password)) {
+            return user.getId(); // Successful login, return user ID as int
+        } else {
+            return -2; // Incorrect password
+        }
+    }
+
+
+    //Don't touch my code! it's working fine
+
+
+    @Override
     public void updatePassword(String email, String newPassword) {
-        User user = userRepository.findUserByEmail(email);
-        if (user != null) {
+        Optional<User> userOptional = userRepository.findUserByEmail(email);
+
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
             user.setPassword(newPassword);
             userRepository.save(user);
+        } else {
+            throw new IllegalArgumentException("User with email " + email + " not found");
         }
     }
 
     @Override
-    public void updateStatus(String email, String status){
-        User user =userRepository.findUserByEmail(email);
+    public void updateStatus(String email, String status) {
+        Optional<User> userOptional = userRepository.findUserByEmail(email);
 
-        if(user!=null) {
+        userOptional.ifPresent(user -> {
             user.setStatus(User.Status.valueOf(status));
             userRepository.save(user);
+        });
+
+        // Optionally handle case where user is not found
+        if (userOptional.isEmpty()) {
+            throw new IllegalArgumentException("User with email " + email + " not found");
         }
-    };
+    }
+
 }
