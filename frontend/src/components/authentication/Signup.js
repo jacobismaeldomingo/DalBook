@@ -8,7 +8,6 @@ const Signup = () => {
   const [firstName, setFname] = useState("");
   const [lastName, setLname] = useState("");
   const [dateOfBirth, setBirthday] = useState("");
-  const [bio, setBio] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [securityAnswer, setSecurityAnswer] = useState("");
@@ -50,7 +49,6 @@ const Signup = () => {
       firstName,
       lastName,
       dateOfBirth,
-      bio,
       email,
       password,
       securityAnswer,
@@ -59,23 +57,25 @@ const Signup = () => {
     try {
       // Submit form data to the backend
       const response = await axios.post(
-        "http://localhost:8085/user/signup",
+        "http://localhost:8085/api/user/signup",
         user
       );
       console.log(response.data);
       alert("User created successfully");
     } catch (error) {
-      console.error("Error signing up:",error);
+      console.error("Error signing up:", error);
       alert("An error occurred. Please try again!");
     }
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center bg-primary login-page">
+    <div className="d-flex justify-content-center align-items-center login-page">
       <div className="p-3 bg-white w-25">
         <form onSubmit={handleSubmit} className="signup-form">
           <div>
-            <label htmlFor="name" className="label-name">First Name</label>
+            <label htmlFor="name" className="label-name">
+              First Name
+            </label>
             <input
               type="text"
               className="form-control"
@@ -85,7 +85,9 @@ const Signup = () => {
             {errors.name && <p className="text-danger">{errors.name}</p>}
           </div>
           <div>
-            <label htmlFor="name" className="label-name">Last Name</label>
+            <label htmlFor="name" className="label-name">
+              Last Name
+            </label>
             <input
               type="text"
               className="form-control"
@@ -98,7 +100,9 @@ const Signup = () => {
           </div>
 
           <div>
-            <label htmlFor="birthday" className="label-name">Birthday</label>
+            <label htmlFor="birthday" className="label-name">
+              Birthday
+            </label>
             <input
               type="date"
               className="form-control"
@@ -111,18 +115,9 @@ const Signup = () => {
           </div>
 
           <div>
-            <label htmlFor="bio" className="label-name">Bio</label>
-            <textarea
-              placeholder="Write about yourself"
-              className="form-control"
-              value={bio}
-              onChange={(e) => setBio(e.target.value)}
-            />
-            {errors.bio && <p className="text-danger">{errors.bio}</p>}
-          </div>
-
-          <div>
-            <label htmlFor="email" className="label-name">Email</label>
+            <label htmlFor="email" className="label-name">
+              Email
+            </label>
             <input
               type="email"
               placeholder="@dal.ca"
@@ -134,7 +129,9 @@ const Signup = () => {
           </div>
 
           <div>
-            <label htmlFor="password" className="label-name">Password</label>
+            <label htmlFor="password" className="label-name">
+              Password
+            </label>
             <input
               type="password"
               className="form-control"
@@ -151,7 +148,9 @@ const Signup = () => {
           </div>
 
           <div>
-            <label htmlFor="securityAnswer" className="label-name">Security Answer</label>
+            <label htmlFor="securityAnswer" className="label-name">
+              Security Answer
+            </label>
             <input
               type="text"
               className="form-control"
