@@ -10,6 +10,7 @@ public interface UserService {
     public int login (String email, String password);
     public void updatePassword(String email, String newPassword);
     public int login (String email, String password);
+    public void updateStatus(String email, String status);
 
 
 }
