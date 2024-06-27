@@ -11,10 +11,11 @@ import java.nio.file.attribute.UserPrincipal;
 import java.util.Map;
 
 import java.util.Map;
+import java.util.Optional;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 public class UserController {
 
     @Autowired
@@ -26,20 +27,34 @@ public class UserController {
         userService.createUser(user);
     }
 
+
     @GetMapping("/get-me")
-    public ResponseEntity<?> getCurrentUser(@PathVariable String email) {
-        User user = userService.findUserByEmail(email);
-        return ResponseEntity.ok(user);
+    public Optional<User> getUserByEmail(@PathVariable String email) {
+        Optional<User> userOptional = userService.findUserByEmail(email);
+
+        return userOptional;
     }
+
+    @PostMapping("/login")
+    public int login(@RequestBody Map<String, String> body) {
+        String email = body.get("email");
+        String password = body.get("password");
+        return userService.login(email, password);
+    }
+
+
 
     @CrossOrigin(origins = "http://localhost:3000/ForgotPassword")
     @GetMapping("/birthday/{email}")
     public ResponseEntity<?> getBirthdayByEmail(@PathVariable String email) {
-        User user = userService.findUserByEmail(email);
-        if (user != null) {
-            return ResponseEntity.ok().body(new UserDTO(user.getDateOfBirth()));
+        Optional<User> userOptional = userService.findUserByEmail(email);
+
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            UserDTO userDTO = new UserDTO(user.getDateOfBirth());
+            return ResponseEntity.ok().body(userDTO);
         } else {
-            return ResponseEntity.status(404).body("User not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
         }
     }
 
@@ -64,13 +79,6 @@ public class UserController {
         public void setBirthday(String birthday) {
             this.birthday = birthday;
         }
-    }
-
-    @PostMapping("/login")
-    public int login(@RequestBody Map<String, String> body) {
-        String email = body.get("email");
-        String password = body.get("password");
-        return userService.login(email, password);
     }
 
 }

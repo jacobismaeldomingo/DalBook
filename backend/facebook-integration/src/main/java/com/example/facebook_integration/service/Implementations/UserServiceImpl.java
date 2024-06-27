@@ -6,6 +6,7 @@ import com.example.facebook_integration.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -24,31 +25,40 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findUserByEmail(String email) {
+    public Optional<User> findUserByEmail(String email) {
         return userRepository.findUserByEmail(email);
     }
 
     @Override
-    public int login(String email, String password){
-        User  user =userRepository.findUserByEmail(email);
-        if (user == null){
-            return -1;
+    public int login(String email, String password) {
+        Optional<User> userOptional = userRepository.findUserByEmail(email);
+
+        if (userOptional.isEmpty()) {
+            return -1; // User not found
         }
-        else if (user.getPassword().equals(password)) {
-            return user.getId();
-        }
-        else {
-            return -2;
+
+        User user = userOptional.get();
+
+        if (user.getPassword().equals(password)) {
+            return user.getId(); // Successful login, return user ID as int
+        } else {
+            return -2; // Incorrect password
         }
     }
 
+    //Don't touch my code! it's working fine
 
-    @Override//Don't touch my code! it's working fine
+
+    @Override
     public void updatePassword(String email, String newPassword) {
-        User user = userRepository.findUserByEmail(email);
-        if (user != null) {
+        Optional<User> userOptional = userRepository.findUserByEmail(email);
+
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
             user.setPassword(newPassword);
             userRepository.save(user);
+        } else {
+            throw new IllegalArgumentException("User with email " + email + " not found");
         }
     }
 

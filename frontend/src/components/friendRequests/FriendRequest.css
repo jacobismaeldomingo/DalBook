@@ -1,0 +1,40 @@
+input[type="text-id"] {
+  width: 18%;
+  padding: 10px;
+  margin-left: 10px;
+  font-size: 16px;
+  box-sizing: border-box; /* Ensures padding is included in the width */
+}
+
+.btn {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin: 0 5px;
+  text-align: center;
+}
+
+.send-button {
+  background-color: #1b75bb;
+}
+
+.send-button:hover {
+  background-color: #4297d8;
+  transform: translateY(-2px);
+}
+
+.send-button:active {
+  background-color: #1b75bb;
+  transform: translateY(0);
+}
+
+.name {
+  font-size: x-large;
+  display:inline-block;
+  padding-right: 1rem;
+}

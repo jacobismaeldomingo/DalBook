@@ -1,7 +1,6 @@
 /* Login.css */
 
-body,
-html {
+.login-page {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -11,10 +10,6 @@ html {
 
 .d-flex {
   display: flex;
-}
-
-.vh-100 {
-  height: 100vh;
 }
 
 .justify-content-center {
@@ -48,16 +43,16 @@ html {
   transform: translateY(-5px);
 }
 
-form {
+.signup-form {
   display: flex;
   flex-direction: column;
 }
 
-form > div {
+.signup-form > div {
   margin-bottom: 1rem;
 }
 
-label {
+.label-name {
   display: block;
   margin-bottom: 0.5rem;
   font-weight: bold;
@@ -143,6 +138,19 @@ label {
 
 .mt-3 {
   font-size: medium;
+}
+
+.forget-password {
+  font-size: large;
+}
+
+.forget-password > a {
+  color: #0000ee;
+  text-decoration: none;
+}
+
+.forget-password > a:hover {
+  text-decoration: underline;
 }
 
 @media (max-width: 768px) {

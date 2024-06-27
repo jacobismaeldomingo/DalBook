@@ -11,6 +11,7 @@ const Signup = () => {
   const [bio, setBio] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [securityAnswer, setSecurityAnswer] = useState("");
   const [errors, setErrors] = useState({});
   const location = useLocation();
 
@@ -31,6 +32,10 @@ const Signup = () => {
         "Invalid email. Only @dal.ca addresses are accepted.";
     }
 
+    if (!securityAnswer) {
+      validationErrors.securityAnswer = "Security Answer is required.";
+    }
+
     const passwordErrors = validatePassword(password);
     if (passwordErrors.length > 0) {
       validationErrors.password = passwordErrors;
@@ -39,17 +44,7 @@ const Signup = () => {
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       return;
-    } 
-    // else {
-    //   // Perform signup action with name, email, and password
-    //   console.log("First Name:", firstName);
-    //   console.log("Last Name:", lastName);
-    //   console.log("Birthday:", dateOfBirth);
-    //   console.log("Bio:", bio);
-    //   console.log("Email:", email);
-    //   console.log("Password:", password);
-    //   setErrors({});
-    // }
+    }
 
     const user = {
       firstName,
@@ -58,6 +53,7 @@ const Signup = () => {
       bio,
       email,
       password,
+      securityAnswer,
     };
 
     try {
@@ -69,17 +65,17 @@ const Signup = () => {
       console.log(response.data);
       alert("User created successfully");
     } catch (error) {
-      console.error(error);
+      console.error("Error signing up:",error);
       alert("An error occurred. Please try again!");
     }
   };
 
   return (
-    <div className="d-flex vh-100 justify-content-center align-items-center bg-primary">
+    <div className="d-flex justify-content-center align-items-center bg-primary login-page">
       <div className="p-3 bg-white w-25">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="signup-form">
           <div>
-            <label htmlFor="name">First Name</label>
+            <label htmlFor="name" className="label-name">First Name</label>
             <input
               type="text"
               className="form-control"
@@ -89,29 +85,33 @@ const Signup = () => {
             {errors.name && <p className="text-danger">{errors.name}</p>}
           </div>
           <div>
-            <label htmlFor="name">Last Name</label>
+            <label htmlFor="name" className="label-name">Last Name</label>
             <input
               type="text"
               className="form-control"
               value={lastName}
               onChange={(e) => setLname(e.target.value)}
             />
-            {errors.name && <p className="text-danger">{errors.name}</p>}
+            {errors.lastname && (
+              <p className="text-danger">{errors.lastname}</p>
+            )}
           </div>
 
           <div>
-            <label htmlFor="birthday">Birthday</label>
+            <label htmlFor="birthday" className="label-name">Birthday</label>
             <input
               type="date"
               className="form-control"
               value={dateOfBirth}
               onChange={(e) => setBirthday(e.target.value)}
             />
-            {errors.birthday && <p className="text-danger">{errors.birthday}</p>}
+            {errors.birthday && (
+              <p className="text-danger">{errors.birthday}</p>
+            )}
           </div>
 
           <div>
-            <label htmlFor="bio">Bio</label>
+            <label htmlFor="bio" className="label-name">Bio</label>
             <textarea
               placeholder="Write about yourself"
               className="form-control"
@@ -122,7 +122,7 @@ const Signup = () => {
           </div>
 
           <div>
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email" className="label-name">Email</label>
             <input
               type="email"
               placeholder="@dal.ca"
@@ -134,7 +134,7 @@ const Signup = () => {
           </div>
 
           <div>
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password" className="label-name">Password</label>
             <input
               type="password"
               className="form-control"
@@ -147,6 +147,20 @@ const Signup = () => {
                   <li key={index}>{error}</li>
                 ))}
               </ul>
+            )}
+          </div>
+
+          <div>
+            <label htmlFor="securityAnswer" className="label-name">Security Answer</label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="What is your favorite destination to visit?"
+              value={securityAnswer}
+              onChange={(e) => setSecurityAnswer(e.target.value)}
+            />
+            {errors.securityAnswer && (
+              <p className="text-danger">{errors.securityAnswer}</p>
             )}
           </div>
 
