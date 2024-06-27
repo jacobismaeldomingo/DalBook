@@ -49,7 +49,7 @@ function Login() {
   };
 
   return (
-    <div className="d-flex vh-100 justify-content-center align-items-center bg-primary">
+    <div className="d-flex vh-100 justify-content-center align-items-center bg-primary login-page">
       <div className="p-3 bg-white w-25">
         <form onSubmit={handleSubmit}>
           <div>
