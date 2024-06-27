@@ -7,7 +7,7 @@ import Login from "./components/authentication/Login";
 import Signup from "./components/authentication/Signup";
 import Header from "./components/common/Header";
 import Error from "./components/common/Error";
-import FriendRequestSender from "./components/friendRequests/FriendRequestSender";
+import FriendRequestSender from "./components/friendRequests/FriendRequest";
 import FriendRequestList from "./components/friendRequests/FriendRequestList";
 import FriendsList from "./components/friendRequests/FriendsList";
 

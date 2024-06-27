@@ -46,7 +46,6 @@ const Signup = () => {
       return;
     }
 
-
     const user = {
       firstName,
       lastName,
@@ -72,11 +71,11 @@ const Signup = () => {
   };
 
   return (
-    <div className="d-flex vh-100 justify-content-center align-items-center bg-primary">
+    <div className="d-flex justify-content-center align-items-center bg-primary login-page">
       <div className="p-3 bg-white w-25">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="signup-form">
           <div>
-            <label htmlFor="name">First Name</label>
+            <label htmlFor="name" className="label-name">First Name</label>
             <input
               type="text"
               className="form-control"
@@ -86,7 +85,7 @@ const Signup = () => {
             {errors.name && <p className="text-danger">{errors.name}</p>}
           </div>
           <div>
-            <label htmlFor="name">Last Name</label>
+            <label htmlFor="name" className="label-name">Last Name</label>
             <input
               type="text"
               className="form-control"
@@ -99,7 +98,7 @@ const Signup = () => {
           </div>
 
           <div>
-            <label htmlFor="birthday">Birthday</label>
+            <label htmlFor="birthday" className="label-name">Birthday</label>
             <input
               type="date"
               className="form-control"
@@ -112,7 +111,7 @@ const Signup = () => {
           </div>
 
           <div>
-            <label htmlFor="bio">Bio</label>
+            <label htmlFor="bio" className="label-name">Bio</label>
             <textarea
               placeholder="Write about yourself"
               className="form-control"
@@ -123,7 +122,7 @@ const Signup = () => {
           </div>
 
           <div>
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email" className="label-name">Email</label>
             <input
               type="email"
               placeholder="@dal.ca"
@@ -135,7 +134,7 @@ const Signup = () => {
           </div>
 
           <div>
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password" className="label-name">Password</label>
             <input
               type="password"
               className="form-control"
@@ -152,7 +151,7 @@ const Signup = () => {
           </div>
 
           <div>
-            <label htmlFor="securityAnswer">Security Answer</label>
+            <label htmlFor="securityAnswer" className="label-name">Security Answer</label>
             <input
               type="text"
               className="form-control"

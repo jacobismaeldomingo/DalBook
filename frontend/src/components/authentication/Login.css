@@ -1,6 +1,6 @@
 /* Login.css */
 
-login-page {
+.login-page {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -10,10 +10,6 @@ login-page {
 
 .d-flex {
   display: flex;
-}
-
-.vh-100 {
-  height: 100vh;
 }
 
 .justify-content-center {
@@ -47,16 +43,16 @@ login-page {
   transform: translateY(-5px);
 }
 
-form {
+.signup-form {
   display: flex;
   flex-direction: column;
 }
 
-form > div {
+.signup-form > div {
   margin-bottom: 1rem;
 }
 
-label {
+.label-name {
   display: block;
   margin-bottom: 0.5rem;
   font-weight: bold;

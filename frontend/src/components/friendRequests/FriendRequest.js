@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import friendService from "../../services/FriendService";
 import "./FriendRequest.css";
 
-const FriendRequestSender = ({ userId }) => {
+const FriendRequest = ({ userId }) => {
   const [receiverId, setReceiverId] = useState("");
 
   const handleSendRequest = () => {
@@ -22,7 +22,7 @@ const FriendRequestSender = ({ userId }) => {
     <div>
       <h3 style={{ padding: "10px 10px" }}>Add Friends</h3>
       <input
-        type="text"
+        type="text-id"
         className="friends-input"
         value={receiverId}
         onChange={(e) => setReceiverId(e.target.value)}
@@ -35,4 +35,4 @@ const FriendRequestSender = ({ userId }) => {
   );
 };
 
-export default FriendRequestSender;
+export default FriendRequest;
