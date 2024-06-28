@@ -5,6 +5,7 @@
   height: 100vh;
   background-color: #f4f4f9;
   font-family: Arial, sans-serif;
+  flex-direction: column;
 }
 
 .paper {
@@ -14,6 +15,7 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   max-width: 400px;
   width: 100%;
+  margin: 20px;
 }
 
 .title {

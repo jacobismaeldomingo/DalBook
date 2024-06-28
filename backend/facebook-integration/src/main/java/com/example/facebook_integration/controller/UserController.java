@@ -25,18 +25,21 @@ public class UserController {
         userService.createUser(user);
     }
 
-    @GetMapping("/get-me")
+    @GetMapping("/get/{email}")
     public Optional<User> getUserByEmail(@PathVariable String email) {
-        Optional<User> userOptional = userService.findUserByEmail(email);
-
-        return userOptional;
+        return userService.findUserByEmail(email);
     }
 
     @PostMapping("/login")
-    public int login(@RequestBody Map<String, String> body) {
+    public ResponseEntity<?> login(@RequestBody Map<String, String> body) {
         String email = body.get("email");
         String password = body.get("password");
-        return userService.login(email, password);
+        try {
+            int userId = userService.login(email, password);
+            return ResponseEntity.ok(userId); // Return user ID on successful login
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage()); // Return 401 on failure
+        }
     }
 
     @CrossOrigin(origins = "http://localhost:3000/ForgotPassword")

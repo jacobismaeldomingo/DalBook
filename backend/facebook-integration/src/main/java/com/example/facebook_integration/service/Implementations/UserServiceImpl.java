@@ -36,15 +36,15 @@ public class UserServiceImpl implements UserService {
         Optional<User> userOptional = userRepository.findUserByEmail(email);
 
         if (userOptional.isEmpty()) {
-            return -1; // User not found
+            // User not found
+            throw new IllegalArgumentException("User not found");
         }
 
         User user = userOptional.get();
-
         if (user.getPassword().equals(password)) {
             return user.getId(); // Successful login, return user ID as int
         } else {
-            return -2; // Incorrect password
+            throw new IllegalArgumentException("Wrong password");
         }
     }
 
