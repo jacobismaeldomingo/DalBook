@@ -55,6 +55,7 @@ function Login() {
         const errorText = await response.text();
         setErrorMessage("Wrong password or email");
         console.log("Login failed");
+        setErrors(""); // Reset the error messages
       }
     } catch (error) {
       console.error("Error logging in:", error);
