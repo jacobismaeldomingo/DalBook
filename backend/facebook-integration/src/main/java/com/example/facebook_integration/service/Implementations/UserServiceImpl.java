@@ -32,16 +32,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int login(String email, String password){
-        User  user =userRepository.findUserByEmail(email);
-        if (user == null){
-            return -1;
+    public int login(String email, String password) {
+        Optional<User> userOptional = userRepository.findUserByEmail(email);
+
+        if (userOptional.isEmpty()) {
+            // User not found
+            throw new IllegalArgumentException("User not found");
         }
-        else if (user.getPassword().equals(password)) {
-            return user.getId();
-        }
-        else {
-            return -2;
+
+        User user = userOptional.get();
+        if (user.getPassword().equals(password)) {
+            return user.getId(); // Successful login, return user ID as int
+        } else {
+            throw new IllegalArgumentException("Wrong password");
         }
     }
 

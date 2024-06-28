@@ -7,12 +7,14 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
+  const [errorMessage, setErrorMessage] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     let validationErrors = {};
+    setErrorMessage(""); // Reset error message
 
     // Perform login action with email and password
     if (!email || !validateEmail(email)) {
@@ -41,20 +43,20 @@ function Login() {
 
       if (response.ok) {
         // Login successful
-        const userID = await response.json(); // Parse response body as JSON
+        const userId = await response.json(); // Retreive the User Id, do not delete this
         console.log("Login successful");
-        // Redirect or set state to indicate logged in
+        // Redirect to the user profile page
         navigate("/profile");
       } else {
         // Login failed
         const errorText = await response.text();
+        setErrorMessage("Wrong password or email");
         console.log("Login failed");
-        // Handle error state or display error message
-        alert(errorText);
       }
     } catch (error) {
       console.error("Error logging in:", error);
       // Handle network error
+      setErrorMessage("Network error occurred. Please try again later.");
     }
   };
 
@@ -63,7 +65,9 @@ function Login() {
       <div className="p-3 bg-white w-25">
         <form onSubmit={handleSubmit} className="signup-form">
           <div>
-            <label htmlFor="email" className="label-name">Email</label>
+            <label htmlFor="email" className="label-name">
+              Email
+            </label>
             <input
               type="email"
               placeholder="Enter Email"
@@ -75,7 +79,9 @@ function Login() {
           </div>
 
           <div>
-            <label htmlFor="password" className="label-name">Password</label>
+            <label htmlFor="password" className="label-name">
+              Password
+            </label>
             <input
               type="password"
               placeholder="Enter Password"
@@ -92,20 +98,10 @@ function Login() {
             )}
           </div>
 
+          {errorMessage && <div className="error-message">{errorMessage}</div>}
+
           <div className="btn-group">
-            {/* <Link
-              to="/home"
-              className={`btn ${
-                location.pathname === "./home" ? "btn-success" : "btn-default"
-              }`}
-              type="submit"
-            >
-              Login
-            </Link> */}
-            <button
-              type="submit"
-              className="btn btn-default"
-            >
+            <button type="submit" className="btn btn-success">
               Login
             </button>
             <Link
