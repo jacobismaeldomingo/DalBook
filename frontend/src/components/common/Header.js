@@ -11,9 +11,9 @@ import {
   IconMessages,
   IconBell,
   IconUserCircle,
+  IconLogout
 } from "@tabler/icons-react";
 import Feed from "../feed/Feed";
-
 
 function Header() {
   const navigate = useNavigate();
@@ -30,7 +30,7 @@ function Header() {
         <div className="search-header">
           <div className="logo">
             <img
-              src="/images/logo.png"
+              src="/images/dalhousie-logo.png"
               alt="logo"
               style={{
                 height: "40px",
@@ -44,7 +44,6 @@ function Header() {
         </div>
         <div className="navigation-header">
           <div className="icon">
-            {/* <IconHomeFilled size={30} color="#1877F2"/> */}
             <IconHome stroke={2} size={30} color="#1877F2" />
           </div>
           <div className="icon">
@@ -64,8 +63,9 @@ function Header() {
           <div className="notifications">
             <IconBell stroke={2} size={30} color="#1877F2" />
           </div>
-          <div className="profile" onClick={handleLogout} style={{ cursor: 'pointer' }}>
-            <IconUserCircle stroke={2} size={30} color="#1877F2" />
+          <div className="profile-header" onClick={handleLogout} style={{ cursor: 'pointer' }}>
+            {/* <IconUserCircle stroke={2} size={30} color="#1877F2" /> */}
+            <IconLogout stroke={2} size={30} color="#1877F2" />
           </div>
         </div>
       </div>

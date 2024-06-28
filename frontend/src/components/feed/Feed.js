@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Feed.css";
 import {
   IconUsers,
@@ -15,12 +16,45 @@ import {
   IconMessageCircle,
   IconShare3,
 } from "@tabler/icons-react";
+import friendService from "../../services/FriendService";
 
 function Feed() {
+  const [friends, setFriends] = useState([]);
+  const navigate = useNavigate();
+  const [userId, setUserId] = useState(null);
+
+  const userProfile = () => {
+    navigate("/profile");
+  };
+
+  const friendsPage = () => {
+    navigate("/friendsList");
+  };
+
+  useEffect(() => {
+    const storedUserId = localStorage.getItem("userId");
+    if (storedUserId) {
+      setUserId(storedUserId);
+      friendService
+        .getFriends(storedUserId)
+        .then((response) => {
+          setFriends(response.data);
+        })
+        .catch((error) => {
+          console.error("Error fetching friends:", error);
+          alert("An error occurred. Please try again!");
+        });
+    }
+  }, []);
+
   return (
     <div className="main">
       <div className="left-side">
-        <div className="profile">
+        <div
+          className="profile"
+          onClick={userProfile}
+          style={{ cursor: "pointer" }}
+        >
           <img
             src="/images/avatar-1.jpeg"
             alt="profile-picture"
@@ -28,7 +62,11 @@ function Feed() {
           />
           John Doe
         </div>
-        <div className="panel">
+        <div
+          className="panel"
+          onClick={friendsPage}
+          style={{ cursor: "pointer" }}
+        >
           <IconUsers stroke={2} />
           <div>Friends</div>
         </div>
@@ -220,7 +258,7 @@ function Feed() {
       </div>
       <div className="right-side">
         <div className="contact">
-          <div className="contacts">Contacts</div>
+          <div className="contacts">Friends</div>
           <div className="chat-icon">
             <div className="icons">
               <IconUser stroke={2} />
@@ -234,38 +272,16 @@ function Feed() {
           </div>
         </div>
         <div className="concise">
-          <div className="profiles">
-            <img
-              src="/images/avatar-2.jpeg"
-              alt="profile-picture"
-              style={{ padding: "1rem" }}
-            />
-            John Doe
-          </div>
-          <div className="profiles">
-            <img
-              src="/images/avatar-3.jpeg"
-              alt="profile-picture"
-              style={{ padding: "1rem" }}
-            />
-            John Doe
-          </div>
-          <div className="profiles">
-            <img
-              src="/images/avatar-4.jpeg"
-              alt="profile-picture"
-              style={{ padding: "1rem" }}
-            />
-            John Doe
-          </div>
-          <div className="profiles">
-            <img
-              src="/images/avatar-5.jpeg"
-              alt="profile-picture"
-              style={{ padding: "1rem" }}
-            />
-            John Doe
-          </div>
+          {friends.map((friend) => (
+            <div key={friend.id} className="profiles name">
+              <img
+                src="/images/avatar-2.jpeg"
+                alt="profile-picture"
+                style={{ padding: "1rem" }}
+              />
+              {friend.firstName + " " + friend.lastName}
+            </div>
+          ))}
         </div>
       </div>
     </div>
