@@ -22,10 +22,6 @@ function Login() {
         "Please enter your email. Only @dal.ca addresses are accepted.";
     }
 
-    // const passwordErrors = validatePassword(password);
-    // if (passwordErrors.length > 0) {
-    //   validationErrors.password = passwordErrors;
-    // }
     if (!password) {
       validationErrors.password = "Please enter your password.";
     }
