@@ -35,6 +35,16 @@ input[type="text-id"] {
 
 .name {
   font-size: x-large;
-  display:inline-block;
   padding-right: 1rem;
+}
+
+.request-name {
+  font-size: x-large;
+  display: inline;
+  padding-right: 1rem;
+}
+
+.links {
+  padding-top: 30px;
+  padding-left: 5px;
 }

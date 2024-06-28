@@ -8,6 +8,8 @@ import java.util.List;
 public interface FriendRequestService {
     FriendRequest sendRequest(int senderId, int receiverId);
 
+    FriendRequest sendRequestByEmail(int senderId, String receiverEmail);
+
     FriendRequest acceptRequest(int requestId);
 
     List<FriendRequest> getPendingRequests(int userId);

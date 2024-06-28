@@ -1,7 +1,7 @@
 // Home Page
 import React from "react";
 import "./Header.css";
-import { Link, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   IconSearch,
   IconHome,
@@ -14,7 +14,16 @@ import {
 } from "@tabler/icons-react";
 import Feed from "../feed/Feed";
 
+
 function Header() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("userId");
+    navigate("/login");
+  };
+
   return (
     <div className="homepage">
       <div className="header">
@@ -55,7 +64,7 @@ function Header() {
           <div className="notifications">
             <IconBell stroke={2} size={30} color="#1877F2" />
           </div>
-          <div className="profile">
+          <div className="profile" onClick={handleLogout} style={{ cursor: 'pointer' }}>
             <IconUserCircle stroke={2} size={30} color="#1877F2" />
           </div>
         </div>
