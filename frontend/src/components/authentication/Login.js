@@ -53,8 +53,8 @@ function Login() {
         localStorage.setItem("isLoggedIn", "true");
         localStorage.setItem("userId", userId);
 
-        // Redirect to the user profile page
-        navigate("/profile");
+        // Redirect to the user home page
+        navigate("/home");
       } else {
         // Login failed
         const errorText = await response.text();
