@@ -27,7 +27,7 @@ function Login() {
     //   validationErrors.password = passwordErrors;
     // }
     if (!password) {
-      validationErrors.password = "Please enter your password."
+      validationErrors.password = "Please enter your password.";
     }
 
     if (Object.keys(validationErrors).length > 0) {
@@ -48,6 +48,11 @@ function Login() {
         // Login successful
         const userId = await response.json(); // Retreive the User Id, do not delete this
         console.log("Login successful");
+
+        // Store login flag in local storage
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("userId", userId);
+
         // Redirect to the user profile page
         navigate("/profile");
       } else {

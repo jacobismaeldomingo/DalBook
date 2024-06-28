@@ -30,6 +30,15 @@ public class FriendRequestServiceImpl implements FriendRequestService {
     }
 
     @Override
+    public FriendRequest sendRequestByEmail(int senderId, String receiverEmail) {
+        User sender = userRepository.findById(senderId).orElseThrow(() -> new RuntimeException("Sender not found"));
+        User receiver = userRepository.findUserByEmail(receiverEmail).orElseThrow(() -> new RuntimeException("Receiver not found"));
+
+        FriendRequest friendRequest = new FriendRequest(sender, receiver, false);
+        return friendRequestRepository.save(friendRequest);
+    }
+
+    @Override
     public FriendRequest acceptRequest(int requestId) {
         FriendRequest friendRequest = friendRequestRepository.findById(requestId).orElseThrow(() -> new RuntimeException("Request not found"));
         friendRequest.setAccepted(true);

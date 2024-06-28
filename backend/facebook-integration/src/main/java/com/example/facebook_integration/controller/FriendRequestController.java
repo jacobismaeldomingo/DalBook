@@ -17,10 +17,8 @@ public class FriendRequestController {
     FriendRequestService friendRequestService;
 
     @PostMapping("/send")
-    public FriendRequest sendRequest(@RequestParam String senderId, @RequestParam String receiverId) {
-        int senderID = Integer.parseInt(senderId);
-        int receiverID = Integer.parseInt(receiverId);
-        return friendRequestService.sendRequest(senderID, receiverID);
+    public FriendRequest sendRequest(@RequestParam int senderId, @RequestParam String receiverEmail) {
+        return friendRequestService.sendRequestByEmail(senderId, receiverEmail);
     }
 
     @PostMapping("/accept")

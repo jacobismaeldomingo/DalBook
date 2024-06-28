@@ -2,9 +2,9 @@ import axios from "axios";
 
 const API_URL = "http://localhost:8085/api/friends";
 
-const sendFriendRequest = (senderId, receiverId) => {
+const sendFriendRequest = (senderId, receiverEmail) => {
   return axios.post(`${API_URL}/send`, null, {
-    params: { senderId, receiverId },
+    params: { senderId, receiverEmail },
   });
 };
 

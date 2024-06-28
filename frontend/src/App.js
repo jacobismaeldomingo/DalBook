@@ -7,13 +7,10 @@ import Signup from "./components/authentication/Signup";
 import Header from "./components/common/Header";
 import Error from "./components/common/Error";
 import UserProfile from "./components/feed/UserProfile";
-import FriendRequestSender from "./components/friendRequests/FriendRequest";
+import FriendRequest from "./components/friendRequests/FriendRequest";
 import FriendRequestList from "./components/friendRequests/FriendRequestList";
 import FriendsList from "./components/friendRequests/FriendsList";
-import "./App.css";
-import ForgotPassword from "./ForgotPassword";
-import ResetPassword from "./ResetPassword";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import PrivateRoute from "./components/common/PrivateRoute";
 
 function App() {
   return (
@@ -22,19 +19,48 @@ function App() {
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/home" element={<Header />} />
+        <Route
+          path="/home"
+          element={
+            <PrivateRoute>
+              <Header />
+            </PrivateRoute>
+          }
+        />
         <Route path="/forgotPassword" element={<ForgotPassword />} />
         <Route path="/resetPassword" element={<ResetPassword />} />
-        <Route path="/profile" element={<UserProfile />} />
+        <Route
+          path="/profile"
+          element={
+            <PrivateRoute>
+              <UserProfile />
+            </PrivateRoute>
+          }
+        />
         <Route
           path="/friendRequest"
-          element={<FriendRequestSender userId={"25"} />}
+          element={
+            <PrivateRoute>
+              <FriendRequest />
+            </PrivateRoute>
+          }
         />
         <Route
           path="/friendRequestList"
-          element={<FriendRequestList userId={"26"} />}
+          element={
+            <PrivateRoute>
+              <FriendRequestList />
+            </PrivateRoute>
+          }
         />
-        <Route path="/friendsList" element={<FriendsList userId={"26"} />} />
+        <Route
+          path="/friendsList"
+          element={
+            <PrivateRoute>
+              <FriendsList />
+            </PrivateRoute>
+          }
+        />
         <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>
