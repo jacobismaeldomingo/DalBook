@@ -21,7 +21,7 @@ const FriendsList = () => {
           alert("An error occurred. Please try again!");
         });
     }
-  }, [userId]);
+  }, []);
 
   return (
     <div>
@@ -35,17 +35,20 @@ const FriendsList = () => {
         ))}
       </ul>
       <div className="links">
+        <Link to="/home" className="btn btn-success text-decoration-none">
+          Homepage
+        </Link>
         <Link
           to="/friendRequest"
           className="btn btn-success text-decoration-none"
         >
-          Friend Request
+          Add Friends
         </Link>
         <Link
-          to="/friendsList"
+          to="/friendRequestList"
           className="btn btn-success text-decoration-none"
         >
-          Friends List
+          Friend Request List
         </Link>
       </div>
     </div>
