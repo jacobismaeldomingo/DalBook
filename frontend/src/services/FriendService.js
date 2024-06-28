@@ -2,10 +2,28 @@ import axios from "axios";
 
 const API_URL = "http://localhost:8085/api/friends";
 
-const sendFriendRequest = (senderId, receiverEmail) => {
-  return axios.post(`${API_URL}/send`, null, {
-    params: { senderId, receiverEmail },
-  });
+// const sendFriendRequest = (senderId, receiverEmail) => {
+//   return axios.post(`${API_URL}/send`, null, {
+//     params: { senderId, receiverEmail },
+//   });
+// };
+
+const sendFriendRequest = async (senderId, receiverEmail) => {
+  try {
+    const response = await axios.post(`${API_URL}/send`, null, {
+      params: { senderId, receiverEmail },
+    });
+    console.log('Friend request sent successfully:', response.data);
+    return response.data;
+  } catch (error) {
+    if (error.response && error.response.status === 500) {
+      console.error('Error:', error.response.data);
+      alert("Friend request already sent");
+    } else {
+      console.error('Error sending friend request:', error);
+      alert('Failed to send friend request');
+    }
+  }
 };
 
 const acceptFriendRequest = (requestId) => {

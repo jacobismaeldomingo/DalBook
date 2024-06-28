@@ -7,7 +7,6 @@ import com.example.facebook_integration.model.User;
 import com.example.facebook_integration.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +31,13 @@ public class FriendRequestServiceImpl implements FriendRequestService {
     @Override
     public FriendRequest sendRequestByEmail(int senderId, String receiverEmail) {
         User sender = userRepository.findById(senderId).orElseThrow(() -> new RuntimeException("Sender not found"));
-        User receiver = userRepository.findUserByEmail(receiverEmail).orElseThrow(() -> new RuntimeException("Receiver not found"));
+        User receiver = userRepository.findUserByEmail(receiverEmail).orElseThrow(() -> new RuntimeException("Receiver not found with email: "+ receiverEmail));
+
+        // Check if a friend request already exists
+        boolean exists = existsBySenderAndReceiver(sender, receiver);
+        if (exists) {
+            throw new RuntimeException("Friend request already sent");
+        }
 
         FriendRequest friendRequest = new FriendRequest(sender, receiver, false);
         return friendRequestRepository.save(friendRequest);
@@ -61,5 +66,13 @@ public class FriendRequestServiceImpl implements FriendRequestService {
         sentRequests.forEach(request -> friends.add(request.getReceiver()));
         receivedRequests.forEach(request -> friends.add(request.getSender()));
         return friends;
+    }
+
+    public boolean existsBySenderAndReceiver(User sender, User receiver){
+        long senderID = sender.getId();
+        long receiverID = receiver.getId();
+
+        List<FriendRequest> requestsIfExists = friendRequestRepository.findBySenderAndReceiver(sender, receiver);
+        return !requestsIfExists.isEmpty();
     }
 }
