@@ -138,6 +138,13 @@
   padding-left: 0;
 }
 
+.error-message {
+  color: red;
+  font-size: 1rem;
+  list-style-type: none;
+  padding-left: 0;
+}
+
 .text-danger li {
   margin-bottom: 0.5rem;
 }
