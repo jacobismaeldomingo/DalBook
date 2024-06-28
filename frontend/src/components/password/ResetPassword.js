@@ -99,7 +99,7 @@ export default function ResetPassword() {
           <button type="submit" className="button">
             Reset Password
           </button>
-          {errorMessage && <p className="error">{errorMessage}</p>}
+          {errorMessage && <div className="error">{errorMessage}</div>}
         </form>
       </div>
     </div>
