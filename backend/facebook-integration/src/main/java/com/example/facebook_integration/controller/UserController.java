@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import java.util.logging.Logger;
 import java.nio.file.attribute.UserPrincipal;
 import java.util.Map;
 import java.util.Optional;
@@ -16,14 +16,19 @@ import java.util.Optional;
 @RequestMapping("/api/user")
 public class UserController {
 
+    private static final Logger logger = Logger.getLogger(UserController.class.getName());
+
     @Autowired
     private UserService userService;
 
-    // Endpoint to handle HTTP POST requests to create a new user
     @PostMapping("/signup")
-    public void createUser(@RequestBody User user) {
-        userService.createUser(user);
+    public ResponseEntity<Integer> createUser(@RequestBody User user) {
+        int userId = userService.createUser(user);
+
+        logger.info("User created successfully with ID: " + userId);
+        return ResponseEntity.ok(userId);
     }
+
 
     @GetMapping("/get/{email}")
     public Optional<User> getUserByEmail(@PathVariable String email) {
