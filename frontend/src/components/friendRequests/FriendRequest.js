@@ -3,6 +3,8 @@ import friendService from "../../services/FriendService";
 import { Link } from "react-router-dom";
 import "./FriendRequest.css";
 
+
+
 const FriendRequest = () => {
   const [userId, setUserId] = useState(null);
   const [receiverEmail, setReceiverEmail] = useState("");
@@ -12,17 +14,23 @@ const FriendRequest = () => {
     setUserId(id);
   }, []);
 
-  const handleSendRequest = () => {
-    friendService
-      .sendFriendRequest(userId, receiverEmail)
-      .then((response) => {
-        console.log("Friend request sent:", response.data);
-        alert("Friend request sent successfully!");
-      })
-      .catch((error) => {
-        console.error("Error sending friend request:", error.response.data);
-        alert("Error sending friend request, please try again.");
-      });
+  const [errors, setErrors] = useState({});
+
+  
+  const handleSendRequest = async () => {
+  
+    try {
+      const result = await friendService.sendFriendRequest(userId, receiverEmail);
+      if (result) {
+        console.log('Friend request sent:', result);
+      }
+    } catch (error) {
+      if (error.result && error.result.status === 500) {
+        setErrors({error: "Friend request already sent" });
+      } else {
+        console.error('Error in sending request:', error);
+      }
+    }
   };
 
   return (
