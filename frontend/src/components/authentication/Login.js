@@ -19,12 +19,15 @@ function Login() {
     // Perform login action with email and password
     if (!email || !validateEmail(email)) {
       validationErrors.email =
-        "Invalid email. Only @dal.ca addresses are accepted.";
+        "Please enter your email. Only @dal.ca addresses are accepted.";
     }
 
-    const passwordErrors = validatePassword(password);
-    if (passwordErrors.length > 0) {
-      validationErrors.password = passwordErrors;
+    // const passwordErrors = validatePassword(password);
+    // if (passwordErrors.length > 0) {
+    //   validationErrors.password = passwordErrors;
+    // }
+    if (!password) {
+      validationErrors.password = "Please enter your password."
     }
 
     if (Object.keys(validationErrors).length > 0) {
@@ -90,11 +93,12 @@ function Login() {
               onChange={(e) => setPassword(e.target.value)}
             />
             {errors.password && (
-              <ul className="text-danger">
-                {errors.password.map((error, index) => (
-                  <li key={index}>{error}</li>
-                ))}
-              </ul>
+              // <ul className="text-danger">
+              //   {errors.password.map((error, index) => (
+              //     <li key={index}>{error}</li>
+              //   ))}
+              // </ul>
+              <p className="text-danger">{errors.password}</p>
             )}
           </div>
 
