@@ -43,8 +43,6 @@ public class User {
     }
     public Status status = Status.AVAILABLE;
 
-
-
     // Constructor
     public User() {
     }

@@ -2,7 +2,6 @@ import axios from "axios";
 
 const API_URL = "http://localhost:8085/api/friends";
 
-
 const sendFriendRequest = async (senderId, receiverEmail) => {
   try {
     const response = await axios.post(`${API_URL}/send`, null, {

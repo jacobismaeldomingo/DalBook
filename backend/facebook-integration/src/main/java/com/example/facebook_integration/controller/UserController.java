@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.logging.Logger;
-import java.nio.file.attribute.UserPrincipal;
 import java.util.Map;
 import java.util.Optional;
 
@@ -29,10 +28,10 @@ public class UserController {
         return ResponseEntity.ok(userId);
     }
 
-
     @GetMapping("/get/{email}")
-    public Optional<User> getUserByEmail(@PathVariable String email) {
-        return userService.findUserByEmail(email);
+    public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
+        Optional<User> userOptional = userService.findUserByEmail(email);
+        return userOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body(null));
     }
 
     @PostMapping("/login")

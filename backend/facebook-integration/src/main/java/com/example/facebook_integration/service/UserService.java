@@ -9,12 +9,10 @@ import java.util.Optional;
 
 public interface UserService {
 
-//    public String createUser(User user);
-    public int createUser(User user);
-
+    int createUser(User user);
     Optional<User> findUserByEmail(String email);
-    public void updatePassword(String email, String newPassword);
-    public int login (String email, String password);
-    public void updateStatus(String email, String status);
+    void updatePassword(String email, String newPassword);
+    int login (String email, String password);
+    void updateStatus(String email, String status);
 
 }
