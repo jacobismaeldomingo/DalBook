@@ -1,5 +1,6 @@
 import React from "react";
-import "./App.css";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import "./css/App.css";
 import ForgotPassword from "./components/password/ForgotPassword";
 import ResetPassword from "./components/password/ResetPassword";
 import Login from "./components/authentication/Login";
