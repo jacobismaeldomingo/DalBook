@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./Feed.css";
 import {
   IconUsers,
@@ -22,6 +23,7 @@ function Feed() {
   const [friends, setFriends] = useState([]);
   const navigate = useNavigate();
   const [userId, setUserId] = useState(null);
+  const [user, setUser] = useState();
 
   const userProfile = () => {
     navigate("/profile");
@@ -33,8 +35,25 @@ function Feed() {
 
   useEffect(() => {
     const storedUserId = localStorage.getItem("userId");
-    if (storedUserId) {
+    const storedUserEmail = localStorage.getItem("userEmail");
+    if (storedUserId && storedUserEmail) {
       setUserId(storedUserId);
+
+      // Get Current User Information
+      const fetchUser = async () => {
+        try {
+          const response = await axios.get(
+            `http://localhost:8085/api/user/get/${storedUserEmail}`
+          );
+          setUser(response.data);
+          console.log("User information retrieved successfully");
+        } catch (error) {
+          console.log("Error fetching user", error);
+        }
+      };
+      fetchUser();
+
+      // Get Current User Friends
       friendService
         .getFriends(storedUserId)
         .then((response) => {
@@ -60,7 +79,7 @@ function Feed() {
             alt="profile-picture"
             style={{ padding: "1rem" }}
           />
-          John Doe
+          {user ? user.firstName + " " + user.lastName : "Loading..."}
         </div>
         <div
           className="panel"

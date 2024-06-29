@@ -18,6 +18,10 @@ import Feed from "../feed/Feed";
 function Header() {
   const navigate = useNavigate();
 
+  const homePage = () => {
+    navigate("/home");
+  }
+
   const handleLogout = () => {
     localStorage.removeItem("isLoggedIn");
     localStorage.removeItem("userId");
@@ -30,7 +34,7 @@ function Header() {
         <div className="search-header">
           <div className="logo">
             <img
-              src="/images/dalhousie-logo.png"
+              src="/images/dalbook_logo.png"
               alt="logo"
               style={{
                 height: "40px",
@@ -43,7 +47,7 @@ function Header() {
           </div>
         </div>
         <div className="navigation-header">
-          <div className="icon">
+          <div className="icon" onClick={homePage} style={{ cursor: 'pointer' }}>
             <IconHome stroke={2} size={30} color="#1877F2" />
           </div>
           <div className="icon">
