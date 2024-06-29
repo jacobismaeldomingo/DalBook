@@ -15,16 +15,15 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserRepository userRepository;
 
-    // Method to create a new user in the database
     @Override
-    public String createUser(User user) {
+    public int createUser(User user) {
         if (user == null) {
             throw new IllegalArgumentException("User cannot be null");
         }if (userRepository.findUserByEmail(user.getEmail()).isPresent()) {
             throw new IllegalArgumentException("Email already exists");
         }
         userRepository.save(user);
-        return "User created successfully";
+        return user.getId();
     }
 
     public Optional<User> findUserByEmail(String email) {
@@ -73,11 +72,9 @@ public class UserServiceImpl implements UserService {
             user.setStatus(User.Status.valueOf(status));
             userRepository.save(user);
         });
-
         // Optionally handle case where user is not found
         if (userOptional.isEmpty()) {
             throw new IllegalArgumentException("User with email " + email + " not found");
         }
     }
-
 }

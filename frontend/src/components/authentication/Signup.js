@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import "./Login.css"; // Using the same CSS file for simplicity
-import { Link, useLocation } from "react-router-dom";
+import "../../css/Login.css"; // Using the same CSS file for simplicity
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { validateEmail, validatePassword } from "./SignupValidation";
 import axios from "axios";
+
 
 const Signup = () => {
   const [firstName, setFname] = useState("");
@@ -13,6 +14,8 @@ const Signup = () => {
   const [securityAnswer, setSecurityAnswer] = useState("");
   const [errors, setErrors] = useState({});
   const location = useLocation();
+  const navigate = useNavigate();
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -60,8 +63,18 @@ const Signup = () => {
         "http://localhost:8085/api/user/signup",
         user
       );
-      console.log(response.data);
-      alert("User created successfully");
+      if (response.status === 200) {
+        const userId = response.data;
+        console.log(`User created successfully with ID: ${userId}`);
+        alert("User created successfully");
+
+        // Store login flag in local storage
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("userId", userId);
+        
+        // Redirect to the user profile page
+        navigate("/profile");
+      }
     } catch (error) {
       if (error.response && error.response.status === 500) {
         setErrors({ email: "Email already taken" });

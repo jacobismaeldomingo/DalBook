@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Login.css";
+import "../../css/Login.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { validateEmail, validatePassword } from "./SignupValidation";
 
@@ -22,10 +22,6 @@ function Login() {
         "Please enter your email. Only @dal.ca addresses are accepted.";
     }
 
-    // const passwordErrors = validatePassword(password);
-    // if (passwordErrors.length > 0) {
-    //   validationErrors.password = passwordErrors;
-    // }
     if (!password) {
       validationErrors.password = "Please enter your password.";
     }
@@ -53,8 +49,8 @@ function Login() {
         localStorage.setItem("isLoggedIn", "true");
         localStorage.setItem("userId", userId);
 
-        // Redirect to the user profile page
-        navigate("/profile");
+        // Redirect to the user home page
+        navigate("/home");
       } else {
         // Login failed
         const errorText = await response.text();
