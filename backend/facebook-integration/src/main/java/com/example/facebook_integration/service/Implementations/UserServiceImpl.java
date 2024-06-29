@@ -72,11 +72,9 @@ public class UserServiceImpl implements UserService {
             user.setStatus(User.Status.valueOf(status));
             userRepository.save(user);
         });
-
         // Optionally handle case where user is not found
         if (userOptional.isEmpty()) {
             throw new IllegalArgumentException("User with email " + email + " not found");
         }
     }
-
 }
