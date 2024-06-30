@@ -10,7 +10,6 @@ import {
   IconMenu2,
   IconMessages,
   IconBell,
-  IconUserCircle,
   IconLogout
 } from "@tabler/icons-react";
 import Feed from "../feed/Feed";

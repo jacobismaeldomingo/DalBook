@@ -4,10 +4,13 @@ import com.example.facebook_integration.model.User;
 import com.example.facebook_integration.repository.UserRepository;
 import com.example.facebook_integration.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import java.util.List;
-import java.util.Optional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -74,6 +77,32 @@ public class UserServiceImpl implements UserService {
         });
         // Optionally handle case where user is not found
         if (userOptional.isEmpty()) {
+            throw new IllegalArgumentException("User with email " + email + " not found");
+        }
+    }
+
+    @Override
+    public void updateUserProfile(String firstName, String lastName, String email, String bio, User.Status status, MultipartFile profilePicture) {
+        Optional<User> userOptional = userRepository.findUserByEmail(email);
+
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            user.setFirstName(firstName);
+            user.setLastName(lastName);
+            user.setBio(bio);
+            user.setStatus(status);
+
+            if (!profilePicture.isEmpty()) {
+                try {
+                    byte[] profilePicBytes = profilePicture.getBytes();
+                    // Save profilePicBytes to a location and update user.setProfilePic(newPath);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            userRepository.save(user);
+        } else {
             throw new IllegalArgumentException("User with email " + email + " not found");
         }
     }

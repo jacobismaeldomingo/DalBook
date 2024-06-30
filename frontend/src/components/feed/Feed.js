@@ -58,6 +58,7 @@ function Feed() {
         .getFriends(storedUserId)
         .then((response) => {
           setFriends(response.data);
+          console.log("Success fetching friends of user id:", userId);
         })
         .catch((error) => {
           console.error("Error fetching friends:", error);
