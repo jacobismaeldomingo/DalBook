@@ -162,10 +162,10 @@ const UserProfile = () => {
               value={user.status}
               onChange={handleInputChange}
             >
-              <option value="AVAILABLE">Available</option>
-              <option value="BUSY">Busy</option>
-              <option value="AWAY">Away</option>
-              <option value="OFFLINE">Offline</option>
+              <option value="Available">Available</option>
+              <option value="Busy">Busy</option>
+              <option value="Away">Away</option>
+              <option value="Offline">Offline</option>
             </select>
           </div>
           <button

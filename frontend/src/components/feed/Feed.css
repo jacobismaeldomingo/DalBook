@@ -202,17 +202,17 @@ input[type="Mind"] {
   display: flex;
   justify-content: space-between;
 }
-.profile-picture {
+.feed-profile-picture {
   display: flex;
   justify-content: space-between;
   margin: 22px;
   font-size: 1rem;
   font-weight: 550;
 }
-.profile-picture > img {
+.feed-profile-picture > img {
   border-radius: 50%;
 }
-.profile-picture > div {
+.feed-profile-picture > div {
   padding-left: 10px;
   padding-top: 8px;
 }

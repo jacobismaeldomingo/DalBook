@@ -198,7 +198,7 @@ function Feed() {
           </div>
           <div className="posted">
             <div className="post">
-              <div className="profile-picture">
+              <div className="feed-profile-picture">
                 <img
                   src="/images/avatar-1.jpeg"
                   alt="profile-picture"
@@ -237,7 +237,7 @@ function Feed() {
           </div>
           <div className="posted">
             <div className="post">
-              <div className="profile-picture">
+              <div className="feed-profile-picture">
                 <img
                   src="/images/avatar-1.jpeg"
                   alt="profile-picture"

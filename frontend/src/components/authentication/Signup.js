@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../css/Login.css"; // Using the same CSS file for simplicity
+import "./Login.css"; // Using the same CSS file for simplicity
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { validateEmail, validatePassword } from "./SignupValidation";
 import axios from "axios";
