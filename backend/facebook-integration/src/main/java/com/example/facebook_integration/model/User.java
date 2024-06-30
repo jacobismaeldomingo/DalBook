@@ -35,11 +35,13 @@ public class User {
     private String securityAnswer;
 
     public enum Status {
-        AVAILABLE,
-        BUSY,
-        AWAY
+        Available,
+        Busy,
+        Away,
+        Offline
     }
-    public Status status = Status.AVAILABLE;
+
+    public Status status = Status.Available;
 
     // Constructor
     public User() {
