@@ -34,8 +34,6 @@ public class User {
     @NotBlank(message = "Security Answer is required.")
     private String securityAnswer;
 
-    private Boolean isLoggedIn;
-
     public enum Status {
         AVAILABLE,
         BUSY,
@@ -47,7 +45,7 @@ public class User {
     public User() {
     }
 
-    public User(int id, String firstName, String lastName, String email, String password, String bio, String dateOfBirth, String profilePic, String securityAnswer, Boolean isLoggedIn) {
+    public User(int id, String firstName, String lastName, String email, String password, String bio, String dateOfBirth, String profilePic, String securityAnswer) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -57,7 +55,6 @@ public class User {
         this.dateOfBirth = dateOfBirth;
         this.profilePic = profilePic;
         this.securityAnswer = securityAnswer;
-        this.isLoggedIn = isLoggedIn;
     }
 
     // Getters and setters
@@ -140,14 +137,6 @@ public class User {
 
     public void setStatus(Status status) {
         this.status = status;
-    }
-
-    public Boolean getLoggedIn() {
-        return isLoggedIn;
-    }
-
-    public void setLoggedIn(Boolean loggedIn) {
-        isLoggedIn = loggedIn;
     }
 
 }
