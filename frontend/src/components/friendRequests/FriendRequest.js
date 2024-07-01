@@ -15,17 +15,27 @@ const FriendRequest = () => {
 
   const handleSendRequest = async () => {
   
-    try {
-      const result = await friendService.sendFriendRequest(userId, receiverEmail);
-      if (result) {
-        alert("Friend Request sent successfully");
-        console.log('Friend request sent:', result);
-      }
-    } catch (error) {
-      console.error('Error in sending request:', error);
-    }
-  };
+  //   try {
+  //     const result = await friendService.sendFriendRequest(userId, receiverEmail);
+  //     if (result) {
+  //       alert("Friend Request sent successfully");
+  //       console.log('Friend request sent:', result);
+  //     }
+  //   } catch (error) {
+  //     console.error('Error in sending request:', error);
+  //   }
+  // };
 
+  try {
+    const result = await friendService.sendFriendRequest(userId, receiverEmail);
+    if (Object.keys(result).length > 0) {
+      alert("Friend Request sent successfully");
+      console.log('Friend request sent:', result);
+    }
+  } catch (error) {
+    console.error('Error in sending request:', error);
+  }
+};
   return (
     <div>
       <h2 style={{ padding: "10px 10px" }}>Add Friends</h2>
