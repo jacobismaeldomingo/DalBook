@@ -89,15 +89,15 @@ public class FriendRequestServiceImpl implements FriendRequestService {
         List<FriendRequest> requestsIfExists = friendRequestRepository.findBySenderAndReceiver(sender, receiver);
         return !requestsIfExists.isEmpty();
     }
+    @Override
+    public void deleteFriend(int userId, int friendId) {
+        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
+        User friend = userRepository.findById(friendId).orElseThrow(() -> new RuntimeException("Friend not found"));
 
-    public int statusBySenderAndReceiver(User sender, User receiver){
-        List<FriendRequest> requestsIfExists = friendRequestRepository.findBySenderAndReceiver(sender, receiver);
-        if (requestsIfExists.isEmpty()) {
-            return 0; // No friend request exists
-        } else if (!requestsIfExists.getFirst().isAccepted()) {
-            return -1; // Friend request already sent but not accepted
-        } else {
-            return 1; // Already friends
-        }
+        List<FriendRequest> requestsAsSender = friendRequestRepository.findBySenderAndReceiver(user, friend);
+        List<FriendRequest> requestsAsReceiver = friendRequestRepository.findBySenderAndReceiver(friend, user);
+
+        requestsAsSender.forEach(friendRequestRepository::delete);
+        requestsAsReceiver.forEach(friendRequestRepository::delete);
     }
 }

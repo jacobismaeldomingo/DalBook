@@ -47,10 +47,17 @@ const getPendingRequests = (userId) => {
 const getFriends = (userId) => {
   return axios.get(`${API_URL}/list`, { params: { userId } });
 };
+const deleteFriend = (userId, friendId) => {
+  return axios.delete(`${API_URL}/delete`,{
+    params: { userId, friendId }
+  });
+};
+
 
 export default {
   sendFriendRequest,
   acceptFriendRequest,
   getPendingRequests,
   getFriends,
+  deleteFriend,
 };

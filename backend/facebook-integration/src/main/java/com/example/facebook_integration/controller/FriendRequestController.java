@@ -36,4 +36,9 @@ public class FriendRequestController {
     public List<User> getFriends(@RequestParam int userId) {
         return friendRequestService.getFriends(userId);
     }
+
+    @DeleteMapping("/{delete}")
+    public void deleteFriend(@RequestParam int userId, @RequestParam int friendId) {
+        friendRequestService.deleteFriend(userId, friendId);
+    }
 }
