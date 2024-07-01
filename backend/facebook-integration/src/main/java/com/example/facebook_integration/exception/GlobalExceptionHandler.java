@@ -21,10 +21,10 @@ public class GlobalExceptionHandler {
         ErrorDetails errorDetails = new ErrorDetails(new Date(), ex.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
     }
-class ErrorDetails {
-    private Date timestamp;
-    private String message;
-    private String details;
+static class ErrorDetails {
+    private final Date timestamp;
+    private final String message;
+    private final String details;
 
     public ErrorDetails(Date timestamp, String message, String details) {
         super();

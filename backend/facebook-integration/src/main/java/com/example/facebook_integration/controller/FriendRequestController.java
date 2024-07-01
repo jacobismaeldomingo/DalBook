@@ -17,6 +17,8 @@ public class FriendRequestController {
 
     @PostMapping("/send")
     public FriendRequest sendRequest(@RequestParam int senderId, @RequestParam String receiverEmail) {
+        if(receiverEmail.isEmpty()){
+        }
         return friendRequestService.sendRequestByEmail(senderId, receiverEmail);
     }
 
