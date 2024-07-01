@@ -9,7 +9,6 @@ const UserProfile = () => {
     lastName: "",
     bio: "",
     profilePicture: null,
-    // currentPassword: "",
     status: "Available",
   });
   const [errors, setErrors] = useState({});

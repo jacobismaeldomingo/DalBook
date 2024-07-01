@@ -21,6 +21,12 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    /**
+     * Function: createUser
+     * Purpose: Handles user signup and creates a new user.
+     * Parameters: User user - The user object containing user details.
+     * Returns: ResponseEntity<Integer> - The ID of the newly created user.
+     */
     @PostMapping("/signup")
     public ResponseEntity<Integer> createUser(@RequestBody User user) {
         int userId = userService.createUser(user);
@@ -29,12 +35,24 @@ public class UserController {
         return ResponseEntity.ok(userId);
     }
 
+    /**
+     * Function: getUserByEmail
+     * Purpose: Retrieves a user by their email.
+     * Parameters: String email - The email of the user.
+     * Returns: ResponseEntity<User> - The user object.
+     */
     @GetMapping("/get/{email}")
     public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
         Optional<User> userOptional = userService.findUserByEmail(email);
         return userOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body(null));
     }
 
+    /**
+     * Function: login
+     * Purpose: Handles user login.
+     * Parameters: Map<String, String> body - A map containing email and password.
+     * Returns: ResponseEntity<?> - The user ID on successful login, or an error message on failure.
+     */
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Map<String, String> body) {
         String email = body.get("email");
@@ -47,20 +65,12 @@ public class UserController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:3000/ForgotPassword")
-    @GetMapping("/birthday/{email}")
-    public ResponseEntity<?> getBirthdayByEmail(@PathVariable String email) {
-        Optional<User> userOptional = userService.findUserByEmail(email);
-
-        if (userOptional.isPresent()) {
-            User user = userOptional.get();
-            UserDTO userDTO = new UserDTO(user.getDateOfBirth());
-            return ResponseEntity.ok().body(userDTO);
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
-        }
-    }
-
+    /**
+     * Function: resetPassword
+     * Purpose: Handles password reset.
+     * Parameters: Map<String, String> requestBody - A map containing email and new password.
+     * Returns: ResponseEntity<?> - A success message.
+     */
     @PutMapping("/reset-password")
     public ResponseEntity<?> resetPassword(@RequestBody Map<String, String> requestBody) {
         String email = requestBody.get("email");
@@ -69,22 +79,12 @@ public class UserController {
         return ResponseEntity.ok().body("Password updated successfully");
     }
 
-    static class UserDTO {
-        private String birthday;
-
-        public UserDTO(String birthday) {
-            this.birthday = birthday;
-        }
-
-        public String getBirthday() {
-            return birthday;
-        }
-
-        public void setBirthday(String birthday) {
-            this.birthday = birthday;
-        }
-    }
-
+    /**
+     * Function: updateStatus
+     * Purpose: Updates the status of a user.
+     * Parameters: Map<String, String> body - A map containing email and status.
+     * Returns: void
+     */
     @PutMapping("/update-status")
     public void updateStatus(@RequestBody Map<String, String> body) {
         String email = body.get("email");
@@ -92,6 +92,17 @@ public class UserController {
         userService.updateStatus(email, status);
     }
 
+    /**
+     * Function: updateUserProfile
+     * Purpose: Updates the user's profile information.
+     * Parameters: String firstName - The user's first name.
+     *             String lastName - The user's last name.
+     *             String email - The user's email.
+     *             String bio - The user's bio.
+     *             User.Status status - The user's status.
+     *             MultipartFile profilePicture - The user's profile picture.
+     * Returns: ResponseEntity<String> - A success message.
+     */
     @PutMapping("/profile/update")
     public ResponseEntity<String> updateUserProfile(@RequestParam("firstName") String firstName,
                                                     @RequestParam("lastName") String lastName,

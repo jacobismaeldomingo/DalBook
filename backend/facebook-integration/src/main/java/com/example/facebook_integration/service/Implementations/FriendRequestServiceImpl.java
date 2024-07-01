@@ -23,6 +23,13 @@ public class FriendRequestServiceImpl implements FriendRequestService {
     @Autowired
     private UserRepository userRepository;
 
+    /**
+     * Function: sendRequest
+     * Purpose: Sends a friend request from one user to another.
+     * Parameters: int senderId - ID of the user sending the request.
+     *             int receiverId - ID of the user receiving the request.
+     * Returns: FriendRequest - The saved friend request.
+     */
     @Override
     public FriendRequest sendRequest(int senderId, int receiverId) {
         User sender = userRepository.findById(senderId).orElseThrow(() -> new RuntimeException("Sender not found"));
@@ -32,6 +39,13 @@ public class FriendRequestServiceImpl implements FriendRequestService {
         return friendRequestRepository.save(friendRequest);
     }
 
+    /**
+     * Function: sendRequestByEmail
+     * Purpose: Sends a friend request from one user to another using their email.
+     * Parameters: int senderId - ID of the user sending the request.
+     *             String receiverEmail - Email of the user receiving the request.
+     * Returns: FriendRequest - The saved friend request.
+     */
     @Override
     public FriendRequest sendRequestByEmail(int senderId, String receiverEmail) {
 
@@ -58,6 +72,12 @@ public class FriendRequestServiceImpl implements FriendRequestService {
         }
     }
 
+    /**
+     * Function: acceptRequest
+     * Purpose: Accepts a pending friend request.
+     * Parameters: int requestId - ID of the friend request to be accepted.
+     * Returns: FriendRequest - The updated friend request.
+     */
     @Override
     public FriendRequest acceptRequest(int requestId) {
         FriendRequest friendRequest = friendRequestRepository.findById(requestId).orElseThrow(() -> new RuntimeException("Request not found"));
@@ -65,12 +85,24 @@ public class FriendRequestServiceImpl implements FriendRequestService {
         return friendRequestRepository.save(friendRequest);
     }
 
+    /**
+     * Function: getPendingRequests
+     * Purpose: Retrieves all pending friend requests for a user.
+     * Parameters: int userId - ID of the user.
+     * Returns: List<FriendRequest> - List of pending friend requests.
+     */
     @Override
     public List<FriendRequest> getPendingRequests(int userId) {
         User receiver = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
         return friendRequestRepository.findByReceiverAndAcceptedFalse(receiver);
     }
 
+    /**
+     * Function: getFriends
+     * Purpose: Retrieves all friends for a user.
+     * Parameters: int userId - ID of the user.
+     * Returns: List<User> - List of friends.
+     */
     @Override
     public List<User> getFriends(int userId) {
         User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
@@ -83,11 +115,25 @@ public class FriendRequestServiceImpl implements FriendRequestService {
         return friends;
     }
 
+    /**
+     * Function: existsBySenderAndReceiver
+     * Purpose: Checks if a friend request exists between two users.
+     * Parameters: User sender - The user sending the request.
+     *             User receiver - The user receiving the request.
+     * Returns: boolean - True if a friend request exists, otherwise false.
+     */
     public boolean existsBySenderAndReceiver(User sender, User receiver){
         List<FriendRequest> requestsIfExists = friendRequestRepository.findBySenderAndReceiver(sender, receiver);
         return !requestsIfExists.isEmpty();
     }
 
+    /**
+     * Function: statusBySenderAndReceiver
+     * Purpose: Checks the status of a friend request between two users.
+     * Parameters: User sender - The user sending the request.
+     *             User receiver - The user receiving the request.
+     * Returns: int - 0 if no friend request exists, -1 if friend request is pending, 1 if already friends.
+     */
     public int statusBySenderAndReceiver(User sender, User receiver) {
         List<FriendRequest> requestsIfExists = friendRequestRepository.findBySenderAndReceiver(sender, receiver);
         if (requestsIfExists.isEmpty()) {
@@ -99,6 +145,13 @@ public class FriendRequestServiceImpl implements FriendRequestService {
         }
     }
 
+    /**
+     * Function: deleteFriend
+     * Purpose: Deletes a friend from a user's friend list.
+     * Parameters: int userId - ID of the user.
+     *             int friendId - ID of the friend to be deleted.
+     * Returns: void
+     */
     @Override
     public void deleteFriend(int userId, int friendId) {
         User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));

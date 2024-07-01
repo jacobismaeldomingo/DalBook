@@ -18,6 +18,12 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserRepository userRepository;
 
+    /**
+     * Function: createUser
+     * Purpose: Creates a new user.
+     * Parameters: User user - The user object containing user details.
+     * Returns: int - The ID of the newly created user.
+     */
     @Override
     public int createUser(User user) {
         if (user == null) {
@@ -29,10 +35,24 @@ public class UserServiceImpl implements UserService {
         return user.getId();
     }
 
+    /**
+     * Function: findUserByEmail
+     * Purpose: Finds a user by their email.
+     * Parameters: String email - The email of the user.
+     * Returns: Optional<User> - The user object, if found.
+     */
+    @Override
     public Optional<User> findUserByEmail(String email) {
         return userRepository.findUserByEmail(email);
     }
 
+    /**
+     * Function: login
+     * Purpose: Logs a user in by checking their email and password.
+     * Parameters: String email - The user's email.
+     *             String password - The user's password.
+     * Returns: int - The ID of the logged-in user.
+     */
     @Override
     public int login(String email, String password) {
         Optional<User> userOptional = userRepository.findUserByEmail(email);
@@ -50,10 +70,13 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-
-    //Don't touch my code! it's working fine
-
-
+    /**
+     * Function: updatePassword
+     * Purpose: Updates the password of a user.
+     * Parameters: String email - The email of the user.
+     *             String newPassword - The new password.
+     * Returns: void
+     */
     @Override
     public void updatePassword(String email, String newPassword) {
         Optional<User> userOptional = userRepository.findUserByEmail(email);
@@ -67,6 +90,13 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * Function: updateStatus
+     * Purpose: Updates the status of a user.
+     * Parameters: String email - The email of the user.
+     *             String status - The new status.
+     * Returns: void
+     */
     @Override
     public void updateStatus(String email, String status) {
         Optional<User> userOptional = userRepository.findUserByEmail(email);
@@ -81,6 +111,17 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * Function: updateUserProfile
+     * Purpose: Updates the profile information of a user.
+     * Parameters: String firstName - The user's first name.
+     *             String lastName - The user's last name.
+     *             String email - The user's email.
+     *             String bio - The user's bio.
+     *             User.Status status - The user's status.
+     *             MultipartFile profilePicture - The user's profile picture.
+     * Returns: void
+     */
     @Override
     public void updateUserProfile(String firstName, String lastName, String email, String bio, User.Status status, MultipartFile profilePicture) {
         Optional<User> userOptional = userRepository.findUserByEmail(email);
