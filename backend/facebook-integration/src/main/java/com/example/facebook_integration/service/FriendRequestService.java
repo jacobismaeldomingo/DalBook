@@ -15,4 +15,5 @@ public interface FriendRequestService {
     List<FriendRequest> getPendingRequests(int userId);
 
     List<User> getFriends(int userId);
+    void deleteFriend(int userId, int friendId);
 }

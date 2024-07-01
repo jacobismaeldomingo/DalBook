@@ -22,6 +22,17 @@ const FriendsList = () => {
         });
     }
   }, []);
+  const handleDelete = (friendId) => {
+    friendService
+      .deleteFriend(userId, friendId)
+      .then(() => {
+        setFriends((prevFriends) => prevFriends.filter((friend) => friend.id !== friendId));
+      })
+      .catch((error) => {
+        console.error("Error deleting friend:", error);
+        alert("An error occurred. Please try again!");
+      });
+  };
 
   return (
     <div>
@@ -31,6 +42,12 @@ const FriendsList = () => {
         {friends.map((friend) => (
           <li key={friend.id} className="name">
             {friend.firstName + " " + friend.lastName}
+            <button
+              className="delete-button"
+              onClick={() => handleDelete(friend.id)}
+            >
+              Delete
+            </button>
           </li>
         ))}
       </ul>
