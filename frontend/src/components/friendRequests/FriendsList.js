@@ -22,11 +22,14 @@ const FriendsList = () => {
         });
     }
   }, []);
+
   const handleDelete = (friendId) => {
     friendService
       .deleteFriend(userId, friendId)
       .then(() => {
-        setFriends((prevFriends) => prevFriends.filter((friend) => friend.id !== friendId));
+        setFriends((prevFriends) =>
+          prevFriends.filter((friend) => friend.id !== friendId)
+        );
       })
       .catch((error) => {
         console.error("Error deleting friend:", error);
@@ -36,14 +39,18 @@ const FriendsList = () => {
 
   return (
     <div>
-      <h2 style={{ padding: "10px 10px" }}>Your Friends</h2>
-      <h4 style={{ padding: "10px 10px" }}>Current User ID: {userId} </h4>
+      <h2 style={{ padding: "1.5rem", paddingBottom: "0" }}>Your Friends</h2>
+      <h4 style={{ padding: "1.5rem", paddingBottom: "1rem" }}>
+        Current User ID: {userId}{" "}
+      </h4>
       <ul className="friends-list">
         {friends.map((friend) => (
           <li key={friend.id} className="name">
-            {friend.firstName + " " + friend.lastName}
+            <div className="request-name">
+              {friend.firstName + " " + friend.lastName}
+            </div>
             <button
-              className="delete-button"
+              className="btn delete-button"
               onClick={() => handleDelete(friend.id)}
             >
               Delete
@@ -51,19 +58,19 @@ const FriendsList = () => {
           </li>
         ))}
       </ul>
-      <div className="links">
-        <Link to="/home" className="btn btn-success text-decoration-none">
+      <div className="friends-links">
+        <Link to="/home" className="btn btn-primary text-decoration-none">
           Homepage
         </Link>
         <Link
           to="/friendRequest"
-          className="btn btn-success text-decoration-none"
+          className="btn btn-primary text-decoration-none"
         >
           Add Friends
         </Link>
         <Link
           to="/friendRequestList"
-          className="btn btn-success text-decoration-none"
+          className="btn btn-primary text-decoration-none"
         >
           Friend Request List
         </Link>

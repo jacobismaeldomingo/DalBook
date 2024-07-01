@@ -4,7 +4,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { validateEmail, validatePassword } from "./SignupValidation";
 import axios from "axios";
 
-
 const Signup = () => {
   const [firstName, setFname] = useState("");
   const [lastName, setLname] = useState("");
@@ -15,7 +14,6 @@ const Signup = () => {
   const [errors, setErrors] = useState({});
   const location = useLocation();
   const navigate = useNavigate();
-
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -72,8 +70,8 @@ const Signup = () => {
         localStorage.setItem("isLoggedIn", "true");
         localStorage.setItem("userId", userId);
         
-        // Redirect to the user profile page
-        navigate("/profile");
+        // Redirect to the home page
+        navigate("/home");
       }
     } catch (error) {
       if (error.response && error.response.status === 500) {

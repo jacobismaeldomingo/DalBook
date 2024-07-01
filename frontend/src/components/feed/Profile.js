@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Profile.css";
 import { Link } from "react-router-dom";
+import Header from "../common/Header";
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -25,36 +26,39 @@ const Profile = () => {
   }
 
   return (
-    <div className="user-profile">
-      <img
-        src={user.profilePicture || "/images/dalhousie-logo.png"}
-        alt="Profile"
-        className="profile-picture"
-      />
-      <div className="user-info">
-        <h1>
-          {user.firstName} {user.lastName}
-        </h1>
-        <p>
-          <strong>Email:</strong> {user.email}
-        </p>
-        <p>
-          <strong>Birthday:</strong> {user.dateOfBirth}
-        </p>
-        <p>
-          <strong>Bio:</strong> {user.bio}
-        </p>
-        <p>
-          <strong>Status:</strong> {user.status}
-        </p>
-      </div>
-      <div className="user-buttons">
-        <Link to="/home" className="btn btn-success text-decoration-none">
-          Homepage
-        </Link>
-        <Link to="/editProfile" className="btn btn-default text-decoration-none">
-          Edit Profile
-        </Link>
+    <div>
+      <Header />
+      <div className="user-profile">
+        <img
+          src={user.profilePicture || "/images/dalhousie-logo.png"}
+          alt="Profile"
+          className="profile-picture"
+        />
+        <div className="user-info">
+          <h1>
+            {user.firstName} {user.lastName}
+          </h1>
+          <p>
+            <strong>Email:</strong> {user.email}
+          </p>
+          <p>
+            <strong>Birthday:</strong> {user.dateOfBirth}
+          </p>
+          <p>
+            <strong>Bio:</strong> {user.bio}
+          </p>
+          <p>
+            <strong>Status:</strong> {user.status}
+          </p>
+        </div>
+        <div className="user-buttons">
+          <Link
+            to="/editProfile"
+            className="btn btn-default text-decoration-none"
+          >
+            Edit Profile
+          </Link>
+        </div>
       </div>
     </div>
   );

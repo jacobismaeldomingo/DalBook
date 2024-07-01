@@ -17,7 +17,6 @@ import java.util.List;
 public class FriendRequestServiceImpl implements FriendRequestService {
     private static final Logger logger = Logger.getLogger(UserController.class.getName());
 
-
     @Autowired
     private FriendRequestRepository friendRequestRepository;
 
@@ -32,7 +31,6 @@ public class FriendRequestServiceImpl implements FriendRequestService {
         FriendRequest friendRequest = new FriendRequest(sender, receiver, false);
         return friendRequestRepository.save(friendRequest);
     }
-
 
     @Override
     public FriendRequest sendRequestByEmail(int senderId, String receiverEmail) {
@@ -89,6 +87,18 @@ public class FriendRequestServiceImpl implements FriendRequestService {
         List<FriendRequest> requestsIfExists = friendRequestRepository.findBySenderAndReceiver(sender, receiver);
         return !requestsIfExists.isEmpty();
     }
+
+    public int statusBySenderAndReceiver(User sender, User receiver) {
+        List<FriendRequest> requestsIfExists = friendRequestRepository.findBySenderAndReceiver(sender, receiver);
+        if (requestsIfExists.isEmpty()) {
+            return 0; // No friend request exists
+        } else if (!requestsIfExists.getFirst().isAccepted()) {
+            return -1; // Friend request already sent but not accepted
+        } else {
+            return 1; // Already friends
+        }
+    }
+
     @Override
     public void deleteFriend(int userId, int friendId) {
         User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));

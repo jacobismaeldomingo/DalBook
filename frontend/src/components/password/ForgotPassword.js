@@ -40,7 +40,7 @@ export default function SecurityQuestion() {
       if (response.ok) {
         const data = await response.json();
         setSecurityQuestion(data.securityAnswer);
-        console.log("User information successfull:");
+        console.log("User information retrieved successfull!");
       } else {
         console.error("Failed to fetch user from backend");
         setError("Error! Email does not exist!");
@@ -53,13 +53,25 @@ export default function SecurityQuestion() {
 
   const handleSecurityQuestion = (e) => {
     e.preventDefault();
+    let validationErrors = {};
+    setError("");
+
     console.log("Answering security question...");
     if (securityQuestion === securityAnswer) {
       console.log("Security answer is correct");
       navigate("/resetPassword"); // Redirect to Change Password Page
+    } else if (!securityAnswer) {
+      validationErrors.securityAnswer =
+        "Please enter your answer for the security question.";
     } else {
       console.log("Security answer is incorrect");
-      alert("Incorrect answer, please try again.");
+      validationErrors.securityAnswer =
+        "Incorrect answer. Please try again.";
+    }
+    
+    if (Object.keys(validationErrors).length > 0) {
+      setError(validationErrors);
+      return;
     }
   };
 
@@ -80,7 +92,11 @@ export default function SecurityQuestion() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          {error.email && <p className="text-danger" style={{paddingBottom: "1rem"}}>{error.email}</p>}
+          {error.email && (
+            <p className="text-danger" style={{ paddingBottom: "1rem" }}>
+              {error.email}
+            </p>
+          )}
           <button type="submit" className="button">
             Submit
           </button>
@@ -105,6 +121,11 @@ export default function SecurityQuestion() {
               value={securityAnswer}
               onChange={(e) => setSecurityAnswer(e.target.value)}
             />
+            {error.securityAnswer && (
+              <p className="text-danger" style={{ paddingBottom: "1rem" }}>
+                {error.securityAnswer}
+              </p>
+            )}
             <button type="submit" className="button">
               Submit
             </button>

@@ -17,33 +17,33 @@ const FriendRequest = () => {
     setReceiverEmail(e.target.value);
     setMessage(""); // Clear message when user starts typing again
   };
-  const handleSendRequest = async () => {
-    if(!receiverEmail){
-      setMessage("Please enter an email before proceeding")
-    }
-  try {
-    const result = await friendService.sendFriendRequest(userId, receiverEmail);
-    if (Object.keys(result).length > 0) {
-      alert("Friend Request sent successfully");
-      console.log('Friend request sent:', result);
-    }
-  } catch (error) {
-    console.error('Error in sending request:', error);
-  }
-};
 
-const ChildComponent = ({ message }) => {
-  setMessage(message);
-};
+  const handleSendRequest = async () => {
+    if (!receiverEmail) {
+      setMessage("Please enter an email before proceeding");
+      return;
+    }
+    try {
+      const result = await friendService.sendFriendRequest(
+        userId,
+        receiverEmail
+      );
+      if (Object.keys(result).length > 0) {
+        alert("Friend Request sent successfully");
+        console.log("Friend request sent:", result);
+      }
+    } catch (error) {
+      console.error("Error in sending request:", error);
+    }
+  };
 
   return (
     <div>
-      <h2 style={{ padding: "10px 10px" }}>Add Friends</h2>
-      <h4 style={{ padding: "10px 10px" }}>Current User ID: {userId} </h4>
-      <div>
+      <h2 style={{ padding: "1.5rem", paddingBottom: "0" }}>Add Friends</h2>
+      <h4 style={{ padding: "1.5rem" }}>Current User ID: {userId} </h4>
+      <div className="friends-input">
         <input
           type="text-id"
-          className="friends-input"
           value={receiverEmail}
           onChange={handleChangeEmail}
           // onChange={(e) => setReceiverEmail(e.target.value)}
@@ -52,21 +52,21 @@ const ChildComponent = ({ message }) => {
         <button onClick={handleSendRequest} className="btn send-button">
           Send Friend Request
         </button>
-        {message && <p className="message">{message}</p>}
+        {message && <p className="email-error-message">{message}</p>}
       </div>
-      <div className="links">
-        <Link to="/home" className="btn btn-success text-decoration-none">
+      <div className="friends-links">
+        <Link to="/home" className="btn btn-primary text-decoration-none">
           Homepage
         </Link>
         <Link
           to="/friendRequestList"
-          className="btn btn-success text-decoration-none"
+          className="btn btn-primary text-decoration-none"
         >
           Friend Request List
         </Link>
         <Link
           to="/friendsList"
-          className="btn btn-success text-decoration-none"
+          className="btn btn-primary text-decoration-none"
         >
           Friends List
         </Link>

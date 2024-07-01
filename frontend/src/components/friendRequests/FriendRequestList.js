@@ -36,8 +36,8 @@ const FriendRequestList = () => {
 
   return (
     <div>
-      <h2 style={{ padding: "10px 10px" }}>Pending Friend Requests</h2>
-      <h4 style={{ padding: "10px 10px" }}>Current User ID: {userId} </h4>
+      <h2 style={{ padding: "1.5rem", paddingBottom: "0" }}>Pending Friend Requests</h2>
+      <h4 style={{ padding: "1.5rem", paddingBottom: "1rem" }}>Current User ID: {userId} </h4>
       <ul>
         {requests.map((request) => (
           <li key={request.id}>
@@ -46,26 +46,26 @@ const FriendRequestList = () => {
             </div>
             <button
               onClick={() => handleAcceptRequest(request.id)}
-              className="btn send-button"
+              className="btn btn-success"
             >
               Accept Request
             </button>
           </li>
         ))}
       </ul>
-      <div className="links">
-        <Link to="/home" className="btn btn-success text-decoration-none">
+      <div className="friends-links">
+        <Link to="/home" className="btn btn-primary text-decoration-none">
           Homepage
         </Link>
         <Link
           to="/friendRequest"
-          className="btn btn-success text-decoration-none"
+          className="btn btn-primary text-decoration-none"
         >
           Friend Request
         </Link>
         <Link
           to="/friendsList"
-          className="btn btn-success text-decoration-none"
+          className="btn btn-primary text-decoration-none"
         >
           Friends List
         </Link>

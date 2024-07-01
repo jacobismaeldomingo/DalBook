@@ -5,7 +5,7 @@
   justify-content: space-between;
 }
 
-/* Right side - Profile */
+/* Left side - Profile */
 .left-side {
   height: 50rem;
   width: 21%;
@@ -63,8 +63,13 @@
   padding: 1rem;
   width: 13%;
 }
+.user-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-/* Left side - Contacts */
+/* Right side - Contacts */
 .right-side {
   height: 50rem;
   width: 21%;
@@ -110,7 +115,7 @@
 }
 .addStory {
   display: flex;
-  width: 200%;
+  width: 100%;
   margin: 18px 0;
   color: white;
   font-size: 1.5rem;

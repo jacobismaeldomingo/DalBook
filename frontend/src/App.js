@@ -5,7 +5,7 @@ import ForgotPassword from "./components/password/ForgotPassword";
 import ResetPassword from "./components/password/ResetPassword";
 import Login from "./components/authentication/Login";
 import Signup from "./components/authentication/Signup";
-import Header from "./components/common/Header";
+import Home from "./components/common/Home";
 import Error from "./components/common/Error";
 import EditProfile from "./components/feed/EditProfile";
 import Profile from "./components/feed/Profile";
@@ -18,19 +18,22 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* Common paths user can access before login/signup */}
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/forgotPassword" element={<ForgotPassword />} />
+        <Route path="/resetPassword" element={<ResetPassword />} />
+
+        {/* Restricted paths that user can access after login/signup */}
         <Route
           path="/home"
           element={
             <PrivateRoute>
-              <Header />
+              <Home />
             </PrivateRoute>
           }
         />
-        <Route path="/forgotPassword" element={<ForgotPassword />} />
-        <Route path="/resetPassword" element={<ResetPassword />} />
         <Route
           path="/profile"
           element={

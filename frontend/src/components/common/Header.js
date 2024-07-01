@@ -10,20 +10,20 @@ import {
   IconMenu2,
   IconMessages,
   IconBell,
-  IconLogout
+  IconLogout,
 } from "@tabler/icons-react";
-import Feed from "../feed/Feed";
 
 function Header() {
   const navigate = useNavigate();
 
   const homePage = () => {
     navigate("/home");
-  }
+  };
 
   const handleLogout = () => {
     localStorage.removeItem("isLoggedIn");
     localStorage.removeItem("userId");
+    localStorage.removeItem("userEmail");
     navigate("/login");
   };
 
@@ -54,7 +54,11 @@ function Header() {
           </div>
         </div>
         <div className="navigation-header">
-          <div className="icon" onClick={homePage} style={{ cursor: 'pointer' }}>
+          <div
+            className="icon"
+            onClick={homePage}
+            style={{ cursor: "pointer" }}
+          >
             <IconHome stroke={2} size={30} color="#1877F2" />
           </div>
           <div className="icon">
@@ -74,13 +78,15 @@ function Header() {
           <div className="notifications" onClick={handleFriendRequestsList}>
             <IconBell stroke={2} size={30} color="#1877F2" />
           </div>
-          <div className="profile-header" onClick={handleLogout} style={{ cursor: 'pointer' }}>
-            {/* <IconUserCircle stroke={2} size={30} color="#1877F2" /> */}
+          <div
+            className="profile-header"
+            onClick={handleLogout}
+            style={{ cursor: "pointer" }}
+          >
             <IconLogout stroke={2} size={30} color="#1877F2" />
           </div>
         </div>
       </div>
-      <Feed />
     </div>
   );
 }
