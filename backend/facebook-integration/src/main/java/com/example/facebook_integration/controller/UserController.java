@@ -5,9 +5,9 @@ import com.example.facebook_integration.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.bind.annotation.*;
 import java.util.logging.Logger;
-import java.nio.file.attribute.UserPrincipal;
 import java.util.Map;
 import java.util.Optional;
 
@@ -30,8 +30,9 @@ public class UserController {
     }
 
     @GetMapping("/get/{email}")
-    public Optional<User> getUserByEmail(@PathVariable String email) {
-        return userService.findUserByEmail(email);
+    public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
+        Optional<User> userOptional = userService.findUserByEmail(email);
+        return userOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body(null));
     }
 
     @PostMapping("/login")
@@ -90,5 +91,17 @@ public class UserController {
         String status = body.get("status");
         userService.updateStatus(email, status);
     }
+
+    @PutMapping("/profile/update")
+    public ResponseEntity<String> updateUserProfile(@RequestParam("firstName") String firstName,
+                                                    @RequestParam("lastName") String lastName,
+                                                    @RequestParam("email") String email,
+                                                    @RequestParam("bio") String bio,
+                                                    @RequestParam("status") User.Status status,
+                                                    @RequestParam("profilePicture") MultipartFile profilePicture) {
+        userService.updateUserProfile(firstName, lastName, email, bio, status, profilePicture);
+        return ResponseEntity.ok().body("Profile updated successfully");
+    }
+
 }
 

@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./Feed.css";
 import {
   IconUsers,
@@ -15,20 +17,76 @@ import {
   IconMessageCircle,
   IconShare3,
 } from "@tabler/icons-react";
+import friendService from "../../services/FriendService";
 
 function Feed() {
+  const [friends, setFriends] = useState([]);
+  const navigate = useNavigate();
+  const [userId, setUserId] = useState(null);
+  const [user, setUser] = useState();
+
+  const userProfile = () => {
+    navigate("/profile");
+  };
+
+  const friendsPage = () => {
+    navigate("/friendsList");
+  };
+
+  useEffect(() => {
+    const storedUserId = localStorage.getItem("userId");
+    const storedUserEmail = localStorage.getItem("userEmail");
+    if (storedUserId && storedUserEmail) {
+      setUserId(storedUserId);
+
+      // Get Current User Information
+      const fetchUser = async () => {
+        try {
+          const response = await axios.get(
+            `http://localhost:8085/api/user/get/${storedUserEmail}`
+          );
+          setUser(response.data);
+          console.log("User information retrieved successfully");
+        } catch (error) {
+          console.log("Error fetching user", error);
+        }
+      };
+      fetchUser();
+
+      // Get Current User Friends
+      friendService
+        .getFriends(storedUserId)
+        .then((response) => {
+          setFriends(response.data);
+          console.log("Success fetching friends of user id:", userId);
+        })
+        .catch((error) => {
+          console.error("Error fetching friends:", error);
+          alert("An error occurred. Please try again!");
+        });
+    }
+  }, []);
+
   return (
     <div className="main">
       <div className="left-side">
-        <div className="profile">
+        <div
+          className="profile"
+          onClick={userProfile}
+          style={{ cursor: "pointer" }}
+        >
           <img
             src="/images/avatar-1.jpeg"
             alt="profile-picture"
             style={{ padding: "1rem" }}
           />
-          John Doe
+          {user ? user.firstName + " " + user.lastName : "Loading..."}
         </div>
-        <div className="panel">
+        <div
+          className="panel"
+          onClick={friendsPage}
+          style={{ cursor: "pointer" }}
+        >
           <IconUsers stroke={2} />
           <div>Friends</div>
         </div>
@@ -140,7 +198,7 @@ function Feed() {
           </div>
           <div className="posted">
             <div className="post">
-              <div className="profile-picture">
+              <div className="feed-profile-picture">
                 <img
                   src="/images/avatar-1.jpeg"
                   alt="profile-picture"
@@ -179,7 +237,7 @@ function Feed() {
           </div>
           <div className="posted">
             <div className="post">
-              <div className="profile-picture">
+              <div className="feed-profile-picture">
                 <img
                   src="/images/avatar-1.jpeg"
                   alt="profile-picture"
@@ -220,7 +278,7 @@ function Feed() {
       </div>
       <div className="right-side">
         <div className="contact">
-          <div className="contacts">Contacts</div>
+          <div className="contacts">Friends</div>
           <div className="chat-icon">
             <div className="icons">
               <IconUser stroke={2} />
@@ -234,38 +292,16 @@ function Feed() {
           </div>
         </div>
         <div className="concise">
-          <div className="profiles">
-            <img
-              src="/images/avatar-2.jpeg"
-              alt="profile-picture"
-              style={{ padding: "1rem" }}
-            />
-            John Doe
-          </div>
-          <div className="profiles">
-            <img
-              src="/images/avatar-3.jpeg"
-              alt="profile-picture"
-              style={{ padding: "1rem" }}
-            />
-            John Doe
-          </div>
-          <div className="profiles">
-            <img
-              src="/images/avatar-4.jpeg"
-              alt="profile-picture"
-              style={{ padding: "1rem" }}
-            />
-            John Doe
-          </div>
-          <div className="profiles">
-            <img
-              src="/images/avatar-5.jpeg"
-              alt="profile-picture"
-              style={{ padding: "1rem" }}
-            />
-            John Doe
-          </div>
+          {friends.map((friend) => (
+            <div key={friend.id} className="profiles name">
+              <img
+                src="/images/avatar-2.jpeg"
+                alt="profile-picture"
+                style={{ padding: "1rem" }}
+              />
+              {friend.firstName + " " + friend.lastName}
+            </div>
+          ))}
         </div>
       </div>
     </div>

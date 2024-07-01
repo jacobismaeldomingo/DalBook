@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../css/Login.css";
+import "./Login.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { validateEmail, validatePassword } from "./SignupValidation";
 
@@ -48,6 +48,7 @@ function Login() {
         // Store login flag in local storage
         localStorage.setItem("isLoggedIn", "true");
         localStorage.setItem("userId", userId);
+        localStorage.setItem("userEmail", email);
 
         // Redirect to the user home page
         navigate("/home");

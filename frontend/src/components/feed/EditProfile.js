@@ -1,31 +1,32 @@
-import React, { useState, useEffect } from 'react';
-import './UserProfile.css';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import "./EditProfile.css";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 const UserProfile = () => {
   const [user, setUser] = useState({
-    fullName: '',
-    email: '',
-    bio: '',
+    firstName: "",
+    lastName: "",
+    bio: "",
     profilePicture: null,
-    currentPassword: '',
-    status: 'Available',
+    // currentPassword: "",
+    status: "Available",
   });
   const [errors, setErrors] = useState({});
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
   const [previewProfilePicture, setPreviewProfilePicture] = useState(null);
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const token = localStorage.getItem('token');
-        const response = await axios.get('http://localhost:8085/api/user/profile', {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const storedUserEmail = localStorage.getItem("userEmail");
+        const response = await axios.get(
+          `http://localhost:8085/api/user/get/${storedUserEmail}`
+        );
         setUser(response.data);
         setPreviewProfilePicture(response.data.profilePicture);
       } catch (error) {
-        console.error('Error fetching user data:', error);
+        console.error("Error fetching user data:", error);
       }
     };
 
@@ -34,6 +35,7 @@ const UserProfile = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setErrors(""); // Reset error message
 
     let validationErrors = {};
     if (!user.bio) {
@@ -48,28 +50,29 @@ const UserProfile = () => {
       setErrors(validationErrors);
     } else {
       const formData = new FormData();
-      formData.append('fullName', user.fullName);
-      formData.append('email', user.email);
-      formData.append('bio', user.bio);
-      formData.append('status', user.status);
+      formData.append("firstName", user.firstName);
+      formData.append("lastName", user.lastName);
+      formData.append("bio", user.bio);
+      formData.append("status", user.status);
       if (user.profilePicture) {
-        formData.append('profilePicture', user.profilePicture);
+        formData.append("profilePicture", user.profilePicture);
       }
 
       try {
-        const token = localStorage.getItem('token');
-        const response = await axios.post('http://localhost:8085/api/user/profile/update', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        console.log(response.data);
-        setMessage('Profile updated successfully');
+        await axios.put(
+          `http://localhost:8085/api/user/profile/update?email=${user.email}`,
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+        setMessage("Profile updated successfully!");
         setErrors({});
       } catch (error) {
         console.error(error);
-        setMessage('An error occurred. Please try again!');
+        setMessage("An error occurred. Please try again!");
       }
     }
   };
@@ -82,7 +85,7 @@ const UserProfile = () => {
   const handleFileChange = (e) => {
     const { name, files } = e.target;
     setUser({ ...user, [name]: files[0] });
-    if (name === 'profilePicture') {
+    if (name === "profilePicture") {
       setPreviewProfilePicture(URL.createObjectURL(files[0]));
     }
   };
@@ -91,29 +94,29 @@ const UserProfile = () => {
     <div className="d-flex vh-100 justify-content-center align-items-center bg-light">
       <div className="p-3 bg-white w-50">
         <h1>Edit Profile</h1>
-        {message && <p className="text-info">{message}</p>}
-        <form onSubmit={handleSubmit}>
+        {message && <h3 className="text-info">{message}</h3>}
+        <form onSubmit={handleSubmit} className="edit-form">
           <div className="form-group">
-            <label htmlFor="fullName">Full Name:</label>
+            <label htmlFor="firstName">First Name:</label>
             <input
               type="text"
-              id="fullName"
-              name="fullName"
-              placeholder="Enter your full name"
+              id="firstName"
+              name="firstName"
+              placeholder="Enter your first name"
               className="form-control"
-              value={user.fullName}
+              value={user.firstName}
               onChange={handleInputChange}
             />
           </div>
           <div className="form-group">
-            <label htmlFor="email">Email:</label>
+            <label htmlFor="lastName">Last Name:</label>
             <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Enter your email"
+              type="text"
+              id="lastName"
+              name="lastName"
+              placeholder="Enter your last name"
               className="form-control"
-              value={user.email}
+              value={user.lastName}
               onChange={handleInputChange}
             />
           </div>
@@ -143,10 +146,12 @@ const UserProfile = () => {
                 src={previewProfilePicture}
                 alt="Profile Preview"
                 className="img-thumbnail mt-2"
-                style={{ width: '150px', height: '150px' }}
+                style={{ width: "150px", height: "150px" }}
               />
             )}
-            {errors.profilePicture && <p className="text-danger">{errors.profilePicture}</p>}
+            {errors.profilePicture && (
+              <p className="text-danger">{errors.profilePicture}</p>
+            )}
           </div>
           <div className="form-group">
             <label htmlFor="status">Status:</label>
@@ -159,24 +164,23 @@ const UserProfile = () => {
             >
               <option value="Available">Available</option>
               <option value="Busy">Busy</option>
-              <option value="Do not disturb">Do not disturb</option>
+              <option value="Away">Away</option>
               <option value="Offline">Offline</option>
             </select>
           </div>
-          <div className="form-group">
-            <label htmlFor="currentPassword">Current Password:</label>
-            <input
-              type="password"
-              id="currentPassword"
-              name="currentPassword"
-              placeholder="Enter your current password"
-              className="form-control"
-              value={user.currentPassword}
-              onChange={handleInputChange}
-            />
-          </div>
-          <button type="button" className="btn btn-secondary">Change Password</button>
-          <button type="submit" className="btn btn-primary ml-2">Save Changes</button>
+          <button
+            type="submit"
+            className="btn btn-primary ml-2"
+            style={{ margin: "1rem 0" }}
+          >
+            Save Changes
+          </button>
+          <Link
+            to="/profile"
+            className="btn btn-default text-decoration-none"
+          >
+            Back to Profile
+          </Link>
         </form>
       </div>
     </div>

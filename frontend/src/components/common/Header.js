@@ -10,13 +10,16 @@ import {
   IconMenu2,
   IconMessages,
   IconBell,
-  IconUserCircle,
+  IconLogout
 } from "@tabler/icons-react";
 import Feed from "../feed/Feed";
 
-
 function Header() {
   const navigate = useNavigate();
+
+  const homePage = () => {
+    navigate("/home");
+  }
 
   const handleLogout = () => {
     localStorage.removeItem("isLoggedIn");
@@ -38,7 +41,7 @@ function Header() {
         <div className="search-header">
           <div className="logo">
             <img
-              src="/images/logo.png"
+              src="/images/dalbook_logo.png"
               alt="logo"
               style={{
                 height: "40px",
@@ -51,8 +54,7 @@ function Header() {
           </div>
         </div>
         <div className="navigation-header">
-          <div className="icon">
-            {/* <IconHomeFilled size={30} color="#1877F2"/> */}
+          <div className="icon" onClick={homePage} style={{ cursor: 'pointer' }}>
             <IconHome stroke={2} size={30} color="#1877F2" />
           </div>
           <div className="icon">
@@ -72,8 +74,9 @@ function Header() {
           <div className="notifications" onClick={handleFriendRequestsList}>
             <IconBell stroke={2} size={30} color="#1877F2" />
           </div>
-          <div className="profile" onClick={handleLogout} style={{ cursor: 'pointer' }}>
-            <IconUserCircle stroke={2} size={30} color="#1877F2" />
+          <div className="profile-header" onClick={handleLogout} style={{ cursor: 'pointer' }}>
+            {/* <IconUserCircle stroke={2} size={30} color="#1877F2" /> */}
+            <IconLogout stroke={2} size={30} color="#1877F2" />
           </div>
         </div>
       </div>

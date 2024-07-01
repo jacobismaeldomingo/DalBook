@@ -3,6 +3,7 @@
 html {
   font-size: 100%;
   box-sizing: border-box;
+  background-color: #f0f2f5;
 }
 * {
   margin: 0%;
@@ -81,7 +82,7 @@ input::placeholder {
   height: 2.7rem;
   background-color: #f0f2f5;
 }
-.profile {
+.profile-header {
   display: flex;
   align-items: center;
   cursor: pointer;

@@ -55,6 +55,9 @@ const ChildComponent = ({ message }) => {
         {message && <p className="message">{message}</p>}
       </div>
       <div className="links">
+        <Link to="/home" className="btn btn-success text-decoration-none">
+          Homepage
+        </Link>
         <Link
           to="/friendRequestList"
           className="btn btn-success text-decoration-none"

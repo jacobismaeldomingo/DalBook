@@ -54,6 +54,9 @@ const FriendRequestList = () => {
         ))}
       </ul>
       <div className="links">
+        <Link to="/home" className="btn btn-success text-decoration-none">
+          Homepage
+        </Link>
         <Link
           to="/friendRequest"
           className="btn btn-success text-decoration-none"

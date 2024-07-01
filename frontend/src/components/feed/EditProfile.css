@@ -1,0 +1,22 @@
+.edit-form {
+    padding-top: 1rem;
+}
+
+.text-info {
+  color: #4bb543;
+  padding: 1rem 0;
+}
+
+.btn-primary {
+  background-color: #0d6efd;
+}
+
+.btn-primary:hover {
+  background-color: #0d6efd;
+  transform: translateY(-2px);
+}
+
+.btn-primary:active {
+  background-color: #0d6efd;
+  transform: translateY(0);
+}
