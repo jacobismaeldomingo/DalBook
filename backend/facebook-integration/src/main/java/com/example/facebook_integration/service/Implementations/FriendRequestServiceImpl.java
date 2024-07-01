@@ -38,7 +38,7 @@ public class FriendRequestServiceImpl implements FriendRequestService {
     public FriendRequest sendRequestByEmail(int senderId, String receiverEmail) {
 
         User sender = userRepository.findById(senderId).orElseThrow(() -> new RuntimeException("Sender not found"));
-        User receiver = userRepository.findUserByEmail(receiverEmail).orElseThrow(() -> new RuntimeException("Receiver not found with email: " + receiverEmail));
+        User receiver = userRepository.findUserByEmail(receiverEmail).orElseThrow(() -> new RuntimeException("No user found with email: " + receiverEmail));
 
         // Check if already a friend or a friend request already exists
         int exists = statusBySenderAndReceiver(sender, receiver);

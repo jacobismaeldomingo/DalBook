@@ -25,7 +25,7 @@ const sendFriendRequest = async (senderId, receiverEmail) => {
         alert(message);
       } 
       else {
-        alert('Backend failed error: '+ message);
+        alert(message);
       }
     } 
     else {
