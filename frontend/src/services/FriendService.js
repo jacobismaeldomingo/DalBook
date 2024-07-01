@@ -1,6 +1,4 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
-
 
 const API_URL = "http://localhost:8085/api/friends";
 
@@ -52,7 +50,6 @@ const deleteFriend = (userId, friendId) => {
     params: { userId, friendId }
   });
 };
-
 
 export default {
   sendFriendRequest,

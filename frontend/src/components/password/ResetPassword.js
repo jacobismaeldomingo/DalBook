@@ -81,7 +81,7 @@ export default function ResetPassword() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          {errors.email && <p className="text-danger">{errors.email}</p>}
+          {errors.email && <p className="text-danger"  style={{ paddingBottom: "1rem" }}>{errors.email}</p>}
           <input
             type="password"
             placeholder="New Password"
@@ -90,7 +90,7 @@ export default function ResetPassword() {
             onChange={(e) => setNewPassword(e.target.value)}
           />
           {errors.password && (
-            <ul className="text-danger">
+            <ul className="text-danger" style={{ paddingBottom: "1rem" }}>
               {errors.password.map((error, index) => (
                 <li key={index}>{error}</li>
               ))}

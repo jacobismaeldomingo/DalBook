@@ -16,6 +16,10 @@ import {
   IconThumbUp,
   IconMessageCircle,
   IconShare3,
+  IconCircleCheckFilled,
+  IconClockFilled,
+  IconSquareMinusFilled,
+  IconCircleXFilled,
 } from "@tabler/icons-react";
 import friendService from "../../services/FriendService";
 
@@ -67,6 +71,29 @@ function Feed() {
     }
   }, []);
 
+  const getStatusIcon = (status) => {
+    switch (status) {
+      case "Avaialble":
+        return (
+          <IconCircleCheckFilled color="green" style={{ paddingLeft: "5px" }} />
+        );
+      case "Away":
+        return (
+          <IconClockFilled color="orange" style={{ paddingLeft: "5px" }} />
+        );
+      case "Busy":
+        return (
+          <IconSquareMinusFilled color="red" style={{ paddingLeft: "5px" }} />
+        );
+      case "Offline":
+        return (
+          <IconCircleXFilled color="gray" style={{ paddingLeft: "5px" }} />
+        );
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className="main">
       <div className="left-side">
@@ -80,7 +107,14 @@ function Feed() {
             alt="profile-picture"
             style={{ padding: "1rem" }}
           />
-          {user ? user.firstName + " " + user.lastName : "Loading..."}
+          {user ? (
+            <div className="user-name">
+              {user.firstName + " " + user.lastName}
+              {getStatusIcon(user.status)}
+            </div>
+          ) : (
+            "Loading..."
+          )}
         </div>
         <div
           className="panel"

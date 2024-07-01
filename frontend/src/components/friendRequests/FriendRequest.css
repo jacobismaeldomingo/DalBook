@@ -19,22 +19,41 @@ input[type="text-id"] {
   text-align: center;
 }
 
+.friends-input {
+  padding-left: 1rem;
+}
+
 .send-button {
-  background-color: #1b75bb;
+  background-color: #28a745;
 }
 
 .send-button:hover {
-  background-color: #4297d8;
+  background-color: #28a745;
   transform: translateY(-2px);
 }
 
 .send-button:active {
-  background-color: #1b75bb;
+  background-color: #28a745;
+  transform: translateY(0);
+}
+
+.delete-button {
+  background-color: #dc3545;
+}
+
+.delete-button:hover {
+  background-color: #dc3545;
+  transform: translateY(-2px);
+}
+
+.delete-button:active {
+  background-color: #dc3545;
   transform: translateY(0);
 }
 
 .name {
   font-size: x-large;
+  padding-top: 0.5rem;
   padding-right: 1rem;
 }
 
@@ -44,7 +63,12 @@ input[type="text-id"] {
   padding-right: 1rem;
 }
 
-.links {
+.friends-links {
   padding-top: 30px;
-  padding-left: 5px;
+  padding-left: 1rem;
+}
+
+.email-error-message {
+  color: red;
+  padding: 1rem 0px 0px 1rem ;
 }
