@@ -27,6 +27,14 @@ function Header() {
     navigate("/login");
   };
 
+  const handleFriendRequests = () => {
+    navigate("/FriendRequest");
+  };
+
+  const handleFriendRequestsList = () => {
+    navigate("/FriendRequestList");
+  };
+
   return (
     <div className="homepage">
       <div className="header">
@@ -52,7 +60,7 @@ function Header() {
           <div className="icon">
             <IconBuildingStore stroke={2} size={30} color="#1877F2" />
           </div>
-          <div className="icon">
+          <div className="icon" onClick={handleFriendRequests}>
             <IconUsersGroup stroke={2} size={30} color="#1877F2" />
           </div>
         </div>
@@ -63,7 +71,7 @@ function Header() {
           <div className="messages">
             <IconMessages stroke={2} size={30} color="#1877F2" />
           </div>
-          <div className="notifications">
+          <div className="notifications" onClick={handleFriendRequestsList}>
             <IconBell stroke={2} size={30} color="#1877F2" />
           </div>
           <div className="profile-header" onClick={handleLogout} style={{ cursor: 'pointer' }}>
