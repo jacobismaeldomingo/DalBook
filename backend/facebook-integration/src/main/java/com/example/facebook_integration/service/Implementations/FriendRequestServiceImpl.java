@@ -1,17 +1,22 @@
 package com.example.facebook_integration.service.Implementations;
 
+import com.example.facebook_integration.controller.UserController;
 import com.example.facebook_integration.model.FriendRequest;
 import com.example.facebook_integration.repository.FriendRequestRepository;
 import com.example.facebook_integration.service.FriendRequestService;
 import com.example.facebook_integration.model.User;
 import com.example.facebook_integration.repository.UserRepository;
+import com.example.facebook_integration.exception.FriendRequestAlreadyExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.logging.Logger;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class FriendRequestServiceImpl implements FriendRequestService {
+    private static final Logger logger = Logger.getLogger(UserController.class.getName());
+
 
     @Autowired
     private FriendRequestRepository friendRequestRepository;
@@ -28,19 +33,31 @@ public class FriendRequestServiceImpl implements FriendRequestService {
         return friendRequestRepository.save(friendRequest);
     }
 
+
     @Override
     public FriendRequest sendRequestByEmail(int senderId, String receiverEmail) {
+
         User sender = userRepository.findById(senderId).orElseThrow(() -> new RuntimeException("Sender not found"));
-        User receiver = userRepository.findUserByEmail(receiverEmail).orElseThrow(() -> new RuntimeException("Receiver not found with email: "+ receiverEmail));
+        User receiver = userRepository.findUserByEmail(receiverEmail).orElseThrow(() -> new RuntimeException("No user found with email: " + receiverEmail));
 
-        // Check if a friend request already exists
-        boolean exists = existsBySenderAndReceiver(sender, receiver);
-        if (exists) {
-            throw new RuntimeException("Friend request already sent");
+        // Check if already a friend or a friend request already exists
+        int exists = statusBySenderAndReceiver(sender, receiver);
+        if (exists == 0) {
+            FriendRequest friendRequest = new FriendRequest(sender, receiver, false);
+            logger.info(sender.getEmail() + "sent friend req to " + receiverEmail);
+            return friendRequestRepository.save(friendRequest);
         }
-
-        FriendRequest friendRequest = new FriendRequest(sender, receiver, false);
-        return friendRequestRepository.save(friendRequest);
+        else if (exists == -1) {
+            logger.info(sender.getEmail() + "has already sent friend req to " + receiverEmail);
+            throw new FriendRequestAlreadyExistsException("Friend request already sent");
+        }
+        else if (exists == 1) {
+            logger.info(sender.getEmail() + "is already friend with  " + receiverEmail);
+            throw new FriendRequestAlreadyExistsException("Already friends");
+        }
+        else {
+            throw new FriendRequestAlreadyExistsException("Unknown server error check backend");
+        }
     }
 
     @Override
@@ -69,9 +86,6 @@ public class FriendRequestServiceImpl implements FriendRequestService {
     }
 
     public boolean existsBySenderAndReceiver(User sender, User receiver){
-        long senderID = sender.getId();
-        long receiverID = receiver.getId();
-
         List<FriendRequest> requestsIfExists = friendRequestRepository.findBySenderAndReceiver(sender, receiver);
         return !requestsIfExists.isEmpty();
     }

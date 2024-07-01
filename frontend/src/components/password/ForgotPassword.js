@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Forgot.css";
-import axios from "axios";
+import { validateEmail } from "../authentication/SignupValidation";
 
 export default function SecurityQuestion() {
   const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
   const [securityAnswer, setSecurityAnswer] = useState("");
   const [securityQuestion, setSecurityQuestion] = useState("");
   // const [backendBirthday, setBackendBirthday] = useState('');
@@ -12,12 +13,21 @@ export default function SecurityQuestion() {
 
   const handleEmailSubmit = async (e) => {
     e.preventDefault();
-    // console.log("Submitting email...", email);
+    let validationErrors = {};
+    setError("");
+
+    // Perform login action with email and password
+    if (!email || !validateEmail(email)) {
+      validationErrors.email =
+        "Please enter your email. Only @dal.ca addresses are accepted.";
+    }
+
+    if (Object.keys(validationErrors).length > 0) {
+      setError(validationErrors);
+      return;
+    }
 
     try {
-      // const response = await axios.get(
-      //   `http://localhost:8085/api/user/get/${email}`
-      // );
       const response = await fetch(
         `http://localhost:8085/api/user/get/${email}`,
         {
@@ -33,7 +43,7 @@ export default function SecurityQuestion() {
         console.log("User information successfull:");
       } else {
         console.error("Failed to fetch user from backend");
-        alert("Failed to fetch user from backend");
+        setError("Error! Email does not exist!");
       }
     } catch (error) {
       console.error("Error fetching user from backend:", error);
@@ -56,7 +66,7 @@ export default function SecurityQuestion() {
   return (
     <div className="container">
       <div className="paper">
-        <h2 className="subtitle">Enter Email</h2>
+        <h2 className="subtitle">Email</h2>
         <form
           className="form"
           onSubmit={handleEmailSubmit}
@@ -65,11 +75,12 @@ export default function SecurityQuestion() {
         >
           <input
             type="email"
-            placeholder="Enter Email"
+            placeholder="Enter your Email"
             className="input"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
+          {error.email && <p className="text-danger" style={{paddingBottom: "1rem"}}>{error.email}</p>}
           <button type="submit" className="button">
             Submit
           </button>
