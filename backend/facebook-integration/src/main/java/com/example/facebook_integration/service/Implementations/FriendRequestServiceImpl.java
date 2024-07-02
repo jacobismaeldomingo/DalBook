@@ -163,15 +163,4 @@ public class FriendRequestServiceImpl implements FriendRequestService {
         requestsAsSender.forEach(friendRequestRepository::delete);
         requestsAsReceiver.forEach(friendRequestRepository::delete);
     }
-
-    public int statusBySenderAndReceiver(User sender, User receiver){
-        List<FriendRequest> requestsIfExists = friendRequestRepository.findBySenderAndReceiver(sender, receiver);
-        if (requestsIfExists.isEmpty()) {
-            return 0; // No friend request exists
-        } else if (!requestsIfExists.getFirst().isAccepted()) {
-            return -1; // Friend request already sent but not accepted
-        } else {
-            return 1; // Already friends
-        }
-    }
 }
