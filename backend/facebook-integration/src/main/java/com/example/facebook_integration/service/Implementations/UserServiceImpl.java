@@ -79,8 +79,10 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public void updatePassword(String email, String newPassword) {
-        User user = userRepository.findUserByEmail(email);
-        if (user != null) {
+        Optional<User> userOptional = userRepository.findUserByEmail(email);
+
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
             user.setPassword(newPassword);
             userRepository.save(user);
         } else {
@@ -96,10 +98,10 @@ public class UserServiceImpl implements UserService {
      * Returns: void
      */
     @Override
-    public void updateStatus(String email, String status){
-        User user =userRepository.findUserByEmail(email);
+    public void updateStatus(String email, String status) {
+        Optional<User> userOptional = userRepository.findUserByEmail(email);
 
-        if(user!=null) {
+        userOptional.ifPresent(user -> {
             user.setStatus(User.Status.valueOf(status));
             userRepository.save(user);
         });

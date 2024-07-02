@@ -120,14 +120,9 @@ function Login() {
               SignUp
             </Link>
           </div>
-<<<<<<< HEAD
 
           <div className="forget-password">
             <Link to="/ForgotPassword">Forget password?</Link>
-=======
-          <div className="Forget-password-page">
-            <Link to='/ForgotPassword' >Forget password?</Link>
->>>>>>> 85dde0c4 (frontend follow friend, not done)
           </div>
           <p className="mt-3">You agree to our terms and policies</p>
         </form>
