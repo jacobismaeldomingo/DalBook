@@ -1,0 +1,74 @@
+input[type="text-id"] {
+  width: 20%;
+  padding: 10px;
+  margin-left: 10px;
+  font-size: 16px;
+  box-sizing: border-box; /* Ensures padding is included in the width */
+}
+
+.btn {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin: 0 5px;
+  text-align: center;
+}
+
+.friends-input {
+  padding-left: 1rem;
+}
+
+.send-button {
+  background-color: #28a745;
+}
+
+.send-button:hover {
+  background-color: #28a745;
+  transform: translateY(-2px);
+}
+
+.send-button:active {
+  background-color: #28a745;
+  transform: translateY(0);
+}
+
+.delete-button {
+  background-color: #dc3545;
+}
+
+.delete-button:hover {
+  background-color: #dc3545;
+  transform: translateY(-2px);
+}
+
+.delete-button:active {
+  background-color: #dc3545;
+  transform: translateY(0);
+}
+
+.name {
+  font-size: x-large;
+  padding-top: 0.5rem;
+  padding-right: 1rem;
+}
+
+.request-name {
+  font-size: x-large;
+  display: inline;
+  padding-right: 1rem;
+}
+
+.friends-links {
+  padding-top: 30px;
+  padding-left: 1rem;
+}
+
+.email-error-message {
+  color: red;
+  padding: 1rem 0px 0px 1rem ;
+}
