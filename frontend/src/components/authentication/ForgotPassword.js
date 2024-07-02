@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-<<<<<<<< HEAD:frontend/src/components/password/ForgotPassword.js
-========
-//import '../App.css';
->>>>>>>> 85dde0c4 (frontend follow friend, not done):frontend/src/components/authentication/ForgotPassword.js
-import './Forgot.css';
+import './ForgotPassword.css';
 
 export default function SecurityQuestion() {
   const [email, setEmail] = useState('');
