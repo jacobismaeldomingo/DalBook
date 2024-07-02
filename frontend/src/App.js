@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "./css/App.css";
 import ForgotPassword from "./components/password/ForgotPassword";
@@ -15,6 +15,10 @@ import FriendsList from "./components/friendRequests/FriendsList";
 import PrivateRoute from "./components/common/PrivateRoute";
 
 function App() {
+  useEffect(() => {
+    document.title = "DalBook"
+  }, [])
+
   return (
     <BrowserRouter>
       <Routes>
