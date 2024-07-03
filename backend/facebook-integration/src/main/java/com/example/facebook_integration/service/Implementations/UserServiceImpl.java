@@ -28,7 +28,8 @@ public class UserServiceImpl implements UserService {
     public int createUser(User user) {
         if (user == null) {
             throw new IllegalArgumentException("User cannot be null");
-        }if (userRepository.findUserByEmail(user.getEmail()).isPresent()) {
+        }
+        if (userRepository.findUserByEmail(user.getEmail()).isPresent()) {
             throw new IllegalArgumentException("Email already exists");
         }
         userRepository.save(user);
