@@ -16,8 +16,8 @@ import PrivateRoute from "./components/common/PrivateRoute";
 
 function App() {
   useEffect(() => {
-    document.title = "DalBook"
-  }, [])
+    document.title = "DalBook";
+  }, []);
 
   return (
     <BrowserRouter>

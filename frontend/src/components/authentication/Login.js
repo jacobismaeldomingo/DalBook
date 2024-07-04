@@ -1,15 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Login.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { validateEmail, validatePassword } from "./SignupValidation";
+import { validateEmail } from "./SignupValidation";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Track if user is already logged in
   const location = useLocation();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Check if the user is already logged in
+    const loggedIn = localStorage.getItem("isLoggedIn");
+    if (loggedIn === "true") {
+      setIsLoggedIn(true);
+      navigate("/home"); // Redirect to home page if already logged in
+    }
+  }, [navigate]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -42,7 +52,7 @@ function Login() {
 
       if (response.ok) {
         // Login successful
-        const userId = await response.json(); // Retreive the User Id, do not delete this
+        const userId = await response.json(); // Retreive the User Id
         console.log("Login successful");
 
         // Store login flag in local storage
@@ -56,7 +66,7 @@ function Login() {
         // Login failed
         const errorText = await response.text();
         setErrorMessage("Wrong password or email");
-        console.log("Login failed");
+        console.log("Login failed:", errorText);
         setErrors(""); // Reset the error messages
       }
     } catch (error) {
@@ -65,6 +75,25 @@ function Login() {
       setErrorMessage("Network error occurred. Please try again later.");
     }
   };
+
+  // if (isLoggedIn) {
+  //   return (
+  //     <div className="d-flex vh-100 justify-content-center align-items-center bg-primary login-page">
+  //       <div className="p-3 bg-white w-25">
+  //         <p>You are already logged in. Please log out first to switch accounts.</p>
+  //         <button
+  //           onClick={() => {
+  //             localStorage.clear();
+  //             setIsLoggedIn(false);
+  //           }}
+  //           className="btn btn-danger"
+  //         >
+  //           Log Out
+  //         </button>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="d-flex vh-100 justify-content-center align-items-center bg-primary login-page">
@@ -96,11 +125,6 @@ function Login() {
               onChange={(e) => setPassword(e.target.value)}
             />
             {errors.password && (
-              // <ul className="text-danger">
-              //   {errors.password.map((error, index) => (
-              //     <li key={index}>{error}</li>
-              //   ))}
-              // </ul>
               <p className="text-danger">{errors.password}</p>
             )}
           </div>
@@ -122,7 +146,7 @@ function Login() {
           </div>
 
           <div className="forget-password">
-            <Link to="/ForgotPassword">Forget password?</Link>
+            <Link to="/forgotPassword">Forget password?</Link>
           </div>
           <p className="mt-3">You agree to our terms and policies</p>
         </form>
