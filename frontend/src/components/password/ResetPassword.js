@@ -21,6 +21,11 @@ export default function ResetPassword() {
         "Cannot leave the email empty.";
     }
 
+    if (!validateEmail(email)){
+      validationErrors.email =
+        "Please enter your @dal.ca email.";
+    }
+
     const passwordErrors = validatePassword(newPassword);
     if (passwordErrors.length > 0) {
       validationErrors.password = passwordErrors;

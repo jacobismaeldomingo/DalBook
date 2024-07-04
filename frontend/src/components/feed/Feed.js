@@ -69,7 +69,7 @@ function Feed() {
           alert("An error occurred. Please try again!");
         });
     }
-  }, []);
+  }, [userId]);
 
   const getStatusIcon = (status) => {
     switch (status) {
