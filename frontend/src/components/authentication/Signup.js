@@ -193,7 +193,7 @@ const Signup = () => {
               }`}
               type="submit"
             >
-              Signup
+              Sign Up
             </button>
           </div>
 

@@ -11,6 +11,7 @@ import {
   IconMessages,
   IconBell,
   IconLogout,
+  IconUsers,
 } from "@tabler/icons-react";
 
 function Header() {
@@ -33,6 +34,10 @@ function Header() {
 
   const handleFriendRequestsList = () => {
     navigate("/FriendRequestList");
+  };
+
+  const friendsPage = () => {
+    navigate("/friendsList");
   };
 
   return (
@@ -61,8 +66,11 @@ function Header() {
           >
             <IconHome stroke={2} size={30} color="#1877F2" />
           </div>
-          <div className="icon">
+          {/* <div className="icon">
             <IconBuildingStore stroke={2} size={30} color="#1877F2" />
+          </div> */}
+          <div className="icon" onClick={friendsPage}>
+            <IconUsers stroke={2} size={30} color="#1877F2" />
           </div>
           <div className="icon" onClick={handleFriendRequests}>
             <IconUsersGroup stroke={2} size={30} color="#1877F2" />

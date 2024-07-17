@@ -96,10 +96,13 @@ function Login() {
   // }
 
   return (
-    <div className="d-flex vh-100 justify-content-center align-items-center bg-primary login-page">
+    <div className="d-flex vh-100 justify-content-center align-items-center login-page">
+      <div className="app-title">
+        <h1>Welcome to DalBook!</h1>
+      </div>
       <div className="p-3 bg-white w-25">
-        <form onSubmit={handleSubmit} className="signup-form">
-          <div>
+        <form onSubmit={handleSubmit} className="login-form">
+          <div className="email-form">
             <label htmlFor="email" className="label-name">
               Email
             </label>
@@ -113,7 +116,7 @@ function Login() {
             {errors.email && <p className="text-danger">{errors.email}</p>}
           </div>
 
-          <div>
+          <div className="password-form">
             <label htmlFor="password" className="label-name">
               Password
             </label>
@@ -141,14 +144,13 @@ function Login() {
                 location.pathname === "/signup" ? "btn-success" : "btn-default"
               } text-decoration-none`}
             >
-              SignUp
+              Sign Up
             </Link>
           </div>
 
           <div className="forget-password">
             <Link to="/forgotPassword">Forget password?</Link>
           </div>
-          <p className="mt-3">You agree to our terms and policies</p>
         </form>
       </div>
     </div>
