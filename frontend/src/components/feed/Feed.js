@@ -78,7 +78,7 @@ function Feed() {
 
   const getStatusIcon = (status) => {
     switch (status) {
-      case "Avaialble":
+      case "Available":
         return (
           <IconCircleCheckFilled color="green" style={{ paddingLeft: "5px" }} />
         );
