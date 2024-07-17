@@ -8,8 +8,13 @@
   background-color: #2fd2e8;
 }
 
+.app-title {
+  color: #051a2c;
+}
+
 .d-flex {
   display: flex;
+  flex-direction: column;
 }
 
 .vh-100 {
@@ -25,11 +30,11 @@
 }
 
 .bg-primary {
-  background-color: #2fd2e8 !important;
+  background-color: #2fd2e8;
 }
 
 .bg-white {
-  background-color: #ffffff !important;
+  background-color: #ffffff;
 }
 
 .w-25 {
@@ -54,6 +59,16 @@
 }
 
 .signup-form > div {
+  margin-bottom: 1rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.email-form,
+.password-form {
   margin-bottom: 1rem;
 }
 
@@ -155,6 +170,7 @@
 
 .forget-password {
   font-size: large;
+  padding-top: 1rem;
 }
 
 .forget-password > a {

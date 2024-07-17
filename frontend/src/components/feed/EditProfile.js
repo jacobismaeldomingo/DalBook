@@ -95,7 +95,7 @@ const UserProfile = () => {
         <h1>Edit Profile</h1>
         {message && <h3 className="text-info">{message}</h3>}
         <form onSubmit={handleSubmit} className="edit-form">
-          <div className="form-group">
+          <div className="edit-form-group">
             <label htmlFor="firstName">First Name:</label>
             <input
               type="text"
@@ -107,7 +107,7 @@ const UserProfile = () => {
               onChange={handleInputChange}
             />
           </div>
-          <div className="form-group">
+          <div className="edit-form-group">
             <label htmlFor="lastName">Last Name:</label>
             <input
               type="text"
@@ -119,7 +119,7 @@ const UserProfile = () => {
               onChange={handleInputChange}
             />
           </div>
-          <div className="form-group">
+          <div className="edit-form-group">
             <label htmlFor="bio">Bio:</label>
             <textarea
               id="bio"
@@ -131,7 +131,7 @@ const UserProfile = () => {
             ></textarea>
             {errors.bio && <p className="text-danger">{errors.bio}</p>}
           </div>
-          <div className="form-group">
+          <div className="edit-form-group">
             <label htmlFor="profilePicture">Profile Picture:</label>
             <input
               type="file"
@@ -152,7 +152,7 @@ const UserProfile = () => {
               <p className="text-danger">{errors.profilePicture}</p>
             )}
           </div>
-          <div className="form-group">
+          <div className="edit-form-group">
             <label htmlFor="status">Status:</label>
             <select
               id="status"
@@ -167,6 +167,9 @@ const UserProfile = () => {
               <option value="Offline">Offline</option>
             </select>
           </div>
+          <div className="reset-password">
+            <Link to="/resetPassword">Reset password?</Link>
+          </div>
           <button
             type="submit"
             className="btn btn-primary ml-2"
@@ -174,10 +177,7 @@ const UserProfile = () => {
           >
             Save Changes
           </button>
-          <Link
-            to="/profile"
-            className="btn btn-default text-decoration-none"
-          >
+          <Link to="/profile" className="btn btn-default text-decoration-none">
             Back to Profile
           </Link>
         </form>

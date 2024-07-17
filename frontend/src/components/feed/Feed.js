@@ -20,6 +20,7 @@ import {
   IconClockFilled,
   IconSquareMinusFilled,
   IconCircleXFilled,
+  IconUsersGroup,
 } from "@tabler/icons-react";
 import friendService from "../../services/FriendService";
 
@@ -35,6 +36,10 @@ function Feed() {
 
   const friendsPage = () => {
     navigate("/friendsList");
+  };
+
+  const groupsPage = () => {
+    navigate("/");
   };
 
   useEffect(() => {
@@ -69,7 +74,7 @@ function Feed() {
           alert("An error occurred. Please try again!");
         });
     }
-  }, []);
+  }, [userId]);
 
   const getStatusIcon = (status) => {
     switch (status) {
@@ -124,6 +129,14 @@ function Feed() {
           <IconUsers stroke={2} />
           <div>Friends</div>
         </div>
+        <div
+          className="panel"
+          onClick={groupsPage}
+          style={{ cursor: "pointer" }}
+        >
+          <IconUsersGroup stroke={2} />
+          <div>Groups</div>
+        </div>
         <div className="panel">
           <IconCalendarStar stroke={2} />
           <div>Events</div>
@@ -132,10 +145,10 @@ function Feed() {
           <IconFlag stroke={2} />
           <div>Pages</div>
         </div>
-        <div className="panel">
+        {/* <div className="panel">
           <IconHearts stroke={2} />
           <div>Fundraisers</div>
-        </div>
+        </div> */}
         <div className="panel">
           <IconChevronDown stroke={2} />
           <div>See More</div>
@@ -168,7 +181,7 @@ function Feed() {
         </div>
       </div>
       <div className="timeline">
-        <div className="addStory">
+        {/* <div className="addStory">
           <div className="story">
             <img
               src="/images/avatar-2.jpeg"
@@ -205,7 +218,7 @@ function Feed() {
             <br />
             John Doe
           </div>
-        </div>
+        </div> */}
         <div className="create-post">
           <div className="text">
             <div className="user-post">
