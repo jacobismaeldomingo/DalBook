@@ -13,7 +13,8 @@ import FriendRequest from "./components/friendRequests/FriendRequest";
 import FriendRequestList from "./components/friendRequests/FriendRequestList";
 import FriendsList from "./components/friendRequests/FriendsList";
 import PrivateRoute from "./components/common/PrivateRoute";
-
+import CategoryOfDay from "./components/common/CategoryOfDay";
+import CategoryAdmin from "./components/common/CategoryAdmin";
 function App() {
   useEffect(() => {
     document.title = "DalBook";
@@ -75,6 +76,22 @@ function App() {
           element={
             <PrivateRoute>
               <FriendsList />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/CategoryOfDay"
+          element={
+            <PrivateRoute>
+              <CategoryOfDay />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/CategoryAdmin"
+          element={
+            <PrivateRoute>
+              <CategoryAdmin />
             </PrivateRoute>
           }
         />

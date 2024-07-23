@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import friendService from "../../services/FriendService";
 import { Link } from "react-router-dom";
 import "./FriendRequest.css";
+import NotificationComponent from '../NotificationComponent.js';
 
 const FriendRequestList = () => {
   const [requests, setRequests] = useState([]);
@@ -33,11 +34,12 @@ const FriendRequestList = () => {
         console.error("Error accepting friend request:", error);
       });
   };
-
+  
   return (
     <div>
       <h2 style={{ padding: "1.5rem", paddingBottom: "0" }}>Pending Friend Requests</h2>
       <h4 style={{ padding: "1.5rem", paddingBottom: "1rem" }}>Current User ID: {userId} </h4>
+      <NotificationComponent />
       <ul>
         {requests.map((request) => (
           <li key={request.id}>
