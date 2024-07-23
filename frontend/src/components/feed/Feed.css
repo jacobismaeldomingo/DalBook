@@ -10,6 +10,7 @@
   height: 50rem;
   width: 21%;
   left: 0;
+  padding-right: 100px;
   flex-wrap: wrap;
 }
 .profile {

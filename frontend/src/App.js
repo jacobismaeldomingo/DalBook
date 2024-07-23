@@ -13,6 +13,8 @@ import FriendRequest from "./components/friendRequests/FriendRequest";
 import FriendRequestList from "./components/friendRequests/FriendRequestList";
 import FriendsList from "./components/friendRequests/FriendsList";
 import PrivateRoute from "./components/common/PrivateRoute";
+import Admin from "./components/admin/Admin";
+import AdminRoute from "./components/common/AdminRoute";
 
 function App() {
   useEffect(() => {
@@ -76,6 +78,14 @@ function App() {
             <PrivateRoute>
               <FriendsList />
             </PrivateRoute>
+          }
+        />
+        <Route
+          path="/admin"
+          element={
+            <AdminRoute>
+              <Admin />
+            </AdminRoute>
           }
         />
         <Route path="*" element={<Error />} />

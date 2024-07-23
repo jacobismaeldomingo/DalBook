@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Feed.css";
 import {
@@ -55,6 +55,7 @@ function Feed() {
             `http://localhost:8085/api/user/get/${storedUserEmail}`
           );
           setUser(response.data);
+          console.log(response.data);
           console.log("User information retrieved successfully");
         } catch (error) {
           console.log("Error fetching user", error);
@@ -108,7 +109,11 @@ function Feed() {
           style={{ cursor: "pointer" }}
         >
           <img
-            src="/images/avatar-1.jpeg"
+            src={
+              user && user.profilePic
+                ? `http://localhost:8085${user.profilePic}`
+                : "/images/dalhousie-logo.png"
+            }
             alt="profile-picture"
             style={{ padding: "1rem" }}
           />
@@ -155,26 +160,51 @@ function Feed() {
         </div>
         <div className="border"></div>
         <br />
-        <div className="pages">
-          <img
-            src="/images/dalhousie-logo.png"
-            alt="logo"
-            style={{ padding: "1rem" }}
-          />
-          Dalhousie University
-        </div>
-        <div className="pages">
-          <img
-            src="/images/dalhousie-tigers-logo.png"
-            alt="logo"
-            style={{ padding: "1rem" }}
-          />
-          Dalhousie University Football
-        </div>
-        <div className="pages">
-          <img src="/images/pulse.png" alt="logo" style={{ padding: "1rem" }} />
-          Brigthspace Pulse
-        </div>
+        <a
+          href="https://www.dal.ca/"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ textDecoration: "none", color: "black" }}
+        >
+          <div className="pages">
+            <img
+              src="/images/dalhousie-logo.png"
+              alt="logo"
+              style={{ padding: "1rem" }}
+            />
+            Dalhousie University
+          </div>
+        </a>
+        <a
+          href="https://daltigers.ca/sports/fball/index"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ textDecoration: "none", color: "black" }}
+        >
+          <div className="pages">
+            <img
+              src="/images/dalhousie-tigers-logo.png"
+              alt="logo"
+              style={{ padding: "1rem" }}
+            />
+            Dalhousie University Football
+          </div>
+        </a>
+        <a
+          href="https://dal.brightspace.com/d2l/home"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ textDecoration: "none", color: "black" }}
+        >
+          <div className="pages">
+            <img
+              src="/images/pulse.png"
+              alt="logo"
+              style={{ padding: "1rem" }}
+            />
+            Brightspace Pulse
+          </div>
+        </a>
         <div className="dropdown-panels">
           <IconChevronDown stroke={2} className="chevron" />
           <div>See More</div>
@@ -223,7 +253,11 @@ function Feed() {
           <div className="text">
             <div className="user-post">
               <img
-                src="/images/avatar-1.jpeg"
+                src={
+                  user && user.profilePic
+                    ? `http://localhost:8085${user.profilePic}`
+                    : "/images/dalhousie-logo.png"
+                }
                 alt="profile-picture"
                 style={{ height: "50px", padding: "1rem" }}
               />
@@ -342,7 +376,11 @@ function Feed() {
           {friends.map((friend) => (
             <div key={friend.id} className="profiles name">
               <img
-                src="/images/avatar-2.jpeg"
+                src={
+                  friend.profilePic
+                    ? `http://localhost:8085${friend.profilePic}`
+                    : "/images/dalhousie-logo.png"
+                }
                 alt="profile-picture"
                 style={{ padding: "1rem" }}
               />

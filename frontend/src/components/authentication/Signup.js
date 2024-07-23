@@ -11,6 +11,7 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [securityAnswer, setSecurityAnswer] = useState("");
+  const [role, setRole] = useState("Student");
   const [errors, setErrors] = useState({});
   const location = useLocation();
   const navigate = useNavigate();
@@ -53,6 +54,7 @@ const Signup = () => {
       email,
       password,
       securityAnswer,
+      role,
     };
 
     try {
@@ -69,7 +71,9 @@ const Signup = () => {
         // Store login flag in local storage
         localStorage.setItem("isLoggedIn", "true");
         localStorage.setItem("userId", userId);
-        
+        localStorage.setItem("userEmail", email);
+        localStorage.setItem('userRole', role);
+
         // Redirect to the home page
         navigate("/home");
       }
@@ -80,8 +84,8 @@ const Signup = () => {
         console.error("Error signing up:", error);
         alert("An error occurred. Please try again!");
       }
-    };
-  }
+    }
+  };
 
   return (
     <div className="d-flex justify-content-center align-items-center login-page">
@@ -161,7 +165,21 @@ const Signup = () => {
               </ul>
             )}
           </div>
-
+          <div>
+            <label htmlFor="role" className="label-name">
+              Role
+            </label>
+            <select
+              className="form-control"
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+              required
+            >
+              <option value="Student">Student</option>
+              <option value="Professor">Professor</option>
+              <option value="Faculty">Faculty</option>
+            </select>
+          </div>
           <div>
             <label htmlFor="securityAnswer" className="label-name">
               Security Answer

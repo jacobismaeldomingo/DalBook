@@ -1,5 +1,5 @@
 // Home Page
-import React from "react";
+import { React, useState, useEffect } from "react";
 import "./Header.css";
 import { useNavigate } from "react-router-dom";
 import {
@@ -16,6 +16,12 @@ import {
 
 function Header() {
   const navigate = useNavigate();
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    const userRole = localStorage.getItem("userRole");
+    setIsAdmin(userRole === "System_Admin");
+  }, []);
 
   const homePage = () => {
     navigate("/home");
@@ -25,6 +31,7 @@ function Header() {
     localStorage.removeItem("isLoggedIn");
     localStorage.removeItem("userId");
     localStorage.removeItem("userEmail");
+    localStorage.removeItem("userRole");
     navigate("/login");
   };
 
@@ -40,10 +47,14 @@ function Header() {
     navigate("/friendsList");
   };
 
+  const adminPage = () => {
+    navigate("/admin");
+  };
+
   return (
     <div className="homepage">
       <div className="header">
-        <div className="search-header">
+        <div className="main-header">
           <div className="logo">
             <img
               src="/images/dalbook_logo.png"
@@ -77,9 +88,11 @@ function Header() {
           </div>
         </div>
         <div className="account-header">
-          <div className="menu">
-            <IconMenu2 stroke={2} size={30} color="#1877F2" />
-          </div>
+          {isAdmin && (
+            <div className="menu" onClick={adminPage}>
+              <IconMenu2 stroke={2} size={30} color="#1877F2" />
+            </div>
+          )}
           <div className="messages">
             <IconMessages stroke={2} size={30} color="#1877F2" />
           </div>
