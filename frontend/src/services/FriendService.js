@@ -48,10 +48,13 @@ const deleteFriend = (userId, friendId) => {
   });
 };
 
-export default {
+// Assign to a variable before exporting
+const FriendService = {
   sendFriendRequest,
   acceptFriendRequest,
   getPendingRequests,
   getFriends,
   deleteFriend,
 };
+
+export default FriendService;
