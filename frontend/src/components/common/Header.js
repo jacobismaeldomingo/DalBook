@@ -6,7 +6,6 @@ import {
   IconSearch,
   IconHome,
   IconUsersGroup,
-  IconBuildingStore,
   IconMenu2,
   IconMessages,
   IconBell,

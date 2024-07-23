@@ -6,7 +6,6 @@ import {
   IconUsers,
   IconCalendarStar,
   IconFlag,
-  IconHearts,
   IconChevronDown,
   IconUser,
   IconSearch,
@@ -109,7 +108,7 @@ function Feed() {
         >
           <img
             src="/images/avatar-1.jpeg"
-            alt="profile-picture"
+            alt=""
             style={{ padding: "1rem" }}
           />
           {user ? (
@@ -145,10 +144,6 @@ function Feed() {
           <IconFlag stroke={2} />
           <div>Pages</div>
         </div>
-        {/* <div className="panel">
-          <IconHearts stroke={2} />
-          <div>Fundraisers</div>
-        </div> */}
         <div className="panel">
           <IconChevronDown stroke={2} />
           <div>See More</div>
@@ -224,7 +219,7 @@ function Feed() {
             <div className="user-post">
               <img
                 src="/images/avatar-1.jpeg"
-                alt="profile-picture"
+                alt=""
                 style={{ height: "50px", padding: "1rem" }}
               />
               <input type="Mind" placeholder="What's on your mind, John?" />
@@ -248,7 +243,7 @@ function Feed() {
               <div className="feed-profile-picture">
                 <img
                   src="/images/avatar-1.jpeg"
-                  alt="profile-picture"
+                  alt=""
                   style={{ height: "50px" }}
                 ></img>
                 <div>John Doe</div>
@@ -263,7 +258,7 @@ function Feed() {
             <div className="media">
               <img
                 src="/images/post.jpg"
-                alt="posted-image"
+                alt=""
                 style={{ height: "auto", width: "100%" }}
               />
             </div>
@@ -287,7 +282,7 @@ function Feed() {
               <div className="feed-profile-picture">
                 <img
                   src="/images/avatar-1.jpeg"
-                  alt="profile-picture"
+                  alt=""
                   style={{ height: "50px" }}
                 ></img>
                 <div>John Doe</div>
@@ -302,7 +297,7 @@ function Feed() {
             <div className="media">
               <img
                 src="/images/post.jpg"
-                alt="posted-image"
+                alt=""
                 style={{ height: "auto", width: "100%" }}
               />
             </div>
@@ -343,7 +338,7 @@ function Feed() {
             <div key={friend.id} className="profiles name">
               <img
                 src="/images/avatar-2.jpeg"
-                alt="profile-picture"
+                alt=""
                 style={{ padding: "1rem" }}
               />
               {friend.firstName + " " + friend.lastName}
