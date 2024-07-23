@@ -1,7 +1,12 @@
 module.exports = {
+  preset: "react-app",
+  testEnvironment: "jsdom",
   transform: {
     "^.+\\.(js|jsx|ts|tsx)$": "babel-jest",
   },
-  moduleFileExtensions: ["js", "jsx", "ts", "tsx"],
-  transformIgnorePatterns: ["/node_modules/(?!(axios|some-other-esm-module)/)"],
+  transformIgnorePatterns: [
+    "/node_modules/(?!axios)", // Transform axios or any other modules causing issues
+  ],
+  moduleFileExtensions: ["js", "jsx", "json", "node"],
+  setupFilesAfterEnv: ["<rootDir>/src/setupTests.js"],
 };

@@ -69,7 +69,7 @@ const Signup = () => {
         // Store login flag in local storage
         localStorage.setItem("isLoggedIn", "true");
         localStorage.setItem("userId", userId);
-        
+
         // Redirect to the home page
         navigate("/home");
       }
@@ -80,8 +80,8 @@ const Signup = () => {
         console.error("Error signing up:", error);
         alert("An error occurred. Please try again!");
       }
-    };
-  }
+    }
+  };
 
   return (
     <div className="d-flex justify-content-center align-items-center login-page">
