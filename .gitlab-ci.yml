@@ -27,7 +27,7 @@ build-backend:
     - dalfcs_docker_autoscale  # Tags to identify runners
   script:
     - echo "Building backend"
-    - cd backend
+    - cd backend/facebook-integration
     - mvn $MAVEN_CLI_OPTS clean package -DskipTests  # Clean and package the application, skipping tests
   artifacts:
     paths:
@@ -61,7 +61,7 @@ test-backend:
     - dalfcs_docker_autoscale # Tags to identify runners
   script:
     - echo "Running backend tests"
-    - cd backend
+    - cd backend/facebook-integration
     - mvn $MAVEN_CLI_OPTS clean verify  # Clean and run tests (unit and integration)
   artifacts:
     reports:
@@ -94,6 +94,7 @@ deploy-backend:
     - dalfcs_docker_autoscale  # Tags to identify runners
   script:
     - echo "Deploying backend"
+    - cd backend/facebook-integration
     - mvn $MAVEN_CLI_OPTS deploy
   environment:
     name: production
