@@ -24,7 +24,7 @@ before_script:
 # Backend build stage
 build-backend:
   stage: build
-  image: maven:3.9.8-openjdk-22  # Docker image to use for the job
+  image: maven:3.9.8-eclipse-temurin-22  # Docker image to use for the job
   tags:
     - dalfcs_docker_kvm  # Tags to identify runners
   script:
@@ -58,7 +58,7 @@ build-frontend:
 # Backend test stage
 test-backend:
   stage: test
-  image: maven:3.9.8-openjdk-22  # Docker image to use for the job
+  image: maven:3.9.8-eclipse-temurin-22  # Docker image to use for the job
   tags:
     - dalfcs_docker_kvm # Tags to identify runners
   script:
@@ -91,7 +91,7 @@ test-frontend:
 # Backend deploy stage
 deploy-backend:
   stage: deploy
-  image: maven:3.9.8-openjdk-22
+  image: maven:3.9.8-eclipse-temurin-22
   tags:
     - dalfcs_docker_kvm  # Tags to identify runners
   script:
