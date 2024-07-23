@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import "./Header.css";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 import friendService from "../../services/FriendService";
 import {
   IconSearch,
@@ -33,6 +34,37 @@ function Header() {
         });
     }
   }, []);
+  const [hasNewTopic, setHasNewTopic] = useState(false);
+
+
+  useEffect(() => {
+    const fetchTopic = async () => {
+      try {
+        const response = await axios.get('http://localhost:8085/api/topics/latest');
+        const latestTopic = response.data.topic;
+        const latestTopicId = response.data.id;
+        const lastViewedTopicId = localStorage.getItem('lastViewedTopicId');
+
+        if (latestTopicId && latestTopicId !== lastViewedTopicId) {
+          setHasNewTopic(true);
+          localStorage.setItem('latestTopicId', latestTopicId);
+        } else {
+          setHasNewTopic(false);
+        }
+      } catch (error) {
+        console.error('Error fetching topic:', error);
+      }
+    };
+
+    fetchTopic();
+  }, []);
+
+  const handleIconClick = () => {
+    const latestTopicId = localStorage.getItem('latestTopicId');
+    localStorage.setItem('lastViewedTopicId', latestTopicId);
+    setHasNewTopic(false);
+    navigate('/CategoryOfDay');
+  };
 
   const homePage = () => {
     navigate("/home");
@@ -48,6 +80,12 @@ function Header() {
   const handleFriendRequests = () => {
     navigate("/FriendRequest");
   };
+  const handleCategory = () =>{
+    navigate("/CategoryOfDay");
+  }
+  const handleCategoryAdmin = () =>{
+    navigate("/CategoryAdmin");
+  }
 
   const handleFriendRequestsList = () => {
     navigate("/FriendRequestList");
@@ -84,6 +122,17 @@ function Header() {
             <IconBuildingStore stroke={2} size={30} color="#1877F2" />
           </div>
           <div className="icon" onClick={handleFriendRequests}>
+            <IconUsersGroup stroke={2} size={30} color="#1877f2" />
+          </div>
+          <div
+      className="notifications"
+      onClick={handleIconClick}
+      style={{ position: 'relative' }}
+    >
+      <IconBell stroke={2} size={30} color="#1877f2" />
+      {hasNewTopic }
+    </div>
+          <div className="icon" onClick={handleCategoryAdmin}>
             <IconUsersGroup stroke={2} size={30} color="#1877f2" />
           </div>
         </div>
