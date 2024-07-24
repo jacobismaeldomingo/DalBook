@@ -3,7 +3,6 @@
 stages:
   - build
   - test
-  - deploy
 
 variables:
   MAVEN_CLI_OPTS: "--batch-mode --errors --fail-at-end --show-version --threads 2"
@@ -31,7 +30,7 @@ build-backend:
     - mvn $MAVEN_CLI_OPTS clean package -DskipTests  # Clean and package the application, skipping tests
   artifacts:
     paths:
-      - server/target/*.jar  # Store the generated JAR file as an artifact
+      - backend/facebook-integration/target/*.jar  # Store the generated JAR file as an artifact
   only:
     - main
 
@@ -66,8 +65,8 @@ test-backend:
   artifacts:
     reports:
       junit:
-        - target/surefire-reports/TEST-*.xml  # Store JUnit test reports from unit tests
-        - target/failsafe-reports/TEST-*.xml  # Store JUnit test reports from integration tests
+        - backend/facebook-integration/target/surefire-reports/TEST-*.xml  # Store JUnit test reports from unit tests
+        - backend/facebook-integration/target/failsafe-reports/TEST-*.xml  # Store JUnit test reports from integration tests
   only:
     - main
 
@@ -85,35 +84,4 @@ test-frontend:
     - npm test
   only:
     - main
-
-# Backend deploy stage
-deploy-backend:
-  stage: deploy
-  image: maven:3.9.8-eclipse-temurin-22
-  tags:
-    - dalfcs_docker_autoscale  # Tags to identify runners
-  script:
-    - echo "Deploying backend"
-    - cd backend/facebook-integration
-    - mvn $MAVEN_CLI_OPTS deploy
-  environment:
-    name: production
-  only:
-    - main
-
-# Frontend deploy stage
-deploy-frontend:
-  stage: deploy
-  image: node:22.4.0
-  tags:
-    - dalfcs_docker_autoscale  # Tags to identify runners
-  script:
-    - echo "Deploying frontend"
-    - cd frontend
-    - npm install -g npm@10.8.1
-    - npm install
-    - npm run deploy
-  environment:
-    name: production
-  only:
-    - main
+  
