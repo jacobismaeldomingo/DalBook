@@ -14,7 +14,7 @@ import FriendRequestList from "./components/friendRequests/FriendRequestList";
 import FriendsList from "./components/friendRequests/FriendsList";
 import PrivateRoute from "./components/common/PrivateRoute";
 import CategoryOfDay from "./components/common/CategoryOfDay";
-import CategoryAdmin from "./components/common/CategoryAdmin";
+import CategoryAdmin from "./components/admin/CategoryAdmin";
 function App() {
   useEffect(() => {
     document.title = "DalBook";
