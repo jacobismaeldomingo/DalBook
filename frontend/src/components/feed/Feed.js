@@ -6,7 +6,6 @@ import {
   IconUsers,
   IconCalendarStar,
   IconFlag,
-  IconHearts,
   IconChevronDown,
   IconUser,
   IconSearch,
@@ -40,6 +39,10 @@ function Feed() {
 
   const groupsPage = () => {
     navigate("/");
+  };
+
+  const categoryOfDayPage = () => {
+    navigate("/categoryOftheDay");
   };
 
   useEffect(() => {
@@ -126,34 +129,22 @@ function Feed() {
             "Loading..."
           )}
         </div>
-        <div
-          className="panel"
-          onClick={friendsPage}
-          style={{ cursor: "pointer" }}
-        >
+        <div className="panel" onClick={friendsPage}>
           <IconUsers stroke={2} />
           <div>Friends</div>
         </div>
-        <div
-          className="panel"
-          onClick={groupsPage}
-          style={{ cursor: "pointer" }}
-        >
+        <div className="panel" onClick={groupsPage}>
           <IconUsersGroup stroke={2} />
           <div>Groups</div>
         </div>
-        <div className="panel">
+        <div className="panel" onClick={categoryOfDayPage}>
           <IconCalendarStar stroke={2} />
-          <div>Events</div>
+          <div>Category of the Day</div>
         </div>
         <div className="panel">
           <IconFlag stroke={2} />
           <div>Pages</div>
         </div>
-        {/* <div className="panel">
-          <IconHearts stroke={2} />
-          <div>Fundraisers</div>
-        </div> */}
         <div className="panel">
           <IconChevronDown stroke={2} />
           <div>See More</div>
@@ -282,7 +273,7 @@ function Feed() {
               <div className="feed-profile-picture">
                 <img
                   src="/images/avatar-1.jpeg"
-                  alt="profile-picture"
+                  alt=""
                   style={{ height: "50px" }}
                 ></img>
                 <div>John Doe</div>
@@ -297,7 +288,7 @@ function Feed() {
             <div className="media">
               <img
                 src="/images/post.jpg"
-                alt="posted-image"
+                alt=""
                 style={{ height: "auto", width: "100%" }}
               />
             </div>
@@ -321,7 +312,7 @@ function Feed() {
               <div className="feed-profile-picture">
                 <img
                   src="/images/avatar-1.jpeg"
-                  alt="profile-picture"
+                  alt=""
                   style={{ height: "50px" }}
                 ></img>
                 <div>John Doe</div>
@@ -336,7 +327,7 @@ function Feed() {
             <div className="media">
               <img
                 src="/images/post.jpg"
-                alt="posted-image"
+                alt=""
                 style={{ height: "auto", width: "100%" }}
               />
             </div>

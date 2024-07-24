@@ -15,6 +15,8 @@ import FriendsList from "./components/friendRequests/FriendsList";
 import PrivateRoute from "./components/common/PrivateRoute";
 import Admin from "./components/admin/Admin";
 import AdminRoute from "./components/common/AdminRoute";
+import CategoryOfDay from "./components/common/CategoryOfDay";
+import CategoryAdmin from "./components/admin/CategoryAdmin";
 
 function App() {
   useEffect(() => {
@@ -86,6 +88,22 @@ function App() {
             <AdminRoute>
               <Admin />
             </AdminRoute>
+          }
+        />
+        <Route
+          path="/categoryOfTheDay"
+          element={
+            <PrivateRoute>
+              <CategoryOfDay />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/categoryAdmin"
+          element={
+            <PrivateRoute>
+              <CategoryAdmin />
+            </PrivateRoute>
           }
         />
         <Route path="*" element={<Error />} />

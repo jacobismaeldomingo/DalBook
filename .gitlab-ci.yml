@@ -1,0 +1,87 @@
+# Dalbook CI Pipeline
+
+stages:
+  - build
+  - test
+
+variables:
+  MAVEN_CLI_OPTS: "--batch-mode --errors --fail-at-end --show-version --threads 2"
+
+# Cache dependencies to speed up builds
+cache:
+  paths:
+    - .m2/repository
+    - node_modules/
+
+# Commands to be run before each job
+before_script:
+  - echo "Setting up environment"
+  - export PATH=$PATH:/usr/local/maven/bin
+
+# Backend build stage
+build-backend:
+  stage: build
+  image: maven:3.9.8-eclipse-temurin-22  # Docker image to use for the job
+  tags:
+    - dalfcs_docker_autoscale  # Tags to identify runners
+  script:
+    - echo "Building backend"
+    - cd backend/facebook-integration
+    - mvn $MAVEN_CLI_OPTS clean package -DskipTests  # Clean and package the application, skipping tests
+  artifacts:
+    paths:
+      - backend/facebook-integration/target/*.jar  # Store the generated JAR file as an artifact
+  only:
+    - main
+
+# Frontend build stage
+build-frontend:
+  stage: build  # Specify the stage this job belongs to
+  image: node:22.4.0  # Docker image to use for the job
+  tags:
+    - dalfcs_docker_autoscale  # Tags to identify runners
+  script:
+    - echo "Building frontend"
+    - cd frontend
+    - npm install -g npm@10.8.1
+    - npm install                # Install Node.js dependencies
+    - npm run build              # Build the application
+  artifacts:
+    paths:
+      - frontend/build  # Store the build output as an artifact
+  only:
+    - main
+
+# Backend test stage
+test-backend:
+  stage: test
+  image: maven:3.9.8-eclipse-temurin-22  # Docker image to use for the job
+  tags:
+    - dalfcs_docker_autoscale # Tags to identify runners
+  script:
+    - echo "Running backend tests"
+    - cd backend/facebook-integration
+    - mvn $MAVEN_CLI_OPTS clean verify  # Clean and run tests (unit and integration)
+  artifacts:
+    reports:
+      junit:
+        - backend/facebook-integration/target/surefire-reports/TEST-*.xml  # Store JUnit test reports from unit tests
+        - backend/facebook-integration/target/failsafe-reports/TEST-*.xml  # Store JUnit test reports from integration tests
+  only:
+    - main
+
+# Frontend test stage
+test-frontend:
+  stage: test
+  image: node:22.4.0  # Docker image to use for the job
+  tags:
+    - dalfcs_docker_autoscale  # Tags to identify runners
+  script:
+    - echo "Running frontend tests"
+    - cd frontend
+    - npm install -g npm@10.8.1
+    - npm install
+    - npm test
+  only:
+    - main
+  
