@@ -41,6 +41,10 @@ function Feed() {
     navigate("/");
   };
 
+  const categoryOfDayPage = () => {
+    navigate("/categoryOftheDay");
+  };
+
   useEffect(() => {
     const storedUserId = localStorage.getItem("userId");
     const storedUserEmail = localStorage.getItem("userEmail");
@@ -120,25 +124,17 @@ function Feed() {
             "Loading..."
           )}
         </div>
-        <div
-          className="panel"
-          onClick={friendsPage}
-          style={{ cursor: "pointer" }}
-        >
+        <div className="panel" onClick={friendsPage}>
           <IconUsers stroke={2} />
           <div>Friends</div>
         </div>
-        <div
-          className="panel"
-          onClick={groupsPage}
-          style={{ cursor: "pointer" }}
-        >
+        <div className="panel" onClick={groupsPage}>
           <IconUsersGroup stroke={2} />
           <div>Groups</div>
         </div>
-        <div className="panel">
+        <div className="panel" onClick={categoryOfDayPage}>
           <IconCalendarStar stroke={2} />
-          <div>Events</div>
+          <div>Category of the Day</div>
         </div>
         <div className="panel">
           <IconFlag stroke={2} />
