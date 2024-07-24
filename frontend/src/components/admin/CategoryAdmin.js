@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./CategoryOfDay.css";
-import Header from "../common/Header";
+import "../feed/CategoryOfTheDay.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -26,7 +25,6 @@ const CategoryAdmin = () => {
 
   return (
     <div>
-      <Header />
       <form className="category-form" onSubmit={handleSubmit}>
         <div>
           <label className="category-label">

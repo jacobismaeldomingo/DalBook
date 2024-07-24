@@ -1,8 +1,8 @@
 // CategoryOfTheDay.js
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./CategoryOfDay.css";
-import Header from "./Header";
+import "./CategoryOfTheDay.css";
+import Header from "../common/Header";
 
 const CategoryOfTheDay = () => {
   const [content, setContent] = useState("");

@@ -1,242 +1,47 @@
-// Admin.js
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import "./Admin.css";
+import AdminManagement from "./AdminManagement";
+import CategoryAdmin from "./CategoryAdmin";
 import Header from "../common/Header";
 
 const Admin = () => {
-  const [users, setUsers] = useState([]);
-  const [selectedUser, setSelectedUser] = useState(null);
-  const [newRole, setNewRole] = useState("");
-  const [joinRequests, setJoinRequests] = useState([]);
-  const storedUserId = localStorage.getItem("userId");
-  const storedUserEmail = localStorage.getItem("userEmail");
-  const storedUserRole = localStorage.getItem("userRole");
+  const [activeComponent, setActiveComponent] = useState("adminManagement");
 
-  useEffect(() => {
-    fetchUsers();
-    fetchJoinRequests();
-  }, []);
-
-  const fetchUsers = async () => {
-    try {
-      const response = await axios.get("http://localhost:8085/api/admin/users");
-      setUsers(response.data);
-    } catch (error) {
-      console.error("Error fetching users:", error);
-    }
-  };
-
-  const toggleUserActivate = async (userId, isActive) => {
-    try {
-      if (isActive) {
-        await axios.put(
-          `http://localhost:8085/api/admin/users/deactivate/${userId}`,
-          { adminRole: storedUserRole }
-        );
-        alert("User deactivated successfully");
-      } else {
-        await axios.put(
-          `http://localhost:8085/api/admin/users/activate/${userId}`,
-          { adminRole: storedUserRole }
-        );
-        alert("User activated successfully");
-      }
-      fetchUsers();
-    } catch (error) {
-      console.error("Error toggling user activation:", error);
-      alert("An error occurred. Please try again.");
-    }
-  };
-
-  const deleteUser = async (userId) => {
-    try {
-      await axios.delete(
-        `http://localhost:8085/api/admin/users/remove/${userId}`,
-        {
-          params: { adminRole: storedUserRole },
-        }
-      );
-      console.log(`User deleted successfully with ID: ${userId}`);
-      alert("User deleted successfully");
-      fetchUsers();
-    } catch (error) {
-      console.error("Error deleting user:", error);
-    }
-  };
-
-  const handleRoleChange = async () => {
-    if (selectedUser && newRole) {
-      try {
-        await axios.put(
-          `http://localhost:8085/api/admin/users/${selectedUser.id}/role`,
-          null,
-          {
-            params: {
-              role: newRole,
-              adminRole: storedUserRole,
-            },
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        alert("Role updated successfully");
-        fetchUsers();
-      } catch (error) {
-        console.error("Error updating role:", error);
-        alert("An error occurred. Please try again.");
-      }
-    }
-  };
-
-  const fetchJoinRequests = async () => {
-    try {
-      const response = await axios.get(
-        "http://localhost:8085/api/admin/join-requests"
-      );
-      setJoinRequests(response.data);
-    } catch (error) {
-      console.error("Error fetching join requests:", error);
-    }
-  };
-
-  const handleApproveRequest = async (requestId) => {
-    try {
-      await axios.put(
-        `http://localhost:8085/api/admin/join-requests/${requestId}/approve`
-      );
-      alert("Request approved successfully");
-      fetchJoinRequests();
-    } catch (error) {
-      console.error("Error approving request:", error);
-      alert("An error occurred. Please try again.");
-    }
-  };
-
-  const handleRejectRequest = async (requestId) => {
-    try {
-      await axios.put(
-        `http://localhost:8085/api/admin/join-requests/${requestId}/reject`
-      );
-      alert("Request rejected successfully");
-      fetchJoinRequests();
-    } catch (error) {
-      console.error("Error rejecting request:", error);
-      alert("An error occurred. Please try again.");
+  const renderComponent = () => {
+    switch (activeComponent) {
+      case "adminManagement":
+        return <AdminManagement />;
+      case "categoryAdmin":
+        return <CategoryAdmin />;
+      default:
+        return <AdminManagement />;
     }
   };
 
   return (
     <div>
       <Header />
-      <div className="admin-interface">
-        <h2 style={{ paddingBottom: "1rem" }}>User Management</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Email</th>
-              <th>Role</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user) => (
-              <tr key={user.id} className={user.isActive ? "" : "deactivated"}>
-                <td>{user.id}</td>
-                <td>{user.firstName}</td>
-                <td>{user.lastName}</td>
-                <td>{user.email}</td>
-                <td>{user.role}</td>
-                <td>
-                  <button
-                    className="admin-btn admin-change-role"
-                    onClick={() => setSelectedUser(user)}
-                    disabled={!user.isActive}
-                  >
-                    Change Role
-                  </button>
-                  <button
-                    className={
-                      user.isActive
-                        ? "admin-btn admin-deactivate"
-                        : "admin-btn admin-activate"
-                    }
-                    onClick={() => toggleUserActivate(user.id, user.isActive)}
-                  >
-                    {user.isActive ? "Deactivate User" : "Activate User"}
-                  </button>
-                  <button
-                    className="admin-btn admin-delete"
-                    onClick={() => deleteUser(user.id)}
-                  >
-                    Remove User
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-
-        {selectedUser && (
-          <div className="role-change-form">
-            <h3>
-              Change Role for {selectedUser.firstName} {selectedUser.lastName}{" "}
-              with ID {selectedUser.id}
-            </h3>
-            <select
-              value={newRole}
-              onChange={(e) => setNewRole(e.target.value)}
-            >
-              <option value="">Select Role</option>
-              <option value="Student">Student</option>
-              <option value="Professor">Professor</option>
-              <option value="Faculty">Faculty</option>
-              <option value="System_Admin">System Admin</option>
-            </select>
+      <div className="admin-dashboard">
+        <div className="admin-layout">
+          <div className="admin-sidebar">
+            <div className="admin-title">
+              <h2>Admin Dashboard</h2>
+            </div>
             <button
-              className="admin-btn admin-update-role"
-              onClick={handleRoleChange}
-              disabled={!selectedUser.isActive}
+              className={`admin-button ${activeComponent === 'adminManagement' ? 'active' : ''}`}
+              onClick={() => setActiveComponent("adminManagement")}
             >
-              Update Role
+              Admin Management
+            </button>
+            <button
+              className={`admin-button ${activeComponent === 'categoryAdmin' ? 'active' : ''}`}
+              onClick={() => setActiveComponent("categoryAdmin")}
+            >
+              Create Category for the Day
             </button>
           </div>
-        )}
-
-        {/* <h2>Join Requests</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>User ID</th>
-              <th>Group ID</th>
-              <th>Status</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {joinRequests.map((request) => (
-              <tr key={request.id}>
-                <td>{request.id}</td>
-                <td>{request.userId}</td>
-                <td>{request.groupId}</td>
-                <td>{request.status}</td>
-                <td>
-                  <button onClick={() => handleApproveRequest(request.id)}>
-                    Approve
-                  </button>
-                  <button onClick={() => handleRejectRequest(request.id)}>
-                    Reject
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table> */}
+          <div className="admin-content">{renderComponent()}</div>
+        </div>
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import friendService from "../../services/FriendService";
 import { Link } from "react-router-dom";
 import "./FriendRequest.css";
-import NotificationComponent from '../NotificationComponent.js';
+import NotificationComponent from '../notifications/Notifications.js';
 
 const FriendRequestList = () => {
   const [requests, setRequests] = useState([]);

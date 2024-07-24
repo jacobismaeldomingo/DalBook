@@ -1,108 +1,51 @@
-.admin-interface {
-  padding: 20px;
+.admin-dashboard {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
-.admin-interface table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
-}
-
-.admin-interface th,
-.admin-interface td {
-  border: 1px solid #ccc;
-  padding: 8px;
-  text-align: left;
-}
-
-.admin-interface th {
-  background-color: #f4f4f4;
-}
-
-.role-change-form {
-  margin-top: 20px;
-}
-
-.role-change-form h3 {
-  margin-bottom: 10px;
-}
-
-.role-change-form select {
-  margin-right: 10px;
-  padding: 5px;
-}
-
-.admin-btn {
+.admin-layout {
+  display: flex;
   flex: 1;
+}
+
+.admin-title {
+  padding-bottom: 20px;
+}
+
+.admin-sidebar {
+  width: 250px;
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-button {
+  font-size: 1rem;
+  margin-bottom: 10px;
   padding: 10px;
+  text-align: left;
   border: none;
-  border-radius: 6px;
-  color: #ffffff;
-  font-size: 15px;
+  background-color: #f4f4f4;
+  color: #333;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  margin: 0 5px;
-  text-align: center;
+  transition: background-color 0.3s ease;
 }
 
-.admin-change-role {
-  background-color: #0d6efd;
+.admin-button:hover {
+  background-color: #ddd;
 }
 
-.admin-change-role:hover {
-  background-color: #0d6efd;
-  transform: translateY(-2px);
-}
-
-.admin-change-role:active {
-  background-color: #0d6efd;
-  transform: translateY(0);
-}
-
-.admin-update-role {
-  background-color: #28a745;
-}
-
-.admin-update-role:hover {
-  background-color: #28a745;
-  transform: translateY(-2px);
-}
-
-.admin-update-role:active {
-  background-color: #28a745;
-  transform: translateY(0);
-}
-
-.admin-deactivate {
-  background-color: #ffc107;
-  color: black;
-}
-
-.admin-activate {
-  background-color: #28a745;
+.admin-button.active {
+  background-color: #007bff;
   color: white;
+  border-left: 4px solid #0056b3;
 }
 
-.admin-delete {
-  background-color: #dc3545;
-}
-
-.admin-delete:hover {
-  background-color: #dc3545;
-  transform: translateY(-2px);
-}
-
-.admin-delete:active {
-  background-color: #dc3545;
-  transform: translateY(0);
-}
-
-.admin-interface table tbody tr.deactivated {
-  background-color: #f0f0f0;
-  color: #a0a0a0;
-}
-
-.admin-btn[disabled] {
-  cursor: not-allowed;
-  opacity: 0.5;
+.admin-content {
+  flex: 1;
+  padding: 20px;
 }
