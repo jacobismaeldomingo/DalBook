@@ -1,8 +1,8 @@
 // Home Page
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import "./Header.css";
 import { useNavigate } from "react-router-dom";
-import axios from 'axios';
+import axios from "axios";
 import friendService from "../../services/FriendService";
 import {
   IconSearch,
@@ -18,7 +18,7 @@ import {
 
 function Header() {
   const navigate = useNavigate();
-
+  const [hasNewTopic, setHasNewTopic] = useState(false);
   const [pendingRequests, setPendingRequests] = useState(0);
 
   useEffect(() => {
@@ -35,37 +35,37 @@ function Header() {
         });
     }
   }, []);
-  const [hasNewTopic, setHasNewTopic] = useState(false);
 
+  // useEffect(() => {
+  //   const fetchTopic = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         "http://localhost:8085/api/topics/latest"
+  //       );
+  //       const latestTopic = response.data.topic;
+  //       const latestTopicId = response.data.id;
+  //       const lastViewedTopicId = localStorage.getItem("lastViewedTopicId");
 
-  useEffect(() => {
-    const fetchTopic = async () => {
-      try {
-        const response = await axios.get('http://localhost:8085/api/topics/latest');
-        const latestTopic = response.data.topic;
-        const latestTopicId = response.data.id;
-        const lastViewedTopicId = localStorage.getItem('lastViewedTopicId');
+  //       if (latestTopicId && latestTopicId !== lastViewedTopicId) {
+  //         setHasNewTopic(true);
+  //         localStorage.setItem("latestTopicId", latestTopicId);
+  //       } else {
+  //         setHasNewTopic(false);
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching topic:", error);
+  //     }
+  //   };
 
-        if (latestTopicId && latestTopicId !== lastViewedTopicId) {
-          setHasNewTopic(true);
-          localStorage.setItem('latestTopicId', latestTopicId);
-        } else {
-          setHasNewTopic(false);
-        }
-      } catch (error) {
-        console.error('Error fetching topic:', error);
-      }
-    };
+  //   fetchTopic();
+  // }, []);
 
-    fetchTopic();
-  }, []);
-
-  const handleIconClick = () => {
-    const latestTopicId = localStorage.getItem('latestTopicId');
-    localStorage.setItem('lastViewedTopicId', latestTopicId);
-    setHasNewTopic(false);
-    navigate('/CategoryOfDay');
-  };
+  // const handleIconClick = () => {
+  //   const latestTopicId = localStorage.getItem("latestTopicId");
+  //   localStorage.setItem("lastViewedTopicId", latestTopicId);
+  //   setHasNewTopic(false);
+  //   navigate("/CategoryOfDay");
+  // };
 
   const homePage = () => {
     navigate("/home");
@@ -81,17 +81,14 @@ function Header() {
   const handleFriendRequests = () => {
     navigate("/FriendRequest");
   };
-  const handleCategory = () =>{
-    navigate("/CategoryOfDay");
-  }
-  const handleCategoryAdmin = () =>{
-    navigate("/CategoryAdmin");
-  }
+
+  // const handleCategoryAdmin = () => {
+  //   navigate("/CategoryAdmin");
+  // };
 
   const handleFriendRequestsList = () => {
     navigate("/FriendRequestList");
   };
-  
 
   const friendsPage = () => {
     navigate("/friendsList");
@@ -132,17 +129,17 @@ function Header() {
           <div className="icon" onClick={handleFriendRequests}>
             <IconUsersGroup stroke={2} size={30} color="#1877f2" />
           </div>
-          <div
-      className="notifications"
-      onClick={handleIconClick}
-      style={{ position: 'relative' }}
-    >
-      <IconBell stroke={2} size={30} color="#1877f2" />
-      {hasNewTopic }
-    </div>
-          <div className="icon" onClick={handleCategoryAdmin}>
+          {/* <div
+            className="notifications"
+            onClick={handleIconClick}
+            style={{ position: "relative" }}
+          >
+            <IconBell stroke={2} size={30} color="#1877f2" />
+            {hasNewTopic}
+          </div> */}
+          {/* <div className="icon" onClick={handleCategoryAdmin}>
             <IconUsersGroup stroke={2} size={30} color="#1877f2" />
-          </div>
+          </div> */}
         </div>
         <div className="account-header">
           <div className="menu">
@@ -151,18 +148,24 @@ function Header() {
           <div className="messages">
             <IconMessages stroke={2} size={30} color="#1877F2" />
           </div>
-          <div className="notifications" onClick={handleFriendRequestsList} style={{ position: 'relative' }}>
+          <div
+            className="notifications"
+            onClick={handleFriendRequestsList}
+            style={{ position: "relative" }}
+          >
             <IconBell stroke={2} size={30} color="#1877f2" />
             {pendingRequests > 0 && (
-              <span style={{
-                position: 'absolute',
-                top: 0,
-                right: 0,
-                width: '10px',
-                height: '10px',
-                backgroundColor: 'red',
-                borderRadius: '50%',
-              }}></span>
+              <span
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  right: 0,
+                  width: "10px",
+                  height: "10px",
+                  backgroundColor: "red",
+                  borderRadius: "50%",
+                }}
+              ></span>
             )}
           </div>
           <div

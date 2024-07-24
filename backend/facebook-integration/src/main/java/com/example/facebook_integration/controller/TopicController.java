@@ -22,6 +22,7 @@ class TopicController {
     public List<Topic> getAllTopics() {
         return topicService.getAllTopics();
     }
+
     @GetMapping("/latest")
     public Topic getLatestTopic() {
         return topicService.getLatestTopic();

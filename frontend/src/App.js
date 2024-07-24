@@ -80,7 +80,7 @@ function App() {
           }
         />
         <Route
-          path="/CategoryOfDay"
+          path="/categoryOfTheDay"
           element={
             <PrivateRoute>
               <CategoryOfDay />
@@ -88,7 +88,7 @@ function App() {
           }
         />
         <Route
-          path="/CategoryAdmin"
+          path="/categoryAdmin"
           element={
             <PrivateRoute>
               <CategoryAdmin />

@@ -8,13 +8,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/Category")
+@RequestMapping("/api/category")
 public class CategoryController {
 
     @Autowired
     private CategoryService categoryService;
-
-
 
     @PostMapping("/posts")
     public ResponseEntity<CategoryOfDay> createPost(@RequestBody CategoryOfDay category) {

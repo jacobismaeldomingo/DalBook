@@ -20,6 +20,7 @@ public class TopicServiceImpl implements TopicService {
     public List<Topic> getAllTopics() {
         return topicRepository.findAll();
     }
+
     public Topic getLatestTopic() {
         return topicRepository.findTopByOrderByIdDesc();
     }

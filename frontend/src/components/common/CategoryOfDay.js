@@ -1,18 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import './CategoryOfDay.css'; 
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import "./CategoryOfDay.css";
+import Header from "./Header";
 
-const PostForm = () => {
-  const [content, setContent] = useState('');
-  const [topic, setTopic] = useState('');
+const CategoryOfDay = () => {
+  const [content, setContent] = useState("");
+  const [topic, setTopic] = useState("");
 
   useEffect(() => {
     const fetchTopic = async () => {
       try {
-        const response = await axios.get('http://localhost:8085/api/topics/latest');
+        const response = await axios.get(
+          "http://localhost:8085/api/topics/latest"
+        );
         setTopic(response.data.topic);
       } catch (error) {
-        console.error('Error fetching topic:', error);
+        console.error("Error fetching topic:", error);
       }
     };
 
@@ -21,36 +24,47 @@ const PostForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const userId = localStorage.getItem('userId');
+    const userId = localStorage.getItem("userId");
     const post = { userId, topic, content };
-    
+
     try {
       const response = await axios.post(
-        'http://localhost:8085/Category/posts',
+        "http://localhost:8085/api/category/posts",
         post
       );
-      console.log('Post created:', response.data);
+      console.log("Post created:", response.data);
+      alert("Post created successfully!");
     } catch (error) {
-      console.error('Error creating post:', error);
+      console.error("Error creating post:", error);
+      alert("An error occurred. Please try again!");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Topic:</label>
-        <h2>Today's category is about '{topic}'. Tell us what you think:</h2>
-      </div>
-      <div>
-        <label>Post Content:</label>
-        <textarea
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-        ></textarea>
-      </div>
-      <button type="submit">Submit</button>
-    </form>
+    <div>
+      <Header />
+      <form className="category-form" onSubmit={handleSubmit}>
+        <div>
+          <label className="category-label">Topic:</label>
+          <h2 className="category-title">Today's category is about '{topic}'. Tell us what you think.</h2>
+        </div>
+        <div>
+          <label className="category-label" style={{paddingTop: "20px"}}>Post Content:</label>
+          <textarea
+            className="category-textarea"
+            value={content}
+            placeholder="Post your moment here..."
+            onChange={(e) => setContent(e.target.value)}
+            rows="10"
+            required
+          ></textarea>
+        </div>
+        <button className="category-button" type="submit">
+          Submit
+        </button>
+      </form>
+    </div>
   );
 };
 
-export default PostForm;
+export default CategoryOfDay;
