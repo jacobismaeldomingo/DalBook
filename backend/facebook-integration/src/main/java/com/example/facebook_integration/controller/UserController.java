@@ -59,8 +59,8 @@ public class UserController {
         String email = body.get("email");
         String password = body.get("password");
         try {
-            int userId = userService.login(email, password);
-            return ResponseEntity.ok(userId); // Return user ID on successful login
+            User user = userService.login(email, password);
+            return ResponseEntity.ok(user); // Return user ID on successful login
         } catch (IllegalArgumentException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage()); // Return 401 on failure
         }
@@ -114,6 +114,8 @@ public class UserController {
         userService.updateUserProfile(firstName, lastName, email, bio, status, profilePicture);
         return ResponseEntity.ok().body("Profile updated successfully");
     }
+
+
 
 }
 
