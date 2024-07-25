@@ -20,7 +20,7 @@ const UserProfile = () => {
       try {
         const storedUserEmail = localStorage.getItem("userEmail");
         const response = await axios.get(
-          `http://localhost:8085/api/user/getByEmail/${storedUserEmail}`
+          `http://localhost:8085/api/user/get/${storedUserEmail}`
         );
         setUser(response.data);
         setPreviewProfilePicture(response.data.profilePicture);

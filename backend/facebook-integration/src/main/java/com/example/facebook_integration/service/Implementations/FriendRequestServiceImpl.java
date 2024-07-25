@@ -138,7 +138,7 @@ public class FriendRequestServiceImpl implements FriendRequestService {
         List<FriendRequest> requestsIfExists = friendRequestRepository.findBySenderAndReceiver(sender, receiver);
         if (requestsIfExists.isEmpty()) {
             return 0; // No friend request exists
-        } else if (!requestsIfExists.get(0).isAccepted()) {
+        } else if (!requestsIfExists.getFirst().isAccepted()) {
             return -1; // Friend request already sent but not accepted
         } else {
             return 1; // Already friends
