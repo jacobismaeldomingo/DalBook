@@ -13,6 +13,7 @@ import FriendRequest from "./components/friendRequests/FriendRequest";
 import FriendRequestList from "./components/friendRequests/FriendRequestList";
 import FriendsList from "./components/friendRequests/FriendsList";
 import PrivateRoute from "./components/common/PrivateRoute";
+import Post from "./components/feed/Post";
 
 function App() {
   useEffect(() => {
@@ -75,6 +76,14 @@ function App() {
           element={
             <PrivateRoute>
               <FriendsList />
+            </PrivateRoute>
+          }
+          />
+        <Route
+          path="/post"
+          element={
+            <PrivateRoute>
+              <Post />
             </PrivateRoute>
           }
         />

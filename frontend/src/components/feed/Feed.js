@@ -27,7 +27,7 @@ function Feed() {
   const [friends, setFriends] = useState([]);
   const navigate = useNavigate();
   const [userId, setUserId] = useState(null);
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(null);
 
   const userProfile = () => {
     navigate("/profile");
@@ -222,7 +222,10 @@ function Feed() {
                 alt=""
                 style={{ height: "50px", padding: "1rem" }}
               />
-              <input type="Mind" placeholder="What's on your mind, John?" />
+              <input
+                type="Mind"
+                placeholder={`What's on your mind, ${user ? user.firstName : "User"}?`}
+              />
             </div>
             <div className="border-post"></div>
             <div className="post-icons">
@@ -235,6 +238,9 @@ function Feed() {
                   <IconMoodSmile stroke={2} color="orange" />
                   <div>Feeling/Activity</div>
                 </div>
+                <button className="post-button" style={{ backgroundColor: "blue", color: "white", padding: "0.5rem 1rem", border: "none", borderRadius: "5px", cursor: "pointer" }}>
+                  Post
+                </button>
               </div>
             </div>
           </div>
