@@ -42,11 +42,24 @@ public class UserController {
      * Parameters: String email - The email of the user.
      * Returns: ResponseEntity<User> - The user object.
      */
-    @GetMapping("/get/{email}")
+    @GetMapping("/getByEmail/{email}")
     public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
         Optional<User> userOptional = userService.findUserByEmail(email);
         return userOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body(null));
     }
+
+    /**
+     * Function: getUserById
+     * Purpose: Retrieves a user by their id.
+     * Parameters: int id - The id of the user.
+     * Returns: ResponseEntity<User> - The user object.
+     */
+    @GetMapping("/getById/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable int id) {
+        Optional<User> userOptional = userService.findUserById(id);
+        return userOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body(null));
+    }
+
 
     /**
      * Function: login

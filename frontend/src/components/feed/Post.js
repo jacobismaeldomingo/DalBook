@@ -1,37 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Post.css";
 import axios from "axios";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { IconPhoto, IconSend } from "@tabler/icons-react";
 
 const Post = () => {
   const [postText, setPostText] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
   const [feeling, setFeeling] = useState("");
-  const queryClient = useQueryClient();
+  const [posts, setPosts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const userId = localStorage.getItem("userId");
 
-  const { isLoading, data } = useQuery(["posts"], () =>
-    axios.get("/api/posts").then((res) => res.data)
-  );
+  useEffect(() => {
+    // const fetchPosts = async () => {
+    //   try {
+    //     const response = await axios.get("http://localhost:8085/api/posts");
+    //     setPosts(response.data);
+    //     setIsLoading(false);
+    //   } catch (error) {
+    //     console.error("Error fetching posts:", error);
+    //     setIsLoading(false);
+    //   }
+    // };
 
-  const mutation = useMutation(
-    (newPost) => axios.post("/api/posts", newPost, {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
-    }),
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries("posts");
-      },
-    }
-  );
+    // fetchPosts();
+  }, []);
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
   };
 
-  const handlePostSubmit = () => {
+  const handlePostSubmit = async () => {
     const formData = new FormData();
     formData.append("text", postText);
     if (selectedFile) {
@@ -39,10 +38,20 @@ const Post = () => {
     }
     formData.append("feeling", feeling);
 
-    mutation.mutate(formData);
-    setPostText("");
-    setSelectedFile(null);
-    setFeeling("");
+    try {
+      const response = await axios.post(`http://localhost:8085/api/posts/create/${userId}`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+      console.log(response);
+      setPosts((prevPosts) => [response.data, ...prevPosts]);
+      setPostText("");
+      setSelectedFile(null);
+      setFeeling("");
+    } catch (error) {
+      console.error("Error posting:", error);
+    }
   };
 
   return (
@@ -79,7 +88,7 @@ const Post = () => {
         {isLoading ? (
           "loading"
         ) : (
-          data.map((post) => (
+          posts.map((post) => (
             <div className="post" key={post.postId}>
               <p>{post.description}</p>
               {post.mediaUrl && (

@@ -27,11 +27,12 @@ public class PostController {
         return postService.getAllPosts();
     }
 
-    @PostMapping
-    public ResponseEntity<Post> createPost(@RequestParam("text") String text,
+    @PostMapping("/create/{id}")
+    public ResponseEntity<Post> createPost(@PathVariable int id, @RequestParam("text") String text,
                                            @RequestParam(value = "file", required = false) MultipartFile file,
                                            @RequestParam("feeling") String feeling) {
         Post post = new Post();
+        post.setUserId(id);
         post.setDescription(text);
         post.setMediaUrl(feeling);
 
