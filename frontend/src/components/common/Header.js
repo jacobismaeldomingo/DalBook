@@ -3,7 +3,6 @@
 import { React, useState, useEffect } from "react";
 import "./Header.css";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import friendService from "../../services/FriendService";
 import {
   IconSearch,
@@ -15,19 +14,18 @@ import {
   IconLogout,
   IconUsers,
 } from "@tabler/icons-react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Header() {
   const navigate = useNavigate();
-
   const [isAdmin, setIsAdmin] = useState(false);
+  const [pendingRequests, setPendingRequests] = useState(0);
 
   useEffect(() => {
     const userRole = localStorage.getItem("userRole");
     setIsAdmin(userRole === "System_Admin");
   }, []);
-
-  const [hasNewTopic, setHasNewTopic] = useState(false);
-  const [pendingRequests, setPendingRequests] = useState(0);
 
   useEffect(() => {
     const storedUserId = localStorage.getItem("userId");
@@ -39,41 +37,10 @@ function Header() {
         })
         .catch((error) => {
           console.error("Error fetching pending requests:", error);
-          alert("An error occurred. Please try again!");
+          toast.warn("An error occurred. Please try again!");
         });
     }
   }, []);
-
-  // useEffect(() => {
-  //   const fetchTopic = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         "http://localhost:8085/api/topics/latest"
-  //       );
-  //       const latestTopic = response.data.topic;
-  //       const latestTopicId = response.data.id;
-  //       const lastViewedTopicId = localStorage.getItem("lastViewedTopicId");
-
-  //       if (latestTopicId && latestTopicId !== lastViewedTopicId) {
-  //         setHasNewTopic(true);
-  //         localStorage.setItem("latestTopicId", latestTopicId);
-  //       } else {
-  //         setHasNewTopic(false);
-  //       }
-  //     } catch (error) {
-  //       console.error("Error fetching topic:", error);
-  //     }
-  //   };
-
-  //   fetchTopic();
-  // }, []);
-
-  // const handleIconClick = () => {
-  //   const latestTopicId = localStorage.getItem("latestTopicId");
-  //   localStorage.setItem("lastViewedTopicId", latestTopicId);
-  //   setHasNewTopic(false);
-  //   navigate("/CategoryOfDay");
-  // };
 
   const homePage = () => {
     navigate("/home");
@@ -87,12 +54,8 @@ function Header() {
     navigate("/login");
   };
 
-  const handleFriendRequests = () => {
-    navigate("/FriendRequest");
-  };
-
-  // const handleCategoryAdmin = () => {
-  //   navigate("/CategoryAdmin");
+  // const handleFriendRequests = () => {
+  //   navigate("/FriendRequest");
   // };
 
   const handleFriendRequestsList = () => {
@@ -100,7 +63,7 @@ function Header() {
   };
 
   const friendsPage = () => {
-    navigate("/friendsList");
+    navigate("/friends");
   };
 
   const adminPage = () => {
@@ -109,6 +72,7 @@ function Header() {
 
   return (
     <div className="homepage">
+      <ToastContainer />
       <div className="header">
         <div className="main-header">
           <div className="logo">
@@ -117,6 +81,7 @@ function Header() {
               alt="logo"
               style={{
                 height: "40px",
+                cursor: "auto",
               }}
             />
           </div>
@@ -133,26 +98,12 @@ function Header() {
           >
             <IconHome stroke={2} size={30} color="#1877F2" />
           </div>
-          {/* <div className="icon">
-            <IconBuildingStore stroke={2} size={30} color="#1877F2" />
-          </div> */}
           <div className="icon" onClick={friendsPage}>
             <IconUsers stroke={2} size={30} color="#1877F2" />
           </div>
-          <div className="icon" onClick={handleFriendRequests}>
+          <div className="icon">
             <IconUsersGroup stroke={2} size={30} color="#1877f2" />
           </div>
-          {/* <div
-            className="notifications"
-            onClick={handleIconClick}
-            style={{ position: "relative" }}
-          >
-            <IconBell stroke={2} size={30} color="#1877f2" />
-            {hasNewTopic}
-          </div> */}
-          {/* <div className="icon" onClick={handleCategoryAdmin}>
-            <IconUsersGroup stroke={2} size={30} color="#1877f2" />
-          </div> */}
         </div>
         <div className="account-header">
           {isAdmin && (

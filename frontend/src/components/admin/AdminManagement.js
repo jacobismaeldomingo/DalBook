@@ -2,20 +2,21 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./AdminManagement.css";
-import Header from "../common/Header";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const AdminManagement = () => {
+function AdminManagement() {
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
   const [newRole, setNewRole] = useState("");
-  const [joinRequests, setJoinRequests] = useState([]);
-  const storedUserId = localStorage.getItem("userId");
-  const storedUserEmail = localStorage.getItem("userEmail");
+  // const [joinRequests, setJoinRequests] = useState([]);
+  // const storedUserId = localStorage.getItem("userId");
+  // const storedUserEmail = localStorage.getItem("userEmail");
   const storedUserRole = localStorage.getItem("userRole");
 
   useEffect(() => {
     fetchUsers();
-    fetchJoinRequests();
+    // fetchJoinRequests();
   }, []);
 
   const fetchUsers = async () => {
@@ -34,18 +35,18 @@ const AdminManagement = () => {
           `http://localhost:8085/api/admin/users/deactivate/${userId}`,
           { adminRole: storedUserRole }
         );
-        alert("User deactivated successfully");
+        toast.success("User deactivated successfully");
       } else {
         await axios.put(
           `http://localhost:8085/api/admin/users/activate/${userId}`,
           { adminRole: storedUserRole }
         );
-        alert("User activated successfully");
+        toast.success("User activated successfully");
       }
       fetchUsers();
     } catch (error) {
       console.error("Error toggling user activation:", error);
-      alert("An error occurred. Please try again.");
+      toast.warn("An error occurred. Please try again.");
     }
   };
 
@@ -58,10 +59,11 @@ const AdminManagement = () => {
         }
       );
       console.log(`User deleted successfully with ID: ${userId}`);
-      alert("User deleted successfully");
+      toast.success("User deleted successfully");
       fetchUsers();
     } catch (error) {
       console.error("Error deleting user:", error);
+      toast.warn("An error occurred. Please try again.");
     }
   };
 
@@ -81,54 +83,55 @@ const AdminManagement = () => {
             },
           }
         );
-        alert("Role updated successfully");
+        toast.success("Role updated successfully");
         fetchUsers();
       } catch (error) {
         console.error("Error updating role:", error);
-        alert("An error occurred. Please try again.");
+        toast.warn("An error occurred. Please try again.");
       }
     }
   };
 
-  const fetchJoinRequests = async () => {
-    try {
-      const response = await axios.get(
-        "http://localhost:8085/api/admin/join-requests"
-      );
-      setJoinRequests(response.data);
-    } catch (error) {
-      console.error("Error fetching join requests:", error);
-    }
-  };
+  // const fetchJoinRequests = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       "http://localhost:8085/api/admin/join-requests"
+  //     );
+  //     setJoinRequests(response.data);
+  //   } catch (error) {
+  //     console.error("Error fetching join requests:", error);
+  //   }
+  // };
 
-  const handleApproveRequest = async (requestId) => {
-    try {
-      await axios.put(
-        `http://localhost:8085/api/admin/join-requests/${requestId}/approve`
-      );
-      alert("Request approved successfully");
-      fetchJoinRequests();
-    } catch (error) {
-      console.error("Error approving request:", error);
-      alert("An error occurred. Please try again.");
-    }
-  };
+  // const handleApproveRequest = async (requestId) => {
+  //   try {
+  //     await axios.put(
+  //       `http://localhost:8085/api/admin/join-requests/${requestId}/approve`
+  //     );
+  //     toast.success("Request approved successfully");
+  //     fetchJoinRequests();
+  //   } catch (error) {
+  //     console.error("Error approving request:", error);
+  //     toast.warn("An error occurred. Please try again.");
+  //   }
+  // };
 
-  const handleRejectRequest = async (requestId) => {
-    try {
-      await axios.put(
-        `http://localhost:8085/api/admin/join-requests/${requestId}/reject`
-      );
-      alert("Request rejected successfully");
-      fetchJoinRequests();
-    } catch (error) {
-      console.error("Error rejecting request:", error);
-      alert("An error occurred. Please try again.");
-    }
-  };
+  // const handleRejectRequest = async (requestId) => {
+  //   try {
+  //     await axios.put(
+  //       `http://localhost:8085/api/admin/join-requests/${requestId}/reject`
+  //     );
+  //     toast.success("Request rejected successfully");
+  //     fetchJoinRequests();
+  //   } catch (error) {
+  //     console.error("Error rejecting request:", error);
+  //     toast.warn("An error occurred. Please try again.");
+  //   }
+  // };
 
   return (
     <div>
+      <ToastContainer />
       <div className="admin-interface">
         <h2 style={{ paddingBottom: "1rem" }}>User Management</h2>
         <table>

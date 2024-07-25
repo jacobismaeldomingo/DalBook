@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/category")
 public class CategoryController {
@@ -20,4 +22,13 @@ public class CategoryController {
         return new ResponseEntity<>(categoryService.saveCategory(category), HttpStatus.CREATED);
     }
 
+    @GetMapping
+    public ResponseEntity<List<CategoryOfDay>> getAllCategories() {
+        return new ResponseEntity<>(categoryService.getAllCategories(), HttpStatus.OK);
+    }
+
+    @GetMapping("/getPosts")
+    public ResponseEntity<List<CategoryOfDay>> getPostsByTopic(@RequestParam String topic) {
+        return new ResponseEntity<>(categoryService.getPostsByTopic(topic), HttpStatus.OK);
+    }
 }

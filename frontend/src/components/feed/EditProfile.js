@@ -3,7 +3,7 @@ import "./EditProfile.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const UserProfile = () => {
+function UserProfile() {
   const [user, setUser] = useState({
     firstName: "",
     lastName: "",
@@ -20,7 +20,7 @@ const UserProfile = () => {
       try {
         const storedUserEmail = localStorage.getItem("userEmail");
         const response = await axios.get(
-          `http://localhost:8085/api/user/get/${storedUserEmail}`
+          `http://localhost:8085/api/user/getByEmail/${storedUserEmail}`
         );
         setUser(response.data);
         setPreviewProfilePicture(response.data.profilePicture);
@@ -53,6 +53,7 @@ const UserProfile = () => {
       formData.append("lastName", user.lastName);
       formData.append("bio", user.bio);
       formData.append("status", user.status);
+
       if (user.profilePicture) {
         formData.append("profilePicture", user.profilePicture);
       }

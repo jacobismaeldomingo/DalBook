@@ -11,7 +11,7 @@ const Profile = () => {
     const storedUserEmail = localStorage.getItem("userEmail");
     if (storedUserEmail) {
       axios
-        .get(`http://localhost:8085/api/user/get/${storedUserEmail}`)
+        .get(`http://localhost:8085/api/user/getByEmail/${storedUserEmail}`)
         .then((response) => {
           setUser(response.data);
         })

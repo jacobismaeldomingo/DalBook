@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Forgot.css";
 import { validateEmail } from "../authentication/SignupValidation";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function SecurityQuestion() {
   const [email, setEmail] = useState("");
@@ -29,7 +31,7 @@ export default function SecurityQuestion() {
 
     try {
       const response = await fetch(
-        `http://localhost:8085/api/user/get/${email}`,
+        `http://localhost:8085/api/user/getByEmail/${email}`,
         {
           method: "GET",
           headers: {
@@ -47,7 +49,7 @@ export default function SecurityQuestion() {
       }
     } catch (error) {
       console.error("Error fetching user from backend:", error);
-      alert("Error fetching user from backend");
+      toast.warn("Error fetching user from backend");
     }
   };
 
@@ -77,6 +79,7 @@ export default function SecurityQuestion() {
 
   return (
     <div className="container">
+      <ToastContainer />
       <div className="paper">
         <h2 className="subtitle">Email</h2>
         <form

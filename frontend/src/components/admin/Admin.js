@@ -4,7 +4,7 @@ import AdminManagement from "./AdminManagement";
 import CategoryAdmin from "./CategoryAdmin";
 import Header from "../common/Header";
 
-const Admin = () => {
+function Admin() {
   const [activeComponent, setActiveComponent] = useState("adminManagement");
 
   const renderComponent = () => {

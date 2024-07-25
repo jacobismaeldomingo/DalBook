@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import friendService from "../../services/FriendService";
-import { Link } from "react-router-dom";
 import "./FriendRequest.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const FriendRequest = () => {
   const [userId, setUserId] = useState(null);
@@ -29,7 +30,7 @@ const FriendRequest = () => {
         receiverEmail
       );
       if (Object.keys(result).length > 0) {
-        alert("Friend Request sent successfully");
+        toast.success("Friend Request sent successfully");
         console.log("Friend request sent:", result);
       }
     } catch (error) {
@@ -39,8 +40,9 @@ const FriendRequest = () => {
 
   return (
     <div>
+      <ToastContainer />
       <h2 style={{ padding: "1.5rem", paddingBottom: "0" }}>Add Friends</h2>
-      <h4 style={{ padding: "1.5rem" }}>Current User ID: {userId} </h4>
+      {/* <h4 style={{ padding: "1.5rem" }}>Current User ID: {userId} </h4> */}
       <div className="friends-input">
         <input
           type="text-id"
@@ -53,23 +55,6 @@ const FriendRequest = () => {
           Send Friend Request
         </button>
         {message && <p className="email-error-message">{message}</p>}
-      </div>
-      <div className="friends-links">
-        <Link to="/home" className="btn btn-primary text-decoration-none">
-          Homepage
-        </Link>
-        <Link
-          to="/friendRequestList"
-          className="btn btn-primary text-decoration-none"
-        >
-          Friend Request List
-        </Link>
-        <Link
-          to="/friendsList"
-          className="btn btn-primary text-decoration-none"
-        >
-          Friends List
-        </Link>
       </div>
     </div>
   );

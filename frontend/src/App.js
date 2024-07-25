@@ -18,6 +18,10 @@ import AdminRoute from "./components/common/AdminRoute";
 import CategoryOfTheDay from "./components/feed/CategoryOfTheDay";
 import CategoryAdmin from "./components/admin/CategoryAdmin";
 import AdminManagement from "./components/admin/AdminManagement";
+import FriendProfile from "./components/feed/FriendProfile";
+import FriendsDashboard from "./components/friendRequests/FriendsDashboard";
+import Notifications from "./components/notifications/Notifications";
+import Pages from "./components/feed/Pages";
 
 function App() {
   useEffect(() => {
@@ -44,6 +48,14 @@ function App() {
           }
         />
         <Route
+          path="/pages"
+          element={
+            <PrivateRoute>
+              <Pages />
+            </PrivateRoute>
+          }
+        />
+        <Route
           path="/profile"
           element={
             <PrivateRoute>
@@ -56,6 +68,22 @@ function App() {
           element={
             <PrivateRoute>
               <EditProfile />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/notifications"
+          element={
+            <PrivateRoute>
+              <Notifications />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/friends"
+          element={
+            <PrivateRoute>
+              <FriendsDashboard />
             </PrivateRoute>
           }
         />
@@ -80,6 +108,14 @@ function App() {
           element={
             <PrivateRoute>
               <FriendsList />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/friendProfile/:friendEmail"
+          element={
+            <PrivateRoute>
+              <FriendProfile />
             </PrivateRoute>
           }
         />
