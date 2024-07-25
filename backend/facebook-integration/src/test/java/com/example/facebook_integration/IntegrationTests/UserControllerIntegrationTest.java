@@ -2,7 +2,6 @@ package com.example.facebook_integration.IntegrationTests;
 
 import com.example.facebook_integration.model.User;
 import com.example.facebook_integration.repository.UserRepository;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,9 +31,6 @@ public class UserControllerIntegrationTest {
 
     @Autowired
     private UserRepository userRepository;
-
-    @Autowired
-    private ObjectMapper objectMapper;
 
     @BeforeEach
     public void setup() {
