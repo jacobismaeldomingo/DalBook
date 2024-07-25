@@ -22,6 +22,7 @@ import {
   IconUsersGroup,
 } from "@tabler/icons-react";
 import friendService from "../../services/FriendService";
+import Post from "./Post";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -29,7 +30,11 @@ function Feed() {
   const [friends, setFriends] = useState([]);
   const navigate = useNavigate();
   const [userId, setUserId] = useState(null);
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(null);
+  const [showPostPopup, setShowPostPopup] = useState(false); // State to show/hide the post popup
+  const [posts, setPosts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [users, setUsers] = useState({});
 
   const userProfile = () => {
     navigate("/profile");
@@ -84,6 +89,36 @@ function Feed() {
           toast.warn("An error occurred. Please try again!");
         });
     }
+
+    const retrieveUsers = async (postsData) => {
+      // Fetch user details for each post
+      const userPromises = postsData.map((post) =>
+        axios.get(`http://localhost:8085/api/user/getById/${post.userId}`)
+      );
+      const userResponses = await Promise.all(userPromises);
+
+      // Create a mapping of user IDs to user data
+      const userMap = userResponses.reduce((acc, response) => {
+        const user = response.data;
+        acc[user.id] = user;
+        return acc;
+      }, {});
+      setUsers(userMap);
+    };
+
+    const fetchPosts = async () => {
+      try {
+        const response = await axios.get("http://localhost:8085/api/posts");
+        retrieveUsers(response.data);
+        console.log(response.data);
+        setPosts(response.data);
+        setIsLoading(false);
+      } catch (error) {
+        console.error("Error fetching posts:", error);
+        setIsLoading(false);
+      }
+    };
+    fetchPosts();
   }, [userId]);
 
   const getStatusIcon = (status) => {
@@ -225,7 +260,13 @@ function Feed() {
                 alt=""
                 style={{ height: "50px", padding: "1rem" }}
               />
-              <input type="Mind" placeholder="What's on your mind, John?" />
+              <input
+                type="Mind"
+                placeholder={`What's on your mind, ${
+                  user ? user.firstName : "User"
+                }?`}
+                onClick={() => setShowPostPopup(true)}
+              />
             </div>
             {/* <div className="border-post"></div> */}
             <div className="post-icons">
@@ -238,8 +279,79 @@ function Feed() {
                   <IconMoodSmile stroke={2} color="orange" />
                   <div>Feeling/Activity</div>
                 </div>
+                <button
+                  className="post-button"
+                  style={{
+                    backgroundColor: "blue",
+                    color: "white",
+                    padding: "0.5rem 1rem",
+                    border: "none",
+                    borderRadius: "5px",
+                    cursor: "pointer",
+                  }}
+                >
+                  Post
+                </button>
               </div>
             </div>
+          </div>
+          {showPostPopup && (
+            <div className="post-popup">
+              <div className="post-popup-content">
+                <Post />
+                <button
+                  className="post-popup-close"
+                  onClick={() => setShowPostPopup(false)}
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          )}
+          <div>
+            {isLoading
+              ? "loading"
+              : posts.map((post) => (
+                  <div className="posted" key={post.postId}>
+                    <div className="post">
+                      <div className="feed-profile-picture">
+                        <img
+                          src={
+                            users[post.userId]?.profilePic
+                              ? `http://localhost:8085${users[post.userId]?.profilePic}`
+                              : "/images/dalhousie-logo.png"
+                          }
+                          alt="profile-picture"
+                          style={{ height: "50px", padding: "1rem" }}
+                        />
+                        <div className="users-name">
+                          {users[post.userId]?.firstName || "Unknown"}{" "}
+                          {users[post.userId]?.lastName || "User"}
+                        </div>
+                      </div>
+                      <div className="edit">
+                        <IconDots stroke={2} />
+                      </div>
+                    </div>
+                    <div className="caption">{post.description}</div>
+                    {post.mediaUrl && <img src={post.mediaUrl} alt="post" />}
+                    <p>{post.feeling}</p>
+                    <div className="reactions">
+                      <div className="like">
+                        <IconThumbUp stroke={2} />
+                        Like
+                      </div>
+                      <div className="comment">
+                        <IconMessageCircle stroke={2} />
+                        Comment
+                      </div>
+                      <div className="share">
+                        <IconShare3 stroke={2} />
+                        Share
+                      </div>
+                    </div>
+                  </div>
+                ))}
           </div>
           <div className="posted">
             <div className="post">
@@ -258,52 +370,13 @@ function Feed() {
             </div>
             <div className="caption">Feeling good today!</div>
             <br />
-            <div className="media">
+            {/* <div className="media">
               <img
                 src="/images/post.jpg"
                 alt=""
                 style={{ height: "auto", width: "100%" }}
               />
-            </div>
-            <div className="reactions">
-              <div className="like">
-                <IconThumbUp stroke={2} />
-                Like
-              </div>
-              <div className="comment">
-                <IconMessageCircle stroke={2} />
-                Comment
-              </div>
-              <div className="share">
-                <IconShare3 stroke={2} />
-                Share
-              </div>
-            </div>
-          </div>
-          <div className="posted">
-            <div className="post">
-              <div className="feed-profile-picture">
-                <img
-                  src="/images/avatar-1.jpeg"
-                  alt=""
-                  style={{ height: "50px" }}
-                ></img>
-                <div>John Doe</div>
-                <div className="update">Updated his cover image.</div>
-              </div>
-              <div className="edit">
-                <IconDots stroke={2} />
-              </div>
-            </div>
-            <div className="caption">Feeling good today!</div>
-            <br />
-            <div className="media">
-              <img
-                src="/images/post.jpg"
-                alt=""
-                style={{ height: "auto", width: "100%" }}
-              />
-            </div>
+            </div> */}
             <div className="reactions">
               <div className="like">
                 <IconThumbUp stroke={2} />
