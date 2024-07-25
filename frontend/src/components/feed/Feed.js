@@ -308,7 +308,7 @@ function Feed() {
                               ? `http://localhost:8085${users[post.userId]?.profilePic}`
                               : "/images/dalhousie-logo.png"
                           }
-                          alt="profile-picture"
+                          alt=""
                           style={{ height: "50px", padding: "1rem" }}
                         />
                         <div className="users-name">

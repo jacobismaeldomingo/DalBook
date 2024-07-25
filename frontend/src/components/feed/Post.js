@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Post.css";
 import axios from "axios";
 import { IconPhoto, IconSend } from "@tabler/icons-react";
@@ -7,8 +7,6 @@ const Post = () => {
   const [postText, setPostText] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
   const [feeling, setFeeling] = useState("");
-  const [posts, setPosts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
   const userId = localStorage.getItem("userId");
 
   const handleFileChange = (e) => {
@@ -30,7 +28,6 @@ const Post = () => {
         }
       });
       console.log(response);
-      setPosts((prevPosts) => [response.data, ...prevPosts]);
       setPostText("");
       setSelectedFile(null);
       setFeeling("");
