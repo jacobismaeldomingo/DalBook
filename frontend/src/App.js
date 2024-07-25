@@ -13,12 +13,6 @@ import FriendRequest from "./components/friendRequests/FriendRequest";
 import FriendRequestList from "./components/friendRequests/FriendRequestList";
 import FriendsList from "./components/friendRequests/FriendsList";
 import PrivateRoute from "./components/common/PrivateRoute";
-import Post from "./components/feed/Post";
-import Admin from "./components/admin/Admin";
-import AdminRoute from "./components/common/AdminRoute";
-import CategoryOfTheDay from "./components/feed/CategoryOfTheDay";
-import CategoryAdmin from "./components/admin/CategoryAdmin";
-import AdminManagement from "./components/admin/AdminManagement";
 
 function App() {
   useEffect(() => {
@@ -81,48 +75,6 @@ function App() {
           element={
             <PrivateRoute>
               <FriendsList />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/post"
-          element={
-            <PrivateRoute>
-              <Post />
-            </PrivateRoute>
-          }
-          />
-        <Route
-          path="/categoryOfTheDay"
-          element={
-            <PrivateRoute>
-              <CategoryOfTheDay />
-            </PrivateRoute>
-          }
-        />
-
-        {/* Admin Links */}
-        <Route
-          path="/admin"
-          element={
-            <AdminRoute>
-              <Admin />
-            </AdminRoute>
-          }
-        />
-        <Route
-          path="/adminManagement"
-          element={
-            <AdminRoute>
-              <AdminManagement />
-            </AdminRoute>
-          }
-        />
-        <Route
-          path="/categoryAdmin"
-          element={
-            <PrivateRoute>
-              <CategoryAdmin />
             </PrivateRoute>
           }
         />
