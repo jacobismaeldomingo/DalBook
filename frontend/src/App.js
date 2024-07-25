@@ -13,6 +13,7 @@ import FriendRequest from "./components/friendRequests/FriendRequest";
 import FriendRequestList from "./components/friendRequests/FriendRequestList";
 import FriendsList from "./components/friendRequests/FriendsList";
 import PrivateRoute from "./components/common/PrivateRoute";
+import Post from "./components/feed/Post";
 import Admin from "./components/admin/Admin";
 import AdminRoute from "./components/common/AdminRoute";
 import CategoryOfTheDay from "./components/feed/CategoryOfTheDay";
@@ -83,6 +84,14 @@ function App() {
             </PrivateRoute>
           }
         />
+        <Route
+          path="/post"
+          element={
+            <PrivateRoute>
+              <Post />
+            </PrivateRoute>
+          }
+          />
         <Route
           path="/categoryOfTheDay"
           element={
