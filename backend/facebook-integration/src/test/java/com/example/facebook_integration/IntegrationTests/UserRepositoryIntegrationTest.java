@@ -32,4 +32,19 @@ public class UserRepositoryIntegrationTest {
         assertTrue(foundUser.isPresent());
         assertEquals("John", foundUser.get().getFirstName());
     }
+
+    @Test
+    public void testFindByEmail() {
+        User user = new User();
+        user.setFirstName("Jane");
+        user.setLastName("Doe");
+        user.setEmail("jane.doe@dal.ca");
+        user.setSecurityAnswer("France");
+        user.setDateOfBirth("02-02-2002");
+        userRepository.save(user);
+
+        Optional<User> foundUser = userRepository.findUserByEmail(user.getEmail());
+        assertTrue(foundUser.isPresent());
+        assertEquals("Jane", foundUser.get().getFirstName());
+    }
 }
