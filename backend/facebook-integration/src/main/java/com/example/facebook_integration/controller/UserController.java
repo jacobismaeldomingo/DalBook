@@ -126,8 +126,5 @@ public class UserController {
         userService.updateUserProfile(firstName, lastName, email, bio, status, profilePicture);
         return ResponseEntity.ok().body("Profile updated successfully");
     }
-
-
-
 }
 

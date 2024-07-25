@@ -279,19 +279,6 @@ function Feed() {
                   <IconMoodSmile stroke={2} color="orange" />
                   <div>Feeling/Activity</div>
                 </div>
-                <button
-                  className="post-button"
-                  style={{
-                    backgroundColor: "blue",
-                    color: "white",
-                    padding: "0.5rem 1rem",
-                    border: "none",
-                    borderRadius: "5px",
-                    cursor: "pointer",
-                  }}
-                >
-                  Post
-                </button>
               </div>
             </div>
           </div>

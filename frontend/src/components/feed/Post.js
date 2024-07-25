@@ -11,21 +11,6 @@ const Post = () => {
   const [isLoading, setIsLoading] = useState(true);
   const userId = localStorage.getItem("userId");
 
-  useEffect(() => {
-    // const fetchPosts = async () => {
-    //   try {
-    //     const response = await axios.get("http://localhost:8085/api/posts");
-    //     setPosts(response.data);
-    //     setIsLoading(false);
-    //   } catch (error) {
-    //     console.error("Error fetching posts:", error);
-    //     setIsLoading(false);
-    //   }
-    // };
-
-    // fetchPosts();
-  }, []);
-
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
   };
@@ -83,21 +68,6 @@ const Post = () => {
             <IconSend stroke={2} color="blue" />
           </button>
         </div>
-      </div>
-      <div className="posts">
-        {isLoading ? (
-          "loading"
-        ) : (
-          posts.map((post) => (
-            <div className="post" key={post.postId}>
-              <p>{post.description}</p>
-              {post.mediaUrl && (
-                <img src={post.mediaUrl} alt="post" />
-              )}
-              <p>{post.feeling}</p>
-            </div>
-          ))
-        )}
       </div>
     </div>
   );
