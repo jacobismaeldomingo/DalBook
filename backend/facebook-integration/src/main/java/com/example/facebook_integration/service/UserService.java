@@ -1,6 +1,7 @@
 package com.example.facebook_integration.service;
 
 import com.example.facebook_integration.model.User;
+import com.example.facebook_integration.model.UserGroup;
 import jakarta.transaction.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -24,6 +25,8 @@ public interface UserService {
     void deactivateUser(int id, String adminRole);
     @Transactional
     void activateUser(int id, String adminRole);
+    List<UserGroup> getAllGroups(int userId);
+
 //    List<JoinRequest> getJoinRequests();
 //    JoinRequest handleJoinRequest(Long id, String action);
 }
