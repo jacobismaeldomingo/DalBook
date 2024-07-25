@@ -11,6 +11,7 @@ import jakarta.validation.constraints.Size;
 import java.util.List;
 
 @Entity
+@Table(name = "`user`") // Escaping the table name
 public class User {
 
     @Id
