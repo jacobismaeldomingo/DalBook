@@ -60,7 +60,6 @@ public class UserController {
         return userOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body(null));
     }
 
-
     /**
      * Function: login
      * Purpose: Handles user login.

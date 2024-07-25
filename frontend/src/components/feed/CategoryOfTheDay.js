@@ -3,8 +3,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./CategoryOfTheDay.css";
 import Header from "../common/Header";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const CategoryOfTheDay = () => {
+function CategoryOfTheDay() {
   const [content, setContent] = useState("");
   const [topic, setTopic] = useState("");
 
@@ -15,6 +17,7 @@ const CategoryOfTheDay = () => {
           "http://localhost:8085/api/topics/latest"
         );
         setTopic(response.data.topic);
+        localStorage.setItem("currentTopic", response.data.topic);
       } catch (error) {
         console.error("Error fetching topic:", error);
       }
@@ -34,20 +37,21 @@ const CategoryOfTheDay = () => {
         post
       );
       console.log("Post created:", response.data);
-      alert("Post created successfully!");
+      toast.success("Post created successfully!");
     } catch (error) {
       console.error("Error creating post:", error);
-      alert("An error occurred. Please try again!");
+      toast.warn("An error occurred. Please try again!");
     }
   };
 
   return (
     <div>
+      <ToastContainer />
       <Header />
       <form className="category-form" onSubmit={handleSubmit}>
         <div>
           <label className="category-label">Topic:</label>
-          <h2 className="category-title">
+          <h2 className="category-topic">
             Today's category is about '{topic}'. Tell us what you think.
           </h2>
         </div>

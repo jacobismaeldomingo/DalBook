@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Feed.css";
 import {
@@ -23,6 +23,8 @@ import {
 } from "@tabler/icons-react";
 import friendService from "../../services/FriendService";
 import Post from "./Post";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Feed() {
   const [friends, setFriends] = useState([]);
@@ -39,7 +41,7 @@ function Feed() {
   };
 
   const friendsPage = () => {
-    navigate("/friendsList");
+    navigate("/friends");
   };
 
   const groupsPage = () => {
@@ -49,6 +51,10 @@ function Feed() {
   const categoryOfDayPage = () => {
     navigate("/categoryOftheDay");
   };
+
+  const pages = () => {
+    navigate("/pages");
+  }
 
   useEffect(() => {
     const storedUserId = localStorage.getItem("userId");
@@ -80,7 +86,7 @@ function Feed() {
         })
         .catch((error) => {
           console.error("Error fetching friends:", error);
-          alert("An error occurred. Please try again!");
+          toast.warn("An error occurred. Please try again!");
         });
     }
 
@@ -138,8 +144,13 @@ function Feed() {
     }
   };
 
+  const viewFriendProfile = (friendEmail) => {
+    navigate(`/friendProfile/${friendEmail}`);
+  };
+
   return (
     <div className="main">
+      <ToastContainer />
       <div className="left-side">
         <div
           className="profile"
@@ -152,7 +163,7 @@ function Feed() {
                 ? `http://localhost:8085${user.profilePic}`
                 : "/images/dalhousie-logo.png"
             }
-            alt="profile-picture"
+            alt=""
             style={{ padding: "1rem" }}
           />
           {user ? (
@@ -176,7 +187,7 @@ function Feed() {
           <IconCalendarStar stroke={2} />
           <div>Category of the Day</div>
         </div>
-        <div className="panel">
+        <div className="panel" onClick={pages}>
           <IconFlag stroke={2} />
           <div>Pages</div>
         </div>
@@ -246,7 +257,7 @@ function Feed() {
                     ? `http://localhost:8085${user.profilePic}`
                     : "/images/dalhousie-logo.png"
                 }
-                alt="profile-picture"
+                alt=""
                 style={{ height: "50px", padding: "1rem" }}
               />
               <input
@@ -257,7 +268,7 @@ function Feed() {
                 onClick={() => setShowPostPopup(true)}
               />
             </div>
-            <div className="border-post"></div>
+            {/* <div className="border-post"></div> */}
             <div className="post-icons">
               <div className="icon">
                 <div className="post-icon">
@@ -400,14 +411,19 @@ function Feed() {
         </div>
         <div className="concise">
           {friends.map((friend) => (
-            <div key={friend.id} className="profiles name">
+            <div
+              key={friend.id}
+              className="profiles name"
+              onClick={() => viewFriendProfile(friend.email)}
+              style={{ cursor: "pointer" }}
+            >
               <img
                 src={
                   friend.profilePic
                     ? `http://localhost:8085${friend.profilePic}`
                     : "/images/dalhousie-logo.png"
                 }
-                alt="profile-picture"
+                alt=""
                 style={{ padding: "1rem" }}
               />
               {friend.firstName + " " + friend.lastName}
