@@ -9,6 +9,7 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 @Entity
+@Table(name = "`user`") // Escaping the table name
 public class User {
 
     @Id
