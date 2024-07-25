@@ -5,27 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f45d59d8-ed65-4e6b-b12f-eeccb71bba89" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/controller/FriendRequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/controller/FriendRequestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/controller/GroupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/controller/GroupController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/repository/FriendRequestRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/repository/FriendRequestRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/model/UserGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/model/UserGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/repository/GroupRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/repository/GroupRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/service/Implementations/GroupServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/service/Implementations/GroupServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/service/Implementations/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/service/Implementations/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/images/dalhousie-logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/images/dalhousie-logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/admin/Admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/admin/Admin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/authentication/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/authentication/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/authentication/Signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/authentication/Signup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/common/Header.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/common/Header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/common/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/common/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/feed/Feed.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/feed/Feed.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/feed/Feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/feed/Feed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/feed/Profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/feed/Profile.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/feed/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/feed/Profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/test/java/com/example/facebook_integration/UnitTests/GroupTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/test/java/com/example/facebook_integration/UnitTests/GroupServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,37 +35,93 @@
   &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="2iRgtL9Yjnqi7i4IrZ7EbLFfuen" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Spring Boot.FacebookIntegrationApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/issue-22&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/jacobdomingo/Group19/backend/facebook-integration/src/main/resources/static/profile_pictures&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.GroupTest.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.FacebookIntegrationApplication.executor": "Run",
+    "git-widget-placeholder": "feature/issue-22",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/jacobdomingo/Group19/backend/facebook-integration/src/main/resources/static/profile_pictures",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/backend/facebook-integration/src/main/resources/static/profile_pictures" />
       <recent name="$PROJECT_DIR$/backend/facebook-integration/src/main/resources/static" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.facebook_integration.service" />
+      <recent name="com.example.facebook_integration.service.Implementations" />
+      <recent name="com.example.facebook_integration.repository" />
+      <recent name="com.example.facebook_integration.model" />
+      <recent name="com.example.facebook_integration.controller" />
+    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.UserServiceTest">
+    <configuration name="GroupServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="facebook-integration" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.facebook_integration.UnitTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.facebook_integration.UnitTests" />
+      <option name="MAIN_CLASS_NAME" value="com.example.facebook_integration.UnitTests.GroupServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GroupTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="facebook-integration" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.facebook_integration.UnitTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.facebook_integration.UnitTests" />
+      <option name="MAIN_CLASS_NAME" value="com.example.facebook_integration.UnitTests.GroupTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="facebook-integration" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.facebook_integration.UnitTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.facebook_integration.UnitTests" />
+      <option name="MAIN_CLASS_NAME" value="com.example.facebook_integration.UnitTests.UserServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="FacebookIntegrationApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="22" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -86,6 +131,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.UserServiceTest" />
+        <item itemvalue="JUnit.GroupServiceTest" />
+        <item itemvalue="JUnit.GroupTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>

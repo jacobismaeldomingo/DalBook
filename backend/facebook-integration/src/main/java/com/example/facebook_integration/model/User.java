@@ -1,5 +1,6 @@
 package com.example.facebook_integration.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
@@ -8,6 +9,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -62,6 +64,11 @@ public class User {
 
     @OneToMany(mappedBy = "receiver", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<FriendRequest> receivedRequests;
+
+    //Connecting user to usergroups in a many to many relationship
+    @ManyToMany(mappedBy = "users")
+    @JsonIgnore
+    private List<UserGroup> groups = new ArrayList<>();
 
     // Constructor
     public User() {
@@ -177,4 +184,13 @@ public class User {
     public void setIsActive(boolean is_active) {
         this.is_active = is_active;
     }
+
+    public List<UserGroup> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(List<UserGroup> UserGroups) {
+        this.groups = UserGroups;
+    }
+
 }

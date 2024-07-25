@@ -1,6 +1,7 @@
 package com.example.facebook_integration.service.Implementations;
 
 import com.example.facebook_integration.model.User;
+import com.example.facebook_integration.model.UserGroup;
 import com.example.facebook_integration.repository.FriendRequestRepository;
 import com.example.facebook_integration.repository.UserRepository;
 import com.example.facebook_integration.service.UserService;
@@ -265,6 +266,13 @@ public class UserServiceImpl implements UserService {
         else {
             throw new IllegalArgumentException("User with id " + id + " not found");
         }
+    }
+
+
+    @Override
+    public List<UserGroup> getAllGroups(int userId){
+        User user = userRepository.findById(userId).get();
+        return user.getGroups();
     }
 
 //    @PreAuthorize("hasRole('FACULTY_ADMIN')")
