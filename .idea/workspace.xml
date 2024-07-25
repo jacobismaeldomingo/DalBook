@@ -5,12 +5,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f45d59d8-ed65-4e6b-b12f-eeccb71bba89" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/controller/FriendRequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/controller/FriendRequestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/repository/FriendRequestRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/repository/FriendRequestRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/service/Implementations/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/service/Implementations/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/images/dalhousie-logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/images/dalhousie-logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/admin/Admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/admin/Admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/authentication/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/authentication/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/authentication/Signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/authentication/Signup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/common/Header.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/common/Header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/common/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/common/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/feed/Feed.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/feed/Feed.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/feed/Feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/feed/Feed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/feed/Profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/feed/Profile.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/feed/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/feed/Profile.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -31,9 +58,9 @@
     &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;Spring Boot.FacebookIntegrationApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/issue-22&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/jacobdomingo/Group19&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/jacobdomingo/Group19/backend/facebook-integration/src/main/resources/static/profile_pictures&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -43,6 +70,12 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/backend/facebook-integration/src/main/resources/static/profile_pictures" />
+      <recent name="$PROJECT_DIR$/backend/facebook-integration/src/main/resources/static" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="FacebookIntegrationApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="22" />
@@ -80,6 +113,8 @@
       <workItem from="1719459970548" duration="32078000" />
       <workItem from="1719942546880" duration="12235000" />
       <workItem from="1720204538467" duration="4860000" />
+      <workItem from="1721421271270" duration="9569000" />
+      <workItem from="1721756604754" duration="4774000" />
     </task>
     <servers />
   </component>
