@@ -45,7 +45,7 @@ function Feed() {
   };
 
   const groupsPage = () => {
-    navigate("/");
+    navigate("/GroupList");
   };
 
   const categoryOfDayPage = () => {

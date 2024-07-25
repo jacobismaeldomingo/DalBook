@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f45d59d8-ed65-4e6b-b12f-eeccb71bba89" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/controller/GroupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/controller/GroupController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/model/UserGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/model/UserGroup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/repository/GroupRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/repository/GroupRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/service/Implementations/GroupServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/service/Implementations/GroupServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/service/Implementations/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/service/Implementations/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/test/java/com/example/facebook_integration/UnitTests/GroupTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/test/java/com/example/facebook_integration/UnitTests/GroupServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/groups/Groups.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/groups/Groups.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +35,9 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "JUnit.GroupServiceTest.executor": "Run",
     "JUnit.GroupTest.executor": "Run",
+    "JUnit.UserServiceTest.executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
@@ -76,7 +69,7 @@
       <recent name="com.example.facebook_integration.controller" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UserServiceTest">
+  <component name="RunManager" selected="Spring Boot.FacebookIntegrationApplication">
     <configuration name="GroupServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="facebook-integration" />
       <extension name="coverage">

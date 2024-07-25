@@ -23,6 +23,8 @@ import FriendProfile from "./components/feed/FriendProfile";
 import FriendsDashboard from "./components/friendRequests/FriendsDashboard";
 import Notifications from "./components/notifications/Notifications";
 import Pages from "./components/feed/Pages";
+import Groups from "./components/groups/Groups";
+import GroupList from "./components/groups/GroupList"
 
 function App() {
   useEffect(() => {
@@ -136,6 +138,20 @@ function App() {
             </PrivateRoute>
           }
         />
+        <Route  path="/Groups"
+        element={
+            <PrivateRoute>
+              <Groups/>
+            </PrivateRoute>
+          }
+        />  
+        <Route  path="/GroupList"
+        element={
+            <PrivateRoute>
+              <GroupList/>
+            </PrivateRoute>
+          }
+        />  
 
         {/* Admin Links */}
         <Route
