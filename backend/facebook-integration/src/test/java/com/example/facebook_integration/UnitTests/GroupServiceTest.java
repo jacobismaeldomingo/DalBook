@@ -53,7 +53,7 @@ public class GroupServiceTest {
         existingGroup.setGroupName("Test Group");
         existingGroup.setDescription("Test Description");
         existingGroup.setFaculty("Test Faculty");
-        existingGroup.setID(1);
+        existingGroup.setId(1);
 
         when(groupRepository.existsById(1)).thenReturn(true);
 
@@ -127,7 +127,7 @@ public class GroupServiceTest {
     @Test
     public void testAddUserToGroup_UserDoesNotExist() {
     UserGroup userGroup = new UserGroup();
-        userGroup.setID(1);
+        userGroup.setId(1);
         userGroup.setGroupName("Test Group");
 
 
@@ -148,7 +148,7 @@ public class GroupServiceTest {
         userGroup.setGroupName("Test Group");
         userGroup.setDescription("Test Description");
         userGroup.setFaculty("Test Faculty");
-        userGroup.setID(1);
+        userGroup.setId(1);
         User user = new User();
         user.setId(2);
         user.setEmail("test@dal.ca");
@@ -180,7 +180,7 @@ public class GroupServiceTest {
         userGroup.setGroupName("Test Group");
         userGroup.setDescription("Test Description");
         userGroup.setFaculty("Test Faculty");
-        userGroup.setID(1);
+        userGroup.setId(1);
         User user = new User();
         user.setId(2);
         user.setEmail("test@dal.ca");

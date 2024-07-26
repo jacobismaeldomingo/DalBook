@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b0c400f-131d-47ae-99d5-d1137fcf3c4e" name="Changes" comment="feat: Configured the url and db username and password to connect to our database." />
+    <list default="true" id="1b0c400f-131d-47ae-99d5-d1137fcf3c4e" name="Changes" comment="feat: Configured the url and db username and password to connect to our database.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/facebook-integration/src/test/java/com/example/facebook_integration/UnitTests/GroupServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/facebook-integration/src/test/java/com/example/facebook_integration/UnitTests/GroupServiceTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,21 +77,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CategoryServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="facebook-integration" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.facebook_integration.UnitTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.facebook_integration.UnitTests" />
-      <option name="MAIN_CLASS_NAME" value="com.example.facebook_integration.UnitTests.CategoryServiceTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="FriendControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="facebook-integration" />
       <extension name="coverage">
@@ -115,6 +103,22 @@
       <option name="PACKAGE_NAME" value="com.example.facebook_integration.IntegrationTests" />
       <option name="MAIN_CLASS_NAME" value="com.example.facebook_integration.IntegrationTests.TopicControllerTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TopicControllerTest.testCreateTopic" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="facebook-integration" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.facebook_integration.IntegrationTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.facebook_integration.IntegrationTests" />
+      <option name="MAIN_CLASS_NAME" value="com.example.facebook_integration.IntegrationTests.TopicControllerTest" />
+      <option name="METHOD_NAME" value="testCreateTopic" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -147,10 +151,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.TopicControllerTest" />
+        <item itemvalue="JUnit.TopicControllerTest.testCreateTopic" />
         <item itemvalue="JUnit.FriendControllerTest" />
         <item itemvalue="JUnit.TopicControllerTest.testGetAllTopics" />
         <item itemvalue="JUnit.CategoryControllerTest" />
-        <item itemvalue="JUnit.CategoryServiceTest" />
       </list>
     </recent_temporary>
   </component>
