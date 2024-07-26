@@ -20,6 +20,7 @@ import {
   IconSquareMinusFilled,
   IconCircleXFilled,
   IconUsersGroup,
+  IconX,
 } from "@tabler/icons-react";
 import friendService from "../../services/FriendService";
 import Post from "./Post";
@@ -293,7 +294,7 @@ function Feed() {
                   className="post-popup-close"
                   onClick={() => setShowPostPopup(false)}
                 >
-                  Close
+                  <IconX stroke={2} />
                 </button>
               </div>
             </div>
@@ -345,7 +346,7 @@ function Feed() {
                   </div>
                 ))}
           </div>
-          <div className="posted">
+          {/* <div className="posted">
             <div className="post">
               <div className="feed-profile-picture">
                 <img
@@ -362,13 +363,6 @@ function Feed() {
             </div>
             <div className="caption">Feeling good today!</div>
             <br />
-            {/* <div className="media">
-              <img
-                src="/images/post.jpg"
-                alt=""
-                style={{ height: "auto", width: "100%" }}
-              />
-            </div> */}
             <div className="reactions">
               <div className="like">
                 <IconThumbUp stroke={2} />
@@ -383,7 +377,7 @@ function Feed() {
                 Share
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="right-side">
