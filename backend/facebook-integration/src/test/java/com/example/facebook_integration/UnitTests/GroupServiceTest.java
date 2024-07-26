@@ -37,8 +37,13 @@ public class GroupServiceTest {
         userGroup.setGroupName("Test Group");
         userGroup.setDescription("Test Description");
         userGroup.setFaculty("Test Faculty");
-        when(groupRepository.save(userGroup)).thenReturn(userGroup);
 
+        User user = new User();
+        user.setEmail("test@test.com");
+        user.setFirstName("Test");
+
+        when(groupRepository.save(userGroup)).thenReturn(userGroup);
+        when(userRepository.findById(userGroup.getCreatorId())).thenReturn(Optional.of(user));
         UserGroup savedUserGroup = groupService.createGroup(userGroup);
 
         assertEquals(userGroup, savedUserGroup);
@@ -73,14 +78,30 @@ public class GroupServiceTest {
         userGroup.setFaculty("Test Faculty");
         userGroup.setId(1);
 
-        groupService.createGroup(userGroup);
+
+        User user = new User();
+        user.setEmail("test@test.com");
+        user.setFirstName("Test");
+        user.setRole(User.Role.Group_Admin);
+        user.setId(1);
+
+        userGroup.addAdmin(user);
+
         groupRepository.save(userGroup);
 
-        when(groupRepository.existsById(1)).thenReturn(true);
+
+
+
+        
+        when(groupRepository.findById(1)).thenReturn(Optional.of(userGroup));
+        when(userRepository.findById(userGroup.getId())).thenReturn(Optional.of(user));
+
+        //groupService.createGroup(userGroup);
+        groupRepository.save(userGroup);
 
         String result = groupService.deleteGroup(1, 1);
 
-        assertEquals(result, "group successfully deleted");
+        assertEquals(result, "Group successfully deleted");
 
        // verify(groupRepository, times(1)).delete(userGroup);
     }
@@ -88,8 +109,10 @@ public class GroupServiceTest {
 
     @Test
     public void testDeleteGroup_GroupNotFound() {
-        String response = groupService.deleteGroup(1, 1);
-        assertEquals(response, "group does not exist");
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            groupService.deleteGroup(1, 1);
+        });
+        assertEquals(exception.getMessage(), "Group cannot be found");
     }
 
     @Test
