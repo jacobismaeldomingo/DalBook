@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b0c400f-131d-47ae-99d5-d1137fcf3c4e" name="Changes" comment="feat: Configured the url and db username and password to connect to our database.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/facebook-integration/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/facebook-integration/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/facebook-integration/src/main/java/com/example/facebook_integration/controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/facebook-integration/src/main/java/com/example/facebook_integration/controller/CategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/facebook-integration/src/main/java/com/example/facebook_integration/controller/TopicController.java" beforeDir="false" afterPath="$PROJECT_DIR$/facebook-integration/src/main/java/com/example/facebook_integration/controller/TopicController.java" afterDir="false" />
-    </list>
+    <list default="true" id="1b0c400f-131d-47ae-99d5-d1137fcf3c4e" name="Changes" comment="feat: Configured the url and db username and password to connect to our database." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
