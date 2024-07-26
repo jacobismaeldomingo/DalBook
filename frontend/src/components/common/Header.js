@@ -192,10 +192,12 @@ function Header() {
   const handleSearchResultClick = (result) => {
     // Navigate to the user or group profile page
     if (result.type === "user") {
-      navigate(`/friendProfile/${result.id}`);
+      navigate(`/friendProfile/${result.email}`);
     } else if (result.type === "group") {
       navigate(`/groups/${result.id}`);
     }
+    setSearchResults([]);
+    setSearchQuery("");
   };
 
   const toggleDropdown = () => {

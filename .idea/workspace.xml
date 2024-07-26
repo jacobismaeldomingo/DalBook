@@ -5,19 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f45d59d8-ed65-4e6b-b12f-eeccb71bba89" name="Changes" comment="feat: adding Integration testing for User and FriendRequest">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/service/Implementations/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/service/Implementations/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/common/Header.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/common/Header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/common/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/common/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/feed/Feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/feed/Feed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/friendRequests/FriendRequest.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/friendRequests/FriendRequest.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/friendRequests/FriendRequest.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/friendRequests/FriendRequest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/friendRequests/FriendsDashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/friendRequests/FriendsDashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/friendRequests/SearchPeople.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/services/FriendService.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/FriendService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +45,7 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.FacebookIntegrationApplication.executor": "Run",
-    "git-widget-placeholder": "feature/issue-25",
+    "git-widget-placeholder": "develop",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/jacobdomingo/Group19/backend/facebook-integration/src/main/resources/static/profile_pictures",
     "node.js.detected.package.eslint": "true",
