@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import friendService from "../../services/FriendService";
 import "./FriendRequest.css";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const FriendRequest = () => {
@@ -40,7 +40,6 @@ const FriendRequest = () => {
 
   return (
     <div>
-      <ToastContainer />
       <h2 style={{ padding: "1.5rem", paddingBottom: "0" }}>Add Friends</h2>
       {/* <h4 style={{ padding: "1.5rem" }}>Current User ID: {userId} </h4> */}
       <div className="friends-input">

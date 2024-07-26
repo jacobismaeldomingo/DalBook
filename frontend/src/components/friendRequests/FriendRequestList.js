@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import friendService from "../../services/FriendService";
 import "./FriendRequest.css";
-import NotificationComponent from '../notifications/Notifications.js';
+import NotificationComponent from "../notifications/Notifications.js";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const FriendRequestList = () => {
@@ -39,42 +39,43 @@ const FriendRequestList = () => {
   const viewFriendProfile = (friendEmail) => {
     navigate(`/friendProfile/${friendEmail}`);
   };
-  
+
   return (
     <div>
-      <ToastContainer />
       <NotificationComponent />
-      <h2 style={{ padding: "1.5rem", paddingBottom: "0" }}>Pending Friend Requests</h2>
+      <h2 style={{ padding: "1.5rem", paddingBottom: "0" }}>
+        Pending Friend Requests
+      </h2>
       {/* <h4 style={{ padding: "1.5rem", paddingBottom: "1rem" }}>Current User ID: {userId} </h4> */}
       <div className="friends-list">
         {requests.map((request) => (
           <div
-          key={request.id}
-          className="friends-name"
-          onClick={() => viewFriendProfile(request.sender.email)}
-          style={{ cursor: "pointer" }}
-        >
-          <img
-            src={
-              request.sender.profilePic
-                ? `http://localhost:8085${request.sender.profilePic}`
-                : "/images/dalhousie-logo.png"
-            }
-            alt=""
-            style={{ padding: "1rem" }}
-          />
-          <div className="request-name">
-            {request.sender.firstName + " " + request.sender.lastName}
+            key={request.id}
+            className="friends-name"
+            onClick={() => viewFriendProfile(request.sender.email)}
+            style={{ cursor: "pointer" }}
+          >
+            <img
+              src={
+                request.sender.profilePic
+                  ? `http://localhost:8085${request.sender.profilePic}`
+                  : "/images/dalhousie-logo.png"
+              }
+              alt=""
+              style={{ padding: "1rem" }}
+            />
+            <div className="request-name">
+              {request.sender.firstName + " " + request.sender.lastName}
+            </div>
+            <div>
+              <button
+                onClick={() => handleAcceptRequest(request.id)}
+                className="btn btn-success"
+              >
+                Accept Request
+              </button>
+            </div>
           </div>
-          <div>
-          <button
-              onClick={() => handleAcceptRequest(request.id)}
-              className="btn btn-success"
-            >
-              Accept Request
-            </button>
-          </div>
-        </div>
           // <li key={request.id}>
           //   <div className="request-name">
           //     {request.sender.firstName + " " + request.sender.lastName}

@@ -65,37 +65,30 @@ public class GroupServiceTest {
 
     }
 
-
     @Test
     public void testDeleteGroup() {
         UserGroup userGroup = new UserGroup();
         userGroup.setGroupName("Test Group");
         userGroup.setDescription("Test Description");
         userGroup.setFaculty("Test Faculty");
-        userGroup.setID(1);
+        userGroup.setId(1);
 
         groupService.createGroup(userGroup);
         groupRepository.save(userGroup);
 
+        when(groupRepository.existsById(1)).thenReturn(true);
 
-         when(groupRepository.existsById(1)).thenReturn(true);
-
-
-
-        String result = groupService.deleteGroup(1);
+        String result = groupService.deleteGroup(1, 1);
 
         assertEquals(result, "group successfully deleted");
 
        // verify(groupRepository, times(1)).delete(userGroup);
-
-
-
     }
 
 
     @Test
     public void testDeleteGroup_GroupNotFound() {
-        String response = groupService.deleteGroup(1);
+        String response = groupService.deleteGroup(1, 1);
         assertEquals(response, "group does not exist");
     }
 
@@ -105,7 +98,7 @@ public class GroupServiceTest {
         userGroup.setGroupName("Test Group");
         userGroup.setDescription("Test Description");
         userGroup.setFaculty("Test Faculty");
-        userGroup.setID(1);
+        userGroup.setId(1);
 
         User user = new User();
         user.setId(2);

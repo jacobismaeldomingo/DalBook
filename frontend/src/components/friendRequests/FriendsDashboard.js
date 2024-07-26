@@ -6,7 +6,7 @@ import FriendsList from "./FriendsList";
 import FriendRequest from "./FriendRequest";
 import FriendRequestList from "./FriendRequestList";
 
-const FriendsDashboard = ({ children }) => {
+const FriendsDashboard = () => {
     const [activeComponent, setActiveComponent] = useState("friendsList");
 
     const renderComponent = () => {

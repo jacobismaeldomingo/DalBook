@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import friendService from "../../services/FriendService";
 import "./FriendRequest.css";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const FriendsList = () => {
@@ -46,7 +46,6 @@ const FriendsList = () => {
 
   return (
     <div>
-      <ToastContainer />
       <h2 style={{ padding: "1.5rem", paddingBottom: "0" }}>Your Friends</h2>
       {/* <h4 style={{ padding: "1.5rem", paddingBottom: "1rem" }}>
         Current User ID: {userId}{" "}

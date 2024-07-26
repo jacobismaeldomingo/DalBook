@@ -129,9 +129,8 @@ public class UserController {
         return ResponseEntity.ok().body("Profile updated successfully");
     }
 
-    @GetMapping("/Groups/{userId}")
+    @GetMapping("/groups/{userId}")
     public List<UserGroup> getAllGroups(@PathVariable int userId) {
         return userService.getAllGroups(userId);
     }
-
 }

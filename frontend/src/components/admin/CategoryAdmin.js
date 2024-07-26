@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from "react";
 import axios from "axios";
 import "../feed/CategoryOfTheDay.css";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function CategoryAdmin() {
@@ -45,7 +45,6 @@ function CategoryAdmin() {
 
   return (
     <div className="category-container">
-      <ToastContainer />
       <h2 className="category-title">
         Topics
         <button className="category-add-button" onClick={() => setShowForm(true)}>

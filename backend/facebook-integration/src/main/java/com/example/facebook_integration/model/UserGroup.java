@@ -3,7 +3,9 @@ package com.example.facebook_integration.model;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class UserGroup {
@@ -11,13 +13,10 @@ public class UserGroup {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     private String groupName;
     private String description;
-
-
-
-    private String Faculty;
+    private String faculty;
+    private int creatorId;
 
     @ManyToMany(targetEntity = User.class,cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
@@ -27,25 +26,26 @@ public class UserGroup {
     )
     private List<User> users = new ArrayList<User>();
 
-
-
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "group_admins", joinColumns = @JoinColumn(name = "group_id"))
+    @Column(name = "admin_id")
+    private Set<Integer> admins = new HashSet<>();
 
     public UserGroup(){}
 
-
-    public UserGroup(int id, String groupName, String description, String Faculty) {
+    public UserGroup(int id, String groupName, String description, String faculty, int creatorId) {
+        this.id = id;
         this.groupName = groupName;
         this.description = description;
-        this.id = id;
-        this.Faculty = Faculty;
+        this.faculty = faculty;
+        this.creatorId = creatorId;
     }
-
 
     public int getId() {
         return id;
     }
 
-    public void setID(int id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -69,8 +69,6 @@ public class UserGroup {
         return users;
     }
 
-
-
     public void addUser(User user) {
         users.add(user);
     }
@@ -78,20 +76,34 @@ public class UserGroup {
     public boolean hasUser(User user) {
         return users.contains(user);
     }
+
     public boolean removeUser(User user) {
         return users.remove(user);
     }
 
     public String getFaculty() {
-        return Faculty;
+        return faculty;
     }
 
     public void setFaculty(String faculty) {
-        Faculty = faculty;
+        this.faculty = faculty;
     }
 
+    public void addAdmin(User user) {
+        this.admins.add(user.getId());
+    }
 
+    public boolean isAdmin(User user) {
+        return this.admins.contains(user.getId());
+    }
 
+    public int getCreatorId() {
+        return creatorId;
+    }
+
+    public void setCreatorId(int creatorId) {
+        this.creatorId = creatorId;
+    }
 
 
 }

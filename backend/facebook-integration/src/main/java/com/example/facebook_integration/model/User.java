@@ -44,7 +44,8 @@ public class User {
         Student,
         Professor,
         Faculty,
-        System_Admin
+        System_Admin,
+        Group_Admin
     }
 
     @Enumerated(EnumType.STRING)
@@ -65,7 +66,7 @@ public class User {
     @OneToMany(mappedBy = "receiver", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<FriendRequest> receivedRequests;
 
-    //Connecting user to usergroups in a many to many relationship
+    // Connecting user to user groups in a many-to-many relationship
     @ManyToMany(mappedBy = "users")
     @JsonIgnore
     private List<UserGroup> groups = new ArrayList<>();
