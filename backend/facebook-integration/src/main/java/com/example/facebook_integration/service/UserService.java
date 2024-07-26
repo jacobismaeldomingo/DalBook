@@ -26,6 +26,7 @@ public interface UserService {
     @Transactional
     void activateUser(int id, String adminRole);
     List<UserGroup> getAllGroups(int userId);
+    List<User> findUsersByName(String name);
 
 //    List<JoinRequest> getJoinRequests();
 //    JoinRequest handleJoinRequest(Long id, String action);

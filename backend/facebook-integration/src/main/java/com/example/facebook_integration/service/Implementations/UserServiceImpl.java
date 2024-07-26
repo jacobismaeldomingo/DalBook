@@ -273,4 +273,34 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findById(userId).get();
         return user.getGroups();
     }
+
+    @Override
+    public List<User> findUsersByName(String name) {
+        return userRepository.findUsersByFirstName(name);
+    }
+
+//    @PreAuthorize("hasRole('FACULTY_ADMIN')")
+//    @Override
+//    public List<JoinRequest> getJoinRequests() {
+//        return joinRequestRepository.findAll();
+//    }
+//
+//    @PreAuthorize("hasRole('FACULTY_ADMIN')")
+//    @Override
+//    public JoinRequest handleJoinRequest(Long id, String action) {
+//        Optional<JoinRequest> joinRequestOptional = joinRequestRepository.findById(id);
+//        if (joinRequestOptional.isPresent()) {
+//            JoinRequest joinRequest = joinRequestOptional.get();
+//            if ("approve".equalsIgnoreCase(action)) {
+//                joinRequest.setStatus("APPROVED");
+//            } else if ("reject".equalsIgnoreCase(action)) {
+//                joinRequest.setStatus("REJECTED");
+//            } else {
+//                throw new IllegalArgumentException("Invalid action");
+//            }
+//            return joinRequestRepository.save(joinRequest);
+//        } else {
+//            throw new IllegalArgumentException("Join request not found");
+//        }
+//    }
 }
