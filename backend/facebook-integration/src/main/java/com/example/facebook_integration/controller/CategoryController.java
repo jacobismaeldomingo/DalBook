@@ -18,7 +18,7 @@ public class CategoryController {
 
     @PostMapping("/posts")
     public ResponseEntity<CategoryOfDay> createPost(@RequestBody CategoryOfDay category) {
-        // Implement your service call here
+
         return new ResponseEntity<>(categoryService.saveCategory(category), HttpStatus.CREATED);
     }
 
