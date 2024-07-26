@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/topics")
-class TopicController {
+public class TopicController {
     @Autowired
     private TopicService topicService;
 
