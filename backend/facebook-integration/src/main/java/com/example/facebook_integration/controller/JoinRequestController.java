@@ -38,5 +38,10 @@ public class JoinRequestController {
         joinRequestService.createRequest(request.getUserId(), request.getGroupId());
         return ResponseEntity.ok().build();
     }
+
+    @GetMapping("/join-requests/approved")
+    public List<JoinRequest> getApprovedRequests() {
+        return joinRequestService.getApprovedRequests();
+    }
 }
 

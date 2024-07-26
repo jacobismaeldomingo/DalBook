@@ -26,13 +26,15 @@ const FriendsList = () => {
     }
   }, []);
 
-  const handleDelete = (friendId) => {
+  const handleDelete = (event, friendId) => {
+    event.stopPropagation(); // Prevent event propagation
     friendService
       .deleteFriend(userId, friendId)
       .then(() => {
         setFriends((prevFriends) =>
           prevFriends.filter((friend) => friend.id !== friendId)
         );
+        toast.success("Successfully deleting them as your friend.");
       })
       .catch((error) => {
         console.error("Error deleting friend:", error);
@@ -73,7 +75,7 @@ const FriendsList = () => {
             <div>
               <button
                 className="btn delete-button"
-                onClick={() => handleDelete(friend.id)}
+                onClick={(event) => handleDelete(event, friend.id)}
               >
                 Delete
               </button>

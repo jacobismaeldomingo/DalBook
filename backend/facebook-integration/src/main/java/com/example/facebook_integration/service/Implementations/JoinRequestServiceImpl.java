@@ -58,4 +58,8 @@ public class JoinRequestServiceImpl implements JoinRequestService {
         request.setStatus("PENDING");
         joinRequestRepository.save(request);
     }
+
+    public List<JoinRequest> getApprovedRequests() {
+        return joinRequestRepository.findByStatus("APPROVED");
+    }
 }

@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./UserGroups.css";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const UserGroups = () => {
   const [groups, setGroups] = useState([]);
@@ -29,6 +31,7 @@ const UserGroups = () => {
         params: { groupId, userId },
       });
       setGroups(groups.filter((group) => group.id !== groupId)); // Update the groups state to remove the left group
+      toast.success("Successfully leaving the group.");
     } catch (error) {
       console.error("Error leaving group:", error);
     }

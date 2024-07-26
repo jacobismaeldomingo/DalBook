@@ -4,6 +4,7 @@ import { React, useState, useEffect } from "react";
 import "./Header.css";
 import { useNavigate } from "react-router-dom";
 import friendService from "../../services/FriendService";
+import axios from "axios";
 import {
   IconSearch,
   IconHome,
@@ -21,6 +22,8 @@ function Header() {
   const navigate = useNavigate();
   const [isAdmin, setIsAdmin] = useState(false);
   const [pendingRequests, setPendingRequests] = useState(0);
+  const [joinRequestsApproved, setJoinRequestsApproved] = useState(0);
+  const [newCategoryTopic, setNewCategoryTopic] = useState(false);
 
   useEffect(() => {
     const userRole = localStorage.getItem("userRole");
@@ -30,6 +33,7 @@ function Header() {
   useEffect(() => {
     const storedUserId = localStorage.getItem("userId");
     if (storedUserId) {
+      // Fetch pending friend requests
       friendService
         .getPendingRequests(storedUserId)
         .then((response) => {
@@ -37,8 +41,45 @@ function Header() {
         })
         .catch((error) => {
           console.error("Error fetching pending requests:", error);
-          toast.warn("An error occurred. Please try again!");
         });
+
+      // Fetch approved join requests
+      axios
+        .get(`http://localhost:8085/api/join-requests/approved`, {
+          params: { userId: storedUserId },
+        })
+        .then((response) => {
+          setJoinRequestsApproved(response.data.length);
+        })
+        .catch((error) => {
+          console.error("Error fetching approved join requests:", error);
+        });
+
+      // Fetch new category topic
+      const latestTopicId = localStorage.getItem("latestTopicId");
+      const lastViewedTopicId = localStorage.getItem("lastViewedTopicId");
+
+      if (
+        latestTopicId &&
+        lastViewedTopicId &&
+        latestTopicId !== lastViewedTopicId
+      ) {
+        setNewCategoryTopic(true);
+      } else {
+        axios
+          .get("http://localhost:8085/api/topics/latest")
+          .then((response) => {
+            const fetchedTopicId = response.data.id;
+            localStorage.setItem("latestTopicId", fetchedTopicId);
+
+            if (fetchedTopicId !== lastViewedTopicId) {
+              setNewCategoryTopic(true);
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching latest topic:", error);
+          });
+      }
     }
   }, []);
 
@@ -51,15 +92,14 @@ function Header() {
     localStorage.removeItem("userId");
     localStorage.removeItem("userEmail");
     localStorage.removeItem("userRole");
+    localStorage.removeItem("latestTopicId");
+    localStorage.removeItem("currentTopic");
+    localStorage.removeItem("lastViewedTopicId");
     navigate("/login");
   };
 
-  // const handleFriendRequests = () => {
-  //   navigate("/FriendRequest");
-  // };
-
-  const handleFriendRequestsList = () => {
-    navigate("/FriendRequestList");
+  const notificationsPage = () => {
+    navigate("/notifications");
   };
 
   const friendsPage = () => {
@@ -73,6 +113,8 @@ function Header() {
   const groupsPage = () => {
     navigate("/groupDashboard");
   };
+
+  const hasNotifications = pendingRequests > 0 || joinRequestsApproved > 0 || newCategoryTopic;
 
   return (
     <>
@@ -121,11 +163,11 @@ function Header() {
             </div>
             <div
               className="notifications"
-              onClick={handleFriendRequestsList}
+              onClick={notificationsPage}
               style={{ position: "relative" }}
             >
               <IconBell stroke={2} size={30} color="#1877f2" />
-              {pendingRequests > 0 && (
+              {hasNotifications && (
                 <span
                   style={{
                     position: "absolute",
