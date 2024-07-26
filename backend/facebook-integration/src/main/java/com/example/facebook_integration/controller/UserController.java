@@ -134,4 +134,10 @@ public class UserController {
         return userService.getAllGroups(userId);
     }
 
+
+    @GetMapping("/search")
+    public List<User> searchResult(@RequestParam String name) {
+        return userService.findUsersByName(name);
+    }
+
 }

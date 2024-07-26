@@ -275,6 +275,11 @@ public class UserServiceImpl implements UserService {
         return user.getGroups();
     }
 
+    @Override
+    public List<User> findUsersByName(String name) {
+        return userRepository.findUsersByFirstName(name);
+    }
+
 //    @PreAuthorize("hasRole('FACULTY_ADMIN')")
 //    @Override
 //    public List<JoinRequest> getJoinRequests() {

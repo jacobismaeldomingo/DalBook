@@ -54,10 +54,6 @@ function Header() {
     navigate("/login");
   };
 
-  // const handleFriendRequests = () => {
-  //   navigate("/FriendRequest");
-  // };
-
   const handleFriendRequestsList = () => {
     navigate("/FriendRequestList");
   };

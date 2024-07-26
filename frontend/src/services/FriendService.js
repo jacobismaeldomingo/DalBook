@@ -50,13 +50,18 @@ const deleteFriend = (userId, friendId) => {
   });
 };
 
+const searchPeople = (name) => {
+  return axios.get(`$http://localhost:8085/api/user/search`, { params: { name } });
+};
+
 // Assign to a variable before exporting
 const FriendService = {
   sendFriendRequest,
   acceptFriendRequest,
   getPendingRequests,
   getFriends,
-  deleteFriend
+  deleteFriend,
+  searchPeople
 };
 
 export default FriendService;

@@ -25,6 +25,7 @@ import Notifications from "./components/notifications/Notifications";
 import Pages from "./components/feed/Pages";
 import Groups from "./components/groups/Groups";
 import GroupList from "./components/groups/GroupList"
+import SearchPeople from "./components/friendRequests/SearchPeople";
 
 function App() {
   useEffect(() => {
@@ -111,6 +112,14 @@ function App() {
           element={
             <PrivateRoute>
               <FriendsList />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/searchPeople"
+          element={
+            <PrivateRoute>
+              <SearchPeople />
             </PrivateRoute>
           }
         />
