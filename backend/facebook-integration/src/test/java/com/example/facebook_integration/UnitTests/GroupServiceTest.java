@@ -91,7 +91,7 @@ public class GroupServiceTest {
 
 
 
-
+        
         
         when(groupRepository.findById(1)).thenReturn(Optional.of(userGroup));
         when(userRepository.findById(userGroup.getId())).thenReturn(Optional.of(user));
