@@ -33,7 +33,7 @@ input[type="text-id"] {
 }
 
 .send-button:hover {
-  background-color: #28a745;
+  background-color: #1d7732;
   transform: translateY(-2px);
 }
 
@@ -47,7 +47,7 @@ input[type="text-id"] {
 }
 
 .delete-button:hover {
-  background-color: #dc3545;
+  background-color: #a12633;
   transform: translateY(-2px);
 }
 

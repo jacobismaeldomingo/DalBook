@@ -43,6 +43,7 @@ const Post = () => {
           placeholder="What's on your mind?"
           value={postText}
           onChange={(e) => setPostText(e.target.value)}
+          required
         />
         <div className="post-options">
           <label htmlFor="file-input">

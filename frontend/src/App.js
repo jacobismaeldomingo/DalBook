@@ -24,7 +24,10 @@ import FriendsDashboard from "./components/friendRequests/FriendsDashboard";
 import Notifications from "./components/notifications/Notifications";
 import Pages from "./components/feed/Pages";
 import Groups from "./components/groups/Groups";
-import GroupList from "./components/groups/GroupList"
+import GroupDashboard from "./components/groups/GroupDashboard";
+import UserGroups from "./components/groups/UserGroups";
+import CreateGroup from "./components/groups/CreateGroup";
+import GroupsList from "./components/groups/GroupsList";
 
 function App() {
   useEffect(() => {
@@ -83,6 +86,24 @@ function App() {
           }
         />
         <Route
+          path="/post"
+          element={
+            <PrivateRoute>
+              <Post />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/categoryOfTheDay"
+          element={
+            <PrivateRoute>
+              <CategoryOfTheDay />
+            </PrivateRoute>
+          }
+        />
+
+        {/* Friends Links */}
+        <Route
           path="/friends"
           element={
             <PrivateRoute>
@@ -115,14 +136,6 @@ function App() {
           }
         />
         <Route
-          path="/post"
-          element={
-            <PrivateRoute>
-              <Post />
-            </PrivateRoute>
-          }
-          />
-        <Route
           path="/friendProfile/:friendEmail"
           element={
             <PrivateRoute>
@@ -130,28 +143,48 @@ function App() {
             </PrivateRoute>
           }
         />
+
+        {/* Groups Links */}
         <Route
-          path="/categoryOfTheDay"
+          path="/userGroups"
           element={
             <PrivateRoute>
-              <CategoryOfTheDay />
+              <UserGroups />
             </PrivateRoute>
           }
         />
-        <Route  path="/Groups"
-        element={
+        <Route
+          path="/groupsList"
+          element={
             <PrivateRoute>
-              <Groups/>
+              <GroupsList />
             </PrivateRoute>
           }
-        />  
-        <Route  path="/GroupList"
-        element={
+        />
+        <Route
+          path="/createGroup"
+          element={
             <PrivateRoute>
-              <GroupList/>
+              <CreateGroup />
             </PrivateRoute>
           }
-        />  
+        />
+        <Route
+          path="/groupDashboard"
+          element={
+            <PrivateRoute>
+              <GroupDashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/groups/:groupId"
+          element={
+            <PrivateRoute>
+              <Groups />
+            </PrivateRoute>
+          }
+        />
 
         {/* Admin Links */}
         <Route

@@ -4,6 +4,7 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap; /* Allow items to wrap */
+  font: 1.6rem inter;
 }
 
 /* Left side - Profile */

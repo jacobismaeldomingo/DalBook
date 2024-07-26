@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./CategoryOfTheDay.css";
 import Header from "../common/Header";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function CategoryOfTheDay() {
@@ -46,7 +46,6 @@ function CategoryOfTheDay() {
 
   return (
     <div>
-      <ToastContainer />
       <Header />
       <form className="category-form" onSubmit={handleSubmit}>
         <div>
@@ -74,6 +73,6 @@ function CategoryOfTheDay() {
       </form>
     </div>
   );
-};
+}
 
 export default CategoryOfTheDay;

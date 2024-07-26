@@ -70,80 +70,86 @@ function Header() {
     navigate("/admin");
   };
 
+  const groupsPage = () => {
+    navigate("/groupDashboard");
+  };
+
   return (
-    <div className="homepage">
+    <>
       <ToastContainer />
-      <div className="header">
-        <div className="main-header">
-          <div className="logo">
-            <img
-              src="/images/dalbook_logo.png"
-              alt="logo"
-              style={{
-                height: "40px",
-                cursor: "auto",
-              }}
-            />
-          </div>
-          <div className="search-bar">
-            <IconSearch stroke={2} />
-            <input placeholder="Search Facebook" type="Search" />
-          </div>
-        </div>
-        <div className="navigation-header">
-          <div
-            className="icon"
-            onClick={homePage}
-            style={{ cursor: "pointer" }}
-          >
-            <IconHome stroke={2} size={30} color="#1877F2" />
-          </div>
-          <div className="icon" onClick={friendsPage}>
-            <IconUsers stroke={2} size={30} color="#1877F2" />
-          </div>
-          <div className="icon">
-            <IconUsersGroup stroke={2} size={30} color="#1877f2" />
-          </div>
-        </div>
-        <div className="account-header">
-          {isAdmin && (
-            <div className="menu" onClick={adminPage}>
-              <IconMenu2 stroke={2} size={30} color="#1877F2" />
-            </div>
-          )}
-          <div className="messages">
-            <IconMessages stroke={2} size={30} color="#1877F2" />
-          </div>
-          <div
-            className="notifications"
-            onClick={handleFriendRequestsList}
-            style={{ position: "relative" }}
-          >
-            <IconBell stroke={2} size={30} color="#1877f2" />
-            {pendingRequests > 0 && (
-              <span
+      <div className="homepage">
+        <div className="header">
+          <div className="main-header">
+            <div className="logo">
+              <img
+                src="/images/dalbook_logo.png"
+                alt="logo"
                 style={{
-                  position: "absolute",
-                  top: 0,
-                  right: 0,
-                  width: "10px",
-                  height: "10px",
-                  backgroundColor: "red",
-                  borderRadius: "50%",
+                  height: "40px",
+                  cursor: "auto",
                 }}
-              ></span>
-            )}
+              />
+            </div>
+            <div className="search-bar">
+              <IconSearch stroke={2} />
+              <input placeholder="Search Facebook" type="Search" />
+            </div>
           </div>
-          <div
-            className="profile-header"
-            onClick={handleLogout}
-            style={{ cursor: "pointer" }}
-          >
-            <IconLogout stroke={2} size={30} color="#1877F2" />
+          <div className="navigation-header">
+            <div
+              className="icon"
+              onClick={homePage}
+              style={{ cursor: "pointer" }}
+            >
+              <IconHome stroke={2} size={30} color="#1877F2" />
+            </div>
+            <div className="icon" onClick={friendsPage}>
+              <IconUsers stroke={2} size={30} color="#1877F2" />
+            </div>
+            <div className="icon" onClick={groupsPage}>
+              <IconUsersGroup stroke={2} size={30} color="#1877f2" />
+            </div>
+          </div>
+          <div className="account-header">
+            {isAdmin && (
+              <div className="menu" onClick={adminPage}>
+                <IconMenu2 stroke={2} size={30} color="#1877F2" />
+              </div>
+            )}
+            <div className="messages">
+              <IconMessages stroke={2} size={30} color="#1877F2" />
+            </div>
+            <div
+              className="notifications"
+              onClick={handleFriendRequestsList}
+              style={{ position: "relative" }}
+            >
+              <IconBell stroke={2} size={30} color="#1877f2" />
+              {pendingRequests > 0 && (
+                <span
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    right: 0,
+                    width: "10px",
+                    height: "10px",
+                    backgroundColor: "red",
+                    borderRadius: "50%",
+                  }}
+                ></span>
+              )}
+            </div>
+            <div
+              className="profile-header"
+              onClick={handleLogout}
+              style={{ cursor: "pointer" }}
+            >
+              <IconLogout stroke={2} size={30} color="#1877F2" />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

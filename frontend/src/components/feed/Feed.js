@@ -23,7 +23,7 @@ import {
 } from "@tabler/icons-react";
 import friendService from "../../services/FriendService";
 import Post from "./Post";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Feed() {
@@ -45,7 +45,7 @@ function Feed() {
   };
 
   const groupsPage = () => {
-    navigate("/GroupList");
+    navigate("/groupDashboard");
   };
 
   const categoryOfDayPage = () => {
@@ -54,7 +54,7 @@ function Feed() {
 
   const pages = () => {
     navigate("/pages");
-  }
+  };
 
   useEffect(() => {
     const storedUserId = localStorage.getItem("userId");
@@ -109,15 +109,21 @@ function Feed() {
     const fetchPosts = async () => {
       try {
         const response = await axios.get("http://localhost:8085/api/posts");
-        retrieveUsers(response.data);
-        console.log(response.data);
-        setPosts(response.data);
+        const posts = response.data;
+
+        // Sort posts from latest to oldest based on a `timestamp` field
+        posts.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+        retrieveUsers(posts); // Assuming retrieveUsers is used to process posts
+        console.log(posts);
+        setPosts(posts);
         setIsLoading(false);
       } catch (error) {
         console.error("Error fetching posts:", error);
         setIsLoading(false);
       }
     };
+
     fetchPosts();
   }, [userId]);
 
@@ -150,7 +156,6 @@ function Feed() {
 
   return (
     <div className="main">
-      <ToastContainer />
       <div className="left-side">
         <div
           className="profile"
@@ -305,7 +310,9 @@ function Feed() {
                         <img
                           src={
                             users[post.userId]?.profilePic
-                              ? `http://localhost:8085${users[post.userId]?.profilePic}`
+                              ? `http://localhost:8085${
+                                  users[post.userId]?.profilePic
+                                }`
                               : "/images/dalhousie-logo.png"
                           }
                           alt=""
