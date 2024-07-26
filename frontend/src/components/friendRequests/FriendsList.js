@@ -21,7 +21,7 @@ const FriendsList = () => {
         })
         .catch((error) => {
           console.error("Error fetching friends:", error);
-          toast.warn("An error occurred. Please try again!");
+          toast.warn("Error fetching friends");
         });
     }
   }, []);
@@ -38,7 +38,7 @@ const FriendsList = () => {
       })
       .catch((error) => {
         console.error("Error deleting friend:", error);
-        toast.warn("An error occurred. Please try again!");
+        toast.warn("Error deleting friend");
       });
   };
 
@@ -49,9 +49,6 @@ const FriendsList = () => {
   return (
     <div>
       <h2 style={{ padding: "1.5rem", paddingBottom: "0" }}>Your Friends</h2>
-      {/* <h4 style={{ padding: "1.5rem", paddingBottom: "1rem" }}>
-        Current User ID: {userId}{" "}
-      </h4> */}
       <div className="friends-list">
         {friends.map((friend) => (
           <div
@@ -81,17 +78,6 @@ const FriendsList = () => {
               </button>
             </div>
           </div>
-          // <li key={friend.id} className="friends-name">
-          //   <div className="request-name">
-          //     {friend.firstName + " " + friend.lastName}
-          //   </div>
-          //   <button
-          //     className="btn delete-button"
-          //     onClick={() => handleDelete(friend.id)}
-          //   >
-          //     Delete
-          //   </button>
-          // </li>
         ))}
       </div>
     </div>

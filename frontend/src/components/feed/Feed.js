@@ -69,10 +69,9 @@ function Feed() {
             `http://localhost:8085/api/user/getByEmail/${storedUserEmail}`
           );
           setUser(response.data);
-          console.log(response.data);
-          console.log("User information retrieved successfully");
         } catch (error) {
           console.log("Error fetching user", error);
+          toast.warn("Error fetching user.");
         }
       };
       fetchUser();
@@ -82,7 +81,6 @@ function Feed() {
         .getFriends(storedUserId)
         .then((response) => {
           setFriends(response.data);
-          console.log("Success fetching friends of user id:", userId);
         })
         .catch((error) => {
           console.error("Error fetching friends:", error);
@@ -120,6 +118,7 @@ function Feed() {
         setIsLoading(false);
       } catch (error) {
         console.error("Error fetching posts:", error);
+        toast.warn("Error fetching posts.");
         setIsLoading(false);
       }
     };

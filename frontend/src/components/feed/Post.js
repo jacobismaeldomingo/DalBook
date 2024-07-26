@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./Post.css";
 import axios from "axios";
 import { IconPhoto, IconSend } from "@tabler/icons-react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Post = () => {
   const [postText, setPostText] = useState("");
@@ -22,17 +24,22 @@ const Post = () => {
     formData.append("feeling", feeling);
 
     try {
-      const response = await axios.post(`http://localhost:8085/api/posts/create/${userId}`, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
+      const response = await axios.post(
+        `http://localhost:8085/api/posts/create/${userId}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
         }
-      });
-      console.log(response);
+      );
+      toast.success("Post created successfully.");
       setPostText("");
       setSelectedFile(null);
       setFeeling("");
     } catch (error) {
       console.error("Error posting:", error);
+      toast.error("Error posting.");
     }
   };
 

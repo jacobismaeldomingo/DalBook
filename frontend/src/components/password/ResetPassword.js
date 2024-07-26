@@ -59,7 +59,6 @@ export default function ResetPassword() {
         throw new Error("Failed to update password");
       }
 
-      console.log("Password updated successfully");
       toast.success("Password updated successfully");
       setEmail("");
       setNewPassword("");

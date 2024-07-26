@@ -1,6 +1,5 @@
 // CreateGroup.js
 
-// src/components/Groups.js
 import React, { useState } from "react";
 import axios from "axios";
 import "./CreateGroup.css";
@@ -31,6 +30,7 @@ const CreateGroup = () => {
       })
       .catch((error) => {
         console.error("There was an error creating the group!", error);
+        toast.error("Error creating group.");
       });
   };
 

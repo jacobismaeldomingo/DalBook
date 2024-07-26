@@ -12,7 +12,7 @@ function CategoryAdmin() {
   useEffect(() => {
     fetchTopics();
   }, []);
-  
+
   const fetchTopics = async () => {
     try {
       const response = await axios.get("http://localhost:8085/api/topics");
@@ -39,7 +39,7 @@ function CategoryAdmin() {
       fetchTopics(); // Fetch the updated list of categories
     } catch (error) {
       console.error("Error creating topic:", error);
-      toast.warn("An error occurred. Please try again!");
+      toast.error("An error occurred. Please try again!");
     }
   };
 
@@ -47,7 +47,10 @@ function CategoryAdmin() {
     <div className="category-container">
       <h2 className="category-title">
         Topics
-        <button className="category-add-button" onClick={() => setShowForm(true)}>
+        <button
+          className="category-add-button"
+          onClick={() => setShowForm(true)}
+        >
           Add
         </button>
       </h2>
@@ -86,6 +89,6 @@ function CategoryAdmin() {
       )}
     </div>
   );
-};
+}
 
 export default CategoryAdmin;

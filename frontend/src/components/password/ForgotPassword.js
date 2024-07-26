@@ -10,7 +10,6 @@ export default function SecurityQuestion() {
   const [error, setError] = useState("");
   const [securityAnswer, setSecurityAnswer] = useState("");
   const [securityQuestion, setSecurityQuestion] = useState("");
-  // const [backendBirthday, setBackendBirthday] = useState('');
   const navigate = useNavigate();
 
   const handleEmailSubmit = async (e) => {
@@ -49,7 +48,7 @@ export default function SecurityQuestion() {
       }
     } catch (error) {
       console.error("Error fetching user from backend:", error);
-      toast.warn("Error fetching user from backend");
+      toast.error("Error fetching user from backend.");
     }
   };
 

@@ -34,6 +34,7 @@ const FriendRequestList = () => {
       })
       .catch((error) => {
         console.error("Error accepting friend request:", error);
+        toast.error("Error accepting friend request.");
       });
   };
 
@@ -46,7 +47,6 @@ const FriendRequestList = () => {
       <h2 style={{ padding: "1.5rem", paddingBottom: "0" }}>
         Pending Friend Requests
       </h2>
-      {/* <h4 style={{ padding: "1.5rem", paddingBottom: "1rem" }}>Current User ID: {userId} </h4> */}
       <div className="friends-list">
         {requests.map((request) => (
           <div

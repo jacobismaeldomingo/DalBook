@@ -21,6 +21,7 @@ const UserGroups = () => {
       })
       .catch((error) => {
         console.error("There was an error fetching the groups");
+        toast.warn("Error fetching groups");
       });
   }, [userId]);
 
@@ -34,6 +35,7 @@ const UserGroups = () => {
       toast.success("Successfully leaving the group.");
     } catch (error) {
       console.error("Error leaving group:", error);
+      toast.error("Error leaving group.");
     }
   };
 

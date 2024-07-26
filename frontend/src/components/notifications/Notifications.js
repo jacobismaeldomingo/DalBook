@@ -25,7 +25,7 @@ const Notifications = () => {
         })
         .catch((error) => {
           console.error("Error fetching pending requests:", error);
-          toast.warn("An error occurred. Please try again!");
+          toast.warn("Error fetching pending requests.");
         });
     }
 
@@ -51,6 +51,7 @@ const Notifications = () => {
         setApprovedRequests(requests);
       } catch (error) {
         console.error("Error fetching approved join requests or groups:", error);
+        toast.warn("Error fetching approved join requests or groups.");
       }
     };
 
@@ -63,6 +64,7 @@ const Notifications = () => {
         localStorage.setItem("currentTopic", response.data.topic);
       } catch (error) {
         console.error("Error fetching topic:", error);
+        toast.warn("Error fetching topic");
       }
     };
 

@@ -108,14 +108,6 @@ input::placeholder {
   background-color: #f0f2f5;
 }
 
-/* .profile > div {
-  padding-left: 10px;
-}
-.profile > img {
-  border-radius: 50%;
-  max-width: 40%;
-} */
-
 .logo {
   display: flex;
   align-items: center;

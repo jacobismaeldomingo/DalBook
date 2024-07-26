@@ -41,6 +41,7 @@ function Header() {
         })
         .catch((error) => {
           console.error("Error fetching pending requests:", error);
+          toast.warn("Error fetching pending requests.");
         });
 
       // Fetch approved join requests
@@ -53,6 +54,7 @@ function Header() {
         })
         .catch((error) => {
           console.error("Error fetching approved join requests:", error);
+          toast.warn("Error fetching approved join requests.");
         });
 
       // Fetch new category topic
@@ -78,6 +80,7 @@ function Header() {
           })
           .catch((error) => {
             console.error("Error fetching latest topic:", error);
+            toast.warn("Error fetching latest topic.");
           });
       }
     }
@@ -114,7 +117,8 @@ function Header() {
     navigate("/groupDashboard");
   };
 
-  const hasNotifications = pendingRequests > 0 || joinRequestsApproved > 0 || newCategoryTopic;
+  const hasNotifications =
+    pendingRequests > 0 || joinRequestsApproved > 0 || newCategoryTopic;
 
   return (
     <>

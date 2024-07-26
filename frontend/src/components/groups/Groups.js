@@ -39,6 +39,7 @@ const Groups = () => {
       })
       .catch((error) => {
         console.error("There was an error adding members!", error);
+        toast.error("Error adding members.");
       });
   };
 
@@ -55,6 +56,7 @@ const Groups = () => {
       })
       .catch((error) => {
         console.error("There was an error removing members!", error);
+        toast.error("Error removing members.");
       });
   };
 
@@ -88,6 +90,7 @@ const Groups = () => {
         })
         .catch((error) => {
           console.error("Error fetching group members:", error);
+          toast.warn("Error fetching group members.");
         });
     }
   };
@@ -119,6 +122,7 @@ const Groups = () => {
       retrieveUsers(response.data);
     } catch (error) {
       console.error("Error fetching join requests:", error);
+      toast.warn("Error fetching join requests.");
     }
   };
 
@@ -138,6 +142,7 @@ const Groups = () => {
         });
     } catch (error) {
       console.error("Error approving request:", error);
+      toast.error("Error approving request.");
     }
   };
 
@@ -151,6 +156,7 @@ const Groups = () => {
       toast.success("Request rejected successfully");
     } catch (error) {
       console.error("Error rejecting request:", error);
+      toast.error("Error rejecting request.");
     }
   };
 
@@ -175,6 +181,7 @@ const Groups = () => {
       setAdmin(response.data);
     } catch (error) {
       console.log("Error fetching admin", error);
+      toast.warn("Error fetching admin");
     }
   };
 
@@ -189,6 +196,7 @@ const Groups = () => {
         })
         .catch((error) => {
           console.error("Error fetching group:", error);
+          toast.warn("Error fetching group");
         });
       fetchGroupMembers();
       if (isGroupAdmin) {

@@ -31,23 +31,21 @@ const FriendRequest = () => {
       );
       if (Object.keys(result).length > 0) {
         toast.success("Friend Request sent successfully");
-        console.log("Friend request sent:", result);
       }
     } catch (error) {
       console.error("Error in sending request:", error);
+      toast.error("Error in sending request.");
     }
   };
 
   return (
     <div>
       <h2 style={{ padding: "1.5rem", paddingBottom: "0" }}>Add Friends</h2>
-      {/* <h4 style={{ padding: "1.5rem" }}>Current User ID: {userId} </h4> */}
       <div className="friends-input">
         <input
           type="text-id"
           value={receiverEmail}
           onChange={handleChangeEmail}
-          // onChange={(e) => setReceiverEmail(e.target.value)}
           placeholder="Enter Email to send request"
         />
         <button onClick={handleSendRequest} className="btn send-button">
