@@ -61,7 +61,7 @@ public class FriendReqRepoIntegrationTest {
         List<FriendRequest> requests = friendRequestRepository.findByReceiverAndAcceptedFalse(receiver);
         assertEquals(1, requests.size());
         assertTests(sender, receiver, requests);
-        assertFalse(requests.getFirst().isAccepted());
+        assertFalse(requests.get(0).isAccepted());
     }
 
     @Test
@@ -73,7 +73,7 @@ public class FriendReqRepoIntegrationTest {
         List<FriendRequest> requests = friendRequestRepository.findBySenderAndAcceptedFalse(sender);
         assertEquals(1, requests.size());
         assertTests(sender, receiver, requests);
-        assertFalse(requests.getFirst().isAccepted());
+        assertFalse(requests.get(0).isAccepted());
     }
 
     @Test
@@ -85,7 +85,7 @@ public class FriendReqRepoIntegrationTest {
         List<FriendRequest> requests = friendRequestRepository.findBySenderAndAcceptedTrue(sender);
         assertEquals(1, requests.size());
         assertTests(sender, receiver, requests);
-        assertTrue(requests.getFirst().isAccepted());
+        assertTrue(requests.get(0).isAccepted());
     }
 
     @Test
@@ -97,7 +97,7 @@ public class FriendReqRepoIntegrationTest {
         List<FriendRequest> requests = friendRequestRepository.findByReceiverAndAcceptedTrue(receiver);
         assertEquals(1, requests.size());
         assertTests(sender, receiver, requests);
-        assertTrue(requests.getFirst().isAccepted());
+        assertTrue(requests.get(0).isAccepted());
     }
 
     @Test
@@ -136,8 +136,8 @@ public class FriendReqRepoIntegrationTest {
     }
 
     private void assertTests(User sender, User receiver, List<FriendRequest> requests) {
-        assertEquals(sender, requests.getFirst().getSender());
-        assertEquals(receiver, requests.getFirst().getReceiver());
+        assertEquals(sender, requests.get(0).getSender());
+        assertEquals(receiver, requests.get(0).getReceiver());
     }
 }
 
