@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./UserGroups.css";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const GroupsList = () => {
   const [groups, setGroups] = useState([]);
@@ -19,6 +21,7 @@ const GroupsList = () => {
       })
       .catch((error) => {
         console.error("There was an error fetching the groups");
+        toast.warn("Error fetching groups");
       });
   }, [userId]);
 

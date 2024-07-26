@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import friendService from "../../services/FriendService";
 import "./FriendRequest.css";
-import NotificationComponent from "../notifications/Notifications.js";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -25,14 +24,17 @@ const FriendRequestList = () => {
     }
   }, []);
 
-  const handleAcceptRequest = (requestId) => {
+  const handleAcceptRequest = (event, requestId) => {
+    event.stopPropagation(); // Prevent event propagation
     friendService
       .acceptFriendRequest(requestId)
       .then((response) => {
         setRequests(requests.filter((req) => req.id !== requestId));
+        toast.success("Successfully added the user as your friend.");
       })
       .catch((error) => {
         console.error("Error accepting friend request:", error);
+        toast.error("Error accepting friend request.");
       });
   };
 
@@ -42,11 +44,9 @@ const FriendRequestList = () => {
 
   return (
     <div>
-      <NotificationComponent />
       <h2 style={{ padding: "1.5rem", paddingBottom: "0" }}>
         Pending Friend Requests
       </h2>
-      {/* <h4 style={{ padding: "1.5rem", paddingBottom: "1rem" }}>Current User ID: {userId} </h4> */}
       <div className="friends-list">
         {requests.map((request) => (
           <div
@@ -69,24 +69,13 @@ const FriendRequestList = () => {
             </div>
             <div>
               <button
-                onClick={() => handleAcceptRequest(request.id)}
+                onClick={(event) => handleAcceptRequest(event, request.id)}
                 className="btn btn-success"
               >
                 Accept Request
               </button>
             </div>
           </div>
-          // <li key={request.id}>
-          //   <div className="request-name">
-          //     {request.sender.firstName + " " + request.sender.lastName}
-          //   </div>
-          //   <button
-          //     onClick={() => handleAcceptRequest(request.id)}
-          //     className="btn btn-success"
-          //   >
-          //     Accept Request
-          //   </button>
-          // </li>
         ))}
       </div>
     </div>

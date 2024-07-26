@@ -20,6 +20,7 @@ import {
   IconSquareMinusFilled,
   IconCircleXFilled,
   IconUsersGroup,
+  IconX,
 } from "@tabler/icons-react";
 import friendService from "../../services/FriendService";
 import Post from "./Post";
@@ -69,10 +70,9 @@ function Feed() {
             `http://localhost:8085/api/user/getByEmail/${storedUserEmail}`
           );
           setUser(response.data);
-          console.log(response.data);
-          console.log("User information retrieved successfully");
         } catch (error) {
           console.log("Error fetching user", error);
+          toast.warn("Error fetching user.");
         }
       };
       fetchUser();
@@ -82,7 +82,6 @@ function Feed() {
         .getFriends(storedUserId)
         .then((response) => {
           setFriends(response.data);
-          console.log("Success fetching friends of user id:", userId);
         })
         .catch((error) => {
           console.error("Error fetching friends:", error);
@@ -115,11 +114,11 @@ function Feed() {
         posts.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
 
         retrieveUsers(posts); // Assuming retrieveUsers is used to process posts
-        console.log(posts);
         setPosts(posts);
         setIsLoading(false);
       } catch (error) {
         console.error("Error fetching posts:", error);
+        toast.warn("Error fetching posts.");
         setIsLoading(false);
       }
     };
@@ -295,7 +294,7 @@ function Feed() {
                   className="post-popup-close"
                   onClick={() => setShowPostPopup(false)}
                 >
-                  Close
+                  <IconX stroke={2} />
                 </button>
               </div>
             </div>
@@ -347,7 +346,7 @@ function Feed() {
                   </div>
                 ))}
           </div>
-          <div className="posted">
+          {/* <div className="posted">
             <div className="post">
               <div className="feed-profile-picture">
                 <img
@@ -364,13 +363,6 @@ function Feed() {
             </div>
             <div className="caption">Feeling good today!</div>
             <br />
-            {/* <div className="media">
-              <img
-                src="/images/post.jpg"
-                alt=""
-                style={{ height: "auto", width: "100%" }}
-              />
-            </div> */}
             <div className="reactions">
               <div className="like">
                 <IconThumbUp stroke={2} />
@@ -385,7 +377,7 @@ function Feed() {
                 Share
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="right-side">

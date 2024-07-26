@@ -8,4 +8,5 @@ public interface JoinRequestService {
     void approveRequest(int requestId);
     void rejectRequest(int requestId);
     void createRequest(int userId, int groupId);
+    List<JoinRequest> getApprovedRequestsForUser(int userId);
 }

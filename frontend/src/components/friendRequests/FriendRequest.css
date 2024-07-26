@@ -6,7 +6,7 @@ input[type="text-id"] {
   box-sizing: border-box; /* Ensures padding is included in the width */
 }
 
-.btn {
+.friendReq-btn {
   flex: 1;
   padding: 12px;
   border: none;
@@ -76,4 +76,38 @@ input[type="text-id"] {
 .email-error-message {
   color: red;
   padding: 1rem 0px 0px 1rem;
+}
+
+/* .search-results: Container for search results dropdown */
+.friendReq-search-results {
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  list-style-type: none;
+  margin-left: 10px;
+  padding: 0;
+  width: 230px;
+  z-index: 1;
+}
+
+.friendReq-search-results li {
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.friendReq-search-results li:hover {
+  background-color: #f1f1f1;
+}
+
+.clear-button {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  color: #1877f2;
+  cursor: pointer;
+  margin-left: -30px;
+}
+
+.clear-button:hover {
+  color: #1150a2;
 }

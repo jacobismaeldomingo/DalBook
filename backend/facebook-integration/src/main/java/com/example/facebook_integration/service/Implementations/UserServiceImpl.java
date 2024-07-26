@@ -26,6 +26,7 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     UserRepository userRepository;
+
     @Autowired
     private FriendRequestRepository friendRequestRepository;
 
@@ -272,5 +273,10 @@ public class UserServiceImpl implements UserService {
     public List<UserGroup> getAllGroups(int userId){
         User user = userRepository.findById(userId).get();
         return user.getGroups();
+    }
+
+    @Override
+    public List<User> getAll() {
+        return userRepository.findAll();
     }
 }

@@ -1,46 +1,102 @@
 // Notifications.js
 import React, { useEffect, useState } from "react";
-import { Stomp } from "@stomp/stompjs";
-import SockJS from "sockjs-client";
+import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "./Notifications.css";
+import Header from "../common/Header";
+import FriendRequestList from "../friendRequests/FriendRequestList";
 
 const Notifications = () => {
-  const [notifications, setNotifications] = useState([]);
-  const [hasNewNotification, setHasNewNotification] = useState(false);
+  const [approvedRequests, setApprovedRequests] = useState([]);
+  const [newTopic, setNewTopic] = useState("");
+  const [groups, setGroups] = useState({});
 
+  // Fetch pending friend requests
   useEffect(() => {
-    const socket = new SockJS("http://localhost:8080/ws");
-    const stompClient = Stomp.over(socket);
+    const fetchApprovedRequests = async () => {
+      const userId = localStorage.getItem("userId");
 
-    stompClient.connect({}, () => {
-      stompClient.subscribe("/topic/notifications", (message) => {
-        const notification = JSON.parse(message.body);
-        setNotifications((prev) => [...prev, notification]);
-        setHasNewNotification(true);
-      });
-    });
+      try {
+        const response = await axios.get(`http://localhost:8085/api/join-requests/approved/${userId}`);
+        console.log(response.data);
+        const requests = response.data;
 
-    return () => {
-      if (stompClient) {
-        stompClient.disconnect();
+        const groupIds = requests.map((req) => req.groupId);
+        const uniqueGroupIds = [...new Set(groupIds)];
+
+        const groupPromises = uniqueGroupIds.map((groupId) =>
+          axios.get(`http://localhost:8085/api/group/get/${groupId}`)
+        );
+
+        const groupResponses = await Promise.all(groupPromises);
+        const groupData = groupResponses.reduce((acc, curr) => {
+          acc[curr.data.id] = curr.data;
+          return acc;
+        }, {});
+
+        setGroups(groupData);
+        setApprovedRequests(requests);
+      } catch (error) {
+        console.error("Error fetching approved join requests or groups:", error);
+        toast.warn("Error fetching approved join requests or groups.");
       }
     };
+
+    const fetchNewTopic = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:8085/api/topics/latest"
+        );
+        setNewTopic(response.data.topic);
+        localStorage.setItem("currentTopic", response.data.topic);
+      } catch (error) {
+        console.error("Error fetching topic:", error);
+        toast.warn("Error fetching topic");
+      }
+    };
+
+    fetchApprovedRequests();
+    fetchNewTopic();
   }, []);
 
   return (
-    <div>
-      <div className="friend-page">
-        {hasNewNotification && <span className="red-dot"></span>}
-        {/* Rest of your friend page */}
-      </div>
-      <div>
-        {notifications.map((notification, index) => (
-          <div key={index}>
-            {notification.sender} sent you a friend request:{" "}
-            {notification.message}
+    <>
+      <Header />
+      <div className="notifications-container">
+        <h2 style={{ padding: "1.5rem", paddingBottom: "0" }}>Notifications</h2>
+
+        {/* Pending Friend Requests */}
+        <div className="notifications-section notifications-friend-request">
+          <FriendRequestList />
+        </div>
+
+        {/* Approved Join Requests */}
+        <div className="notifications-section notification-list-section">
+          <h3>Approved Join Requests</h3>
+          <div className="notifications-list">
+            {approvedRequests.map((request) => (
+              <div key={request.id} className="notification-item">
+                <h4>
+                  Your request to join Group: {groups[request.groupId]?.groupName || "Unknown"} has
+                  been approved.
+                </h4>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
+
+        {/* New Category of the Day Topic */}
+        <div className="notifications-section notification-list-section">
+          <h3>New Category of the Day</h3>
+          <div className="notifications-list">
+            <div className="notification-item">
+              <h4>Today's category is about '{newTopic}'.</h4>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

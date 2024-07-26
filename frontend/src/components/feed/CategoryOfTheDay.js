@@ -20,6 +20,7 @@ function CategoryOfTheDay() {
         localStorage.setItem("currentTopic", response.data.topic);
       } catch (error) {
         console.error("Error fetching topic:", error);
+        toast.warn("Error fetching topic.");
       }
     };
 
@@ -40,7 +41,7 @@ function CategoryOfTheDay() {
       toast.success("Post created successfully!");
     } catch (error) {
       console.error("Error creating post:", error);
-      toast.warn("An error occurred. Please try again!");
+      toast.error("An error occurred. Please try again!");
     }
   };
 

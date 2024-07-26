@@ -21,22 +21,24 @@ const FriendsList = () => {
         })
         .catch((error) => {
           console.error("Error fetching friends:", error);
-          toast.warn("An error occurred. Please try again!");
+          toast.warn("Error fetching friends");
         });
     }
   }, []);
 
-  const handleDelete = (friendId) => {
+  const handleDelete = (event, friendId) => {
+    event.stopPropagation(); // Prevent event propagation
     friendService
       .deleteFriend(userId, friendId)
       .then(() => {
         setFriends((prevFriends) =>
           prevFriends.filter((friend) => friend.id !== friendId)
         );
+        toast.success("Successfully deleting them as your friend.");
       })
       .catch((error) => {
         console.error("Error deleting friend:", error);
-        toast.warn("An error occurred. Please try again!");
+        toast.warn("Error deleting friend");
       });
   };
 
@@ -47,9 +49,6 @@ const FriendsList = () => {
   return (
     <div>
       <h2 style={{ padding: "1.5rem", paddingBottom: "0" }}>Your Friends</h2>
-      {/* <h4 style={{ padding: "1.5rem", paddingBottom: "1rem" }}>
-        Current User ID: {userId}{" "}
-      </h4> */}
       <div className="friends-list">
         {friends.map((friend) => (
           <div
@@ -73,23 +72,12 @@ const FriendsList = () => {
             <div>
               <button
                 className="btn delete-button"
-                onClick={() => handleDelete(friend.id)}
+                onClick={(event) => handleDelete(event, friend.id)}
               >
                 Delete
               </button>
             </div>
           </div>
-          // <li key={friend.id} className="friends-name">
-          //   <div className="request-name">
-          //     {friend.firstName + " " + friend.lastName}
-          //   </div>
-          //   <button
-          //     className="btn delete-button"
-          //     onClick={() => handleDelete(friend.id)}
-          //   >
-          //     Delete
-          //   </button>
-          // </li>
         ))}
       </div>
     </div>

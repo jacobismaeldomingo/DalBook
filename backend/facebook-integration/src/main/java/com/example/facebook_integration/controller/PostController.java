@@ -20,32 +20,16 @@ public class PostController {
     @Autowired
     private PostService postService;
 
-    private static final String UPLOAD_DIR = "uploads/";
-
     @GetMapping
     public List<Post> getAllPosts() {
         return postService.getAllPosts();
     }
 
     @PostMapping("/create/{id}")
-    public ResponseEntity<Post> createPost(@PathVariable int id, @RequestParam("text") String text,
-                                           @RequestParam(value = "file", required = false) MultipartFile file,
-                                           @RequestParam("feeling") String feeling) {
+    public ResponseEntity<Post> createPost(@PathVariable int id, @RequestParam("text") String text) {
         Post post = new Post();
         post.setUserId(id);
         post.setDescription(text);
-        post.setMediaUrl(feeling);
-
-        if (file != null && !file.isEmpty()) {
-            try {
-                byte[] bytes = file.getBytes();
-                Path path = Paths.get(UPLOAD_DIR + file.getOriginalFilename());
-                Files.write(path, bytes);
-                post.setMediaUrl(path.toString());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
 
         return ResponseEntity.ok(postService.savePost(post));
     }

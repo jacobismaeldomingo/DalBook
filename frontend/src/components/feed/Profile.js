@@ -3,6 +3,8 @@ import axios from "axios";
 import "./Profile.css";
 import { Link } from "react-router-dom";
 import Header from "../common/Header";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -17,6 +19,7 @@ const Profile = () => {
         })
         .catch((error) => {
           console.error("Error fetching user:", error);
+          toast.warn("Error fetching user.");
         });
     }
   }, []);
@@ -30,7 +33,11 @@ const Profile = () => {
       <Header />
       <div className="user-profile">
         <img
-          src={user.profilePic ? `http://localhost:8085${user.profilePic}` : "/images/dalhousie-logo.png"}
+          src={
+            user.profilePic
+              ? `http://localhost:8085${user.profilePic}`
+              : "/images/dalhousie-logo.png"
+          }
           alt="Profile"
           className="profile-picture"
         />

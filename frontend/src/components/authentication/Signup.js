@@ -68,13 +68,13 @@ function Signup() {
       if (response.status === 200) {
         const userId = response.data;
         console.log(`User created successfully with ID: ${userId}`);
-        toast.success("User created successfully");
+        toast.success("User created successfully!");
 
         // Store login flag in local storage
         localStorage.setItem("isLoggedIn", "true");
         localStorage.setItem("userId", userId);
         localStorage.setItem("userEmail", email);
-        localStorage.setItem('userRole', role);
+        localStorage.setItem("userRole", role);
 
         // Redirect to the home page
         navigate("/home");
@@ -84,7 +84,7 @@ function Signup() {
         setErrors({ email: "Email already taken" });
       } else {
         console.error("Error signing up:", error);
-        toast.warn("An error occurred. Please try again!");
+        toast.error("An error occurred. Please try again!");
       }
     }
   };
@@ -223,5 +223,5 @@ function Signup() {
       </div>
     </div>
   );
-};
+}
 export default Signup;

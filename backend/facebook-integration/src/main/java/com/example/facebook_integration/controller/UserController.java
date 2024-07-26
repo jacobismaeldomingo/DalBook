@@ -133,4 +133,9 @@ public class UserController {
     public List<UserGroup> getAllGroups(@PathVariable int userId) {
         return userService.getAllGroups(userId);
     }
+
+    @GetMapping("/users")
+    public List<User> getAllUsers() { return userService.getAll(); }
+
+
 }

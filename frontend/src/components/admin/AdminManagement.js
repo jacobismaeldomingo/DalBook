@@ -9,14 +9,10 @@ function AdminManagement() {
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
   const [newRole, setNewRole] = useState("");
-  // const [joinRequests, setJoinRequests] = useState([]);
-  // const storedUserId = localStorage.getItem("userId");
-  // const storedUserEmail = localStorage.getItem("userEmail");
   const storedUserRole = localStorage.getItem("userRole");
 
   useEffect(() => {
     fetchUsers();
-    // fetchJoinRequests();
   }, []);
 
   const fetchUsers = async () => {
@@ -25,6 +21,7 @@ function AdminManagement() {
       setUsers(response.data);
     } catch (error) {
       console.error("Error fetching users:", error);
+      toast.warm("Error fetching users");
     }
   };
 
@@ -46,7 +43,7 @@ function AdminManagement() {
       fetchUsers();
     } catch (error) {
       console.error("Error toggling user activation:", error);
-      toast.warn("An error occurred. Please try again.");
+      toast.error("An error occurred. Please try again.");
     }
   };
 
@@ -63,7 +60,7 @@ function AdminManagement() {
       fetchUsers();
     } catch (error) {
       console.error("Error deleting user:", error);
-      toast.warn("An error occurred. Please try again.");
+      toast.error("An error occurred. Please try again.");
     }
   };
 
@@ -87,7 +84,7 @@ function AdminManagement() {
         fetchUsers();
       } catch (error) {
         console.error("Error updating role:", error);
-        toast.warn("An error occurred. Please try again.");
+        toast.error("An error occurred. Please try again.");
       }
     }
   };

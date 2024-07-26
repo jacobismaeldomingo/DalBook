@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./COTDPost.css";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const COTDPost = () => {
   const [posts, setPosts] = useState([]);
@@ -35,6 +37,7 @@ const COTDPost = () => {
         setUsers(userMap);
       } catch (error) {
         console.error("Error fetching posts:", error);
+        toast.warn("Error fetching posts.");
       }
     };
 

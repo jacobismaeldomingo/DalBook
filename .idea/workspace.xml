@@ -4,8 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f45d59d8-ed65-4e6b-b12f-eeccb71bba89" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/groups/Groups.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/groups/Groups.js" afterDir="false" />
+    <list default="true" id="f45d59d8-ed65-4e6b-b12f-eeccb71bba89" name="Changes" comment="feat: adding Integration testing for User and FriendRequest">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/controller/JoinRequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/controller/JoinRequestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/repository/JoinRequestRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/repository/JoinRequestRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/service/Implementations/JoinRequestServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/service/Implementations/JoinRequestServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/service/JoinRequestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/service/JoinRequestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/common/Header.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/common/Header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/common/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/common/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/feed/Post.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/feed/Post.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/friendRequests/FriendRequest.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/friendRequests/FriendRequest.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/friendRequests/FriendRequest.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/friendRequests/FriendRequest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/notifications/Notifications.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/notifications/Notifications.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/css/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +26,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -33,29 +45,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JUnit.GroupServiceTest.executor": "Run",
-    "JUnit.GroupTest.executor": "Run",
-    "JUnit.UserServiceTest.executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.FacebookIntegrationApplication.executor": "Run",
-    "git-widget-placeholder": "feature/issue-22",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/jacobdomingo/Group19/backend/facebook-integration/src/main/resources/static/profile_pictures",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.GroupServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GroupTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.FacebookIntegrationApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/jacobdomingo/Group19/backend/facebook-integration/src/main/resources/static/profile_pictures&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/backend/facebook-integration/src/main/resources/static/profile_pictures" />
@@ -165,5 +177,9 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat: adding Integration testing for User and FriendRequest" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: adding Integration testing for User and FriendRequest" />
   </component>
 </project>
