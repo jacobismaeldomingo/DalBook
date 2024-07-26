@@ -113,7 +113,6 @@ function Feed() {
         posts.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
 
         retrieveUsers(posts); // Assuming retrieveUsers is used to process posts
-        console.log(posts);
         setPosts(posts);
         setIsLoading(false);
       } catch (error) {

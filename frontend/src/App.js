@@ -28,7 +28,6 @@ import GroupDashboard from "./components/groups/GroupDashboard";
 import UserGroups from "./components/groups/UserGroups";
 import CreateGroup from "./components/groups/CreateGroup";
 import GroupsList from "./components/groups/GroupsList";
-import SearchPeople from "./components/friendRequests/SearchPeople";
 
 function App() {
   useEffect(() => {
@@ -133,14 +132,6 @@ function App() {
           element={
             <PrivateRoute>
               <FriendsList />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/searchPeople"
-          element={
-            <PrivateRoute>
-              <SearchPeople />
             </PrivateRoute>
           }
         />

@@ -26,6 +26,7 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     UserRepository userRepository;
+
     @Autowired
     private FriendRequestRepository friendRequestRepository;
 
@@ -275,32 +276,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> findUsersByName(String name) {
-        return userRepository.findUsersByFirstName(name);
+    public List<User> getAll() {
+        return userRepository.findAll();
     }
-
-//    @PreAuthorize("hasRole('FACULTY_ADMIN')")
-//    @Override
-//    public List<JoinRequest> getJoinRequests() {
-//        return joinRequestRepository.findAll();
-//    }
-//
-//    @PreAuthorize("hasRole('FACULTY_ADMIN')")
-//    @Override
-//    public JoinRequest handleJoinRequest(Long id, String action) {
-//        Optional<JoinRequest> joinRequestOptional = joinRequestRepository.findById(id);
-//        if (joinRequestOptional.isPresent()) {
-//            JoinRequest joinRequest = joinRequestOptional.get();
-//            if ("approve".equalsIgnoreCase(action)) {
-//                joinRequest.setStatus("APPROVED");
-//            } else if ("reject".equalsIgnoreCase(action)) {
-//                joinRequest.setStatus("REJECTED");
-//            } else {
-//                throw new IllegalArgumentException("Invalid action");
-//            }
-//            return joinRequestRepository.save(joinRequest);
-//        } else {
-//            throw new IllegalArgumentException("Join request not found");
-//        }
-//    }
 }

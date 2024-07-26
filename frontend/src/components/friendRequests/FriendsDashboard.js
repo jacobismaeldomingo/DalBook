@@ -5,7 +5,6 @@ import Header from "../common/Header";
 import FriendsList from "./FriendsList";
 import FriendRequest from "./FriendRequest";
 import FriendRequestList from "./FriendRequestList";
-import SearchPeople from "./SearchPeople";
 
 const FriendsDashboard = () => {
     const [activeComponent, setActiveComponent] = useState("friendsList");
@@ -16,8 +15,6 @@ const FriendsDashboard = () => {
           return <FriendRequest />;
         case "friendRequestList":
           return <FriendRequestList />;
-          case "searchPeople":
-            return <SearchPeople />;
         default:
           return <FriendsList />;
       }

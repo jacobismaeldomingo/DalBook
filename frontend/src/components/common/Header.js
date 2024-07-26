@@ -24,6 +24,12 @@ function Header() {
   const [pendingRequests, setPendingRequests] = useState(0);
   const [joinRequestsApproved, setJoinRequestsApproved] = useState(0);
   const [newCategoryTopic, setNewCategoryTopic] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [allUsers, setAllUsers] = useState([]);
+  const [allGroups, setAllGroups] = useState([]);
+  const [searchFilter, setSearchFilter] = useState("all"); // Filter state
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   useEffect(() => {
     const userRole = localStorage.getItem("userRole");
@@ -33,6 +39,27 @@ function Header() {
   useEffect(() => {
     const storedUserId = localStorage.getItem("userId");
     if (storedUserId) {
+      // Fetch all users and groups
+      axios
+        .get("http://localhost:8085/api/user/users")
+        .then((response) => {
+          setAllUsers(response.data);
+        })
+        .catch((error) => {
+          console.error("Error fetching users:", error);
+          toast.warn("Error fetching users.");
+        });
+
+      axios
+        .get("http://localhost:8085/api/group/groups")
+        .then((response) => {
+          setAllGroups(response.data);
+        })
+        .catch((error) => {
+          console.error("Error fetching groups:", error);
+          toast.warn("Error fetching groups.");
+        });
+
       // Fetch pending friend requests
       friendService
         .getPendingRequests(storedUserId)
@@ -120,6 +147,66 @@ function Header() {
   const hasNotifications =
     pendingRequests > 0 || joinRequestsApproved > 0 || newCategoryTopic;
 
+  const handleSearchChange = (e) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+
+    if (query.length > 0) {
+      let userResults = [];
+      let groupResults = [];
+
+      if (searchFilter === "all") {
+        userResults = allUsers.filter(
+          (user) =>
+            user.firstName.toLowerCase().includes(query.toLowerCase()) ||
+            user.lastName.toLowerCase().includes(query.toLowerCase())
+        );
+        groupResults = allGroups.filter((group) =>
+          group.groupName.toLowerCase().includes(query.toLowerCase())
+        );
+      }
+
+      if (searchFilter === "users") {
+        userResults = allUsers.filter(
+          (user) =>
+            user.firstName.toLowerCase().includes(query.toLowerCase()) ||
+            user.lastName.toLowerCase().includes(query.toLowerCase())
+        );
+      }
+
+      if (searchFilter === "groups") {
+        groupResults = allGroups.filter((group) =>
+          group.groupName.toLowerCase().includes(query.toLowerCase())
+        );
+      }
+
+      setSearchResults([
+        ...userResults.map((user) => ({ ...user, type: "user" })),
+        ...groupResults.map((group) => ({ ...group, type: "group" })),
+      ]);
+    } else {
+      setSearchResults([]);
+    }
+  };
+
+  const handleSearchResultClick = (result) => {
+    // Navigate to the user or group profile page
+    if (result.type === "user") {
+      navigate(`/friendProfile/${result.id}`);
+    } else if (result.type === "group") {
+      navigate(`/groups/${result.id}`);
+    }
+  };
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const handleFilterChange = (filter) => {
+    setSearchFilter(filter);
+    setIsDropdownOpen(false);
+  };
+
   return (
     <>
       <ToastContainer />
@@ -138,7 +225,36 @@ function Header() {
             </div>
             <div className="search-bar">
               <IconSearch stroke={2} />
-              <input placeholder="Search Facebook" type="Search" />
+              <input
+                placeholder="Search DalBook"
+                type="Search"
+                value={searchQuery}
+                onChange={handleSearchChange}
+              />
+              {searchResults.length > 0 && (
+                <ul className="search-suggestions">
+                  {searchResults.map((result) => (
+                    <li
+                      key={result.id}
+                      onClick={() => handleSearchResultClick(result)}
+                    >
+                      {result.type === "user"
+                        ? `${result.firstName} ${result.lastName}`
+                        : result.groupName}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+            <div className="search-filters">
+              <button className="btn" onClick={toggleDropdown}>Filter</button>
+              {isDropdownOpen && (
+                <ul className="dropdown-menu">
+                  <li onClick={() => handleFilterChange("all")}>All</li>
+                  <li onClick={() => handleFilterChange("users")}>Users</li>
+                  <li onClick={() => handleFilterChange("groups")}>Groups</li>
+                </ul>
+              )}
             </div>
           </div>
           <div className="navigation-header">
