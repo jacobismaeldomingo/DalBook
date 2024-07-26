@@ -3,8 +3,10 @@ package com.example.facebook_integration.IntegrationTests;
 import com.example.facebook_integration.model.User;
 import com.example.facebook_integration.repository.UserRepository;
 import jakarta.transaction.Transactional;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Optional;
@@ -13,10 +15,16 @@ import static org.junit.Assert.*;
 
 @SpringBootTest
 @Transactional
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.ANY)
 public class UserRepositoryIntegrationTest {
 
     @Autowired
     private UserRepository userRepository;
+
+    @BeforeEach
+    public void setUp() {
+        userRepository.deleteAll();
+    }
 
     @Test
     public void testFindById() {
