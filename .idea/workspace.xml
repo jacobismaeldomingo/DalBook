@@ -5,11 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f45d59d8-ed65-4e6b-b12f-eeccb71bba89" name="Changes" comment="feat: adding Integration testing for User and FriendRequest">
-      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/controller/PostController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/feed/Feed.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/feed/Feed.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/feed/Feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/feed/Feed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/controller/JoinRequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/controller/JoinRequestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/repository/JoinRequestRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/repository/JoinRequestRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/service/Implementations/JoinRequestServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/service/Implementations/JoinRequestServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/service/JoinRequestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/service/JoinRequestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/common/Header.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/common/Header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/common/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/common/Header.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/feed/Post.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/feed/Post.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/feed/Post.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/feed/Post.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/friendRequests/FriendRequest.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/friendRequests/FriendRequest.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/friendRequests/FriendRequest.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/friendRequests/FriendRequest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/notifications/Notifications.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/notifications/Notifications.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/css/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

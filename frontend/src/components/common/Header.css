@@ -66,7 +66,7 @@ input::placeholder {
   position: relative;
 }
 
-.search-filters .btn {
+.search-filters .header-btn {
   background-color: #1877f2;
   color: #ffffff;
   border-radius: 6px;
@@ -76,23 +76,22 @@ input::placeholder {
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.search-filters .btn:hover {
+.search-filters .header-btn:hover {
   background-color: #145dbf;
 }
 
 .dropdown-menu {
-  display: none; /* Initially hidden */
   position: absolute;
   top: 100%;
   left: 0;
   background-color: white;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 1;
-  width: 100%;
   margin: 0;
   padding: 0;
   list-style-type: none;
   border: 1px solid #ccc;
+  border-radius: 10px;
 }
 
 .dropdown-menu.show {
@@ -102,6 +101,7 @@ input::placeholder {
 .dropdown-menu li {
   padding: 8px 16px;
   cursor: pointer;
+  font-size: large;
 }
 
 .dropdown-menu li:hover {
@@ -120,6 +120,7 @@ input::placeholder {
   padding: 0;
   z-index: 1;
   width: 230px;
+  border-radius: 10px;
 }
 
 .search-suggestions li {
@@ -133,7 +134,7 @@ input::placeholder {
 }
 
 /* .btn: Button styling for filter and dropdown */
-.btn {
+.header-btn {
   flex: 1;
   padding: 12px;
   border: none;
@@ -147,7 +148,7 @@ input::placeholder {
   background-color: #1877f2; /* Default background color */
 }
 
-.btn:hover {
+.header-btn:hover {
   background-color: #145dbf; /* Hover background color */
 }
 

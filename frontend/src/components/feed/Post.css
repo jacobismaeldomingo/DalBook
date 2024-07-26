@@ -33,12 +33,6 @@
   margin-left: 5%;
 }
 
-.user-info {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
 .user-info > span {
   font-size: x-large;
   font-weight: 600;
@@ -61,6 +55,7 @@
   background-color: transparent;
   margin-bottom: 10px;
   height: 60px;
+  font-family: inter;
 }
 
 .create-post .post-options {

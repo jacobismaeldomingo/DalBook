@@ -110,7 +110,7 @@ const FriendRequest = () => {
               ×
             </button>
           )}
-        <button onClick={handleSendRequest} className="btn send-button">
+        <button onClick={handleSendRequest} className="friendReq-btn send-button">
           Send Friend Request
         </button>
         {message && <p className="email-error-message">{message}</p>}

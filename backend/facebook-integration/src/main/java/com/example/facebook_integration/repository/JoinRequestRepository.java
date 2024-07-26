@@ -16,5 +16,7 @@ public interface JoinRequestRepository extends JpaRepository<JoinRequest, Intege
     List<JoinRequest> findByUserId(int userId);
 
     List<JoinRequest> findByStatus(String status);
+
+    List<JoinRequest> findByUserIdAndStatus(int userId, String status);
 }
 

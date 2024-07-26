@@ -9,39 +9,40 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/join-requests")
 public class JoinRequestController {
 
     @Autowired
     private JoinRequestService joinRequestService;
 
-    @GetMapping("/join-requests/{groupId}")
+    @GetMapping("/approved/{userId}")
+    public ResponseEntity<List<JoinRequest>> getApprovedRequests(@PathVariable("userId") int userId) {
+        List<JoinRequest> requests = joinRequestService.getApprovedRequestsForUser(userId);
+        return ResponseEntity.ok(requests);
+    }
+
+    @GetMapping("/{groupId}")
     public ResponseEntity<List<JoinRequest>> getJoinRequests(@PathVariable int groupId) {
         List<JoinRequest> requests = joinRequestService.getJoinRequestsByGroup(groupId);
         return ResponseEntity.ok(requests);
     }
 
-    @PutMapping("/join-requests/{requestId}/approve")
+    @PutMapping("/{requestId}/approve")
     public ResponseEntity<Void> approveRequest(@PathVariable int requestId) {
         joinRequestService.approveRequest(requestId);
         return ResponseEntity.ok().build();
     }
 
-    @PutMapping("/join-requests/{requestId}/reject")
+    @PutMapping("/{requestId}/reject")
     public ResponseEntity<Void> rejectRequest(@PathVariable int requestId) {
         joinRequestService.rejectRequest(requestId);
         return ResponseEntity.ok().build();
     }
 
-    @PostMapping("/join-requests")
+    @PostMapping
     public ResponseEntity<Void> createRequest(@RequestBody JoinRequest request) {
         joinRequestService.createRequest(request.getUserId(), request.getGroupId());
         return ResponseEntity.ok().build();
-    }
-
-    @GetMapping("/join-requests/approved")
-    public List<JoinRequest> getApprovedRequests() {
-        return joinRequestService.getApprovedRequests();
     }
 }
 

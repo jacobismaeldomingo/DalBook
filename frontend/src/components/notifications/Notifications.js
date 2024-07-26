@@ -1,7 +1,6 @@
 // Notifications.js
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import friendService from "../../services/FriendService";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Notifications.css";
@@ -9,29 +8,18 @@ import Header from "../common/Header";
 import FriendRequestList from "../friendRequests/FriendRequestList";
 
 const Notifications = () => {
-  const [friendRequests, setFriendRequests] = useState([]);
   const [approvedRequests, setApprovedRequests] = useState([]);
   const [newTopic, setNewTopic] = useState("");
   const [groups, setGroups] = useState({});
 
   // Fetch pending friend requests
   useEffect(() => {
-    const storedUserId = localStorage.getItem("userId");
-    if (storedUserId) {
-      friendService
-        .getPendingRequests(storedUserId)
-        .then((response) => {
-          setFriendRequests(response.data);
-        })
-        .catch((error) => {
-          console.error("Error fetching pending requests:", error);
-          toast.warn("Error fetching pending requests.");
-        });
-    }
-
     const fetchApprovedRequests = async () => {
+      const userId = localStorage.getItem("userId");
+
       try {
-        const response = await axios.get(`http://localhost:8085/api/join-requests/approved`);
+        const response = await axios.get(`http://localhost:8085/api/join-requests/approved/${userId}`);
+        console.log(response.data);
         const requests = response.data;
 
         const groupIds = requests.map((req) => req.groupId);

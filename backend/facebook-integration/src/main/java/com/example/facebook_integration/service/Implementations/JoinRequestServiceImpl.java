@@ -24,10 +24,17 @@ public class JoinRequestServiceImpl implements JoinRequestService {
     @Autowired
     private UserService userService;
 
+    @Override
     public List<JoinRequest> getJoinRequestsByGroup(int groupId) {
         return joinRequestRepository.findByGroupId(groupId);
     }
 
+    @Override
+    public List<JoinRequest> getApprovedRequestsForUser(int userId) {
+        return joinRequestRepository.findByUserIdAndStatus(userId, "APPROVED");
+    }
+
+    @Override
     public void approveRequest(int requestId) {
         JoinRequest request = joinRequestRepository.findById(requestId).orElseThrow(() -> new RuntimeException("Request not found"));
         request.setStatus("APPROVED");
@@ -45,21 +52,19 @@ public class JoinRequestServiceImpl implements JoinRequestService {
         joinRequestRepository.save(request);
     }
 
+    @Override
     public void rejectRequest(int requestId) {
         JoinRequest request = joinRequestRepository.findById(requestId).orElseThrow(() -> new RuntimeException("Request not found"));
         request.setStatus("REJECTED");
         joinRequestRepository.save(request);
     }
 
+    @Override
     public void createRequest(int userId, int groupId) {
         JoinRequest request = new JoinRequest();
         request.setUserId(userId);
         request.setGroupId(groupId);
         request.setStatus("PENDING");
         joinRequestRepository.save(request);
-    }
-
-    public List<JoinRequest> getApprovedRequests() {
-        return joinRequestRepository.findByStatus("APPROVED");
     }
 }

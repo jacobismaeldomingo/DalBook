@@ -73,9 +73,7 @@ function Header() {
 
       // Fetch approved join requests
       axios
-        .get(`http://localhost:8085/api/join-requests/approved`, {
-          params: { userId: storedUserId },
-        })
+        .get(`http://localhost:8085/api/join-requests/approved/${storedUserId}`)
         .then((response) => {
           setJoinRequestsApproved(response.data.length);
         })
@@ -85,30 +83,46 @@ function Header() {
         });
 
       // Fetch new category topic
+      // const latestTopicId = localStorage.getItem("latestTopicId");
+      // const lastViewedTopicId = localStorage.getItem("lastViewedTopicId");
+
+      // if (
+      //   latestTopicId &&
+      //   lastViewedTopicId &&
+      //   latestTopicId !== lastViewedTopicId
+      // ) {
+      //   setNewCategoryTopic(true);
+      // } else {
+      //   axios
+      //     .get("http://localhost:8085/api/topics/latest")
+      //     .then((response) => {
+      //       const fetchedTopicId = response.data.id;
+      //       localStorage.setItem("latestTopicId", fetchedTopicId);
+
+      //       if (fetchedTopicId !== lastViewedTopicId) {
+      //         setNewCategoryTopic(true);
+      //       }
+      //     })
+      //     .catch((error) => {
+      //       console.error("Error fetching latest topic:", error);
+      //       toast.warn("Error fetching latest topic.");
+      //     });
+      // }
       const latestTopicId = localStorage.getItem("latestTopicId");
       const lastViewedTopicId = localStorage.getItem("lastViewedTopicId");
 
-      if (
-        latestTopicId &&
-        lastViewedTopicId &&
-        latestTopicId !== lastViewedTopicId
-      ) {
-        setNewCategoryTopic(true);
+      if (lastViewedTopicId) {
+        // Check if lastViewedTopicId exists
+        if (latestTopicId === lastViewedTopicId) {
+          setNewCategoryTopic(false);
+        } else {
+          // If the IDs are different, set new category topic
+          setNewCategoryTopic(true);
+        }
       } else {
-        axios
-          .get("http://localhost:8085/api/topics/latest")
-          .then((response) => {
-            const fetchedTopicId = response.data.id;
-            localStorage.setItem("latestTopicId", fetchedTopicId);
-
-            if (fetchedTopicId !== lastViewedTopicId) {
-              setNewCategoryTopic(true);
-            }
-          })
-          .catch((error) => {
-            console.error("Error fetching latest topic:", error);
-            toast.warn("Error fetching latest topic.");
-          });
+        // If lastViewedTopicId is empty or not set, do nothing
+        // Optionally, you can add a comment here for clarity
+        return;
       }
     }
   }, []);
@@ -249,7 +263,9 @@ function Header() {
               )}
             </div>
             <div className="search-filters">
-              <button className="btn" onClick={toggleDropdown}>Filter</button>
+              <button className="header-btn" onClick={toggleDropdown}>
+                Filter
+              </button>
               {isDropdownOpen && (
                 <ul className="dropdown-menu">
                   <li onClick={() => handleFilterChange("all")}>All</li>
