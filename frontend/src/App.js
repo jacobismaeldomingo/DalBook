@@ -136,10 +136,18 @@ function App() {
           }
         />
         <Route
-          path="/friendProfile/:friendEmail"
+          path="/post"
           element={
             <PrivateRoute>
-              <FriendProfile />
+              <Post />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/groupsList"
+          element={
+            <PrivateRoute>
+              <GroupsList />
             </PrivateRoute>
           }
         />
