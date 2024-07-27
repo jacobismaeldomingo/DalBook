@@ -1,6 +1,11 @@
 package com.example.facebook_integration.service.Implementations;
 
 import com.example.facebook_integration.model.User;
+<<<<<<< HEAD
+import com.example.facebook_integration.model.UserGroup;
+import com.example.facebook_integration.repository.FriendRequestRepository;
+=======
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
 import com.example.facebook_integration.repository.UserRepository;
 import com.example.facebook_integration.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +22,12 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     UserRepository userRepository;
+<<<<<<< HEAD
+
+    @Autowired
+    private FriendRequestRepository friendRequestRepository;
+=======
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
 
     /**
      * Function: createUser
@@ -125,15 +136,32 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public void updateUserProfile(String firstName, String lastName, String email, String bio, User.Status status, MultipartFile profilePicture) {
-        Optional<User> userOptional = userRepository.findUserByEmail(email);
+        User user = userRepository.findUserByEmail(email).orElseThrow(() -> new IllegalArgumentException("User not found"));
 
-        if (userOptional.isPresent()) {
-            User user = userOptional.get();
-            user.setFirstName(firstName);
-            user.setLastName(lastName);
-            user.setBio(bio);
-            user.setStatus(status);
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setBio(bio);
+        user.setStatus(status);
 
+<<<<<<< HEAD
+        if (profilePicture != null && !profilePicture.isEmpty()) {
+            try {
+                String profilePicDir = "backend/facebook-integration/src/main/resources/static/profile_pictures/";
+                // Create the absolute path to the profile pictures directory
+                Path profilePicPath = Paths.get(profilePicDir).toAbsolutePath().normalize();
+                // Ensure the directories exist
+                Files.createDirectories(profilePicPath);
+
+                // Get the path to the specific file
+                Path filePath = profilePicPath.resolve(Objects.requireNonNull(profilePicture.getOriginalFilename()));
+                // Write the file
+                Files.write(filePath, profilePicture.getBytes());
+
+                // Set the URL for the user profile picture
+                user.setProfilePic("/profile_pictures/" + profilePicture.getOriginalFilename());
+            } catch (IOException e) {
+                e.printStackTrace();
+=======
             if (!profilePicture.isEmpty()) {
                 try {
                     byte[] profilePicBytes = profilePicture.getBytes();
@@ -141,11 +169,116 @@ public class UserServiceImpl implements UserService {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
             }
-
+        }
             userRepository.save(user);
+    }
+<<<<<<< HEAD
+
+    @Override
+    public Optional<User> findUserById(int id) {
+        return userRepository.findById(id);
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        List<User> allUsers = userRepository.findAll();
+        return allUsers.stream()
+                .filter(user -> !user.getRole().toString().equals("System_Admin"))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public User addUser(User user) {
+        if (!"System_Admin".equals(user.getRole().toString())) {
+            throw new SecurityException("Unauthorized");
+        }
+        return userRepository.save(user);
+    }
+
+    @Override
+    public User updateUserRole(int id, String role, String adminRole) {
+        if (!"System_Admin".equals(adminRole)) {
+            throw new SecurityException("Unauthorized");
+        }
+
+        Optional<User> userOptional = userRepository.findById(id);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            user.setRole(User.Role.valueOf(role)); // Assuming Role is an enum
+            return userRepository.save(user);
         } else {
-            throw new IllegalArgumentException("User with email " + email + " not found");
+            throw new IllegalArgumentException("User not found");
         }
     }
+
+    @Override
+    public void deactivateUser(int id, String adminRole) {
+        if (!"System_Admin".equals(adminRole)) {
+            throw new SecurityException("Unauthorized");
+        }
+
+        Optional<User> userOptional = userRepository.findById(id);
+
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            user.setIsActive(false);
+            userRepository.save(user);
+        } else {
+            throw new IllegalArgumentException("User not found");
+        }
+    }
+
+    @Override
+    public void activateUser(int id, String adminRole) {
+        if (!"System_Admin".equals(adminRole)) {
+            throw new SecurityException("Unauthorized");
+        }
+
+        Optional<User> userOptional = userRepository.findById(id);
+
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            user.setIsActive(true);
+            userRepository.save(user);
+        } else {
+            throw new IllegalArgumentException("User not found");
+        }
+    }
+
+    @Override
+    @Transactional
+    public void removeUser(int id, String adminRole) {
+        if (!"System_Admin".equals(adminRole)) {
+            throw new SecurityException("Unauthorized");
+        }
+
+        Optional<User> userOptional = findUserById(id);
+
+        if (userOptional.isPresent()) {
+            // Delete all friend requests where the user is involved
+            friendRequestRepository.deleteBySenderId(id);
+            friendRequestRepository.deleteByReceiverId(id);
+
+            // Delete the user
+            userRepository.deleteById(id);
+        }
+        else {
+            throw new IllegalArgumentException("User with id " + id + " not found");
+        }
+    }
+
+    @Override
+    public List<UserGroup> getAllGroups(int userId){
+        User user = userRepository.findById(userId).get();
+        return user.getGroups();
+    }
+
+    @Override
+    public List<User> getAll() {
+        return userRepository.findAll();
+    }
+=======
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
 }

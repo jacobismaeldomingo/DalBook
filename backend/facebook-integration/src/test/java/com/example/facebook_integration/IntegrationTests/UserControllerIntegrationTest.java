@@ -2,7 +2,10 @@ package com.example.facebook_integration.IntegrationTests;
 
 import com.example.facebook_integration.model.User;
 import com.example.facebook_integration.repository.UserRepository;
+<<<<<<< HEAD
+=======
 import com.fasterxml.jackson.databind.ObjectMapper;
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +36,12 @@ public class UserControllerIntegrationTest {
     @Autowired
     private UserRepository userRepository;
 
+<<<<<<< HEAD
+=======
     @Autowired
     private ObjectMapper objectMapper;
 
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
     @BeforeEach
     public void setup() {
         userRepository.deleteAll();
