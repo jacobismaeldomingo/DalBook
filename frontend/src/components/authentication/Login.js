@@ -50,13 +50,14 @@ function Login() {
 
       if (response.ok) {
         // Login successful
-        const userId = await response.json(); // Retreive the User Id
+        const user = await response.json(); // Retreive the User Id and Role
         console.log("Login successful");
 
         // Store login flag in local storage
         localStorage.setItem("isLoggedIn", "true");
-        localStorage.setItem("userId", userId);
-        localStorage.setItem("userEmail", email);
+        localStorage.setItem("userId", user.id);
+        localStorage.setItem("userEmail", user.email);
+        localStorage.setItem("userRole", user.role);
 
         // Redirect to the user home page
         navigate("/home");

@@ -12,4 +12,6 @@ public interface FriendRequestRepository extends JpaRepository<FriendRequest, In
     List<FriendRequest> findBySenderAndAcceptedTrue(User sender);
     List<FriendRequest> findByReceiverAndAcceptedTrue(User receiver);
     List<FriendRequest> findBySenderAndReceiver(User sender, User receiver);
+    void deleteBySenderId(int senderId);
+    void deleteByReceiverId(int receiverId);
 }

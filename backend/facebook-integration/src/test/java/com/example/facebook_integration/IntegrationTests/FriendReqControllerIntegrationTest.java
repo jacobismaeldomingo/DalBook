@@ -213,4 +213,3 @@ public class FriendReqControllerIntegrationTest {
         assertEquals(0, responseBody.size());
     }
 }
-

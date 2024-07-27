@@ -9,12 +9,9 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
-<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
 
-=======
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
 @Entity
 @Table(name = "`user`") // Escaping the table name
 public class User {
@@ -47,7 +44,6 @@ public class User {
 
     @NotBlank(message = "Security Answer is required.")
     private String securityAnswer;
-<<<<<<< HEAD
 
     private boolean is_active = true;
 
@@ -61,8 +57,6 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private Role role = Role.Student;
-=======
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
 
     public enum Status {
         Available,
@@ -73,7 +67,6 @@ public class User {
 
     public Status status = Status.Available;
 
-<<<<<<< HEAD
     @OneToMany(mappedBy = "sender", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<FriendRequest> sentRequests;
 
@@ -85,8 +78,6 @@ public class User {
     @JsonIgnore
     private List<UserGroup> groups = new ArrayList<>();
 
-=======
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
     // Constructor
     public User() {
     }
@@ -185,7 +176,6 @@ public class User {
         this.status = status;
     }
 
-<<<<<<< HEAD
     public Role getRole() {
         return role;
     }
@@ -210,6 +200,4 @@ public class User {
         this.groups = UserGroups;
     }
 
-=======
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
 }

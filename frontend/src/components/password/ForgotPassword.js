@@ -30,7 +30,7 @@ export default function SecurityQuestion() {
 
     try {
       const response = await fetch(
-        `http://localhost:8085/api/user/get/${email}`,
+        `http://localhost:8085/api/user/getByEmail/${email}`,
         {
           method: "GET",
           headers: {

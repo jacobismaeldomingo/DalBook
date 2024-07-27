@@ -21,4 +21,3 @@ public interface JoinRequestRepository extends JpaRepository<JoinRequest, Intege
 
     JoinRequest findByUserIdAndGroupId(int userId, int groupId);
 }
-

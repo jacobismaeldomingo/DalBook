@@ -56,4 +56,3 @@ public class FriendServiceImpl implements FriendService {
                 .toList();
     }
 }
-

@@ -36,18 +36,14 @@ public class UserServiceTest {
     }
 
     @Test
-    /* Description:
-     *  Tests that a user is successfully created when valid details are provided
-     *  and the email does not already exist.
-     */
+        /* Description:
+         *  Tests that a user is successfully created when valid details are provided
+         *  and the email does not already exist.
+         */
     void testCreateUser_Success() {
         User user = new User();
         user.setId(1);
-<<<<<<< HEAD
         user.setEmail("test@dal.ca");
-=======
-        user.setEmail("test@example.com");
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
 
         when(userRepository.findUserByEmail(user.getEmail())).thenReturn(Optional.empty());
         when(userRepository.save(user)).thenReturn(user);
@@ -59,10 +55,10 @@ public class UserServiceTest {
     }
 
     @Test
-    /* Description:
-     *  Tests that an IllegalArgumentException is thrown when trying to create a user
-     *  with a null user object.
-     */
+        /* Description:
+         *  Tests that an IllegalArgumentException is thrown when trying to create a user
+         *  with a null user object.
+         */
     void testCreateUser_UserIsNull() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             userService.createUser(null);
@@ -72,17 +68,13 @@ public class UserServiceTest {
     }
 
     @Test
-    /* Description:
-     *  Tests that an IllegalArgumentException is thrown when trying to create a user
-     *  with an email that already exists in the repository.
-     */
+        /* Description:
+         *  Tests that an IllegalArgumentException is thrown when trying to create a user
+         *  with an email that already exists in the repository.
+         */
     void testCreateUser_EmailAlreadyExists() {
         User user = new User();
-<<<<<<< HEAD
         user.setEmail("test@dal.ca");
-=======
-        user.setEmail("test@example.com");
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
 
         when(userRepository.findUserByEmail(user.getEmail())).thenReturn(Optional.of(user));
 
@@ -94,33 +86,25 @@ public class UserServiceTest {
     }
 
     @Test
-    /* Description:
-     *  Tests that a user is successfully found by their email when the email exists in the repository.
-     */
+        /* Description:
+         *  Tests that a user is successfully found by their email when the email exists in the repository.
+         */
     void testFindUserByEmail_Success() {
         User user = new User();
-<<<<<<< HEAD
         user.setEmail("test@dal.ca");
-=======
-        user.setEmail("test@example.com");
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
 
         when(userRepository.findUserByEmail(user.getEmail())).thenReturn(Optional.of(user));
 
         Optional<User> foundUser = userService.findUserByEmail(user.getEmail());
 
         assertTrue(foundUser.isPresent());
-<<<<<<< HEAD
         assertEquals("test@dal.ca", foundUser.get().getEmail());
-=======
-        assertEquals("test@example.com", foundUser.get().getEmail());
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
     }
 
     @Test
-    /* Description:
-     *  Tests that an empty Optional is returned when the user email does not exist in the repository.
-     */
+        /* Description:
+         *  Tests that an empty Optional is returned when the user email does not exist in the repository.
+         */
     void testFindUserByEmail_NotFound() {
         when(userRepository.findUserByEmail("nonexistent@example.com")).thenReturn(Optional.empty());
 
@@ -130,40 +114,29 @@ public class UserServiceTest {
     }
 
     @Test
-    /* Description:
-     *  Tests that a user is successfully logged in when valid email and password are provided
-     *  and the user's account is active.
-     */
+        /* Description:
+         *  Tests that a user is successfully logged in when valid email and password are provided
+         *  and the user's account is active.
+         */
     void testLogin_Success() {
         User user = new User();
-<<<<<<< HEAD
         user.setEmail("test@dal.ca");
-=======
-        user.setEmail("test@example.com");
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
         user.setPassword("password123");
         user.setIsActive(true);
 
         when(userRepository.findUserByEmail(user.getEmail())).thenReturn(Optional.of(user));
 
-<<<<<<< HEAD
         User loggedInUser = userService.login("test@dal.ca", "password123");
 
         assertNotNull(loggedInUser);
         assertEquals("test@dal.ca", loggedInUser.getEmail());
-=======
-        User loggedInUser = userService.login("test@example.com", "password123");
-
-        assertNotNull(loggedInUser);
-        assertEquals("test@example.com", loggedInUser.getEmail());
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
     }
 
     @Test
-    /* Description:
-     *  Tests that an IllegalArgumentException is thrown when trying to log in with an email
-     *  that does not exist in the repository.
-     */
+        /* Description:
+         *  Tests that an IllegalArgumentException is thrown when trying to log in with an email
+         *  that does not exist in the repository.
+         */
     void testLogin_UserNotFound() {
         when(userRepository.findUserByEmail("nonexistent@example.com")).thenReturn(Optional.empty());
 
@@ -175,67 +148,50 @@ public class UserServiceTest {
     }
 
     @Test
-    /* Description:
-     *  Tests that an IllegalArgumentException is thrown when trying to log in with an email
-     *  of a user whose account has been deactivated.
-     */
+        /* Description:
+         *  Tests that an IllegalArgumentException is thrown when trying to log in with an email
+         *  of a user whose account has been deactivated.
+         */
     void testLogin_UserDeactivated() {
         User user = new User();
-<<<<<<< HEAD
         user.setEmail("test@dal.ca");
-=======
-        user.setEmail("test@example.com");
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
         user.setIsActive(false);
 
         when(userRepository.findUserByEmail(user.getEmail())).thenReturn(Optional.of(user));
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-<<<<<<< HEAD
             userService.login("test@dal.ca", "password123");
-=======
-            userService.login("test@example.com", "password123");
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
         });
 
         assertEquals("Your account has been deactivated", exception.getMessage());
     }
 
     @Test
-    /* Description:
-     *  Tests that an IllegalArgumentException is thrown when trying to log in with an incorrect password
-     *  for an existing and active user.
-     */
+        /* Description:
+         *  Tests that an IllegalArgumentException is thrown when trying to log in with an incorrect password
+         *  for an existing and active user.
+         */
     void testLogin_WrongPassword() {
         User user = new User();
-<<<<<<< HEAD
         user.setEmail("test@dal.ca");
-=======
-        user.setEmail("test@example.com");
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
         user.setPassword("password123");
         user.setIsActive(true);
 
         when(userRepository.findUserByEmail(user.getEmail())).thenReturn(Optional.of(user));
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-<<<<<<< HEAD
             userService.login("test@dal.ca", "wrongpassword");
-=======
-            userService.login("test@example.com", "wrongpassword");
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
         });
 
         assertEquals("Wrong password", exception.getMessage());
     }
 
     @Test
-    /* Description:
-     *  Tests that a user's profile is successfully updated when valid data and a non-empty profile picture
-     *  are provided.
-     */
-<<<<<<< HEAD
-     void testUpdateUserProfile_Success() throws Exception {
+        /* Description:
+         *  Tests that a user's profile is successfully updated when valid data and a non-empty profile picture
+         *  are provided.
+         */
+    void testUpdateUserProfile_Success() throws Exception {
         User user = new User();
         user.setEmail("test@dal.ca");
 
@@ -251,42 +207,24 @@ public class UserServiceTest {
         verify(userRepository).save(user);
 
         // Assert user details
-=======
-    void testUpdateUserProfile_Success() throws Exception {
-        User user = new User();
-        user.setEmail("test@example.com");
-
-        MultipartFile profilePicture = new MockMultipartFile("file", "test.jpg", "image/jpeg", "test data".getBytes());
-
-        when(userRepository.findUserByEmail("test@example.com")).thenReturn(Optional.of(user));
-
-        userService.updateUserProfile("John", "Doe", "test@example.com", "Bio", User.Status.Available, profilePicture);
-
-        verify(userRepository).save(user);
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
         assertEquals("John", user.getFirstName());
         assertEquals("Doe", user.getLastName());
         assertEquals("Bio", user.getBio());
         assertEquals(User.Status.Available, user.getStatus());
-<<<<<<< HEAD
 
-         // Verify the profile picture path
-         assertNotNull(user.getProfilePic());
-         assertTrue(user.getProfilePic().endsWith("test.jpg"));
-=======
-        assertTrue(user.getProfilePic().endsWith("/profile_pictures/test.jpg"));
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
+        // Verify the profile picture path
+        assertNotNull(user.getProfilePic());
+        assertTrue(user.getProfilePic().endsWith("test.jpg"));
     }
 
     @Test
-    /* Description:
-     *  Tests that an IllegalArgumentException is thrown when the provided email does not correspond
-     *  to an existing user.
-     */
+        /* Description:
+         *  Tests that an IllegalArgumentException is thrown when the provided email does not correspond
+         *  to an existing user.
+         */
     void testUpdateUserProfile_UserNotFound() {
         MultipartFile profilePicture = new MockMultipartFile("file", "test.jpg", "image/jpeg", "test data".getBytes());
 
-<<<<<<< HEAD
         when(userRepository.findUserByEmail("test@dal.ca")).thenReturn(Optional.empty());
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
@@ -294,21 +232,12 @@ public class UserServiceTest {
         });
 
         assertEquals("User not found", exception.getMessage());
-=======
-        when(userRepository.findUserByEmail("test@example.com")).thenReturn(Optional.empty());
-
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            userService.updateUserProfile("John", "Doe", "test@example.com", "Bio", User.Status.Available, profilePicture);
-        });
-
-        assertEquals("User with email test@example.com not found", exception.getMessage());
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
     }
 
     @Test
-    /* Description:
-     *  Tests that a user is successfully found when a valid ID is provided.
-     */
+        /* Description:
+         *  Tests that a user is successfully found when a valid ID is provided.
+         */
     void testFindUserById_Success() {
         User user = new User();
         user.setId(1);
@@ -322,9 +251,9 @@ public class UserServiceTest {
     }
 
     @Test
-    /* Description:
-     *  Tests that an empty Optional is returned when no user is found for the provided ID.
-     */
+        /* Description:
+         *  Tests that an empty Optional is returned when no user is found for the provided ID.
+         */
     void testFindUserById_UserNotFound() {
         when(userRepository.findById(1)).thenReturn(Optional.empty());
 
@@ -334,9 +263,9 @@ public class UserServiceTest {
     }
 
     @Test
-    /* Description:
-     *  Tests that all users excluding System_Admin are successfully retrieved.
-     */
+        /* Description:
+         *  Tests that all users excluding System_Admin are successfully retrieved.
+         */
     void testGetAllUsers_Success() {
         List<User> users = new ArrayList<>();
         User user1 = new User();
@@ -355,9 +284,9 @@ public class UserServiceTest {
     }
 
     @Test
-    /* Description:
-     *  Tests that an empty list is returned when there are no users excluding System_Admin.
-     */
+        /* Description:
+         *  Tests that an empty list is returned when there are no users excluding System_Admin.
+         */
     void testGetAllUsers_NoUsers() {
         List<User> users = new ArrayList<>();
         User user = new User();
@@ -372,9 +301,9 @@ public class UserServiceTest {
     }
 
     @Test
-    /* Description:
-     *  Tests that a user is successfully added when the role is System_Admin.
-     */
+        /* Description:
+         *  Tests that a user is successfully added when the role is System_Admin.
+         */
     void testAddUser_Success() {
         User user = new User();
         user.setRole(User.Role.System_Admin);
@@ -389,9 +318,9 @@ public class UserServiceTest {
     }
 
     @Test
-    /* Description:
-     *  Tests that a SecurityException is thrown when the role is not System_Admin.
-     */
+        /* Description:
+         *  Tests that a SecurityException is thrown when the role is not System_Admin.
+         */
     void testAddUser_Unauthorized() {
         User user = new User();
         user.setRole(User.Role.Student);
@@ -404,9 +333,9 @@ public class UserServiceTest {
     }
 
     @Test
-    /* Description:
-     *  Tests that a user's role is successfully updated when the admin role is System_Admin.
-     */
+        /* Description:
+         *  Tests that a user's role is successfully updated when the admin role is System_Admin.
+         */
     void testUpdateUserRole_Success() {
         User user = new User();
         user.setId(1);
@@ -422,9 +351,9 @@ public class UserServiceTest {
     }
 
     @Test
-    /* Description:
-     *  Tests that a SecurityException is thrown when the admin role is not System_Admin.
-     */
+        /* Description:
+         *  Tests that a SecurityException is thrown when the admin role is not System_Admin.
+         */
     void testUpdateUserRole_Unauthorized() {
         SecurityException exception = assertThrows(SecurityException.class, () -> {
             userService.updateUserRole(1, "Student", "Student");
@@ -434,9 +363,9 @@ public class UserServiceTest {
     }
 
     @Test
-    /* Description:
-     *  Tests that a user is successfully deactivated when the admin role is System_Admin.
-     */
+        /* Description:
+         *  Tests that a user is successfully deactivated when the admin role is System_Admin.
+         */
     void testDeactivateUser_Success() {
         User user = new User();
         user.setId(1);
@@ -450,9 +379,9 @@ public class UserServiceTest {
     }
 
     @Test
-    /* Description:
-     *  Tests that a SecurityException is thrown when the admin role is not System_Admin.
-     */
+        /* Description:
+         *  Tests that a SecurityException is thrown when the admin role is not System_Admin.
+         */
     void testDeactivateUser_Unauthorized() {
         SecurityException exception = assertThrows(SecurityException.class, () -> {
             userService.deactivateUser(1, "USER");
@@ -462,9 +391,9 @@ public class UserServiceTest {
     }
 
     @Test
-    /* Description:
-     *  Tests that a user is successfully activated when the admin role is System_Admin.
-     */
+        /* Description:
+         *  Tests that a user is successfully activated when the admin role is System_Admin.
+         */
     void testActivateUser_Success() {
         User user = new User();
         user.setId(1);
@@ -478,9 +407,9 @@ public class UserServiceTest {
     }
 
     @Test
-    /* Description:
-     *  Tests that a SecurityException is thrown when the admin role is not System_Admin.
-     */
+        /* Description:
+         *  Tests that a SecurityException is thrown when the admin role is not System_Admin.
+         */
     void testActivateUser_Unauthorized() {
         SecurityException exception = assertThrows(SecurityException.class, () -> {
             userService.activateUser(1, "USER");
@@ -490,10 +419,10 @@ public class UserServiceTest {
     }
 
     @Test
-    /* Description:
-     *  Tests that a user and their associated friend requests are successfully removed
-     *  when the admin role is System_Admin.
-     */
+        /* Description:
+         *  Tests that a user and their associated friend requests are successfully removed
+         *  when the admin role is System_Admin.
+         */
     void testRemoveUser_Success() {
         User user = new User();
         user.setId(1);
@@ -508,9 +437,9 @@ public class UserServiceTest {
     }
 
     @Test
-    /* Description:
-     *  Tests that a SecurityException is thrown when the admin role is not System_Admin.
-     */
+        /* Description:
+         *  Tests that a SecurityException is thrown when the admin role is not System_Admin.
+         */
     void testRemoveUser_Unauthorized() {
         SecurityException exception = assertThrows(SecurityException.class, () -> {
             userService.removeUser(1, "USER");
@@ -519,4 +448,3 @@ public class UserServiceTest {
         assertEquals("Unauthorized", exception.getMessage());
     }
 }
-

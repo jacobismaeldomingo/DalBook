@@ -1,5 +1,6 @@
 // Home Page
-import React from "react";
+
+import { React, useState, useEffect } from "react";
 import "./Header.css";
 import { useNavigate } from "react-router-dom";
 import friendService from "../../services/FriendService";
@@ -81,6 +82,32 @@ function Header() {
           toast.warn("Error fetching approved join requests.");
         });
 
+      // Fetch new category topic
+      // const latestTopicId = localStorage.getItem("latestTopicId");
+      // const lastViewedTopicId = localStorage.getItem("lastViewedTopicId");
+
+      // if (
+      //   latestTopicId &&
+      //   lastViewedTopicId &&
+      //   latestTopicId !== lastViewedTopicId
+      // ) {
+      //   setNewCategoryTopic(true);
+      // } else {
+      //   axios
+      //     .get("http://localhost:8085/api/topics/latest")
+      //     .then((response) => {
+      //       const fetchedTopicId = response.data.id;
+      //       localStorage.setItem("latestTopicId", fetchedTopicId);
+
+      //       if (fetchedTopicId !== lastViewedTopicId) {
+      //         setNewCategoryTopic(true);
+      //       }
+      //     })
+      //     .catch((error) => {
+      //       console.error("Error fetching latest topic:", error);
+      //       toast.warn("Error fetching latest topic.");
+      //     });
+      // }
       const latestTopicId = localStorage.getItem("latestTopicId");
       const lastViewedTopicId = localStorage.getItem("lastViewedTopicId");
 

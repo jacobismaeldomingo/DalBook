@@ -44,7 +44,7 @@ public class UserController {
      * Parameters: String email - The email of the user.
      * Returns: ResponseEntity<User> - The user object.
      */
-    @GetMapping("/get/{email}")
+    @GetMapping("/getByEmail/{email}")
     public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
         Optional<User> userOptional = userService.findUserByEmail(email);
         return userOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body(null));
@@ -73,8 +73,8 @@ public class UserController {
         String email = body.get("email");
         String password = body.get("password");
         try {
-            int userId = userService.login(email, password);
-            return ResponseEntity.ok(userId); // Return user ID on successful login
+            User user = userService.login(email, password);
+            return ResponseEntity.ok(user); // Return user ID on successful login
         } catch (IllegalArgumentException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage()); // Return 401 on failure
         }

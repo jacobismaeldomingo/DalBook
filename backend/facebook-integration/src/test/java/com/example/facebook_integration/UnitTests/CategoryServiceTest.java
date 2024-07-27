@@ -1,6 +1,5 @@
 package com.example.facebook_integration.UnitTests;
 
-<<<<<<< HEAD
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
@@ -92,8 +91,3 @@ public class CategoryServiceTest {
         verify(categoryRepository, times(1)).findByTopic("Nonexistent Topic");
     }
 }
-
-=======
-public class CategoryServiceTest {
-}
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f

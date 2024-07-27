@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import Header from "../common/Header";
 import { useParams } from "react-router-dom";
@@ -76,7 +76,7 @@ const Groups = () => {
   };
 
   // Fetch Group Members
-  const fetchGroupMembers = () => {
+  const fetchGroupMembers = useCallback(() => {
     if (groupId) {
       axios
         .get(`http://localhost:8085/api/group/users/${groupId}`)
@@ -93,7 +93,7 @@ const Groups = () => {
           toast.warn("Error fetching group members.");
         });
     }
-  };
+  }, [groupId, currentUserId]);
 
   // Get Join Requests Users Information
   const retrieveUsers = async (postsData) => {
@@ -113,7 +113,7 @@ const Groups = () => {
   };
 
   // Fetch join requests
-  const fetchJoinRequests = async () => {
+  const fetchJoinRequests = useCallback(async () => {
     try {
       const response = await axios.get(
         `http://localhost:8085/api/join-requests/${groupId}`
@@ -124,12 +124,12 @@ const Groups = () => {
       console.error("Error fetching join requests:", error);
       toast.warn("Error fetching join requests.");
     }
-  };
+  }, [groupId]);
 
   // Handle join request approval
   const handleApproveRequest = async (requestId) => {
     try {
-      const response = await axios
+      await axios
         .put(`http://localhost:8085/api/join-requests/${requestId}/approve`)
         .then((response) => {
           fetchJoinRequests(); // Update join requests after approval
@@ -161,7 +161,7 @@ const Groups = () => {
   };
 
   // Check if the current user is a Group_Admin
-  const checkIfGroupAdmin = async () => {
+  const checkIfGroupAdmin = useCallback(async () => {
     try {
       const response = await axios.get(
         `http://localhost:8085/api/group/checkAdmin/${groupId}/${currentUserId}`
@@ -170,10 +170,10 @@ const Groups = () => {
     } catch (error) {
       console.error("Error checking if user is group admin:", error);
     }
-  };
+  }, [groupId, currentUserId]);
 
   // Get Current User Information
-  const fetchAdmin = async (creatorId) => {
+  const fetchAdmin = useCallback(async (creatorId) => {
     try {
       const response = await axios.get(
         `http://localhost:8085/api/user/getById/${creatorId}`
@@ -183,7 +183,7 @@ const Groups = () => {
       console.log("Error fetching admin", error);
       toast.warn("Error fetching admin");
     }
-  };
+  }, []);
 
   useEffect(() => {
     if (groupId) {
@@ -203,7 +203,7 @@ const Groups = () => {
         fetchJoinRequests();
       }
     }
-  }, [groupId, isGroupAdmin]);
+  }, [groupId, isGroupAdmin, fetchAdmin, checkIfGroupAdmin, fetchGroupMembers, fetchJoinRequests]);
 
   if (!group) {
     return <div>Loading...</div>;

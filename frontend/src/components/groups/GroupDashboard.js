@@ -54,7 +54,7 @@ const GroupDashboard = () => {
               Group List
             </button>
           </div>
-          <div className="admin-content">{renderComponent()}</div>
+          <div className="groups-content">{renderComponent()}</div>
         </div>
       </div>
     </div>
