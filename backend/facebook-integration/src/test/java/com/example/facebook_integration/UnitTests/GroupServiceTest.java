@@ -31,6 +31,9 @@ public class GroupServiceTest {
     @Mock
     UserRepository userRepository;
 
+    /**
+     * Test Group Creation
+     */
     @Test
     public void testCreateGroup() {
         UserGroup userGroup = new UserGroup();
@@ -52,6 +55,10 @@ public class GroupServiceTest {
         //verify(groupRepository).save(userGroup);
 
     }
+
+    /**
+     * Test Group Creation if Group Already exists
+     */
     @Test
     public void testCreateGroup_GroupAlreadyExists(){
         UserGroup existingGroup = new UserGroup();
@@ -70,6 +77,9 @@ public class GroupServiceTest {
 
     }
 
+    /**
+     * Test Group Deletion
+     */
     @Test
     public void testDeleteGroup() {
         UserGroup userGroup = new UserGroup();
@@ -106,7 +116,9 @@ public class GroupServiceTest {
        // verify(groupRepository, times(1)).delete(userGroup);
     }
 
-
+    /**
+     * Test Group deletion if the group is not found
+     */
     @Test
     public void testDeleteGroup_GroupNotFound() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
@@ -115,6 +127,9 @@ public class GroupServiceTest {
         assertEquals(exception.getMessage(), "Group cannot be found");
     }
 
+    /**
+     * Tests adding user to Group
+     */
     @Test
     public void testaddUserToGroup() {
         UserGroup userGroup = new UserGroup();
@@ -147,6 +162,9 @@ public class GroupServiceTest {
 
     }
 
+    /**
+     * Tests adding user to Group if group does not exist
+     */
     @Test
     public void testAddUserToGroup_UserDoesNotExist() {
     UserGroup userGroup = new UserGroup();
@@ -165,6 +183,9 @@ public class GroupServiceTest {
 
     }
 
+    /**
+     * Test Deleting User From Group
+     */
     @Test
     public void testDeleteUserFromGroup() {
         UserGroup userGroup = new UserGroup();
@@ -197,6 +218,10 @@ public class GroupServiceTest {
 
 
     }
+
+    /**
+     * Tests Deleting User From Group If Group Does Not Exist
+     */
     @Test
     public void testDeleteUserFromGroup_UserDoesNotExist() {
         UserGroup userGroup = new UserGroup();
@@ -220,12 +245,6 @@ public class GroupServiceTest {
             groupService.deleteUser(1, 2);
         });
         assertEquals("User is not in this group", exception.getMessage());
-
-
-
-
-
-
     }
 
 
