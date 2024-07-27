@@ -1,5 +1,6 @@
 package com.example.facebook_integration.UnitTests;
 
+<<<<<<< HEAD
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -151,4 +152,7 @@ public class FriendServiceTest {
         assertTrue(result.isEmpty());
         verify(friendRepository, times(1)).findByUserId(user.getId());
     }
+=======
+public class FriendServiceTest {
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
 }

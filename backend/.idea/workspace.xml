@@ -5,9 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b0c400f-131d-47ae-99d5-d1137fcf3c4e" name="Changes" comment="feat: Configured the url and db username and password to connect to our database.">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
 <<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/facebook-integration/src/test/java/com/example/facebook_integration/UnitTests/GroupServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/facebook-integration/src/test/java/com/example/facebook_integration/UnitTests/GroupServiceTest.java" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
     </list>
 =======
       <change beforePath="$PROJECT_DIR$/facebook-integration/src/main/java/com/example/facebook_integration/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/facebook-integration/src/main/java/com/example/facebook_integration/controller/UserController.java" afterDir="false" />
@@ -33,9 +37,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+<<<<<<< HEAD
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+=======
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -57,8 +64,12 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;Spring Boot.FacebookIntegrationApplication (1).executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.FacebookIntegrationApplication.executor&quot;: &quot;Run&quot;,
+<<<<<<< HEAD
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;jay__latest&quot;,
+=======
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/jacobdomingo/Group19/backend&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -72,6 +83,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+<<<<<<< HEAD
   <component name="RunManager" selected="JUnit.TopicControllerTest">
     <configuration name="CategoryControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="facebook-integration" />
@@ -150,6 +162,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+=======
+  <component name="RunManager">
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
     <configuration name="FacebookIntegrationApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="22" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -159,6 +174,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+<<<<<<< HEAD
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.TopicControllerTest" />
@@ -168,6 +184,8 @@
         <item itemvalue="JUnit.CategoryControllerTest" />
       </list>
     </recent_temporary>
+=======
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -194,9 +212,12 @@
       <workItem from="1719458525757" duration="380000" />
       <workItem from="1719458909536" duration="109000" />
       <workItem from="1719459379860" duration="24000" />
+<<<<<<< HEAD
       <workItem from="1721836397174" duration="4069000" />
       <workItem from="1721956977992" duration="334000" />
       <workItem from="1721957318055" duration="6782000" />
+=======
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
     </task>
     <task id="LOCAL-00001" summary="feat: Configured the url and db username and password to connect to our database.">
       <option name="closed" value="true" />

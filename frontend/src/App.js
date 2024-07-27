@@ -13,6 +13,7 @@ import FriendRequest from "./components/friendRequests/FriendRequest";
 import FriendRequestList from "./components/friendRequests/FriendRequestList";
 import FriendsList from "./components/friendRequests/FriendsList";
 import PrivateRoute from "./components/common/PrivateRoute";
+<<<<<<< HEAD
 import Post from "./components/feed/Post";
 import Admin from "./components/admin/Admin";
 import AdminRoute from "./components/common/AdminRoute";
@@ -28,6 +29,8 @@ import GroupDashboard from "./components/groups/GroupDashboard";
 import UserGroups from "./components/groups/UserGroups";
 import CreateGroup from "./components/groups/CreateGroup";
 import GroupsList from "./components/groups/GroupsList";
+=======
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
 
 function App() {
   useEffect(() => {
@@ -135,6 +138,7 @@ function App() {
             </PrivateRoute>
           }
         />
+<<<<<<< HEAD
         <Route
           path="/friendProfile/:friendEmail"
           element={
@@ -211,6 +215,8 @@ function App() {
             </PrivateRoute>
           }
         />
+=======
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
         <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>

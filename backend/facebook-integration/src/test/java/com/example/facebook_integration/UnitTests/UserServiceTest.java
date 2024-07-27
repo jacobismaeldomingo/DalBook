@@ -43,7 +43,11 @@ public class UserServiceTest {
     void testCreateUser_Success() {
         User user = new User();
         user.setId(1);
+<<<<<<< HEAD
         user.setEmail("test@dal.ca");
+=======
+        user.setEmail("test@example.com");
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
 
         when(userRepository.findUserByEmail(user.getEmail())).thenReturn(Optional.empty());
         when(userRepository.save(user)).thenReturn(user);
@@ -74,7 +78,11 @@ public class UserServiceTest {
      */
     void testCreateUser_EmailAlreadyExists() {
         User user = new User();
+<<<<<<< HEAD
         user.setEmail("test@dal.ca");
+=======
+        user.setEmail("test@example.com");
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
 
         when(userRepository.findUserByEmail(user.getEmail())).thenReturn(Optional.of(user));
 
@@ -91,14 +99,22 @@ public class UserServiceTest {
      */
     void testFindUserByEmail_Success() {
         User user = new User();
+<<<<<<< HEAD
         user.setEmail("test@dal.ca");
+=======
+        user.setEmail("test@example.com");
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
 
         when(userRepository.findUserByEmail(user.getEmail())).thenReturn(Optional.of(user));
 
         Optional<User> foundUser = userService.findUserByEmail(user.getEmail());
 
         assertTrue(foundUser.isPresent());
+<<<<<<< HEAD
         assertEquals("test@dal.ca", foundUser.get().getEmail());
+=======
+        assertEquals("test@example.com", foundUser.get().getEmail());
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
     }
 
     @Test
@@ -120,16 +136,27 @@ public class UserServiceTest {
      */
     void testLogin_Success() {
         User user = new User();
+<<<<<<< HEAD
         user.setEmail("test@dal.ca");
+=======
+        user.setEmail("test@example.com");
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
         user.setPassword("password123");
         user.setIsActive(true);
 
         when(userRepository.findUserByEmail(user.getEmail())).thenReturn(Optional.of(user));
 
+<<<<<<< HEAD
         User loggedInUser = userService.login("test@dal.ca", "password123");
 
         assertNotNull(loggedInUser);
         assertEquals("test@dal.ca", loggedInUser.getEmail());
+=======
+        User loggedInUser = userService.login("test@example.com", "password123");
+
+        assertNotNull(loggedInUser);
+        assertEquals("test@example.com", loggedInUser.getEmail());
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
     }
 
     @Test
@@ -154,13 +181,21 @@ public class UserServiceTest {
      */
     void testLogin_UserDeactivated() {
         User user = new User();
+<<<<<<< HEAD
         user.setEmail("test@dal.ca");
+=======
+        user.setEmail("test@example.com");
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
         user.setIsActive(false);
 
         when(userRepository.findUserByEmail(user.getEmail())).thenReturn(Optional.of(user));
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+<<<<<<< HEAD
             userService.login("test@dal.ca", "password123");
+=======
+            userService.login("test@example.com", "password123");
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
         });
 
         assertEquals("Your account has been deactivated", exception.getMessage());
@@ -173,14 +208,22 @@ public class UserServiceTest {
      */
     void testLogin_WrongPassword() {
         User user = new User();
+<<<<<<< HEAD
         user.setEmail("test@dal.ca");
+=======
+        user.setEmail("test@example.com");
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
         user.setPassword("password123");
         user.setIsActive(true);
 
         when(userRepository.findUserByEmail(user.getEmail())).thenReturn(Optional.of(user));
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+<<<<<<< HEAD
             userService.login("test@dal.ca", "wrongpassword");
+=======
+            userService.login("test@example.com", "wrongpassword");
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
         });
 
         assertEquals("Wrong password", exception.getMessage());
@@ -191,6 +234,7 @@ public class UserServiceTest {
      *  Tests that a user's profile is successfully updated when valid data and a non-empty profile picture
      *  are provided.
      */
+<<<<<<< HEAD
      void testUpdateUserProfile_Success() throws Exception {
         User user = new User();
         user.setEmail("test@dal.ca");
@@ -207,14 +251,31 @@ public class UserServiceTest {
         verify(userRepository).save(user);
 
         // Assert user details
+=======
+    void testUpdateUserProfile_Success() throws Exception {
+        User user = new User();
+        user.setEmail("test@example.com");
+
+        MultipartFile profilePicture = new MockMultipartFile("file", "test.jpg", "image/jpeg", "test data".getBytes());
+
+        when(userRepository.findUserByEmail("test@example.com")).thenReturn(Optional.of(user));
+
+        userService.updateUserProfile("John", "Doe", "test@example.com", "Bio", User.Status.Available, profilePicture);
+
+        verify(userRepository).save(user);
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
         assertEquals("John", user.getFirstName());
         assertEquals("Doe", user.getLastName());
         assertEquals("Bio", user.getBio());
         assertEquals(User.Status.Available, user.getStatus());
+<<<<<<< HEAD
 
          // Verify the profile picture path
          assertNotNull(user.getProfilePic());
          assertTrue(user.getProfilePic().endsWith("test.jpg"));
+=======
+        assertTrue(user.getProfilePic().endsWith("/profile_pictures/test.jpg"));
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
     }
 
     @Test
@@ -225,6 +286,7 @@ public class UserServiceTest {
     void testUpdateUserProfile_UserNotFound() {
         MultipartFile profilePicture = new MockMultipartFile("file", "test.jpg", "image/jpeg", "test data".getBytes());
 
+<<<<<<< HEAD
         when(userRepository.findUserByEmail("test@dal.ca")).thenReturn(Optional.empty());
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
@@ -232,6 +294,15 @@ public class UserServiceTest {
         });
 
         assertEquals("User not found", exception.getMessage());
+=======
+        when(userRepository.findUserByEmail("test@example.com")).thenReturn(Optional.empty());
+
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            userService.updateUserProfile("John", "Doe", "test@example.com", "Bio", User.Status.Available, profilePicture);
+        });
+
+        assertEquals("User with email test@example.com not found", exception.getMessage());
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
     }
 
     @Test

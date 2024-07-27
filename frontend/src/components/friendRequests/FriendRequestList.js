@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import friendService from "../../services/FriendService";
 import "./FriendRequest.css";
+<<<<<<< HEAD
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+=======
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
 
 const FriendRequestList = () => {
   const [requests, setRequests] = useState([]);
@@ -38,6 +41,7 @@ const FriendRequestList = () => {
       });
   };
 
+<<<<<<< HEAD
   const viewFriendProfile = (friendEmail) => {
     navigate(`/friendProfile/${friendEmail}`);
   };
@@ -48,6 +52,13 @@ const FriendRequestList = () => {
         Pending Friend Requests
       </h2>
       <div className="friends-list">
+=======
+  return (
+    <div>
+      <h2 style={{ padding: "1.5rem", paddingBottom: "0" }}>Pending Friend Requests</h2>
+      <h4 style={{ padding: "1.5rem", paddingBottom: "1rem" }}>Current User ID: {userId} </h4>
+      <ul>
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
         {requests.map((request) => (
           <div
             key={request.id}

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import "./Admin.css";
 import AdminManagement from "./AdminManagement";
@@ -48,3 +49,7 @@ function Admin() {
 };
 
 export default Admin;
+=======
+// Admin.js
+// Admin.js
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f

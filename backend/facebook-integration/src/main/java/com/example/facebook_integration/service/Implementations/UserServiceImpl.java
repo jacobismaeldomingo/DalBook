@@ -1,34 +1,33 @@
 package com.example.facebook_integration.service.Implementations;
 
 import com.example.facebook_integration.model.User;
+<<<<<<< HEAD
 import com.example.facebook_integration.model.UserGroup;
 import com.example.facebook_integration.repository.FriendRequestRepository;
+=======
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
 import com.example.facebook_integration.repository.UserRepository;
 import com.example.facebook_integration.service.UserService;
-import jakarta.transaction.Transactional;
-import org.hibernate.sql.ast.tree.expression.Over;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-//import org.springframework.security.access.prepost.PreAuthorize;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
     UserRepository userRepository;
+<<<<<<< HEAD
 
     @Autowired
     private FriendRequestRepository friendRequestRepository;
+=======
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
 
     /**
      * Function: createUser
@@ -67,7 +66,7 @@ public class UserServiceImpl implements UserService {
      * Returns: int - The ID of the logged-in user.
      */
     @Override
-    public User login(String email, String password) {
+    public int login(String email, String password) {
         Optional<User> userOptional = userRepository.findUserByEmail(email);
 
         if (userOptional.isEmpty()) {
@@ -76,12 +75,8 @@ public class UserServiceImpl implements UserService {
         }
 
         User user = userOptional.get();
-        if (!user.getIsActive()) {
-            throw new IllegalArgumentException("Your account has been deactivated");
-        }
-
         if (user.getPassword().equals(password)) {
-            return user; // Successful login, return user ID as int
+            return user.getId(); // Successful login, return user ID as int
         } else {
             throw new IllegalArgumentException("Wrong password");
         }
@@ -148,6 +143,7 @@ public class UserServiceImpl implements UserService {
         user.setBio(bio);
         user.setStatus(status);
 
+<<<<<<< HEAD
         if (profilePicture != null && !profilePicture.isEmpty()) {
             try {
                 String profilePicDir = "backend/facebook-integration/src/main/resources/static/profile_pictures/";
@@ -165,10 +161,20 @@ public class UserServiceImpl implements UserService {
                 user.setProfilePic("/profile_pictures/" + profilePicture.getOriginalFilename());
             } catch (IOException e) {
                 e.printStackTrace();
+=======
+            if (!profilePicture.isEmpty()) {
+                try {
+                    byte[] profilePicBytes = profilePicture.getBytes();
+                    // Save profilePicBytes to a location and update user.setProfilePic(newPath);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
             }
         }
             userRepository.save(user);
     }
+<<<<<<< HEAD
 
     @Override
     public Optional<User> findUserById(int id) {
@@ -273,4 +279,6 @@ public class UserServiceImpl implements UserService {
     public List<User> getAll() {
         return userRepository.findAll();
     }
+=======
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
 }

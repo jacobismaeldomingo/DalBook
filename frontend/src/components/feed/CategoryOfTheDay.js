@@ -1,4 +1,5 @@
 // CategoryOfTheDay.js
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./CategoryOfTheDay.css";
@@ -77,3 +78,5 @@ function CategoryOfTheDay() {
 }
 
 export default CategoryOfTheDay;
+=======
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f

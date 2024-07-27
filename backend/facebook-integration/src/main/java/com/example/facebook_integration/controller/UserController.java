@@ -44,13 +44,14 @@ public class UserController {
      * Parameters: String email - The email of the user.
      * Returns: ResponseEntity<User> - The user object.
      */
-    @GetMapping("/getByEmail/{email}")
+    @GetMapping("/get/{email}")
     public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
         Optional<User> userOptional = userService.findUserByEmail(email);
         return userOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body(null));
     }
 
     /**
+<<<<<<< HEAD
      * Function: getUserById
      * Purpose: Retrieves a user by their id.
      * Parameters: int id - The id of the user.
@@ -63,6 +64,8 @@ public class UserController {
     }
 
     /**
+=======
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
      * Function: login
      * Purpose: Handles user login.
      * Parameters: Map<String, String> body - A map containing email and password.
@@ -73,8 +76,8 @@ public class UserController {
         String email = body.get("email");
         String password = body.get("password");
         try {
-            User user = userService.login(email, password);
-            return ResponseEntity.ok(user); // Return user ID on successful login
+            int userId = userService.login(email, password);
+            return ResponseEntity.ok(userId); // Return user ID on successful login
         } catch (IllegalArgumentException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage()); // Return 401 on failure
         }
@@ -129,6 +132,7 @@ public class UserController {
         return ResponseEntity.ok().body("Profile updated successfully");
     }
 
+<<<<<<< HEAD
     @GetMapping("/groups/{userId}")
     public List<UserGroup> getAllGroups(@PathVariable int userId) {
         return userService.getAllGroups(userId);
@@ -138,4 +142,6 @@ public class UserController {
     public List<User> getAllUsers() { return userService.getAll(); }
 
 
+=======
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
 }

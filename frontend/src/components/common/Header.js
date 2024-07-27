@@ -1,10 +1,12 @@
 // Home Page
-
-import { React, useState, useEffect } from "react";
+import React from "react";
 import "./Header.css";
 import { useNavigate } from "react-router-dom";
+<<<<<<< HEAD
 import friendService from "../../services/FriendService";
 import axios from "axios";
+=======
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
 import {
   IconSearch,
   IconHome,
@@ -20,6 +22,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 function Header() {
   const navigate = useNavigate();
+<<<<<<< HEAD
   const [isAdmin, setIsAdmin] = useState(false);
   const [pendingRequests, setPendingRequests] = useState(0);
   const [joinRequestsApproved, setJoinRequestsApproved] = useState(0);
@@ -126,6 +129,8 @@ function Header() {
       }
     }
   }, []);
+=======
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
 
   const homePage = () => {
     navigate("/home");
@@ -135,6 +140,7 @@ function Header() {
     localStorage.removeItem("isLoggedIn");
     localStorage.removeItem("userId");
     localStorage.removeItem("userEmail");
+<<<<<<< HEAD
     localStorage.removeItem("userRole");
     localStorage.removeItem("latestTopicId");
     localStorage.removeItem("currentTopic");
@@ -144,12 +150,24 @@ function Header() {
 
   const notificationsPage = () => {
     navigate("/notifications");
+=======
+    navigate("/login");
+  };
+
+  const handleFriendRequests = () => {
+    navigate("/FriendRequest");
+  };
+
+  const handleFriendRequestsList = () => {
+    navigate("/FriendRequestList");
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
   };
 
   const friendsPage = () => {
     navigate("/friends");
   };
 
+<<<<<<< HEAD
   const adminPage = () => {
     navigate("/admin");
   };
@@ -274,6 +292,53 @@ function Header() {
                 </ul>
               )}
             </div>
+=======
+  return (
+    <div className="homepage">
+      <div className="header">
+        <div className="search-header">
+          <div className="logo">
+            <img
+              src="/images/dalbook_logo.png"
+              alt="logo"
+              style={{
+                height: "40px",
+              }}
+            />
+          </div>
+          <div className="search-bar">
+            <IconSearch stroke={2} />
+            <input placeholder="Search Facebook" type="Search" />
+          </div>
+        </div>
+        <div className="navigation-header">
+          <div
+            className="icon"
+            onClick={homePage}
+            style={{ cursor: "pointer" }}
+          >
+            <IconHome stroke={2} size={30} color="#1877F2" />
+          </div>
+          {/* <div className="icon">
+            <IconBuildingStore stroke={2} size={30} color="#1877F2" />
+          </div> */}
+          <div className="icon" onClick={friendsPage}>
+            <IconUsers stroke={2} size={30} color="#1877F2" />
+          </div>
+          <div className="icon" onClick={handleFriendRequests}>
+            <IconUsersGroup stroke={2} size={30} color="#1877F2" />
+          </div>
+        </div>
+        <div className="account-header">
+          <div className="menu">
+            <IconMenu2 stroke={2} size={30} color="#1877F2" />
+          </div>
+          <div className="messages">
+            <IconMessages stroke={2} size={30} color="#1877F2" />
+          </div>
+          <div className="notifications" onClick={handleFriendRequestsList}>
+            <IconBell stroke={2} size={30} color="#1877F2" />
+>>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
           </div>
           <div className="navigation-header">
             <div
