@@ -1,5 +1,6 @@
 package com.example.facebook_integration.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
@@ -8,7 +9,11 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
+@Table(name = "`user`") // Escaping the table name
 public class User {
 
     @Id
@@ -17,22 +22,41 @@ public class User {
 
     @NotBlank(message = "First Name is required.")
     private String firstName;
+
     @NotBlank(message = "Last Name is required.")
     private String lastName;
+
     @Email(regexp = "^[a-zA-Z0-9._%+-]+@dal\\.ca$", message = "Invalid email. Only @dal.ca addresses are accepted.")
     private String email;
+
     @Size(min = 8, message = "Password must be at least 8 characters long.")
     @Pattern(regexp = ".*[a-z].*", message = "Password must contain at least one lowercase letter.")
     @Pattern(regexp = ".*[A-Z].*", message = "Password must contain at least one uppercase letter.")
     @Pattern(regexp = ".*\\d.*", message = "Password must contain at least one number.")
     @Pattern(regexp = ".*[@$!%*?&].*", message = "Password must contain at least one special character (@, $, !, %, *, ?, &).")
     private String password;
+
     @NotNull(message = "Date of Birth is required.")
     private String dateOfBirth;
+
     private String bio;
     private String profilePic;
+
     @NotBlank(message = "Security Answer is required.")
     private String securityAnswer;
+
+    private boolean is_active = true;
+
+    public enum Role {
+        Student,
+        Professor,
+        Faculty,
+        System_Admin,
+        Group_Admin
+    }
+
+    @Enumerated(EnumType.STRING)
+    private Role role = Role.Student;
 
     public enum Status {
         Available,
@@ -43,11 +67,22 @@ public class User {
 
     public Status status = Status.Available;
 
+    @OneToMany(mappedBy = "sender", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<FriendRequest> sentRequests;
+
+    @OneToMany(mappedBy = "receiver", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<FriendRequest> receivedRequests;
+
+    // Connecting user to user groups in a many-to-many relationship
+    @ManyToMany(mappedBy = "users")
+    @JsonIgnore
+    private List<UserGroup> groups = new ArrayList<>();
+
     // Constructor
     public User() {
     }
 
-    public User(int id, String firstName, String lastName, String email, String password, String bio, String dateOfBirth, String profilePic, String securityAnswer) {
+    public User(int id, String firstName, String lastName, String email, String password, String bio, String dateOfBirth, String profilePic, String securityAnswer, Role role) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -57,6 +92,7 @@ public class User {
         this.dateOfBirth = dateOfBirth;
         this.profilePic = profilePic;
         this.securityAnswer = securityAnswer;
+        this.role = role;
     }
 
     // Getters and setters
@@ -139,6 +175,30 @@ public class User {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public boolean getIsActive() {
+        return is_active;
+    }
+
+    public void setIsActive(boolean is_active) {
+        this.is_active = is_active;
+    }
+
+    public List<UserGroup> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(List<UserGroup> UserGroups) {
+        this.groups = UserGroups;
     }
 
 }

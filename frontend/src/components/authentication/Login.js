@@ -8,7 +8,6 @@ function Login() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Track if user is already logged in
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -16,7 +15,6 @@ function Login() {
     // Check if the user is already logged in
     const loggedIn = localStorage.getItem("isLoggedIn");
     if (loggedIn === "true") {
-      setIsLoggedIn(true);
       navigate("/home"); // Redirect to home page if already logged in
     }
   }, [navigate]);
@@ -52,13 +50,14 @@ function Login() {
 
       if (response.ok) {
         // Login successful
-        const userId = await response.json(); // Retreive the User Id
+        const user = await response.json(); // Retreive the User Id and Role
         console.log("Login successful");
 
         // Store login flag in local storage
         localStorage.setItem("isLoggedIn", "true");
-        localStorage.setItem("userId", userId);
-        localStorage.setItem("userEmail", email);
+        localStorage.setItem("userId", user.id);
+        localStorage.setItem("userEmail", user.email);
+        localStorage.setItem("userRole", user.role);
 
         // Redirect to the user home page
         navigate("/home");
@@ -75,25 +74,6 @@ function Login() {
       setErrorMessage("Network error occurred. Please try again later.");
     }
   };
-
-  // if (isLoggedIn) {
-  //   return (
-  //     <div className="d-flex vh-100 justify-content-center align-items-center bg-primary login-page">
-  //       <div className="p-3 bg-white w-25">
-  //         <p>You are already logged in. Please log out first to switch accounts.</p>
-  //         <button
-  //           onClick={() => {
-  //             localStorage.clear();
-  //             setIsLoggedIn(false);
-  //           }}
-  //           className="btn btn-danger"
-  //         >
-  //           Log Out
-  //         </button>
-  //       </div>
-  //     </div>
-  //   );
-  // }
 
   return (
     <div className="d-flex vh-100 justify-content-center align-items-center login-page">
