@@ -1,4 +1,5 @@
 package com.example.facebook_integration.IntegrationTests;
+
 import com.example.facebook_integration.model.User;
 import com.example.facebook_integration.model.UserGroup;
 import com.example.facebook_integration.repository.GroupRepository;
@@ -11,7 +12,6 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.*;
-
 
 @SpringBootTest
 @Transactional
