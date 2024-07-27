@@ -4,7 +4,6 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-<<<<<<< HEAD
     <list default="true" id="40cc99d1-f63e-403e-921c-594fc3dc9670" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/backend/facebook-integration/src/test/java/com/example/facebook_integration/IntegrationTests/GroupControllerIntegrationTest.java" afterDir="false" />
@@ -18,17 +17,15 @@
       <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/service/Implementations/GroupServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/java/com/example/facebook_integration/service/Implementations/GroupServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/test/java/com/example/facebook_integration/IntegrationTests/UserRepositoryIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/test/java/com/example/facebook_integration/IntegrationTests/UserRepositoryIntegrationTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/test/java/com/example/facebook_integration/UnitTests/GroupServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/test/java/com/example/facebook_integration/UnitTests/GroupServiceTest.java" afterDir="false" />
-=======
+    </list>
     <list default="true" id="f45d59d8-ed65-4e6b-b12f-eeccb71bba89" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-<<<<<<< HEAD
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -37,8 +34,6 @@
       </list>
     </option>
   </component>
-=======
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -56,102 +51,6 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-<<<<<<< HEAD
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "git-widget-placeholder": "Merging develop"
-  }
-}]]></component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/backend/facebook-integration/src/main/resources/static/profile_pictures" />
-      <recent name="$PROJECT_DIR$/backend/facebook-integration/src/main/resources/static" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.example.facebook_integration.service" />
-      <recent name="com.example.facebook_integration.service.Implementations" />
-      <recent name="com.example.facebook_integration.repository" />
-      <recent name="com.example.facebook_integration.model" />
-      <recent name="com.example.facebook_integration.controller" />
-    </key>
-  </component>
-  <component name="RunManager" selected="JUnit.com.example.facebook_integration.UnitTests in facebook-integration">
-    <configuration name="GroupRepositoryIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="facebook-integration" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.facebook_integration.IntegrationTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.facebook_integration.IntegrationTests" />
-      <option name="MAIN_CLASS_NAME" value="com.example.facebook_integration.IntegrationTests.GroupRepositoryIntegrationTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PostControllerIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="facebook-integration" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.facebook_integration.IntegrationTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.facebook_integration.IntegrationTests" />
-      <option name="MAIN_CLASS_NAME" value="com.example.facebook_integration.IntegrationTests.PostControllerIntegrationTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PostServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="facebook-integration" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.facebook_integration.IntegrationTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.facebook_integration.IntegrationTests" />
-      <option name="MAIN_CLASS_NAME" value="com.example.facebook_integration.IntegrationTests.UserRepositoryIntegrationTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="com.example.facebook_integration.IntegrationTests in facebook-integration" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="facebook-integration" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.facebook_integration.IntegrationTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.facebook_integration.IntegrationTests" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="com.example.facebook_integration.UnitTests in facebook-integration" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-    <configuration name="TopicServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="facebook-integration" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.facebook_integration.UnitTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.facebook_integration.UnitTests" />
-      <option name="MAIN_CLASS_NAME" value="com.example.facebook_integration.UnitTests.TopicServiceTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-=======
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
@@ -172,8 +71,20 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/backend/facebook-integration/src/main/resources/static/profile_pictures" />
+      <recent name="$PROJECT_DIR$/backend/facebook-integration/src/main/resources/static" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.facebook_integration.service" />
+      <recent name="com.example.facebook_integration.service.Implementations" />
+      <recent name="com.example.facebook_integration.repository" />
+      <recent name="com.example.facebook_integration.model" />
+      <recent name="com.example.facebook_integration.controller" />
+    </key>
+  </component>
   <component name="RunManager">
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
     <configuration name="FacebookIntegrationApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="22" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -183,20 +94,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JUnit.com.example.facebook_integration.UnitTests in facebook-integration" />
-        <item itemvalue="JUnit.com.example.facebook_integration.IntegrationTests in facebook-integration" />
-        <item itemvalue="JUnit.UserRepositoryIntegrationTest" />
-        <item itemvalue="JUnit.GroupRepositoryIntegrationTest.findById" />
-        <item itemvalue="JUnit.GroupRepositoryIntegrationTest" />
-        <item itemvalue="JUnit.FriendServiceTest" />
-        <item itemvalue="JUnit.TopicServiceTest" />
-        <item itemvalue="JUnit.PostServiceTest" />
-        <item itemvalue="JUnit.GroupServiceTest" />
-        <item itemvalue="JUnit.PostControllerIntegrationTest" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -216,14 +113,11 @@
       <workItem from="1719459970548" duration="32078000" />
       <workItem from="1719942546880" duration="12235000" />
       <workItem from="1720204538467" duration="4860000" />
-<<<<<<< HEAD
       <workItem from="1721421271270" duration="9569000" />
       <workItem from="1721756604754" duration="4774000" />
       <workItem from="1722025676925" duration="109000" />
       <workItem from="1722025807365" duration="17764000" />
       <workItem from="1722031865660" duration="2049000" />
-=======
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
     </task>
     <servers />
   </component>
