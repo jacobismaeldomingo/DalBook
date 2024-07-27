@@ -17,7 +17,7 @@ public class UserGroup {
     private String description;
     private String faculty;
     private int creatorId;
-
+    //Defines the many to many relationship with user
     @ManyToMany(targetEntity = User.class,cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
             name = "group_user",
@@ -25,14 +25,14 @@ public class UserGroup {
             inverseJoinColumns = @JoinColumn(name = "user_id")
     )
     private List<User> users = new ArrayList<User>();
-
+    // Defines the relationship with admin
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "group_admins", joinColumns = @JoinColumn(name = "group_id"))
     @Column(name = "admin_id")
     private Set<Integer> admins = new HashSet<>();
 
     public UserGroup(){}
-
+   // UserGroup Constructor
     public UserGroup(int id, String groupName, String description, String faculty, int creatorId) {
         this.id = id;
         this.groupName = groupName;

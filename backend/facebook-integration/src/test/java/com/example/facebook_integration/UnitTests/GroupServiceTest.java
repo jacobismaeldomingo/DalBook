@@ -30,6 +30,9 @@ public class GroupServiceTest {
     @Mock
     UserRepository userRepository;
 
+    /**
+     * Test Group Creation
+     */
     @Test
     public void testCreateGroup() {
         User user = new User();
@@ -46,13 +49,16 @@ public class GroupServiceTest {
 
         when(userRepository.findById(1)).thenReturn(Optional.of(user));
         when(groupRepository.save(userGroup)).thenReturn(userGroup);
-
+        when(userRepository.findById(userGroup.getCreatorId())).thenReturn(Optional.of(user));
         UserGroup savedUserGroup = groupService.createGroup(userGroup);
 
         assertEquals(userGroup, savedUserGroup);
         assertEquals(userGroup.getGroupName(),"Test Group");
     }
 
+    /**
+     * Test Group Creation if Group Already exists
+     */
     @Test
     public void testCreateGroup_GroupAlreadyExists(){
         UserGroup existingGroup = new UserGroup();
@@ -69,6 +75,9 @@ public class GroupServiceTest {
         assertEquals("Group already exists", exception.getMessage());
     }
 
+    /**
+     * Test Group Deletion
+     */
     @Test
     public void testDeleteGroup() {
         // Prepare test data
@@ -102,6 +111,9 @@ public class GroupServiceTest {
         assertEquals("Group successfully deleted", result);
     }
 
+    /**
+     * Test Group deletion if the group is not found
+     */
     @Test
     public void testDeleteGroup_GroupNotFound() {
         // Call the method and expect an exception
@@ -113,6 +125,9 @@ public class GroupServiceTest {
         assertEquals("Group cannot be found", thrown.getMessage());
     }
 
+    /**
+     * Tests adding user to Group
+     */
     @Test
     public void testaddUserToGroup() {
         UserGroup userGroup = new UserGroup();
@@ -142,6 +157,9 @@ public class GroupServiceTest {
         assertTrue(userGroup.getUsers().contains(user));
     }
 
+    /**
+     * Tests adding user to Group if group does not exist
+     */
     @Test
     public void testAddUserToGroup_UserDoesNotExist() {
     UserGroup userGroup = new UserGroup();
@@ -156,6 +174,9 @@ public class GroupServiceTest {
         assertEquals("User cannot be found", exception.getMessage());
     }
 
+    /**
+     * Test Deleting User From Group
+     */
     @Test
     public void testDeleteUserFromGroup() {
         UserGroup userGroup = new UserGroup();
@@ -187,6 +208,10 @@ public class GroupServiceTest {
         assertEquals("User successfully removed", response);
 
     }
+
+    /**
+     * Tests Deleting User From Group If Group Does Not Exist
+     */
     @Test
     public void testDeleteUserFromGroup_UserDoesNotExist() {
         UserGroup userGroup = new UserGroup();
