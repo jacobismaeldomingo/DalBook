@@ -20,9 +20,9 @@ import static org.mockito.Mockito.*;
 @RunWith(MockitoJUnitRunner.class)
 @SpringBootTest
 public class GroupServiceTest {
-  //Set up mocks
+    //Set up mocks
     @InjectMocks
-   GroupServiceImpl groupService;
+    GroupServiceImpl groupService;
 
     @Mock
     GroupRepository groupRepository;
@@ -162,7 +162,7 @@ public class GroupServiceTest {
      */
     @Test
     public void testAddUserToGroup_UserDoesNotExist() {
-    UserGroup userGroup = new UserGroup();
+        UserGroup userGroup = new UserGroup();
         userGroup.setId(1);
         userGroup.setGroupName("Test Group");
 

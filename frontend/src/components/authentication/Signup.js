@@ -71,11 +71,8 @@ function Signup() {
         // Store login flag in local storage
         localStorage.setItem("isLoggedIn", "true");
         localStorage.setItem("userId", userId);
-<<<<<<< HEAD
         localStorage.setItem("userEmail", email);
         localStorage.setItem("userRole", role);
-=======
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
 
         // Redirect to the home page
         navigate("/home");

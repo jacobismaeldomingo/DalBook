@@ -51,7 +51,6 @@ public class UserController {
     }
 
     /**
-<<<<<<< HEAD
      * Function: getUserById
      * Purpose: Retrieves a user by their id.
      * Parameters: int id - The id of the user.
@@ -64,8 +63,6 @@ public class UserController {
     }
 
     /**
-=======
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
      * Function: login
      * Purpose: Handles user login.
      * Parameters: Map<String, String> body - A map containing email and password.
@@ -132,7 +129,6 @@ public class UserController {
         return ResponseEntity.ok().body("Profile updated successfully");
     }
 
-<<<<<<< HEAD
     @GetMapping("/groups/{userId}")
     public List<UserGroup> getAllGroups(@PathVariable int userId) {
         return userService.getAllGroups(userId);
@@ -140,8 +136,4 @@ public class UserController {
 
     @GetMapping("/users")
     public List<User> getAllUsers() { return userService.getAll(); }
-
-
-=======
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
 }

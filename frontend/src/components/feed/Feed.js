@@ -23,12 +23,9 @@ import {
   IconX,
 } from "@tabler/icons-react";
 import friendService from "../../services/FriendService";
-<<<<<<< HEAD
 import Post from "./Post";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-=======
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
 
 function Feed() {
   const [friends, setFriends] = useState([]);
@@ -48,7 +45,6 @@ function Feed() {
     navigate("/groupDashboard");
   };
 
-<<<<<<< HEAD
   const categoryOfDayPage = () => {
     navigate("/categoryOftheDay");
   };
@@ -57,8 +53,6 @@ function Feed() {
     navigate("/pages");
   };
 
-=======
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
   useEffect(() => {
     const storedUserId = localStorage.getItem("userId");
     const storedUserEmail = localStorage.getItem("userEmail");
@@ -72,10 +66,6 @@ function Feed() {
             `http://localhost:8085/api/user/get/${storedUserEmail}`
           );
           setUser(response.data);
-<<<<<<< HEAD
-=======
-          console.log("User information retrieved successfully");
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
         } catch (error) {
           console.log("Error fetching user", error);
           toast.warn("Error fetching user.");
@@ -94,7 +84,6 @@ function Feed() {
           toast.warn("An error occurred. Please try again!");
         });
     }
-<<<<<<< HEAD
 
     const retrieveUsers = async (postsData) => {
       // Fetch user details for each post
@@ -131,8 +120,6 @@ function Feed() {
     };
 
     fetchPosts();
-=======
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
   }, [userId]);
 
   const getStatusIcon = (status) => {
@@ -171,15 +158,11 @@ function Feed() {
           style={{ cursor: "pointer" }}
         >
           <img
-<<<<<<< HEAD
             src={
               user && user.profilePic
                 ? `http://localhost:8085${user.profilePic}`
                 : "/images/dalhousie-logo.png"
             }
-=======
-            src="/images/avatar-1.jpeg"
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
             alt=""
             style={{ padding: "1rem" }}
           />
@@ -248,57 +231,15 @@ function Feed() {
         </div>
       </div>
       <div className="timeline">
-        {/* <div className="addStory">
-          <div className="story">
-            <img
-              src="/images/avatar-2.jpeg"
-              alt="logo"
-              style={{ height: "50px", borderRadius: "50%" }}
-            />
-            <br />
-            John Doe
-          </div>
-          <div className="story">
-            <img
-              src="/images/avatar-3.jpeg"
-              alt="logo"
-              style={{ height: "50px", borderRadius: "50%" }}
-            />
-            <br />
-            John Doe
-          </div>
-          <div className="story">
-            <img
-              src="/images/avatar-3.jpeg"
-              alt="logo"
-              style={{ height: "50px", borderRadius: "50%" }}
-            />
-            <br />
-            John Doe
-          </div>
-          <div className="story">
-            <img
-              src="/images/avatar-4.jpeg"
-              alt="logo"
-              style={{ height: "50px", borderRadius: "50%" }}
-            />
-            <br />
-            John Doe
-          </div>
-        </div> */}
         <div className="create-post">
           <div className="text">
             <div className="user-post">
               <img
-<<<<<<< HEAD
                 src={
                   user && user.profilePic
                     ? `http://localhost:8085${user.profilePic}`
                     : "/images/dalhousie-logo.png"
                 }
-=======
-                src="/images/avatar-1.jpeg"
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
                 alt=""
                 style={{ height: "50px", padding: "1rem" }}
               />
@@ -318,7 +259,6 @@ function Feed() {
               </div>
             </div>
           </div>
-<<<<<<< HEAD
           {showPostPopup && (
             <div className="post-popup">
               <div className="post-popup-content">
@@ -379,90 +319,6 @@ function Feed() {
                   </div>
                 ))}
           </div>
-          {/* <div className="posted">
-=======
-          <div className="posted">
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
-            <div className="post">
-              <div className="feed-profile-picture">
-                <img
-                  src="/images/avatar-1.jpeg"
-                  alt=""
-                  style={{ height: "50px" }}
-                ></img>
-                <div>John Doe</div>
-                <div className="update">Updated his cover image.</div>
-              </div>
-              <div className="edit">
-                <IconDots stroke={2} />
-              </div>
-            </div>
-            <div className="caption">Feeling good today!</div>
-            <br />
-<<<<<<< HEAD
-=======
-            <div className="media">
-              <img
-                src="/images/post.jpg"
-                alt=""
-                style={{ height: "auto", width: "100%" }}
-              />
-            </div>
-            <div className="reactions">
-              <div className="like">
-                <IconThumbUp stroke={2} />
-                Like
-              </div>
-              <div className="comment">
-                <IconMessageCircle stroke={2} />
-                Comment
-              </div>
-              <div className="share">
-                <IconShare3 stroke={2} />
-                Share
-              </div>
-            </div>
-          </div>
-          <div className="posted">
-            <div className="post">
-              <div className="feed-profile-picture">
-                <img
-                  src="/images/avatar-1.jpeg"
-                  alt=""
-                  style={{ height: "50px" }}
-                ></img>
-                <div>John Doe</div>
-                <div className="update">Updated his cover image.</div>
-              </div>
-              <div className="edit">
-                <IconDots stroke={2} />
-              </div>
-            </div>
-            <div className="caption">Feeling good today!</div>
-            <br />
-            <div className="media">
-              <img
-                src="/images/post.jpg"
-                alt=""
-                style={{ height: "auto", width: "100%" }}
-              />
-            </div>
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
-            <div className="reactions">
-              <div className="like">
-                <IconThumbUp stroke={2} />
-                Like
-              </div>
-              <div className="comment">
-                <IconMessageCircle stroke={2} />
-                Comment
-              </div>
-              <div className="share">
-                <IconShare3 stroke={2} />
-                Share
-              </div>
-            </div>
-          </div> */}
         </div>
       </div>
       <div className="right-side">
@@ -489,15 +345,11 @@ function Feed() {
               style={{ cursor: "pointer" }}
             >
               <img
-<<<<<<< HEAD
                 src={
                   friend.profilePic
                     ? `http://localhost:8085${friend.profilePic}`
                     : "/images/dalhousie-logo.png"
                 }
-=======
-                src="/images/avatar-2.jpeg"
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
                 alt=""
                 style={{ padding: "1rem" }}
               />

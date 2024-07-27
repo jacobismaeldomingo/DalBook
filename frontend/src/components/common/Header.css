@@ -32,12 +32,8 @@ html {
   display: flex;
   align-items: center;
 }
-<<<<<<< HEAD
 
 /* Search Bar */
-/* .search-bar: Existing styling for the search bar */
-=======
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
 .search-bar {
   display: flex;
   align-items: center;
@@ -59,7 +55,6 @@ input[type="Search"] {
 input::placeholder {
   font-size: 1rem;
 }
-<<<<<<< HEAD
 
 /* .search-filters: Container for the filter dropdown button */
 .search-filters {
@@ -152,15 +147,12 @@ input::placeholder {
   background-color: #145dbf; /* Hover background color */
 }
 
-=======
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
 .navigation-header {
   display: flex;
   align-items: center;
   flex: 0%;
   width: 1%;
   margin-left: 170px;
-
 }
 .icon {
   display: flex;
@@ -195,17 +187,7 @@ input::placeholder {
   height: 3rem;
   margin-right: 20px;
 }
-<<<<<<< HEAD
 
-=======
-/* .profile > div {
-  padding-left: 10px;
-}
-.profile > img {
-  border-radius: 50%;
-  max-width: 40%;
-} */
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
 .logo {
   display: flex;
   align-items: center;

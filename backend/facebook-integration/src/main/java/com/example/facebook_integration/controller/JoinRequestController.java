@@ -71,4 +71,3 @@ public class JoinRequestController {
         return ResponseEntity.ok().build();
     }
 }
-

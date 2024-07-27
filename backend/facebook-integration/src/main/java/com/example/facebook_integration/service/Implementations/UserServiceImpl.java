@@ -1,11 +1,8 @@
 package com.example.facebook_integration.service.Implementations;
 
 import com.example.facebook_integration.model.User;
-<<<<<<< HEAD
 import com.example.facebook_integration.model.UserGroup;
 import com.example.facebook_integration.repository.FriendRequestRepository;
-=======
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
 import com.example.facebook_integration.repository.UserRepository;
 import com.example.facebook_integration.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +12,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -22,12 +23,11 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     UserRepository userRepository;
-<<<<<<< HEAD
+
 
     @Autowired
     private FriendRequestRepository friendRequestRepository;
-=======
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
+
 
     /**
      * Function: createUser
@@ -143,7 +143,6 @@ public class UserServiceImpl implements UserService {
         user.setBio(bio);
         user.setStatus(status);
 
-<<<<<<< HEAD
         if (profilePicture != null && !profilePicture.isEmpty()) {
             try {
                 String profilePicDir = "backend/facebook-integration/src/main/resources/static/profile_pictures/";
@@ -161,7 +160,7 @@ public class UserServiceImpl implements UserService {
                 user.setProfilePic("/profile_pictures/" + profilePicture.getOriginalFilename());
             } catch (IOException e) {
                 e.printStackTrace();
-=======
+
             if (!profilePicture.isEmpty()) {
                 try {
                     byte[] profilePicBytes = profilePicture.getBytes();
@@ -169,12 +168,11 @@ public class UserServiceImpl implements UserService {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
+
             }
         }
             userRepository.save(user);
     }
-<<<<<<< HEAD
 
     @Override
     public Optional<User> findUserById(int id) {
@@ -279,6 +277,4 @@ public class UserServiceImpl implements UserService {
     public List<User> getAll() {
         return userRepository.findAll();
     }
-=======
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
 }

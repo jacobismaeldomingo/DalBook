@@ -44,4 +44,3 @@ public class FriendController {
         return friendService.getBlockedUsers(userId);
     }
 }
-
