@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="40cc99d1-f63e-403e-921c-594fc3dc9670" name="Changes" comment="" />
+    <list default="true" id="40cc99d1-f63e-403e-921c-594fc3dc9670" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/facebook-integration/src/test/java/com/example/facebook_integration/IntegrationTests/GroupRepositoryIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/facebook-integration/src/test/java/com/example/facebook_integration/IntegrationTests/GroupRepositoryIntegrationTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,6 +41,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "JUnit.All in facebook-integration.executor": "Run",
+    "JUnit.GroupRepositoryIntegrationTest.executor": "Run",
     "JUnit.java in facebook-integration.executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
@@ -72,7 +78,30 @@
       <recent name="com.example.facebook_integration.controller" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.FacebookIntegrationApplication">
+  <component name="RunManager" selected="JUnit.GroupRepositoryIntegrationTest">
+    <configuration name="All in facebook-integration" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="facebook-integration" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GroupRepositoryIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="facebook-integration" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.facebook_integration.IntegrationTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.facebook_integration.IntegrationTests" />
+      <option name="MAIN_CLASS_NAME" value="com.example.facebook_integration.IntegrationTests.GroupRepositoryIntegrationTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="java in facebook-integration" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="facebook-integration" />
       <option name="TEST_OBJECT" value="directory" />
@@ -92,7 +121,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.GroupRepositoryIntegrationTest" />
         <item itemvalue="JUnit.java in facebook-integration" />
+        <item itemvalue="JUnit.All in facebook-integration" />
       </list>
     </recent_temporary>
   </component>
