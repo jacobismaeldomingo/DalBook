@@ -23,7 +23,7 @@ build-backend:
   stage: build
   image: maven:3.9.8-eclipse-temurin-22  # Docker image to use for the job
   tags:
-    - dalfcs_docker_autoscale  # Tags to identify runners
+    - dalfcs_docker_kvm  # Tags to identify runners
   script:
     - echo "Building backend"
     - cd backend/facebook-integration
@@ -39,7 +39,7 @@ build-frontend:
   stage: build  # Specify the stage this job belongs to
   image: node:22.4.0  # Docker image to use for the job
   tags:
-    - dalfcs_docker_autoscale  # Tags to identify runners
+    - dalfcs_docker_kvm  # Tags to identify runners
   script:
     - echo "Building frontend"
     - cd frontend
@@ -57,7 +57,7 @@ test-backend:
   stage: test
   image: maven:3.9.8-eclipse-temurin-22  # Docker image to use for the job
   tags:
-    - dalfcs_docker_autoscale # Tags to identify runners
+    - dalfcs_docker_kvm # Tags to identify runners
   script:
     - echo "Running backend tests"
     - cd backend/facebook-integration
@@ -75,7 +75,7 @@ test-frontend:
   stage: test
   image: node:22.4.0  # Docker image to use for the job
   tags:
-    - dalfcs_docker_autoscale  # Tags to identify runners
+    - dalfcs_docker_kvm  # Tags to identify runners
   script:
     - echo "Running frontend tests"
     - cd frontend
