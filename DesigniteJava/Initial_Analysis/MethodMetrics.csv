@@ -1,0 +1,430 @@
+Project Name,Package Name,Type Name,Method Name,LOC,CC,PC,Line no,IsTest,Main prod class tested,Production classes tested
+facebook-integration,com.example.facebook_integration,FacebookIntegrationApplicationTests,contextLoads,2,1,0,9,1,,
+facebook-integration,com.example.facebook_integration,WebConfig,addCorsMappings,3,1,1,11,0,,
+facebook-integration,com.example.facebook_integration,WebSocketConfig,configureMessageBroker,4,1,1,13,0,,
+facebook-integration,com.example.facebook_integration,WebSocketConfig,registerStompEndpoints,3,1,1,19,0,,
+facebook-integration,com.example.facebook_integration,FacebookIntegrationApplication,main,3,1,1,9,0,,
+facebook-integration,com.example.facebook_integration.UnitTests,GroupServiceTest,testCreateGroup,17,1,0,33,1,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User; com.example.facebook_integration.service.Implementations.GroupServiceImpl; com.example.facebook_integration.model.UserGroup
+facebook-integration,com.example.facebook_integration.UnitTests,GroupServiceTest,testCreateGroup_GroupAlreadyExists,13,1,0,56,1,com.example.facebook_integration.model.UserGroup,com.example.facebook_integration.model.UserGroup
+facebook-integration,com.example.facebook_integration.UnitTests,GroupServiceTest,testDeleteGroup,21,1,0,72,1,com.example.facebook_integration.model.UserGroup,com.example.facebook_integration.model.UserGroup; com.example.facebook_integration.model.User; com.example.facebook_integration.service.Implementations.GroupServiceImpl
+facebook-integration,com.example.facebook_integration.UnitTests,GroupServiceTest,testDeleteGroup_GroupNotFound,7,1,0,105,1,,
+facebook-integration,com.example.facebook_integration.UnitTests,GroupServiceTest,testaddUserToGroup,23,1,0,116,1,com.example.facebook_integration.model.UserGroup,com.example.facebook_integration.model.UserGroup; com.example.facebook_integration.model.User; com.example.facebook_integration.service.Implementations.GroupServiceImpl
+facebook-integration,com.example.facebook_integration.UnitTests,GroupServiceTest,testAddUserToGroup_UserDoesNotExist,11,1,0,145,1,com.example.facebook_integration.model.UserGroup,com.example.facebook_integration.model.UserGroup
+facebook-integration,com.example.facebook_integration.UnitTests,GroupServiceTest,testDeleteUserFromGroup,24,1,0,159,1,com.example.facebook_integration.service.Implementations.GroupServiceImpl,com.example.facebook_integration.service.Implementations.GroupServiceImpl; com.example.facebook_integration.model.UserGroup; com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.UnitTests,GroupServiceTest,testDeleteUserFromGroup_UserDoesNotExist,23,1,0,190,1,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User; com.example.facebook_integration.model.UserGroup
+facebook-integration,com.example.facebook_integration.UnitTests,PostServiceTest,setup,11,1,0,30,0,com.example.facebook_integration.model.Post,com.example.facebook_integration.model.Post
+facebook-integration,com.example.facebook_integration.UnitTests,PostServiceTest,testSavePost,6,1,0,44,1,com.example.facebook_integration.service.Implementations.PostServiceImpl,com.example.facebook_integration.service.Implementations.PostServiceImpl
+facebook-integration,com.example.facebook_integration.UnitTests,PostServiceTest,testGetAllPosts,7,1,0,54,1,com.example.facebook_integration.service.Implementations.PostServiceImpl,com.example.facebook_integration.service.Implementations.PostServiceImpl
+facebook-integration,com.example.facebook_integration.UnitTests,PostServiceTest,testGetAllPostsEmpty,6,1,0,65,1,com.example.facebook_integration.service.Implementations.PostServiceImpl,com.example.facebook_integration.service.Implementations.PostServiceImpl
+facebook-integration,com.example.facebook_integration.UnitTests,TopicServiceTest,setup,9,1,0,30,0,com.example.facebook_integration.model.Topic,com.example.facebook_integration.model.Topic
+facebook-integration,com.example.facebook_integration.UnitTests,TopicServiceTest,testSaveTopic,6,1,0,42,1,com.example.facebook_integration.service.Implementations.TopicServiceImpl,com.example.facebook_integration.service.Implementations.TopicServiceImpl
+facebook-integration,com.example.facebook_integration.UnitTests,TopicServiceTest,testGetAllTopics,7,1,0,52,1,com.example.facebook_integration.service.Implementations.TopicServiceImpl,com.example.facebook_integration.service.Implementations.TopicServiceImpl
+facebook-integration,com.example.facebook_integration.UnitTests,TopicServiceTest,testGetAllTopicsEmpty,6,1,0,63,1,com.example.facebook_integration.service.Implementations.TopicServiceImpl,com.example.facebook_integration.service.Implementations.TopicServiceImpl
+facebook-integration,com.example.facebook_integration.UnitTests,TopicServiceTest,testGetLatestTopic,6,1,0,73,1,com.example.facebook_integration.service.Implementations.TopicServiceImpl,com.example.facebook_integration.service.Implementations.TopicServiceImpl; com.example.facebook_integration.repository.TopicRepository
+facebook-integration,com.example.facebook_integration.UnitTests,TopicServiceTest,testGetLatestTopicNoTopics,6,1,0,83,1,com.example.facebook_integration.service.Implementations.TopicServiceImpl,com.example.facebook_integration.service.Implementations.TopicServiceImpl; com.example.facebook_integration.repository.TopicRepository
+facebook-integration,com.example.facebook_integration.UnitTests,CategoryServiceTest,setup,9,1,0,31,0,com.example.facebook_integration.model.CategoryOfDay,com.example.facebook_integration.model.CategoryOfDay
+facebook-integration,com.example.facebook_integration.UnitTests,CategoryServiceTest,testSaveCategory,6,1,0,43,1,com.example.facebook_integration.service.Implementations.CategoryServiceImpl,com.example.facebook_integration.service.Implementations.CategoryServiceImpl
+facebook-integration,com.example.facebook_integration.UnitTests,CategoryServiceTest,testGetAllCategories,7,1,0,53,1,com.example.facebook_integration.service.Implementations.CategoryServiceImpl,com.example.facebook_integration.service.Implementations.CategoryServiceImpl
+facebook-integration,com.example.facebook_integration.UnitTests,CategoryServiceTest,testGetAllCategoriesEmpty,6,1,0,64,1,com.example.facebook_integration.service.Implementations.CategoryServiceImpl,com.example.facebook_integration.service.Implementations.CategoryServiceImpl
+facebook-integration,com.example.facebook_integration.UnitTests,CategoryServiceTest,testGetPostsByTopic,7,1,0,74,1,com.example.facebook_integration.service.Implementations.CategoryServiceImpl,com.example.facebook_integration.service.Implementations.CategoryServiceImpl; com.example.facebook_integration.repository.CategoryOfDayRepository
+facebook-integration,com.example.facebook_integration.UnitTests,CategoryServiceTest,testGetPostsByTopicEmpty,6,1,0,85,1,com.example.facebook_integration.service.Implementations.CategoryServiceImpl,com.example.facebook_integration.service.Implementations.CategoryServiceImpl; com.example.facebook_integration.repository.CategoryOfDayRepository
+facebook-integration,com.example.facebook_integration.UnitTests,FriendServiceTest,setUp,8,1,0,39,0,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.UnitTests,FriendServiceTest,testFollowUser,8,1,0,52,1,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User; com.example.facebook_integration.service.Implementations.FriendServiceImpl
+facebook-integration,com.example.facebook_integration.UnitTests,FriendServiceTest,testFollowUserFriendNotFound,10,1,0,63,1,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.UnitTests,FriendServiceTest,testUnfollowUser,5,1,0,76,1,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User; com.example.facebook_integration.service.Implementations.FriendServiceImpl
+facebook-integration,com.example.facebook_integration.UnitTests,FriendServiceTest,testBlockUser,8,1,0,85,1,com.example.facebook_integration.service.Implementations.FriendServiceImpl,com.example.facebook_integration.service.Implementations.FriendServiceImpl; com.example.facebook_integration.model.User; com.example.facebook_integration.model.Friend
+facebook-integration,com.example.facebook_integration.UnitTests,FriendServiceTest,testUnblockUser,9,1,0,97,1,com.example.facebook_integration.model.Friend,com.example.facebook_integration.model.Friend; com.example.facebook_integration.service.Implementations.FriendServiceImpl; com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.UnitTests,FriendServiceTest,testGetFriends,7,1,0,110,1,com.example.facebook_integration.service.Implementations.FriendServiceImpl,com.example.facebook_integration.service.Implementations.FriendServiceImpl; com.example.facebook_integration.repository.FriendRepository; com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.UnitTests,FriendServiceTest,testGetFriendsNoFriends,6,1,0,120,1,com.example.facebook_integration.service.Implementations.FriendServiceImpl,com.example.facebook_integration.service.Implementations.FriendServiceImpl; com.example.facebook_integration.repository.FriendRepository; com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.UnitTests,FriendServiceTest,testGetBlockedUsers,8,1,0,130,1,com.example.facebook_integration.model.Friend,com.example.facebook_integration.model.Friend; com.example.facebook_integration.repository.FriendRepository; com.example.facebook_integration.model.User; com.example.facebook_integration.service.Implementations.FriendServiceImpl
+facebook-integration,com.example.facebook_integration.UnitTests,FriendServiceTest,testGetBlockedUsersNoBlockedFriends,10,1,0,141,1,com.example.facebook_integration.model.Friend,com.example.facebook_integration.model.Friend; com.example.facebook_integration.repository.FriendRepository; com.example.facebook_integration.model.User; com.example.facebook_integration.service.Implementations.FriendServiceImpl
+facebook-integration,com.example.facebook_integration.UnitTests,FriendRequestServiceTest,setUp,3,1,0,33,0,,
+facebook-integration,com.example.facebook_integration.UnitTests,FriendRequestServiceTest,testSendRequest_Success,13,1,0,38,1,com.example.facebook_integration.service.Implementations.FriendRequestServiceImpl,com.example.facebook_integration.service.Implementations.FriendRequestServiceImpl; com.example.facebook_integration.model.FriendRequest
+facebook-integration,com.example.facebook_integration.UnitTests,FriendRequestServiceTest,testSendRequest_SenderNotFound,8,1,0,61,1,,
+facebook-integration,com.example.facebook_integration.UnitTests,FriendRequestServiceTest,testSendRequest_ReceiverNotFound,10,1,0,76,1,,
+facebook-integration,com.example.facebook_integration.UnitTests,FriendRequestServiceTest,testSendRequestByEmail_Success,14,1,0,93,1,com.example.facebook_integration.service.Implementations.FriendRequestServiceImpl,com.example.facebook_integration.service.Implementations.FriendRequestServiceImpl; com.example.facebook_integration.model.FriendRequest; com.example.facebook_integration.repository.UserRepository; com.example.facebook_integration.repository.FriendRequestRepository
+facebook-integration,com.example.facebook_integration.UnitTests,FriendRequestServiceTest,testSendRequestByEmail_SenderNotFound,8,1,0,117,1,,
+facebook-integration,com.example.facebook_integration.UnitTests,FriendRequestServiceTest,testSendRequestByEmail_ReceiverNotFound,10,1,0,132,1,com.example.facebook_integration.repository.UserRepository,com.example.facebook_integration.repository.UserRepository
+facebook-integration,com.example.facebook_integration.UnitTests,FriendRequestServiceTest,testSendRequestByEmail_RequestAlreadySent,14,1,0,149,1,com.example.facebook_integration.repository.UserRepository,com.example.facebook_integration.repository.UserRepository; com.example.facebook_integration.repository.FriendRequestRepository
+facebook-integration,com.example.facebook_integration.UnitTests,FriendRequestServiceTest,testSendRequestByEmail_AlreadyFriends,14,1,0,171,1,com.example.facebook_integration.repository.UserRepository,com.example.facebook_integration.repository.UserRepository; com.example.facebook_integration.repository.FriendRequestRepository
+facebook-integration,com.example.facebook_integration.UnitTests,FriendRequestServiceTest,testAcceptRequest_Success,10,1,0,193,1,com.example.facebook_integration.model.FriendRequest,com.example.facebook_integration.model.FriendRequest; com.example.facebook_integration.service.Implementations.FriendRequestServiceImpl
+facebook-integration,com.example.facebook_integration.UnitTests,FriendRequestServiceTest,testAcceptRequest_RequestNotFound,8,1,0,211,1,,
+facebook-integration,com.example.facebook_integration.UnitTests,FriendRequestServiceTest,testGetPendingRequests_Success,9,1,0,226,1,com.example.facebook_integration.service.Implementations.FriendRequestServiceImpl,com.example.facebook_integration.service.Implementations.FriendRequestServiceImpl; com.example.facebook_integration.repository.FriendRequestRepository
+facebook-integration,com.example.facebook_integration.UnitTests,FriendRequestServiceTest,testGetPendingRequests_UserNotFound,8,1,0,243,1,,
+facebook-integration,com.example.facebook_integration.UnitTests,FriendRequestServiceTest,testGetFriends_Success,11,1,0,258,1,com.example.facebook_integration.service.Implementations.FriendRequestServiceImpl,com.example.facebook_integration.service.Implementations.FriendRequestServiceImpl; com.example.facebook_integration.repository.FriendRequestRepository
+facebook-integration,com.example.facebook_integration.UnitTests,FriendRequestServiceTest,testGetFriends_UserNotFound,8,1,0,276,1,,
+facebook-integration,com.example.facebook_integration.UnitTests,FriendRequestServiceTest,testStatusBySenderAndReceiver_NoRequest,7,1,0,291,1,com.example.facebook_integration.service.Implementations.FriendRequestServiceImpl,com.example.facebook_integration.service.Implementations.FriendRequestServiceImpl; com.example.facebook_integration.repository.FriendRequestRepository
+facebook-integration,com.example.facebook_integration.UnitTests,FriendRequestServiceTest,testStatusBySenderAndReceiver_PendingRequest,9,1,0,306,1,com.example.facebook_integration.service.Implementations.FriendRequestServiceImpl,com.example.facebook_integration.service.Implementations.FriendRequestServiceImpl; com.example.facebook_integration.repository.FriendRequestRepository
+facebook-integration,com.example.facebook_integration.UnitTests,FriendRequestServiceTest,testStatusBySenderAndReceiver_AlreadyFriends,9,1,0,323,1,com.example.facebook_integration.service.Implementations.FriendRequestServiceImpl,com.example.facebook_integration.service.Implementations.FriendRequestServiceImpl; com.example.facebook_integration.repository.FriendRequestRepository
+facebook-integration,com.example.facebook_integration.UnitTests,FriendRequestServiceTest,testDeleteFriend_Success,13,1,0,339,1,com.example.facebook_integration.service.Implementations.FriendRequestServiceImpl,com.example.facebook_integration.service.Implementations.FriendRequestServiceImpl; com.example.facebook_integration.repository.FriendRequestRepository
+facebook-integration,com.example.facebook_integration.UnitTests,FriendRequestServiceTest,testDeleteFriend_UserNotFound,8,1,0,361,1,,
+facebook-integration,com.example.facebook_integration.UnitTests,FriendRequestServiceTest,testDeleteFriend_FriendNotFound,10,1,0,376,1,,
+facebook-integration,com.example.facebook_integration.UnitTests,JoinRequestServiceTest,setUp,3,1,0,37,0,,
+facebook-integration,com.example.facebook_integration.UnitTests,JoinRequestServiceTest,testGetJoinRequestsByGroup,9,1,0,42,1,com.example.facebook_integration.service.Implementations.JoinRequestServiceImpl,com.example.facebook_integration.service.Implementations.JoinRequestServiceImpl; com.example.facebook_integration.repository.JoinRequestRepository
+facebook-integration,com.example.facebook_integration.UnitTests,JoinRequestServiceTest,testGetJoinRequestsByGroup_NoRequests,7,1,0,55,1,com.example.facebook_integration.service.Implementations.JoinRequestServiceImpl,com.example.facebook_integration.service.Implementations.JoinRequestServiceImpl; com.example.facebook_integration.repository.JoinRequestRepository
+facebook-integration,com.example.facebook_integration.UnitTests,JoinRequestServiceTest,testGetApprovedRequestsForUser,9,1,0,66,1,com.example.facebook_integration.repository.JoinRequestRepository,com.example.facebook_integration.repository.JoinRequestRepository; com.example.facebook_integration.service.Implementations.JoinRequestServiceImpl
+facebook-integration,com.example.facebook_integration.UnitTests,JoinRequestServiceTest,testGetApprovedRequestsForUser_NoApprovedRequests,7,1,0,79,1,com.example.facebook_integration.repository.JoinRequestRepository,com.example.facebook_integration.repository.JoinRequestRepository; com.example.facebook_integration.service.Implementations.JoinRequestServiceImpl
+facebook-integration,com.example.facebook_integration.UnitTests,JoinRequestServiceTest,testApproveRequest_Success,21,1,0,90,1,com.example.facebook_integration.model.JoinRequest,com.example.facebook_integration.model.JoinRequest; com.example.facebook_integration.service.UserService; com.example.facebook_integration.service.GroupService; com.example.facebook_integration.service.Implementations.JoinRequestServiceImpl; com.example.facebook_integration.model.User; com.example.facebook_integration.model.UserGroup
+facebook-integration,com.example.facebook_integration.UnitTests,JoinRequestServiceTest,testApproveRequest_GroupNotFound,9,1,0,123,1,com.example.facebook_integration.service.GroupService,com.example.facebook_integration.service.GroupService; com.example.facebook_integration.model.JoinRequest
+facebook-integration,com.example.facebook_integration.UnitTests,JoinRequestServiceTest,testRejectRequest_Success,8,1,0,137,1,com.example.facebook_integration.service.Implementations.JoinRequestServiceImpl,com.example.facebook_integration.service.Implementations.JoinRequestServiceImpl; com.example.facebook_integration.model.JoinRequest
+facebook-integration,com.example.facebook_integration.UnitTests,JoinRequestServiceTest,testRejectRequest_RequestNotFound,6,1,0,149,1,,
+facebook-integration,com.example.facebook_integration.UnitTests,JoinRequestServiceTest,testCreateRequest_Success,11,1,0,160,1,com.example.facebook_integration.service.Implementations.JoinRequestServiceImpl,com.example.facebook_integration.service.Implementations.JoinRequestServiceImpl; com.example.facebook_integration.model.JoinRequest
+facebook-integration,com.example.facebook_integration.UnitTests,UserServiceTest,setUp,3,1,0,33,0,,
+facebook-integration,com.example.facebook_integration.UnitTests,UserServiceTest,testCreateUser_Success,10,1,0,38,1,com.example.facebook_integration.service.Implementations.UserServiceImpl,com.example.facebook_integration.service.Implementations.UserServiceImpl; com.example.facebook_integration.model.User; com.example.facebook_integration.repository.UserRepository
+facebook-integration,com.example.facebook_integration.UnitTests,UserServiceTest,testCreateUser_UserIsNull,7,1,0,57,1,,
+facebook-integration,com.example.facebook_integration.UnitTests,UserServiceTest,testCreateUser_EmailAlreadyExists,10,1,0,70,1,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User; com.example.facebook_integration.repository.UserRepository
+facebook-integration,com.example.facebook_integration.UnitTests,UserServiceTest,testFindUserByEmail_Success,8,1,0,88,1,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User; com.example.facebook_integration.service.Implementations.UserServiceImpl; com.example.facebook_integration.repository.UserRepository
+facebook-integration,com.example.facebook_integration.UnitTests,UserServiceTest,testFindUserByEmail_NotFound,5,1,0,104,1,com.example.facebook_integration.service.Implementations.UserServiceImpl,com.example.facebook_integration.service.Implementations.UserServiceImpl; com.example.facebook_integration.repository.UserRepository
+facebook-integration,com.example.facebook_integration.UnitTests,UserServiceTest,testLogin_Success,10,1,0,116,1,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User; com.example.facebook_integration.service.Implementations.UserServiceImpl; com.example.facebook_integration.repository.UserRepository
+facebook-integration,com.example.facebook_integration.UnitTests,UserServiceTest,testLogin_UserNotFound,8,1,0,135,1,com.example.facebook_integration.repository.UserRepository,com.example.facebook_integration.repository.UserRepository
+facebook-integration,com.example.facebook_integration.UnitTests,UserServiceTest,testLogin_UserDeactivated,11,1,0,150,1,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User; com.example.facebook_integration.repository.UserRepository
+facebook-integration,com.example.facebook_integration.UnitTests,UserServiceTest,testLogin_WrongPassword,12,1,0,169,1,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User; com.example.facebook_integration.repository.UserRepository
+facebook-integration,com.example.facebook_integration.UnitTests,UserServiceTest,testUpdateUserProfile_Success,14,1,0,189,1,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User; com.example.facebook_integration.repository.UserRepository
+facebook-integration,com.example.facebook_integration.UnitTests,UserServiceTest,testUpdateUserProfile_UserNotFound,9,1,0,220,1,com.example.facebook_integration.repository.UserRepository,com.example.facebook_integration.repository.UserRepository
+facebook-integration,com.example.facebook_integration.UnitTests,UserServiceTest,testFindUserById_Success,8,1,0,237,1,com.example.facebook_integration.service.Implementations.UserServiceImpl,com.example.facebook_integration.service.Implementations.UserServiceImpl; com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.UnitTests,UserServiceTest,testFindUserById_UserNotFound,5,1,0,253,1,com.example.facebook_integration.service.Implementations.UserServiceImpl,com.example.facebook_integration.service.Implementations.UserServiceImpl
+facebook-integration,com.example.facebook_integration.UnitTests,UserServiceTest,testGetAllUsers_Success,13,1,0,265,1,com.example.facebook_integration.service.Implementations.UserServiceImpl,com.example.facebook_integration.service.Implementations.UserServiceImpl; com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.UnitTests,UserServiceTest,testGetAllUsers_NoUsers,9,1,0,286,1,com.example.facebook_integration.service.Implementations.UserServiceImpl,com.example.facebook_integration.service.Implementations.UserServiceImpl; com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.UnitTests,UserServiceTest,testAddUser_Success,9,1,0,303,1,com.example.facebook_integration.service.Implementations.UserServiceImpl,com.example.facebook_integration.service.Implementations.UserServiceImpl; com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.UnitTests,UserServiceTest,testAddUser_Unauthorized,9,1,0,320,1,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.UnitTests,UserServiceTest,testUpdateUserRole_Success,10,1,0,335,1,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User; com.example.facebook_integration.service.Implementations.UserServiceImpl
+facebook-integration,com.example.facebook_integration.UnitTests,UserServiceTest,testUpdateUserRole_Unauthorized,7,1,0,353,1,,
+facebook-integration,com.example.facebook_integration.UnitTests,UserServiceTest,testDeactivateUser_Success,8,1,0,365,1,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User; com.example.facebook_integration.service.Implementations.UserServiceImpl
+facebook-integration,com.example.facebook_integration.UnitTests,UserServiceTest,testDeactivateUser_Unauthorized,7,1,0,381,1,,
+facebook-integration,com.example.facebook_integration.UnitTests,UserServiceTest,testActivateUser_Success,8,1,0,393,1,com.example.facebook_integration.service.Implementations.UserServiceImpl,com.example.facebook_integration.service.Implementations.UserServiceImpl; com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.UnitTests,UserServiceTest,testActivateUser_Unauthorized,7,1,0,409,1,,
+facebook-integration,com.example.facebook_integration.UnitTests,UserServiceTest,testRemoveUser_Success,9,1,0,421,1,com.example.facebook_integration.service.Implementations.UserServiceImpl,com.example.facebook_integration.service.Implementations.UserServiceImpl; com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.UnitTests,UserServiceTest,testRemoveUser_Unauthorized,7,1,0,439,1,,
+facebook-integration,com.example.facebook_integration.IntegrationTests,FriendReqControllerIntegrationTest,setup,3,1,0,37,0,,
+facebook-integration,com.example.facebook_integration.IntegrationTests,FriendReqControllerIntegrationTest,createURLWithPort,3,1,1,42,0,,
+facebook-integration,com.example.facebook_integration.IntegrationTests,FriendReqControllerIntegrationTest,senderUser,9,1,0,46,0,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.IntegrationTests,FriendReqControllerIntegrationTest,receiverUser,9,1,0,56,0,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.IntegrationTests,FriendReqControllerIntegrationTest,user,9,1,0,66,0,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.IntegrationTests,FriendReqControllerIntegrationTest,friend,9,1,0,76,0,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.IntegrationTests,FriendReqControllerIntegrationTest,testSendRequest,10,1,0,86,1,com.example.facebook_integration.model.FriendRequest,com.example.facebook_integration.model.FriendRequest; com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.IntegrationTests,FriendReqControllerIntegrationTest,testAcceptRequest,14,1,0,105,1,com.example.facebook_integration.model.FriendRequest,com.example.facebook_integration.model.FriendRequest
+facebook-integration,com.example.facebook_integration.IntegrationTests,FriendReqControllerIntegrationTest,testGetPendingRequests,20,1,0,130,1,com.example.facebook_integration.model.FriendRequest,com.example.facebook_integration.model.FriendRequest; com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.IntegrationTests,FriendReqControllerIntegrationTest,testGetFriends,20,1,0,161,1,com.example.facebook_integration.model.FriendRequest,com.example.facebook_integration.model.FriendRequest; com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.IntegrationTests,FriendReqControllerIntegrationTest,testDeleteFriend,14,1,0,192,1,com.example.facebook_integration.model.FriendRequest,com.example.facebook_integration.model.FriendRequest; com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.IntegrationTests,FriendReqRepoIntegrationTest,setup,4,1,0,29,0,,
+facebook-integration,com.example.facebook_integration.IntegrationTests,FriendReqRepoIntegrationTest,senderUser,9,1,0,35,0,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.IntegrationTests,FriendReqRepoIntegrationTest,receiverUser,9,1,0,45,0,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.IntegrationTests,FriendReqRepoIntegrationTest,testFindByReceiverAndAcceptedFalse,9,1,0,55,1,com.example.facebook_integration.repository.FriendRequestRepository,com.example.facebook_integration.repository.FriendRequestRepository; com.example.facebook_integration.model.FriendRequest
+facebook-integration,com.example.facebook_integration.IntegrationTests,FriendReqRepoIntegrationTest,testFindBySenderAndAcceptedFalse,9,1,0,67,1,com.example.facebook_integration.repository.FriendRequestRepository,com.example.facebook_integration.repository.FriendRequestRepository; com.example.facebook_integration.model.FriendRequest
+facebook-integration,com.example.facebook_integration.IntegrationTests,FriendReqRepoIntegrationTest,testFindBySenderAndAcceptedTrue,9,1,0,79,1,com.example.facebook_integration.model.FriendRequest,com.example.facebook_integration.model.FriendRequest; com.example.facebook_integration.repository.FriendRequestRepository
+facebook-integration,com.example.facebook_integration.IntegrationTests,FriendReqRepoIntegrationTest,testFindByReceiverAndAcceptedTrue,9,1,0,91,1,com.example.facebook_integration.model.FriendRequest,com.example.facebook_integration.model.FriendRequest; com.example.facebook_integration.repository.FriendRequestRepository
+facebook-integration,com.example.facebook_integration.IntegrationTests,FriendReqRepoIntegrationTest,testFindBySenderAndReceiver,8,1,0,103,1,com.example.facebook_integration.repository.FriendRequestRepository,com.example.facebook_integration.repository.FriendRequestRepository
+facebook-integration,com.example.facebook_integration.IntegrationTests,FriendReqRepoIntegrationTest,testDeleteBySenderId,8,1,0,114,1,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User; com.example.facebook_integration.repository.FriendRequestRepository
+facebook-integration,com.example.facebook_integration.IntegrationTests,FriendReqRepoIntegrationTest,testDeleteByReceiverId,8,1,0,126,1,com.example.facebook_integration.repository.FriendRequestRepository,com.example.facebook_integration.repository.FriendRequestRepository; com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.IntegrationTests,FriendReqRepoIntegrationTest,assertTests,4,1,3,138,0,com.example.facebook_integration.model.FriendRequest,com.example.facebook_integration.model.FriendRequest
+facebook-integration,com.example.facebook_integration.IntegrationTests,PostControllerIntegrationTest,setup,7,1,0,42,0,com.example.facebook_integration.model.Post,com.example.facebook_integration.model.Post
+facebook-integration,com.example.facebook_integration.IntegrationTests,PostControllerIntegrationTest,testGetAllPosts,6,1,0,52,1,com.example.facebook_integration.model.Post,com.example.facebook_integration.model.Post; com.example.facebook_integration.service.PostService
+facebook-integration,com.example.facebook_integration.IntegrationTests,PostControllerIntegrationTest,testCreatePost,10,1,0,68,1,com.example.facebook_integration.model.Post,com.example.facebook_integration.model.Post; com.example.facebook_integration.service.PostService
+facebook-integration,com.example.facebook_integration.IntegrationTests,PostControllerIntegrationTest,testGetAllPosts_NoPostsFound,5,1,0,93,1,com.example.facebook_integration.service.PostService,com.example.facebook_integration.service.PostService
+facebook-integration,com.example.facebook_integration.IntegrationTests,UserControllerIntegrationTest,setup,3,1,0,35,0,,
+facebook-integration,com.example.facebook_integration.IntegrationTests,UserControllerIntegrationTest,testCreateUser,14,1,0,40,1,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.IntegrationTests,UserControllerIntegrationTest,testGetUserByEmail,12,1,0,60,1,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.IntegrationTests,UserControllerIntegrationTest,testLogin,19,1,0,77,1,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.IntegrationTests,UserControllerIntegrationTest,createURLWithPort,3,1,1,104,0,,
+facebook-integration,com.example.facebook_integration.IntegrationTests,JoinRequestControllerIntegrationTest,setUp,5,1,0,44,0,,
+facebook-integration,com.example.facebook_integration.IntegrationTests,JoinRequestControllerIntegrationTest,createUser,11,1,2,52,0,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.IntegrationTests,JoinRequestControllerIntegrationTest,createGroup,7,1,1,64,0,com.example.facebook_integration.model.UserGroup,com.example.facebook_integration.model.UserGroup
+facebook-integration,com.example.facebook_integration.IntegrationTests,JoinRequestControllerIntegrationTest,createJoinRequest,9,1,4,72,0,com.example.facebook_integration.model.JoinRequest,com.example.facebook_integration.model.JoinRequest
+facebook-integration,com.example.facebook_integration.IntegrationTests,JoinRequestControllerIntegrationTest,createURLWithPort,3,1,1,82,0,,
+facebook-integration,com.example.facebook_integration.IntegrationTests,JoinRequestControllerIntegrationTest,testGetApprovedRequests,10,1,0,86,1,com.example.facebook_integration.model.JoinRequest,com.example.facebook_integration.model.JoinRequest
+facebook-integration,com.example.facebook_integration.IntegrationTests,JoinRequestControllerIntegrationTest,testGetJoinRequests,11,1,0,104,1,com.example.facebook_integration.model.JoinRequest,com.example.facebook_integration.model.JoinRequest
+facebook-integration,com.example.facebook_integration.IntegrationTests,JoinRequestControllerIntegrationTest,testApproveRequest,12,1,0,123,1,com.example.facebook_integration.model.JoinRequest,com.example.facebook_integration.model.JoinRequest
+facebook-integration,com.example.facebook_integration.IntegrationTests,JoinRequestControllerIntegrationTest,testRejectRequest,10,1,0,148,1,com.example.facebook_integration.model.JoinRequest,com.example.facebook_integration.model.JoinRequest
+facebook-integration,com.example.facebook_integration.IntegrationTests,JoinRequestControllerIntegrationTest,testCreateRequest,15,1,0,169,1,com.example.facebook_integration.model.JoinRequest,com.example.facebook_integration.model.JoinRequest
+facebook-integration,com.example.facebook_integration.IntegrationTests,CategoryControllerTest,setup,7,1,0,38,0,com.example.facebook_integration.model.CategoryOfDay,com.example.facebook_integration.model.CategoryOfDay
+facebook-integration,com.example.facebook_integration.IntegrationTests,CategoryControllerTest,asJsonString,8,1,1,47,0,,
+facebook-integration,com.example.facebook_integration.IntegrationTests,CategoryControllerTest,testCreatePost,5,1,0,55,1,com.example.facebook_integration.model.CategoryOfDay,com.example.facebook_integration.model.CategoryOfDay; com.example.facebook_integration.service.CategoryService
+facebook-integration,com.example.facebook_integration.IntegrationTests,CategoryControllerTest,testGetAllCategories,6,1,0,71,1,com.example.facebook_integration.model.CategoryOfDay,com.example.facebook_integration.model.CategoryOfDay; com.example.facebook_integration.service.CategoryService
+facebook-integration,com.example.facebook_integration.IntegrationTests,CategoryControllerTest,testGetPostsByTopic,6,1,0,87,1,com.example.facebook_integration.service.CategoryService,com.example.facebook_integration.service.CategoryService; com.example.facebook_integration.model.CategoryOfDay
+facebook-integration,com.example.facebook_integration.IntegrationTests,CategoryControllerTest,testGetPostsByTopic_NoCategoriesFound,5,1,0,103,1,com.example.facebook_integration.service.CategoryService,com.example.facebook_integration.service.CategoryService
+facebook-integration,com.example.facebook_integration.IntegrationTests,UserRepositoryIntegrationTest,testFindById,12,1,0,21,1,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.IntegrationTests,UserRepositoryIntegrationTest,testFindByEmail,12,1,0,36,1,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User; com.example.facebook_integration.repository.UserRepository
+facebook-integration,com.example.facebook_integration.IntegrationTests,FriendControllerTest,setup,8,1,0,41,0,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.IntegrationTests,FriendControllerTest,testFollowUser,5,1,0,54,1,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User; com.example.facebook_integration.service.FriendService
+facebook-integration,com.example.facebook_integration.IntegrationTests,FriendControllerTest,testFollowUser_UserNotFound,5,1,0,67,1,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User; com.example.facebook_integration.service.FriendService
+facebook-integration,com.example.facebook_integration.IntegrationTests,FriendControllerTest,testUnfollowUser,6,1,0,78,1,,
+facebook-integration,com.example.facebook_integration.IntegrationTests,FriendControllerTest,testBlockUser,9,1,0,90,1,com.example.facebook_integration.model.Friend,com.example.facebook_integration.model.Friend; com.example.facebook_integration.service.FriendService
+facebook-integration,com.example.facebook_integration.IntegrationTests,FriendControllerTest,testUnblockUser,9,1,0,108,1,com.example.facebook_integration.model.Friend,com.example.facebook_integration.model.Friend; com.example.facebook_integration.service.FriendService
+facebook-integration,com.example.facebook_integration.IntegrationTests,FriendControllerTest,testGetFriends,7,1,0,126,1,com.example.facebook_integration.service.FriendService,com.example.facebook_integration.service.FriendService
+facebook-integration,com.example.facebook_integration.IntegrationTests,FriendControllerTest,testGetBlockedUsers,9,1,0,141,1,com.example.facebook_integration.model.Friend,com.example.facebook_integration.model.Friend; com.example.facebook_integration.service.FriendService
+facebook-integration,com.example.facebook_integration.repository,FriendRepository,findByUserId,0,1,1,10,0,,
+facebook-integration,com.example.facebook_integration.repository,FriendRepository,findByFriendId,0,1,1,11,0,,
+facebook-integration,com.example.facebook_integration.repository,JoinRequestRepository,findByGroupIdAndStatus,0,1,2,12,0,,
+facebook-integration,com.example.facebook_integration.repository,JoinRequestRepository,findByGroupId,0,1,1,14,0,,
+facebook-integration,com.example.facebook_integration.repository,JoinRequestRepository,findByUserId,0,1,1,16,0,,
+facebook-integration,com.example.facebook_integration.repository,JoinRequestRepository,findByStatus,0,1,1,18,0,,
+facebook-integration,com.example.facebook_integration.repository,JoinRequestRepository,findByUserIdAndStatus,0,1,2,20,0,,
+facebook-integration,com.example.facebook_integration.repository,JoinRequestRepository,findByUserIdAndGroupId,0,1,2,22,0,,
+facebook-integration,com.example.facebook_integration.repository,CategoryOfDayRepository,findByTopic,0,1,1,9,0,,
+facebook-integration,com.example.facebook_integration.repository,TopicRepository,findTopByOrderByIdDesc,0,1,0,7,0,,
+facebook-integration,com.example.facebook_integration.repository,FriendRequestRepository,findByReceiverAndAcceptedFalse,0,1,1,10,0,,
+facebook-integration,com.example.facebook_integration.repository,FriendRequestRepository,findBySenderAndAcceptedFalse,0,1,1,11,0,,
+facebook-integration,com.example.facebook_integration.repository,FriendRequestRepository,findBySenderAndAcceptedTrue,0,1,1,12,0,,
+facebook-integration,com.example.facebook_integration.repository,FriendRequestRepository,findByReceiverAndAcceptedTrue,0,1,1,13,0,,
+facebook-integration,com.example.facebook_integration.repository,FriendRequestRepository,findBySenderAndReceiver,0,1,2,14,0,,
+facebook-integration,com.example.facebook_integration.repository,FriendRequestRepository,deleteBySenderId,0,1,1,15,0,,
+facebook-integration,com.example.facebook_integration.repository,FriendRequestRepository,deleteByReceiverId,0,1,1,16,0,,
+facebook-integration,com.example.facebook_integration.repository,UserRepository,findUserByEmail,0,1,1,12,0,,
+facebook-integration,com.example.facebook_integration.controller,AdminController,getUsers,4,1,0,20,0,com.example.facebook_integration.service.UserService,com.example.facebook_integration.service.UserService
+facebook-integration,com.example.facebook_integration.controller,AdminController,updateUserRole,3,1,3,26,0,com.example.facebook_integration.service.UserService,com.example.facebook_integration.service.UserService
+facebook-integration,com.example.facebook_integration.controller,AdminController,deactivateUser,5,1,2,31,0,com.example.facebook_integration.service.UserService,com.example.facebook_integration.service.UserService
+facebook-integration,com.example.facebook_integration.controller,AdminController,activateUser,5,1,2,38,0,com.example.facebook_integration.service.UserService,com.example.facebook_integration.service.UserService
+facebook-integration,com.example.facebook_integration.controller,AdminController,removeUser,4,1,2,45,0,com.example.facebook_integration.service.UserService,com.example.facebook_integration.service.UserService
+facebook-integration,com.example.facebook_integration.controller,JoinRequestController,getApprovedRequests,4,1,1,18,0,com.example.facebook_integration.service.JoinRequestService,com.example.facebook_integration.service.JoinRequestService
+facebook-integration,com.example.facebook_integration.controller,JoinRequestController,getJoinRequests,4,1,1,24,0,com.example.facebook_integration.service.JoinRequestService,com.example.facebook_integration.service.JoinRequestService
+facebook-integration,com.example.facebook_integration.controller,JoinRequestController,approveRequest,4,1,1,30,0,com.example.facebook_integration.service.JoinRequestService,com.example.facebook_integration.service.JoinRequestService
+facebook-integration,com.example.facebook_integration.controller,JoinRequestController,rejectRequest,4,1,1,36,0,com.example.facebook_integration.service.JoinRequestService,com.example.facebook_integration.service.JoinRequestService
+facebook-integration,com.example.facebook_integration.controller,JoinRequestController,createRequest,4,1,1,42,0,com.example.facebook_integration.service.JoinRequestService,com.example.facebook_integration.service.JoinRequestService; com.example.facebook_integration.model.JoinRequest
+facebook-integration,com.example.facebook_integration.controller,FriendController,followUser,3,1,2,17,0,com.example.facebook_integration.service.FriendService,com.example.facebook_integration.service.FriendService
+facebook-integration,com.example.facebook_integration.controller,FriendController,unfollowUser,3,1,2,22,0,com.example.facebook_integration.service.FriendService,com.example.facebook_integration.service.FriendService
+facebook-integration,com.example.facebook_integration.controller,FriendController,blockUser,3,1,2,27,0,com.example.facebook_integration.service.FriendService,com.example.facebook_integration.service.FriendService
+facebook-integration,com.example.facebook_integration.controller,FriendController,unblockUser,3,1,2,32,0,com.example.facebook_integration.service.FriendService,com.example.facebook_integration.service.FriendService
+facebook-integration,com.example.facebook_integration.controller,FriendController,getFriends,3,1,1,37,0,com.example.facebook_integration.service.FriendService,com.example.facebook_integration.service.FriendService
+facebook-integration,com.example.facebook_integration.controller,FriendController,getBlockedUsers,3,1,1,42,0,com.example.facebook_integration.service.FriendService,com.example.facebook_integration.service.FriendService
+facebook-integration,com.example.facebook_integration.controller,NotificationController,sendFriendRequestNotification,3,1,1,20,0,,
+facebook-integration,com.example.facebook_integration.controller,FriendRequestController,sendRequest,5,2,2,18,0,com.example.facebook_integration.service.FriendRequestService,com.example.facebook_integration.service.FriendRequestService
+facebook-integration,com.example.facebook_integration.controller,FriendRequestController,acceptRequest,3,1,1,33,0,com.example.facebook_integration.service.FriendRequestService,com.example.facebook_integration.service.FriendRequestService
+facebook-integration,com.example.facebook_integration.controller,FriendRequestController,getPendingRequests,3,1,1,44,0,com.example.facebook_integration.service.FriendRequestService,com.example.facebook_integration.service.FriendRequestService
+facebook-integration,com.example.facebook_integration.controller,FriendRequestController,getFriends,3,1,1,55,0,com.example.facebook_integration.service.FriendRequestService,com.example.facebook_integration.service.FriendRequestService
+facebook-integration,com.example.facebook_integration.controller,FriendRequestController,deleteFriend,3,1,2,66,0,com.example.facebook_integration.service.FriendRequestService,com.example.facebook_integration.service.FriendRequestService
+facebook-integration,com.example.facebook_integration.controller,TopicController,createTopic,3,1,1,16,0,com.example.facebook_integration.service.TopicService,com.example.facebook_integration.service.TopicService
+facebook-integration,com.example.facebook_integration.controller,TopicController,getAllTopics,3,1,0,21,0,com.example.facebook_integration.service.TopicService,com.example.facebook_integration.service.TopicService
+facebook-integration,com.example.facebook_integration.controller,TopicController,getLatestTopic,3,1,0,26,0,com.example.facebook_integration.service.TopicService,com.example.facebook_integration.service.TopicService
+facebook-integration,com.example.facebook_integration.controller,CategoryController,createPost,3,1,1,19,0,com.example.facebook_integration.service.CategoryService,com.example.facebook_integration.service.CategoryService
+facebook-integration,com.example.facebook_integration.controller,CategoryController,getAllCategories,3,1,0,25,0,com.example.facebook_integration.service.CategoryService,com.example.facebook_integration.service.CategoryService
+facebook-integration,com.example.facebook_integration.controller,CategoryController,getPostsByTopic,3,1,1,30,0,com.example.facebook_integration.service.CategoryService,com.example.facebook_integration.service.CategoryService
+facebook-integration,com.example.facebook_integration.controller,PostController,getAllPosts,3,1,0,23,0,com.example.facebook_integration.service.PostService,com.example.facebook_integration.service.PostService
+facebook-integration,com.example.facebook_integration.controller,PostController,createPost,6,1,2,28,0,com.example.facebook_integration.model.Post,com.example.facebook_integration.model.Post; com.example.facebook_integration.service.PostService
+facebook-integration,com.example.facebook_integration.controller,GroupController,addUser,3,1,2,27,0,com.example.facebook_integration.service.GroupService,com.example.facebook_integration.service.GroupService
+facebook-integration,com.example.facebook_integration.controller,GroupController,deleteUser,3,1,2,32,0,com.example.facebook_integration.service.GroupService,com.example.facebook_integration.service.GroupService
+facebook-integration,com.example.facebook_integration.controller,GroupController,leaveGroup,3,1,2,37,0,com.example.facebook_integration.service.GroupService,com.example.facebook_integration.service.GroupService
+facebook-integration,com.example.facebook_integration.controller,GroupController,createGroup,3,1,1,42,0,com.example.facebook_integration.service.GroupService,com.example.facebook_integration.service.GroupService
+facebook-integration,com.example.facebook_integration.controller,GroupController,getAllUsers,3,1,1,47,0,com.example.facebook_integration.service.GroupService,com.example.facebook_integration.service.GroupService
+facebook-integration,com.example.facebook_integration.controller,GroupController,getGroup,7,2,1,52,0,,
+facebook-integration,com.example.facebook_integration.controller,GroupController,getGroups,3,1,0,61,0,,
+facebook-integration,com.example.facebook_integration.controller,GroupController,checkIfGroupAdmin,4,1,2,66,0,com.example.facebook_integration.service.GroupService,com.example.facebook_integration.service.GroupService
+facebook-integration,com.example.facebook_integration.controller,GroupController,deleteGroup,8,2,1,72,0,com.example.facebook_integration.model.UserGroup,com.example.facebook_integration.model.UserGroup
+facebook-integration,com.example.facebook_integration.controller,GroupController,joinGroup,6,1,1,82,0,com.example.facebook_integration.service.GroupService,com.example.facebook_integration.service.GroupService
+facebook-integration,com.example.facebook_integration.controller,UserController,createUser,5,1,1,27,0,com.example.facebook_integration.service.UserService,com.example.facebook_integration.service.UserService
+facebook-integration,com.example.facebook_integration.controller,UserController,getUserByEmail,4,1,1,41,0,com.example.facebook_integration.service.UserService,com.example.facebook_integration.service.UserService
+facebook-integration,com.example.facebook_integration.controller,UserController,getUserById,4,1,1,53,0,com.example.facebook_integration.service.UserService,com.example.facebook_integration.service.UserService
+facebook-integration,com.example.facebook_integration.controller,UserController,login,11,1,1,65,0,com.example.facebook_integration.service.UserService,com.example.facebook_integration.service.UserService
+facebook-integration,com.example.facebook_integration.controller,UserController,resetPassword,6,1,1,83,0,com.example.facebook_integration.service.UserService,com.example.facebook_integration.service.UserService
+facebook-integration,com.example.facebook_integration.controller,UserController,updateStatus,5,1,1,97,0,com.example.facebook_integration.service.UserService,com.example.facebook_integration.service.UserService
+facebook-integration,com.example.facebook_integration.controller,UserController,updateUserProfile,4,1,6,110,0,,
+facebook-integration,com.example.facebook_integration.controller,UserController,getAllGroups,3,1,1,132,0,com.example.facebook_integration.service.UserService,com.example.facebook_integration.service.UserService
+facebook-integration,com.example.facebook_integration.controller,UserController,getAllUsers,3,1,0,137,0,com.example.facebook_integration.service.UserService,com.example.facebook_integration.service.UserService
+facebook-integration,com.example.facebook_integration.model,Post,getPostId,3,1,0,21,0,,
+facebook-integration,com.example.facebook_integration.model,Post,setPostId,3,1,1,25,0,,
+facebook-integration,com.example.facebook_integration.model,Post,getUserId,3,1,0,29,0,,
+facebook-integration,com.example.facebook_integration.model,Post,setUserId,3,1,1,33,0,,
+facebook-integration,com.example.facebook_integration.model,Post,getDescription,3,1,0,37,0,,
+facebook-integration,com.example.facebook_integration.model,Post,setDescription,3,1,1,41,0,,
+facebook-integration,com.example.facebook_integration.model,Post,getMediaUrl,3,1,0,45,0,,
+facebook-integration,com.example.facebook_integration.model,Post,setMediaUrl,3,1,1,49,0,,
+facebook-integration,com.example.facebook_integration.model,Post,getTimestamp,3,1,0,53,0,,
+facebook-integration,com.example.facebook_integration.model,Post,setTimestamp,3,1,1,57,0,,
+facebook-integration,com.example.facebook_integration.model,User,User,2,1,0,75,0,,
+facebook-integration,com.example.facebook_integration.model,User,User,12,1,10,78,0,,
+facebook-integration,com.example.facebook_integration.model,User,getId,3,1,0,93,0,,
+facebook-integration,com.example.facebook_integration.model,User,setId,3,1,1,97,0,,
+facebook-integration,com.example.facebook_integration.model,User,getFirstName,3,1,0,101,0,,
+facebook-integration,com.example.facebook_integration.model,User,setFirstName,3,1,1,105,0,,
+facebook-integration,com.example.facebook_integration.model,User,getLastName,3,1,0,109,0,,
+facebook-integration,com.example.facebook_integration.model,User,setLastName,3,1,1,113,0,,
+facebook-integration,com.example.facebook_integration.model,User,getEmail,3,1,0,117,0,,
+facebook-integration,com.example.facebook_integration.model,User,setEmail,3,1,1,121,0,,
+facebook-integration,com.example.facebook_integration.model,User,getPassword,3,1,0,125,0,,
+facebook-integration,com.example.facebook_integration.model,User,setPassword,3,1,1,129,0,,
+facebook-integration,com.example.facebook_integration.model,User,getBio,3,1,0,133,0,,
+facebook-integration,com.example.facebook_integration.model,User,setBio,3,1,1,137,0,,
+facebook-integration,com.example.facebook_integration.model,User,getProfilePic,3,1,0,141,0,,
+facebook-integration,com.example.facebook_integration.model,User,setProfilePic,3,1,1,145,0,,
+facebook-integration,com.example.facebook_integration.model,User,getDateOfBirth,3,1,0,149,0,,
+facebook-integration,com.example.facebook_integration.model,User,setDateOfBirth,3,1,1,153,0,,
+facebook-integration,com.example.facebook_integration.model,User,getSecurityAnswer,3,1,0,157,0,,
+facebook-integration,com.example.facebook_integration.model,User,setSecurityAnswer,3,1,1,161,0,,
+facebook-integration,com.example.facebook_integration.model,User,getStatus,3,1,0,165,0,,
+facebook-integration,com.example.facebook_integration.model,User,setStatus,3,1,1,169,0,,
+facebook-integration,com.example.facebook_integration.model,User,getRole,3,1,0,173,0,,
+facebook-integration,com.example.facebook_integration.model,User,setRole,3,1,1,177,0,,
+facebook-integration,com.example.facebook_integration.model,User,getIsActive,3,1,0,181,0,,
+facebook-integration,com.example.facebook_integration.model,User,setIsActive,3,1,1,185,0,,
+facebook-integration,com.example.facebook_integration.model,User,getGroups,3,1,0,189,0,,
+facebook-integration,com.example.facebook_integration.model,User,setGroups,3,1,1,193,0,,
+facebook-integration,com.example.facebook_integration.model,Friend,Friend,2,1,0,28,0,,
+facebook-integration,com.example.facebook_integration.model,Friend,Friend,6,1,2,30,0,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.model,Friend,getId,3,1,0,39,0,,
+facebook-integration,com.example.facebook_integration.model,Friend,setId,3,1,1,43,0,,
+facebook-integration,com.example.facebook_integration.model,Friend,getUser,3,1,0,47,0,,
+facebook-integration,com.example.facebook_integration.model,Friend,setUser,3,1,1,51,0,,
+facebook-integration,com.example.facebook_integration.model,Friend,getFriend,3,1,0,55,0,,
+facebook-integration,com.example.facebook_integration.model,Friend,setFriend,3,1,1,59,0,,
+facebook-integration,com.example.facebook_integration.model,Friend,isBlocked,3,1,0,63,0,,
+facebook-integration,com.example.facebook_integration.model,Friend,setBlocked,3,1,1,67,0,,
+facebook-integration,com.example.facebook_integration.model,UserGroup,UserGroup,2,1,0,34,0,,
+facebook-integration,com.example.facebook_integration.model,UserGroup,UserGroup,7,1,5,36,0,,
+facebook-integration,com.example.facebook_integration.model,UserGroup,getId,3,1,0,44,0,,
+facebook-integration,com.example.facebook_integration.model,UserGroup,setId,3,1,1,48,0,,
+facebook-integration,com.example.facebook_integration.model,UserGroup,getGroupName,3,1,0,52,0,,
+facebook-integration,com.example.facebook_integration.model,UserGroup,setGroupName,3,1,1,56,0,,
+facebook-integration,com.example.facebook_integration.model,UserGroup,getDescription,3,1,0,60,0,,
+facebook-integration,com.example.facebook_integration.model,UserGroup,setDescription,3,1,1,64,0,,
+facebook-integration,com.example.facebook_integration.model,UserGroup,getUsers,3,1,0,68,0,,
+facebook-integration,com.example.facebook_integration.model,UserGroup,addUser,3,1,1,72,0,,
+facebook-integration,com.example.facebook_integration.model,UserGroup,hasUser,3,1,1,76,0,,
+facebook-integration,com.example.facebook_integration.model,UserGroup,removeUser,3,1,1,80,0,,
+facebook-integration,com.example.facebook_integration.model,UserGroup,getFaculty,3,1,0,84,0,,
+facebook-integration,com.example.facebook_integration.model,UserGroup,setFaculty,3,1,1,88,0,,
+facebook-integration,com.example.facebook_integration.model,UserGroup,addAdmin,3,1,1,92,0,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.model,UserGroup,isAdmin,3,1,1,96,0,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.model,UserGroup,getCreatorId,3,1,0,100,0,,
+facebook-integration,com.example.facebook_integration.model,UserGroup,setCreatorId,3,1,1,104,0,,
+facebook-integration,com.example.facebook_integration.model,CategoryOfDay,CategoryOfDay,2,1,0,17,0,,
+facebook-integration,com.example.facebook_integration.model,CategoryOfDay,CategoryOfDay,5,1,3,19,0,,
+facebook-integration,com.example.facebook_integration.model,CategoryOfDay,getId,3,1,0,26,0,,
+facebook-integration,com.example.facebook_integration.model,CategoryOfDay,setId,3,1,1,30,0,,
+facebook-integration,com.example.facebook_integration.model,CategoryOfDay,getUserId,3,1,0,34,0,,
+facebook-integration,com.example.facebook_integration.model,CategoryOfDay,setUserId,3,1,1,38,0,,
+facebook-integration,com.example.facebook_integration.model,CategoryOfDay,getTopic,3,1,0,42,0,,
+facebook-integration,com.example.facebook_integration.model,CategoryOfDay,setTopic,3,1,1,46,0,,
+facebook-integration,com.example.facebook_integration.model,CategoryOfDay,getContent,3,1,0,50,0,,
+facebook-integration,com.example.facebook_integration.model,CategoryOfDay,setContent,3,1,1,54,0,,
+facebook-integration,com.example.facebook_integration.model,JoinRequest,getId,3,1,0,21,0,,
+facebook-integration,com.example.facebook_integration.model,JoinRequest,setId,3,1,1,25,0,,
+facebook-integration,com.example.facebook_integration.model,JoinRequest,getUserId,3,1,0,29,0,,
+facebook-integration,com.example.facebook_integration.model,JoinRequest,setUserId,3,1,1,33,0,,
+facebook-integration,com.example.facebook_integration.model,JoinRequest,getGroupId,3,1,0,37,0,,
+facebook-integration,com.example.facebook_integration.model,JoinRequest,setGroupId,3,1,1,41,0,,
+facebook-integration,com.example.facebook_integration.model,JoinRequest,getStatus,3,1,0,45,0,,
+facebook-integration,com.example.facebook_integration.model,JoinRequest,setStatus,3,1,1,49,0,,
+facebook-integration,com.example.facebook_integration.model,Topic,getId,3,1,0,16,0,,
+facebook-integration,com.example.facebook_integration.model,Topic,setId,3,1,1,20,0,,
+facebook-integration,com.example.facebook_integration.model,Topic,getTopic,3,1,0,24,0,,
+facebook-integration,com.example.facebook_integration.model,Topic,setTopic,3,1,1,28,0,,
+facebook-integration,com.example.facebook_integration.model,FriendId,FriendId,2,1,0,15,0,,
+facebook-integration,com.example.facebook_integration.model,FriendId,FriendId,4,1,2,17,0,,
+facebook-integration,com.example.facebook_integration.model,FriendId,getUserId,3,1,0,24,0,,
+facebook-integration,com.example.facebook_integration.model,FriendId,setUserId,3,1,1,28,0,,
+facebook-integration,com.example.facebook_integration.model,FriendId,getFriendId,3,1,0,32,0,,
+facebook-integration,com.example.facebook_integration.model,FriendId,setFriendId,3,1,1,36,0,,
+facebook-integration,com.example.facebook_integration.model,FriendId,equals,6,3,1,40,0,,
+facebook-integration,com.example.facebook_integration.model,FriendId,hashCode,3,1,0,49,0,,
+facebook-integration,com.example.facebook_integration.model,FriendRequest,FriendRequest,2,1,0,23,0,,
+facebook-integration,com.example.facebook_integration.model,FriendRequest,FriendRequest,5,1,3,26,0,,
+facebook-integration,com.example.facebook_integration.model,FriendRequest,getId,3,1,0,33,0,,
+facebook-integration,com.example.facebook_integration.model,FriendRequest,setId,3,1,1,37,0,,
+facebook-integration,com.example.facebook_integration.model,FriendRequest,getSender,3,1,0,41,0,,
+facebook-integration,com.example.facebook_integration.model,FriendRequest,setSender,3,1,1,45,0,,
+facebook-integration,com.example.facebook_integration.model,FriendRequest,getReceiver,3,1,0,49,0,,
+facebook-integration,com.example.facebook_integration.model,FriendRequest,setReceiver,3,1,1,53,0,,
+facebook-integration,com.example.facebook_integration.model,FriendRequest,isAccepted,3,1,0,57,0,,
+facebook-integration,com.example.facebook_integration.model,FriendRequest,setAccepted,3,1,1,61,0,,
+facebook-integration,com.example.facebook_integration.service,UserService,createUser,0,1,1,13,0,,
+facebook-integration,com.example.facebook_integration.service,UserService,findUserByEmail,0,1,1,14,0,,
+facebook-integration,com.example.facebook_integration.service,UserService,updatePassword,0,1,2,15,0,,
+facebook-integration,com.example.facebook_integration.service,UserService,login,0,1,2,16,0,,
+facebook-integration,com.example.facebook_integration.service,UserService,updateStatus,0,1,2,17,0,,
+facebook-integration,com.example.facebook_integration.service,UserService,updateUserProfile,0,1,6,18,0,,
+facebook-integration,com.example.facebook_integration.service,UserService,findUserById,0,1,1,19,0,,
+facebook-integration,com.example.facebook_integration.service,UserService,getAllUsers,0,1,0,20,0,,
+facebook-integration,com.example.facebook_integration.service,UserService,addUser,0,1,1,21,0,,
+facebook-integration,com.example.facebook_integration.service,UserService,removeUser,0,1,2,22,0,,
+facebook-integration,com.example.facebook_integration.service,UserService,updateUserRole,0,1,3,23,0,,
+facebook-integration,com.example.facebook_integration.service,UserService,deactivateUser,0,1,2,24,0,,
+facebook-integration,com.example.facebook_integration.service,UserService,activateUser,0,1,2,26,0,,
+facebook-integration,com.example.facebook_integration.service,UserService,getAllGroups,0,1,1,28,0,,
+facebook-integration,com.example.facebook_integration.service,UserService,getAll,0,1,0,29,0,,
+facebook-integration,com.example.facebook_integration.service,TopicService,saveTopic,0,1,1,8,0,,
+facebook-integration,com.example.facebook_integration.service,TopicService,getAllTopics,0,1,0,9,0,,
+facebook-integration,com.example.facebook_integration.service,TopicService,getLatestTopic,0,1,0,10,0,,
+facebook-integration,com.example.facebook_integration.service,GroupService,deleteUser,0,1,2,10,0,,
+facebook-integration,com.example.facebook_integration.service,GroupService,addUserToGroup,0,1,2,11,0,,
+facebook-integration,com.example.facebook_integration.service,GroupService,createGroup,0,1,1,12,0,,
+facebook-integration,com.example.facebook_integration.service,GroupService,deleteGroup,0,1,2,13,0,,
+facebook-integration,com.example.facebook_integration.service,GroupService,getAllUsers,0,1,1,14,0,,
+facebook-integration,com.example.facebook_integration.service,GroupService,isGroupAdmin,0,1,2,15,0,,
+facebook-integration,com.example.facebook_integration.service,GroupService,joinGroup,0,1,2,16,0,,
+facebook-integration,com.example.facebook_integration.service,GroupService,leaveGroup,0,1,2,17,0,,
+facebook-integration,com.example.facebook_integration.service,GroupService,getGroupById,0,1,1,18,0,,
+facebook-integration,com.example.facebook_integration.service,JoinRequestService,getJoinRequestsByGroup,0,1,1,7,0,,
+facebook-integration,com.example.facebook_integration.service,JoinRequestService,approveRequest,0,1,1,8,0,,
+facebook-integration,com.example.facebook_integration.service,JoinRequestService,rejectRequest,0,1,1,9,0,,
+facebook-integration,com.example.facebook_integration.service,JoinRequestService,createRequest,0,1,2,10,0,,
+facebook-integration,com.example.facebook_integration.service,JoinRequestService,getApprovedRequestsForUser,0,1,1,11,0,,
+facebook-integration,com.example.facebook_integration.service,FriendService,followUser,0,1,2,9,0,,
+facebook-integration,com.example.facebook_integration.service,FriendService,unfollowUser,0,1,2,10,0,,
+facebook-integration,com.example.facebook_integration.service,FriendService,blockUser,0,1,2,11,0,,
+facebook-integration,com.example.facebook_integration.service,FriendService,unblockUser,0,1,2,12,0,,
+facebook-integration,com.example.facebook_integration.service,FriendService,getFriends,0,1,1,13,0,,
+facebook-integration,com.example.facebook_integration.service,FriendService,getBlockedUsers,0,1,1,14,0,,
+facebook-integration,com.example.facebook_integration.service,CategoryService,saveCategory,0,1,1,8,0,,
+facebook-integration,com.example.facebook_integration.service,CategoryService,getAllCategories,0,1,0,9,0,,
+facebook-integration,com.example.facebook_integration.service,CategoryService,getPostsByTopic,0,1,1,10,0,,
+facebook-integration,com.example.facebook_integration.service,FriendRequestService,sendRequest,0,1,2,9,0,,
+facebook-integration,com.example.facebook_integration.service,FriendRequestService,sendRequestByEmail,0,1,2,11,0,,
+facebook-integration,com.example.facebook_integration.service,FriendRequestService,acceptRequest,0,1,1,13,0,,
+facebook-integration,com.example.facebook_integration.service,FriendRequestService,getPendingRequests,0,1,1,15,0,,
+facebook-integration,com.example.facebook_integration.service,FriendRequestService,getFriends,0,1,1,17,0,,
+facebook-integration,com.example.facebook_integration.service,FriendRequestService,deleteFriend,0,1,2,18,0,,
+facebook-integration,com.example.facebook_integration.service,PostService,getAllPosts,0,1,0,7,0,,
+facebook-integration,com.example.facebook_integration.service,PostService,savePost,0,1,1,8,0,,
+facebook-integration,com.example.facebook_integration.service.Implementations,PostServiceImpl,getAllPosts,3,1,0,18,0,,
+facebook-integration,com.example.facebook_integration.service.Implementations,PostServiceImpl,savePost,4,1,1,23,0,com.example.facebook_integration.model.Post,com.example.facebook_integration.model.Post
+facebook-integration,com.example.facebook_integration.service.Implementations,TopicServiceImpl,saveTopic,3,1,1,16,0,,
+facebook-integration,com.example.facebook_integration.service.Implementations,TopicServiceImpl,getAllTopics,3,1,0,20,0,,
+facebook-integration,com.example.facebook_integration.service.Implementations,TopicServiceImpl,getLatestTopic,3,1,0,24,0,com.example.facebook_integration.repository.TopicRepository,com.example.facebook_integration.repository.TopicRepository
+facebook-integration,com.example.facebook_integration.service.Implementations,GroupServiceImpl,createGroup,16,3,1,23,0,com.example.facebook_integration.model.UserGroup,com.example.facebook_integration.model.UserGroup; com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.service.Implementations,GroupServiceImpl,addUserToGroup,11,2,2,46,0,com.example.facebook_integration.model.UserGroup,com.example.facebook_integration.model.UserGroup; com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.service.Implementations,GroupServiceImpl,deleteGroup,9,2,2,63,0,com.example.facebook_integration.model.UserGroup,com.example.facebook_integration.model.UserGroup
+facebook-integration,com.example.facebook_integration.service.Implementations,GroupServiceImpl,deleteUser,10,2,2,80,0,com.example.facebook_integration.model.UserGroup,com.example.facebook_integration.model.UserGroup
+facebook-integration,com.example.facebook_integration.service.Implementations,GroupServiceImpl,getAllUsers,4,1,1,96,0,com.example.facebook_integration.model.UserGroup,com.example.facebook_integration.model.UserGroup
+facebook-integration,com.example.facebook_integration.service.Implementations,GroupServiceImpl,isGroupAdmin,8,2,2,103,0,com.example.facebook_integration.model.UserGroup,com.example.facebook_integration.model.UserGroup
+facebook-integration,com.example.facebook_integration.service.Implementations,GroupServiceImpl,joinGroup,6,1,2,113,0,com.example.facebook_integration.model.UserGroup,com.example.facebook_integration.model.UserGroup
+facebook-integration,com.example.facebook_integration.service.Implementations,GroupServiceImpl,leaveGroup,9,2,2,121,0,com.example.facebook_integration.model.UserGroup,com.example.facebook_integration.model.UserGroup
+facebook-integration,com.example.facebook_integration.service.Implementations,GroupServiceImpl,getGroupById,3,1,1,136,0,,
+facebook-integration,com.example.facebook_integration.service.Implementations,CategoryServiceImpl,saveCategory,3,1,1,16,0,,
+facebook-integration,com.example.facebook_integration.service.Implementations,CategoryServiceImpl,getAllCategories,3,1,0,21,0,,
+facebook-integration,com.example.facebook_integration.service.Implementations,CategoryServiceImpl,getPostsByTopic,3,1,1,26,0,com.example.facebook_integration.repository.CategoryOfDayRepository,com.example.facebook_integration.repository.CategoryOfDayRepository
+facebook-integration,com.example.facebook_integration.service.Implementations,FriendRequestServiceImpl,sendRequest,6,1,2,26,0,,
+facebook-integration,com.example.facebook_integration.service.Implementations,FriendRequestServiceImpl,sendRequestByEmail,21,4,2,42,0,com.example.facebook_integration.service.Implementations.FriendRequestServiceImpl,com.example.facebook_integration.service.Implementations.FriendRequestServiceImpl; com.example.facebook_integration.model.User; com.example.facebook_integration.repository.UserRepository
+facebook-integration,com.example.facebook_integration.service.Implementations,FriendRequestServiceImpl,acceptRequest,5,1,1,75,0,com.example.facebook_integration.model.FriendRequest,com.example.facebook_integration.model.FriendRequest
+facebook-integration,com.example.facebook_integration.service.Implementations,FriendRequestServiceImpl,getPendingRequests,4,1,1,88,0,com.example.facebook_integration.repository.FriendRequestRepository,com.example.facebook_integration.repository.FriendRequestRepository
+facebook-integration,com.example.facebook_integration.service.Implementations,FriendRequestServiceImpl,getFriends,9,1,1,100,0,com.example.facebook_integration.model.FriendRequest,com.example.facebook_integration.model.FriendRequest; com.example.facebook_integration.repository.FriendRequestRepository
+facebook-integration,com.example.facebook_integration.service.Implementations,FriendRequestServiceImpl,existsBySenderAndReceiver,4,1,2,118,0,com.example.facebook_integration.repository.FriendRequestRepository,com.example.facebook_integration.repository.FriendRequestRepository
+facebook-integration,com.example.facebook_integration.service.Implementations,FriendRequestServiceImpl,statusBySenderAndReceiver,12,3,2,130,0,com.example.facebook_integration.model.FriendRequest,com.example.facebook_integration.model.FriendRequest; com.example.facebook_integration.repository.FriendRequestRepository
+facebook-integration,com.example.facebook_integration.service.Implementations,FriendRequestServiceImpl,deleteFriend,8,1,2,148,0,com.example.facebook_integration.repository.FriendRequestRepository,com.example.facebook_integration.repository.FriendRequestRepository
+facebook-integration,com.example.facebook_integration.service.Implementations,FriendServiceImpl,followUser,6,1,2,23,0,,
+facebook-integration,com.example.facebook_integration.service.Implementations,FriendServiceImpl,unfollowUser,4,1,2,30,0,,
+facebook-integration,com.example.facebook_integration.service.Implementations,FriendServiceImpl,blockUser,6,1,2,35,0,com.example.facebook_integration.model.Friend,com.example.facebook_integration.model.Friend
+facebook-integration,com.example.facebook_integration.service.Implementations,FriendServiceImpl,unblockUser,6,1,2,42,0,com.example.facebook_integration.model.Friend,com.example.facebook_integration.model.Friend
+facebook-integration,com.example.facebook_integration.service.Implementations,FriendServiceImpl,getFriends,3,1,1,49,0,com.example.facebook_integration.repository.FriendRepository,com.example.facebook_integration.repository.FriendRepository
+facebook-integration,com.example.facebook_integration.service.Implementations,FriendServiceImpl,getBlockedUsers,3,1,1,53,0,com.example.facebook_integration.repository.FriendRepository,com.example.facebook_integration.repository.FriendRepository
+facebook-integration,com.example.facebook_integration.service.Implementations,UserServiceImpl,createUser,10,3,1,33,0,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User; com.example.facebook_integration.repository.UserRepository
+facebook-integration,com.example.facebook_integration.service.Implementations,UserServiceImpl,findUserByEmail,3,1,1,51,0,com.example.facebook_integration.repository.UserRepository,com.example.facebook_integration.repository.UserRepository
+facebook-integration,com.example.facebook_integration.service.Implementations,UserServiceImpl,login,16,4,2,62,0,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User; com.example.facebook_integration.repository.UserRepository
+facebook-integration,com.example.facebook_integration.service.Implementations,UserServiceImpl,updatePassword,11,2,2,90,0,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User; com.example.facebook_integration.repository.UserRepository
+facebook-integration,com.example.facebook_integration.service.Implementations,UserServiceImpl,updateStatus,11,2,2,110,0,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User; com.example.facebook_integration.repository.UserRepository
+facebook-integration,com.example.facebook_integration.service.Implementations,UserServiceImpl,updateUserProfile,21,2,6,131,0,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User; com.example.facebook_integration.repository.UserRepository
+facebook-integration,com.example.facebook_integration.service.Implementations,UserServiceImpl,findUserById,3,1,1,173,0,,
+facebook-integration,com.example.facebook_integration.service.Implementations,UserServiceImpl,getAllUsers,4,1,0,178,0,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.service.Implementations,UserServiceImpl,addUser,6,2,1,186,0,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.service.Implementations,UserServiceImpl,updateUserRole,14,3,3,194,0,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.service.Implementations,UserServiceImpl,deactivateUser,14,3,2,210,0,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.service.Implementations,UserServiceImpl,activateUser,14,3,2,227,0,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.service.Implementations,UserServiceImpl,removeUser,14,3,2,244,0,com.example.facebook_integration.repository.FriendRequestRepository,com.example.facebook_integration.repository.FriendRequestRepository; com.example.facebook_integration.service.Implementations.UserServiceImpl
+facebook-integration,com.example.facebook_integration.service.Implementations,UserServiceImpl,getAllGroups,4,1,1,266,0,com.example.facebook_integration.model.User,com.example.facebook_integration.model.User
+facebook-integration,com.example.facebook_integration.service.Implementations,UserServiceImpl,getAll,3,1,0,272,0,,
+facebook-integration,com.example.facebook_integration.service.Implementations,JoinRequestServiceImpl,getJoinRequestsByGroup,3,1,1,27,0,com.example.facebook_integration.repository.JoinRequestRepository,com.example.facebook_integration.repository.JoinRequestRepository
+facebook-integration,com.example.facebook_integration.service.Implementations,JoinRequestServiceImpl,getApprovedRequestsForUser,3,1,1,32,0,com.example.facebook_integration.repository.JoinRequestRepository,com.example.facebook_integration.repository.JoinRequestRepository
+facebook-integration,com.example.facebook_integration.service.Implementations,JoinRequestServiceImpl,approveRequest,8,1,1,37,0,com.example.facebook_integration.service.GroupService,com.example.facebook_integration.service.GroupService; com.example.facebook_integration.model.UserGroup; com.example.facebook_integration.model.User; com.example.facebook_integration.model.JoinRequest; com.example.facebook_integration.service.UserService
+facebook-integration,com.example.facebook_integration.service.Implementations,JoinRequestServiceImpl,rejectRequest,5,1,1,55,0,com.example.facebook_integration.model.JoinRequest,com.example.facebook_integration.model.JoinRequest
+facebook-integration,com.example.facebook_integration.service.Implementations,JoinRequestServiceImpl,createRequest,7,1,2,62,0,com.example.facebook_integration.model.JoinRequest,com.example.facebook_integration.model.JoinRequest
+facebook-integration,com.example.facebook_integration.exception,GlobalExceptionHandler,handleFriendRequestAlreadyExistsException,4,1,2,13,0,,
+facebook-integration,com.example.facebook_integration.exception,GlobalExceptionHandler,handleGlobalException,4,1,2,19,0,,
+facebook-integration,com.example.facebook_integration.exception,FriendRequestAlreadyExistsException,FriendRequestAlreadyExistsException,3,1,1,4,0,,

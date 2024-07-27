@@ -141,39 +141,33 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public void updateUserProfile(String firstName, String lastName, String email, String bio, User.Status status, MultipartFile profilePicture) {
-        Optional<User> userOptional = userRepository.findUserByEmail(email);
+        User user = userRepository.findUserByEmail(email).orElseThrow(() -> new IllegalArgumentException("User not found"));
 
-        if (userOptional.isPresent()) {
-            User user = userOptional.get();
-            user.setFirstName(firstName);
-            user.setLastName(lastName);
-            user.setBio(bio);
-            user.setStatus(status);
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setBio(bio);
+        user.setStatus(status);
 
-            if (!profilePicture.isEmpty()) {
-                try {
-                    String profilePicDir = "backend/facebook-integration/src/main/resources/static/profile_pictures/";
-                    // Create the absolute path to the profile pictures directory
-                    Path profilePicPath = Paths.get(profilePicDir).toAbsolutePath().normalize();
-                    // Ensure the directories exist
-                    // Files.createDirectories(profilePicPath);
+        if (profilePicture != null && !profilePicture.isEmpty()) {
+            try {
+                String profilePicDir = "backend/facebook-integration/src/main/resources/static/profile_pictures/";
+                // Create the absolute path to the profile pictures directory
+                Path profilePicPath = Paths.get(profilePicDir).toAbsolutePath().normalize();
+                // Ensure the directories exist
+                Files.createDirectories(profilePicPath);
 
-                    // Get the path to the specific file
-                    Path filePath = profilePicPath.resolve(Objects.requireNonNull(profilePicture.getOriginalFilename()));
-                    // Write the file
-                    Files.write(filePath, profilePicture.getBytes());
+                // Get the path to the specific file
+                Path filePath = profilePicPath.resolve(Objects.requireNonNull(profilePicture.getOriginalFilename()));
+                // Write the file
+                Files.write(filePath, profilePicture.getBytes());
 
-                    // Set the URL for the user profile picture
-                    user.setProfilePic("/profile_pictures/" + profilePicture.getOriginalFilename());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                // Set the URL for the user profile picture
+                user.setProfilePic("/profile_pictures/" + profilePicture.getOriginalFilename());
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-
-            userRepository.save(user);
-        } else {
-            throw new IllegalArgumentException("User with email " + email + " not found");
         }
+            userRepository.save(user);
     }
 
     @Override

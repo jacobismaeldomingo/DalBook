@@ -22,22 +22,29 @@ public class User {
 
     @NotBlank(message = "First Name is required.")
     private String firstName;
+
     @NotBlank(message = "Last Name is required.")
     private String lastName;
+
     @Email(regexp = "^[a-zA-Z0-9._%+-]+@dal\\.ca$", message = "Invalid email. Only @dal.ca addresses are accepted.")
     private String email;
+
     @Size(min = 8, message = "Password must be at least 8 characters long.")
     @Pattern(regexp = ".*[a-z].*", message = "Password must contain at least one lowercase letter.")
     @Pattern(regexp = ".*[A-Z].*", message = "Password must contain at least one uppercase letter.")
     @Pattern(regexp = ".*\\d.*", message = "Password must contain at least one number.")
     @Pattern(regexp = ".*[@$!%*?&].*", message = "Password must contain at least one special character (@, $, !, %, *, ?, &).")
     private String password;
+
     @NotNull(message = "Date of Birth is required.")
     private String dateOfBirth;
+
     private String bio;
     private String profilePic;
+
     @NotBlank(message = "Security Answer is required.")
     private String securityAnswer;
+
     private boolean is_active = true;
 
     public enum Role {

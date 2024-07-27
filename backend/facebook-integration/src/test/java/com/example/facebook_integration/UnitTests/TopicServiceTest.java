@@ -1,6 +1,7 @@
 package com.example.facebook_integration.UnitTests;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.*;
 
 import com.example.facebook_integration.model.Topic;
@@ -31,11 +32,11 @@ public class TopicServiceTest {
     public void setup() {
         MockitoAnnotations.openMocks(this);
         topic1 = new Topic();
-        topic1.setId(1l);
+        topic1.setId(1);
         topic1.setTopic("First Topic");
 
         topic2 = new Topic();
-        topic2.setId(2l);
+        topic2.setId(2);
         topic2.setTopic("Second Topic");
     }
 
@@ -86,7 +87,7 @@ public class TopicServiceTest {
 
         Topic result = topicService.getLatestTopic();
 
-        assertEquals(null, result);
+        assertNull(result);
         verify(topicRepository, times(1)).findTopByOrderByIdDesc();
     }
 }

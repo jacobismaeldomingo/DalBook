@@ -9,7 +9,7 @@ public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long postId;
+    private int postId;
 
     private Integer userId;
     private String description;
@@ -18,11 +18,11 @@ public class Post {
 
     // Getters and Setters
 
-    public Long getPostId() {
+    public int getPostId() {
         return postId;
     }
 
-    public void setPostId(Long postId) {
+    public void setPostId(int postId) {
         this.postId = postId;
     }
 

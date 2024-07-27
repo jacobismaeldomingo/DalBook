@@ -15,8 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.any;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 @SpringBootTest
@@ -33,75 +32,97 @@ public class GroupServiceTest {
 
     @Test
     public void testCreateGroup() {
+        User user = new User();
+        user.setId(1);
+        user.setFirstName("John");
+        user.setLastName("Smith");
+        user.setEmail("john.smith@dal.ca");
+
         UserGroup userGroup = new UserGroup();
         userGroup.setGroupName("Test Group");
         userGroup.setDescription("Test Description");
         userGroup.setFaculty("Test Faculty");
+        userGroup.setCreatorId(1);
+
+        when(userRepository.findById(1)).thenReturn(Optional.of(user));
         when(groupRepository.save(userGroup)).thenReturn(userGroup);
 
         UserGroup savedUserGroup = groupService.createGroup(userGroup);
 
         assertEquals(userGroup, savedUserGroup);
         assertEquals(userGroup.getGroupName(),"Test Group");
-
-        //verify(groupRepository).save(userGroup);
-
     }
+
     @Test
     public void testCreateGroup_GroupAlreadyExists(){
         UserGroup existingGroup = new UserGroup();
         existingGroup.setGroupName("Test Group");
         existingGroup.setDescription("Test Description");
         existingGroup.setFaculty("Test Faculty");
-        existingGroup.setID(1);
+        existingGroup.setId(1);
 
         when(groupRepository.existsById(1)).thenReturn(true);
-
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             groupService.createGroup(existingGroup);
         });
         assertEquals("Group already exists", exception.getMessage());
-
     }
 
     @Test
     public void testDeleteGroup() {
+        // Prepare test data
+        User user = new User();
+        user.setId(1);
+        user.setFirstName("John");
+        user.setLastName("Smith");
+        user.setEmail("john.smith@dal.ca");
+
         UserGroup userGroup = new UserGroup();
+        userGroup.setId(1);
         userGroup.setGroupName("Test Group");
         userGroup.setDescription("Test Description");
         userGroup.setFaculty("Test Faculty");
-        userGroup.setId(1);
+        userGroup.setCreatorId(1);
+        userGroup.addAdmin(user); // Ensure that the user is set as an admin
 
-        groupService.createGroup(userGroup);
-        groupRepository.save(userGroup);
+        // Mock repository responses
+        when(userRepository.findById(1)).thenReturn(Optional.of(user));
+        when(groupRepository.findById(1)).thenReturn(Optional.of(userGroup));
 
-        when(groupRepository.existsById(1)).thenReturn(true);
+        // Call the method
+        String result = groupService.deleteGroup(userGroup.getId(), user.getId());
 
-        String result = groupService.deleteGroup(1, 1);
+        // Verify interactions
+        verify(userRepository).findById(1);
+        verify(groupRepository).findById(1);
+        verify(groupRepository).delete(userGroup);
 
-        assertEquals(result, "group successfully deleted");
-
-       // verify(groupRepository, times(1)).delete(userGroup);
+        // Assert results
+        assertEquals("Group successfully deleted", result);
     }
-
 
     @Test
     public void testDeleteGroup_GroupNotFound() {
-        String response = groupService.deleteGroup(1, 1);
-        assertEquals(response, "group does not exist");
+        // Call the method and expect an exception
+        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> {
+            groupService.deleteGroup(1, 1);
+        });
+
+        // Assert the result
+        assertEquals("Group cannot be found", thrown.getMessage());
     }
 
     @Test
     public void testaddUserToGroup() {
         UserGroup userGroup = new UserGroup();
+        userGroup.setId(1);
         userGroup.setGroupName("Test Group");
         userGroup.setDescription("Test Description");
         userGroup.setFaculty("Test Faculty");
-        userGroup.setId(1);
 
         User user = new User();
-        user.setId(2);
+        user.setId(1);
         user.setEmail("test@dal.ca");
         user.setFirstName("Dal");
         user.setLastName("Test");
@@ -110,68 +131,60 @@ public class GroupServiceTest {
 
         userRepository.save(user);
         groupRepository.save(userGroup);
+
         when(groupRepository.findById(1)).thenReturn(Optional.of((userGroup)));
-        when(userRepository.findById(2)).thenReturn(Optional.of(user));
+        when(userRepository.findById(1)).thenReturn(Optional.of(user));
         when(userRepository.save(any(User.class))).thenReturn(user);
         when(groupRepository.save(any(UserGroup.class))).thenReturn(userGroup);
 
-       UserGroup updatedGroup = groupService.addUserToGroup(userGroup.getId(), user.getId());
+        UserGroup updatedGroup = groupService.addUserToGroup(userGroup.getId(), user.getId());
         assertNotNull(updatedGroup);
         assertTrue(userGroup.getUsers().contains(user));
-
-        //verify(userRepository).save(user);
-        //verify(groupRepository).save(userGroup);
-
     }
 
     @Test
     public void testAddUserToGroup_UserDoesNotExist() {
     UserGroup userGroup = new UserGroup();
-        userGroup.setID(1);
+        userGroup.setId(1);
         userGroup.setGroupName("Test Group");
 
+        when(userRepository.findById(1)).thenReturn(Optional.empty());
 
-    when(userRepository.findById(2)).thenReturn(Optional.empty());
-
-    IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            groupService.addUserToGroup(1, 2);
-    });
-    assertEquals("User cannot be found", exception.getMessage());
-
-
-
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            groupService.addUserToGroup(1, 1);
+        });
+        assertEquals("User cannot be found", exception.getMessage());
     }
 
     @Test
     public void testDeleteUserFromGroup() {
         UserGroup userGroup = new UserGroup();
+        userGroup.setId(1);
         userGroup.setGroupName("Test Group");
         userGroup.setDescription("Test Description");
         userGroup.setFaculty("Test Faculty");
-        userGroup.setID(1);
+
         User user = new User();
-        user.setId(2);
+        user.setId(1);
         user.setEmail("test@dal.ca");
         user.setFirstName("Dal");
         user.setLastName("Test");
         user.setPassword("Password$99");
         user.setSecurityAnswer("Security Answer");
+
         userRepository.save(user);
         groupRepository.save(userGroup);
-        when(groupRepository.findById(1)).thenReturn(Optional.of(userGroup));
-        when(userRepository.findById(2)).thenReturn(Optional.of(user));
 
+        when(groupRepository.findById(1)).thenReturn(Optional.of(userGroup));
+        when(userRepository.findById(1)).thenReturn(Optional.of(user));
 
         when(userRepository.save(any(User.class))).thenReturn(user);
         when(groupRepository.save(any(UserGroup.class))).thenReturn(userGroup);
 
         UserGroup updatedGroup = groupService.addUserToGroup(userGroup.getId(), user.getId());
         assertTrue(userGroup.getUsers().contains(user));
-        String response =groupService.deleteUser(1, 2);
+        String response =groupService.deleteUser(1, 1);
         assertEquals("User successfully removed", response);
-
-
-
 
     }
     @Test
@@ -180,33 +193,25 @@ public class GroupServiceTest {
         userGroup.setGroupName("Test Group");
         userGroup.setDescription("Test Description");
         userGroup.setFaculty("Test Faculty");
-        userGroup.setID(1);
+        userGroup.setId(1);
+
         User user = new User();
-        user.setId(2);
+        user.setId(1);
         user.setEmail("test@dal.ca");
         user.setFirstName("Dal");
         user.setLastName("Test");
         user.setPassword("Password$99");
         user.setSecurityAnswer("Security Answer");
+
         userRepository.save(user);
         groupRepository.save(userGroup);
+
         when(groupRepository.findById(1)).thenReturn(Optional.of(userGroup));
-        when(userRepository.findById(2)).thenReturn(Optional.of(user));
+        when(userRepository.findById(1)).thenReturn(Optional.of(user));
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            groupService.deleteUser(1, 2);
+            groupService.deleteUser(1, 1);
         });
         assertEquals("User is not in this group", exception.getMessage());
-
-
-
-
-
-
     }
-
-
-
-
-
 }

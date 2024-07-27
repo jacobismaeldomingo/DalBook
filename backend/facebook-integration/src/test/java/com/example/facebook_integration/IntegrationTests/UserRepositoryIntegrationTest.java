@@ -36,15 +36,15 @@ public class UserRepositoryIntegrationTest {
     @Test
     public void testFindByEmail() {
         User user = new User();
-        user.setFirstName("Jane");
+        user.setFirstName("Jamie");
         user.setLastName("Doe");
-        user.setEmail("jane.doe@dal.ca");
+        user.setEmail("jamie.doe@dal.ca");
         user.setSecurityAnswer("France");
         user.setDateOfBirth("02-02-2002");
         userRepository.save(user);
 
         Optional<User> foundUser = userRepository.findUserByEmail(user.getEmail());
         assertTrue(foundUser.isPresent());
-        assertEquals("Jane", foundUser.get().getFirstName());
+        assertEquals("Jamie", foundUser.get().getFirstName());
     }
 }
