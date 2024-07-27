@@ -12,13 +12,9 @@
   height: 50rem;
   width: 22%;
   left: 0;
-<<<<<<< HEAD
   padding-right: 70px;
   flex: 1;
   min-width: 250px; /* Ensure columns don't shrink too much */
-=======
-  flex-wrap: wrap;
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
 }
 .profile {
   display: flex;
@@ -39,6 +35,7 @@
   font-weight: 550;
   padding: 0.5rem;
   padding-left: 2rem;
+  cursor: pointer;
 }
 .panel > div {
   margin: 10px;
@@ -200,11 +197,11 @@ input[type="Mind"] {
 .posted {
   display: grid;
   height: auto;
-  width: 100%;
   align-items: flex-start;
   background-color: white;
   margin-top: 20px;
   border-radius: 12px;
+  padding: 0 10px;
 }
 .post {
   display: flex;
@@ -213,17 +210,15 @@ input[type="Mind"] {
 .feed-profile-picture {
   display: flex;
   justify-content: space-between;
-  margin: 22px;
+  margin: 5px;
   font-size: 1rem;
   font-weight: 550;
+  align-items: center;
 }
 .feed-profile-picture > img {
   border-radius: 50%;
 }
-.feed-profile-picture > div {
-  padding-left: 10px;
-  padding-top: 8px;
-}
+
 .update {
   font-size: 1rem;
   font-weight: 400;
@@ -236,17 +231,21 @@ input[type="Mind"] {
   align-items: center;
 }
 .caption {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: 500;
   word-wrap: break-word;
   padding-left: 4%;
+  padding-bottom: 1rem;
 }
 .reactions {
   display: flex;
   justify-content: space-around;
-  height: 5rem;
+  height: 3rem;
   align-items: center;
   flex-wrap: wrap;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: #ccc;
 }
 .like,
 .comment,
@@ -255,7 +254,6 @@ input[type="Mind"] {
   flex-wrap: wrap;
   align-items: center;
   font-weight: 400;
-<<<<<<< HEAD
   font-size: 1rem;
 }
 
@@ -370,7 +368,4 @@ input[type="Mind"] {
   .share {
     font-size: 0.9rem;
   }
-=======
-  font-size: 1.2rem;
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
 }

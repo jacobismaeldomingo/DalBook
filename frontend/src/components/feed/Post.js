@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Post.css";
@@ -92,6 +91,3 @@ const Post = () => {
 };
 
 export default Post;
-=======
-// Post.js
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f

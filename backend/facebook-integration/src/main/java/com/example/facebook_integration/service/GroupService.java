@@ -17,4 +17,3 @@ public interface GroupService {
     void leaveGroup(int groupId, int userId);
     Optional<UserGroup> getGroupById(int groupId);
 }
-

@@ -70,7 +70,7 @@ public class FriendRequestController {
      *             int friendId - ID of the friend to be deleted.
      * Returns: void
      */
-    @DeleteMapping("/{delete}")
+    @DeleteMapping("/delete")
     public void deleteFriend(@RequestParam int userId, @RequestParam int friendId) {
         friendRequestService.deleteFriend(userId, friendId);
     }

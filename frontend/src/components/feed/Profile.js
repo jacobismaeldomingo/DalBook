@@ -13,7 +13,7 @@ const Profile = () => {
     const storedUserEmail = localStorage.getItem("userEmail");
     if (storedUserEmail) {
       axios
-        .get(`http://localhost:8085/api/user/get/${storedUserEmail}`)
+        .get(`http://localhost:8085/api/user/getByEmail/${storedUserEmail}`)
         .then((response) => {
           setUser(response.data);
         })
@@ -33,15 +33,11 @@ const Profile = () => {
       <Header />
       <div className="user-profile">
         <img
-<<<<<<< HEAD
           src={
             user.profilePic
               ? `http://localhost:8085${user.profilePic}`
               : "/images/dalhousie-logo.png"
           }
-=======
-          src={user.profilePicture || "/images/dalhousie-logo.png"}
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
           alt="Profile"
           className="profile-picture"
         />

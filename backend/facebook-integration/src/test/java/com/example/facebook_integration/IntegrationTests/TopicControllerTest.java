@@ -43,7 +43,7 @@ public class TopicControllerTest {
     public void setUp() {
         MockitoAnnotations.openMocks(this);
         topic = new Topic();
-        topic.setId(1L);
+        topic.setId(1);
         topic.setTopic("Sample Topic");
     }
 
@@ -87,4 +87,3 @@ public class TopicControllerTest {
         }
     }
 }
-

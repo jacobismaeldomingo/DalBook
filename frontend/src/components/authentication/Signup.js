@@ -13,6 +13,7 @@ function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [securityAnswer, setSecurityAnswer] = useState("");
+  const [role, setRole] = useState("Student");
   const [errors, setErrors] = useState({});
   const location = useLocation();
   const navigate = useNavigate();
@@ -55,6 +56,7 @@ function Signup() {
       email,
       password,
       securityAnswer,
+      role,
     };
 
     try {
@@ -71,11 +73,8 @@ function Signup() {
         // Store login flag in local storage
         localStorage.setItem("isLoggedIn", "true");
         localStorage.setItem("userId", userId);
-<<<<<<< HEAD
         localStorage.setItem("userEmail", email);
         localStorage.setItem("userRole", role);
-=======
->>>>>>> d82eabc03def686a7fc69a7ace7eedd784b2d39f
 
         // Redirect to the home page
         navigate("/home");
@@ -169,7 +168,21 @@ function Signup() {
               </ul>
             )}
           </div>
-
+          <div>
+            <label htmlFor="role" className="label-name">
+              Role
+            </label>
+            <select
+              className="form-control"
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+              required
+            >
+              <option value="Student">Student</option>
+              <option value="Professor">Professor</option>
+              <option value="Faculty">Faculty</option>
+            </select>
+          </div>
           <div>
             <label htmlFor="securityAnswer" className="label-name">
               Security Answer
