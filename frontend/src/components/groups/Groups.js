@@ -8,9 +8,6 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Groups = () => {
-  const [member, setMember] = useState("");
-  const [selectedGroup, setSelectedGroup] = useState("");
-  const [userId, setUserId] = useState("");
   const [showAddPopup, setShowAddPopup] = useState(false);
   const [showRemovePopup, setShowRemovePopup] = useState(false);
   const { groupId } = useParams();
@@ -22,17 +19,80 @@ const Groups = () => {
   const currentUserId = localStorage.getItem("userId");
   const [isMember, setIsMember] = useState(false);
   const [users, setUsers] = useState({});
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [allUsers, setAllUsers] = useState([]);
+  const [selectedId, setSelectedId] = useState("");
+
+  useEffect(() => {
+    // Fetch all users
+    axios
+      .get("http://localhost:8085/api/user/users")
+      .then((response) => {
+        setAllUsers(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching users:", error);
+        toast.warn("Error fetching users.");
+      });
+  }, []);
+
+  const handleSearchChange = (e) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+
+    if (query.length > 0) {
+      const userResults = allUsers.filter(
+        (user) =>
+          user.id.toString().toLowerCase().includes(query.toLowerCase()) ||
+          (user.firstName &&
+            user.firstName.toLowerCase().includes(query.toLowerCase())) ||
+          (user.lastName &&
+            user.lastName.toLowerCase().includes(query.toLowerCase()))
+      );
+
+      setSearchResults(userResults);
+    } else {
+      setSearchResults([]);
+    }
+  };
+
+  const handleAddPopUp = () => {
+    setSearchQuery("");
+    setSearchResults([]);
+    setShowAddPopup(false);
+  };
+
+  const handleRemovePopUp = () => {
+    setSearchQuery("");
+    setSearchResults([]);
+    setShowRemovePopup(false);
+  };
+
+  const handleClearSearch = () => {
+    setSearchQuery("");
+    setSearchResults([]);
+  };
+
+  const handleSelectId = (id) => {
+    setSelectedId(id);
+    setSearchQuery(id);
+    setSearchResults([]);
+  };
 
   const handleAddMember = async (event) => {
     event.preventDefault();
+    if (!selectedId) {
+      toast.warn("Please select a user before proceeding");
+      return;
+    }
     axios
-      .put(`http://localhost:8085/api/group/addUser`, {
-        params: { selectedGroup, member },
+      .put(`http://localhost:8085/api/group/addUser`, null, {
+        params: { groupId, userId: selectedId },
       })
       .then((response) => {
-        setMember("");
-        setSelectedGroup("");
-        setUserId("");
+        setSelectedId("");
+        setSearchQuery("");
         setShowAddPopup(false);
         fetchGroupMembers(); // Update member list after adding a member
         toast.success("User has been succesfully added to your group.");
@@ -45,9 +105,13 @@ const Groups = () => {
 
   const handleRemoveMember = async (event) => {
     event.preventDefault();
+    if (!selectedId) {
+      toast.warn("Please select a user before proceeding");
+      return;
+    }
     axios
       .post(`http://localhost:8085/api/group/deleteUser`, null, {
-        params: { groupId, userId },
+        params: { groupId, userId: selectedId },
       })
       .then((response) => {
         setShowRemovePopup(false);
@@ -203,7 +267,14 @@ const Groups = () => {
         fetchJoinRequests();
       }
     }
-  }, [groupId, isGroupAdmin, fetchAdmin, checkIfGroupAdmin, fetchGroupMembers, fetchJoinRequests]);
+  }, [
+    groupId,
+    isGroupAdmin,
+    fetchAdmin,
+    checkIfGroupAdmin,
+    fetchGroupMembers,
+    fetchJoinRequests,
+  ]);
 
   if (!group) {
     return <div>Loading...</div>;
@@ -309,18 +380,34 @@ const Groups = () => {
       {showAddPopup && (
         <div className="popup">
           <div className="popup-content">
-            <span className="close" onClick={() => setShowAddPopup(false)}>
+            <span className="close" onClick={handleAddPopUp}>
               <IconX stroke={2} />
             </span>
             <h3>Add User</h3>
             <form onSubmit={handleAddMember}>
-              <input
-                type="text"
-                value={member}
-                onChange={(e) => setMember(e.target.value)}
-                placeholder="Add Member ID"
-                required
-              />
+              <label>
+                Search User by ID/Name:
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={handleSearchChange}
+                  placeholder="Search by id or name ..."
+                />
+              </label>
+              {searchResults.map((result) => (
+                <ul className="group-search-results">
+                  <li key={result.id} onClick={() => handleSelectId(result.id)}>
+                    {result.id} - {result.firstName} {result.lastName}
+                  </li>
+                </ul>
+              ))}
+              <button
+                className="group-clear-btn"
+                type="button"
+                onClick={handleClearSearch}
+              >
+                Clear
+              </button>
               <button type="submit" className="add-button">
                 Add Member
               </button>
@@ -332,18 +419,35 @@ const Groups = () => {
       {showRemovePopup && (
         <div className="popup">
           <div className="popup-content">
-            <span className="close" onClick={() => setShowRemovePopup(false)}>
+            <span className="close" onClick={handleRemovePopUp}>
               <IconX stroke={2} />
             </span>
             <h3>Remove User</h3>
             <form onSubmit={handleRemoveMember}>
-              <input
-                type="text"
-                value={userId}
-                onChange={(e) => setUserId(e.target.value)}
-                placeholder="User ID"
-                required
-              />
+              <label>
+                Search User by ID/Name:
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={handleSearchChange}
+                  placeholder="Search by id or name ..."
+                />
+              </label>
+              {searchResults.map((result) => (
+                <ul className="group-search-results">
+                  <li key={result.id} onClick={() => handleSelectId(result.id)}>
+                    {result.id} - {result.firstName} {result.lastName}
+                  </li>
+                </ul>
+              ))}
+
+              <button
+                className="group-clear-btn"
+                type="button"
+                onClick={handleClearSearch}
+              >
+                Clear
+              </button>
               <button type="submit" className="remove-button">
                 Remove Member
               </button>

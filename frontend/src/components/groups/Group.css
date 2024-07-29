@@ -206,3 +206,39 @@
   background-color: #dc3545;
   transform: translateY(0);
 }
+
+.group-clear-btn {
+  background-color: #007bff;
+  margin-right: 10px;
+}
+
+.group-clear-btn:hover {
+  background-color: #007bff;
+  transform: translateY(-2px);
+}
+
+.group-clear-btn:active {
+  background-color: #007bff;
+  transform: translateY(0);
+}
+
+.group-search-results {
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  list-style-type: none;
+  margin-left: 10px;
+  padding: 0;
+  width: 95%;
+  z-index: 1;
+  margin-bottom: 10px;
+}
+
+.group-search-results li {
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.group-search-results li:hover {
+  background-color: #f1f1f1;
+}
